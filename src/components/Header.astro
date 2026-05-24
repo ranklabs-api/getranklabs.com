@@ -1,0 +1,36 @@
+---
+const navItems = [
+  { label: 'Services', href: '/services' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Results', href: '/#results' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Blog', href: '/blog' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-lg border-b border-white/5">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group">
+      <img src="/logo.svg" alt="SearchRank" class="h-8 w-auto" />
+      <span class="text-lg font-bold tracking-tight">Search<span class="gradient-text">Rank</span></span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      {navItems.map(item => (
+        <a href={item.href} class="text-sm text-muted hover:text-white transition-colors">{item.label}</a>
+      ))}
+      <a href="/contact" class="btn-primary text-sm">Get Started</a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-btn" class="md:hidden text-white p-2" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </nav>
+</header>
+
+<script>
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    // Mobile menu toggle — minimal, can expand later
+  });
+</script>

@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Services — SearchRank">
+
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Our <span class="gradient-text">Services</span></h1>
+    <p class="text-lg text-muted mb-16 max-w-2xl">
+      Every SearchRank plan includes the full stack — audits, content, hosting, and reporting. No add-ons, no upsells.
+    </p>
+
+    <div class="space-y-16">
+      {[
+        {
+          title: 'Weekly SEO Audits',
+          desc: 'Every Monday, our AI crawler scans your entire site — every page, every link, every meta tag. It checks over 100 SEO factors and delivers a prioritized list of fixes.',
+          bullets: ['Broken link detection & repair', 'Missing meta tags & descriptions', 'Page speed & Core Web Vitals', 'Mobile responsiveness check', 'Schema markup validation', 'Internal link optimization'],
+        },
+        {
+          title: 'AI Blog Content',
+          desc: 'Our AI researches your industry, identifies content gaps, and drafts full articles tailored to your audience. You approve with one click — we handle the rest.',
+          bullets: ['Keyword & competitor research', '800+ word drafts with outlines', 'SEO-optimized titles & meta', 'One-click approval workflow', 'Scheduled publishing', 'Content calendar management'],
+        },
+        {
+          title: 'Site Hosting & Management',
+          desc: 'Your site runs on Cloudflare\'s global edge network — 330+ cities, sub-50ms latency. We handle DNS, SSL, deployments, and monitoring.',
+          bullets: ['Cloudflare Pages hosting', 'Automatic SSL certificates', 'Global CDN & DDoS protection', '99.9% uptime SLA', 'Daily backups', 'One-click rollbacks'],
+        },
+        {
+          title: 'Ranking & Analytics',
+          desc: 'Clear, actionable reports delivered to your inbox. See exactly which keywords are moving, where your competitors are, and what to do next.',
+          bullets: ['Keyword position tracking', 'Competitor gap analysis', 'Traffic trend reports', 'Monthly executive summaries', 'Conversion tracking', 'Custom dashboard (coming soon)'],
+        },
+      ].map((service) => (
+        <div class="border-t border-white/5 pt-12 first:border-t-0 first:pt-0">
+          <h2 class="text-2xl font-bold mb-4">{service.title}</h2>
+          <p class="text-muted mb-6">{service.desc}</p>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {service.bullets.map((bullet) => (
+              <li class="flex items-center gap-3 text-sm text-muted">
+                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+</Layout>

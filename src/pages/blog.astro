@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Blog — SearchRank">
+
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
+    <p class="text-lg text-muted mb-16">SEO insights, platform updates, and growth strategies.</p>
+
+    <div class="space-y-12">
+      {[
+        {
+          date: 'May 20, 2026',
+          title: 'Why AI-Powered SEO Beats Traditional Agencies',
+          excerpt: 'The math is simple: AI crawls faster, analyzes deeper, and costs a fraction of a human team. Here\'s the data.',
+          tag: 'SEO Strategy',
+        },
+        {
+          date: 'May 13, 2026',
+          title: 'The Weekly Audit Advantage: Why Cadence Matters More Than Depth',
+          excerpt: 'Most agencies do one big audit per year. Weekly audits catch issues before they hurt your rankings.',
+          tag: 'Best Practices',
+        },
+        {
+          date: 'May 6, 2026',
+          title: 'Content at Scale: How AI Drafts 800+ Word Posts in Minutes',
+          excerpt: 'A behind-the-scenes look at our AI content pipeline — from keyword research to publish-ready drafts.',
+          tag: 'Product',
+        },
+      ].map((post) => (
+        <article class="border-t border-white/5 pt-8 first:border-t-0 first:pt-0">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-xs text-purple-400 font-medium">{post.tag}</span>
+            <span class="text-xs text-muted">{post.date}</span>
+          </div>
+          <h2 class="text-xl font-bold mb-3 hover:text-purple-400 transition-colors cursor-pointer">{post.title}</h2>
+          <p class="text-muted text-sm leading-relaxed">{post.excerpt}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+</Layout>

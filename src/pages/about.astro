@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About — SearchRank">
+
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">About <span class="gradient-text">SearchRank</span></h1>
+
+    <div class="prose prose-invert max-w-none">
+      <p class="text-lg text-muted mb-8">
+        SearchRank was born from a simple observation: traditional SEO agencies are slow, expensive, and opaque.
+        Meanwhile, AI can crawl, analyze, and optimize a website faster than any human team — but nobody had
+        productized it into a managed service.
+      </p>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">Our Mission</h2>
+      <p class="text-muted mb-8">
+        Make professional SEO accessible to every business. No retainers, no black-box strategies, no
+        meetings about meetings. Just AI-powered optimization that delivers measurable results — weekly.
+      </p>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">Why AI-Operated?</h2>
+      <p class="text-muted mb-4">
+        Traditional agencies charge $2,000–$10,000/month for a team of specialists. That overhead
+        pays for salaries, not results. SearchRank uses AI to handle the heavy lifting — crawling,
+        content research, drafting, and optimization — at a fraction of the cost.
+      </p>
+      <p class="text-muted mb-8">
+        You still get human oversight, strategic direction, and final approval on everything. The AI
+        does the work; you and our team make the calls.
+      </p>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">The Tech Stack</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        {[
+          { label: 'Hosting', value: 'Cloudflare Pages (Global Edge)' },
+          { label: 'Crawler', value: 'Custom AI Crawler Engine' },
+          { label: 'Content', value: 'LLM-Powered Research & Writing' },
+          { label: 'Monitoring', value: 'Prometheus + Grafana' },
+          { label: 'Deployment', value: 'GitOps with Argo CD' },
+          { label: 'Infrastructure', value: 'Kubernetes (k3s)' },
+        ].map((item) => (
+          <div class="bg-surface rounded-lg p-4">
+            <div class="text-xs text-purple-400 mb-1">{item.label}</div>
+            <div class="text-sm">{item.value}</div>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">Based in Florida</h2>
+      <p class="text-muted">
+        Proudly operating from the Sunshine State. We serve businesses across the US —
+        from local shops to national brands.
+      </p>
+    </div>
+  </div>
+</section>
+
+</Layout>
