@@ -102,7 +102,7 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-<script>
+<script is:inline>
   function toggleSiteMode(hasSite) {
     const yesBtn = document.getElementById('has-site-yes');
     const noBtn = document.getElementById('has-site-no');
@@ -123,7 +123,49 @@ import Layout from '../layouts/Layout.astro';
   }
 
   function handleSubmit() {
-    alert("Thanks! We'll review your request and get back to you within 24 hours.");
+    const form = document.getElementById('contact-form');
+    const isNewSite = document.getElementById('new-site-fields').classList.contains('hidden') === false;
+
+    // Collect common fields
+    const nameInputs = form.querySelectorAll('input[type="text"]');
+    const emailInput = form.querySelector('input[type="email"]');
+    const urlInput = form.querySelector('input[type="url"]');
+    const textareas = form.querySelectorAll('textarea');
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+
+    const data = {
+      type: isNewSite ? 'new-site' : 'existing-site',
+      name: isNewSite ? document.querySelector('#new-site-fields input[type="text"]')?.value : document.querySelector('#existing-site-fields input[type="text"]')?.value,
+      email: isNewSite ? document.querySelector('#new-site-fields input[type="email"]')?.value : document.querySelector('#existing-site-fields input[type="email"]')?.value,
+      url: isNewSite ? null : document.querySelector('#existing-site-fields input[type="url"]')?.value,
+      siteType: isNewSite ? document.querySelector('#new-site-fields input[type="text"]:nth-of-type(2)')?.value : null,
+      modelSites: isNewSite ? Array.from(document.querySelectorAll('#new-site-fields input[type="url"]')).map(i => i.value).filter(Boolean) : [],
+      pages: Array.from(checkboxes).map(cb => cb.parentElement?.textContent?.trim()).filter(Boolean),
+      branding: textareas[0]?.value || '',
+      timeline: textareas[1]?.value || '',
+      notes: textareas[2]?.value || textareas[0]?.value || '',
+      submittedAt: new Date().toISOString(),
+    };
+
+    // Basic validation
+    if (!data.name || !data.email) {
+      alert('Please fill in your name and email.');
+      return;
+    }
+
+    // For now: send to Rank Labs via email
+    const subject = encodeURIComponent(
+      isNewSite
+        ? `New Site Request from ${data.name}`
+        : `Free Audit Request from ${data.name}`
+    );
+    const body = encodeURIComponent(JSON.stringify(data, null, 2));
+    window.location.href = `mailto:hello@getranklabs.com?subject=${subject}&body=${body}`;
+
+    // Fallback message
+    setTimeout(() => {
+      alert("Thanks, " + data.name + "! We'll review your request and get back to you within 24 hours.");
+    }, 100);
   }
 </script>
 
