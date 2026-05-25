@@ -13,18 +13,21 @@ import Layout from '../layouts/Layout.astro';
     <div class="space-y-12">
       {[
         {
+          slug: 'why-ai-beats-agencies',
           date: 'May 20, 2026',
           title: 'Why AI-Powered SEO Beats Traditional Agencies',
           excerpt: 'The math is simple: AI crawls faster, analyzes deeper, and costs a fraction of a human team. Here\'s the data.',
           tag: 'SEO Strategy',
         },
         {
+          slug: 'weekly-audit-advantage',
           date: 'May 13, 2026',
           title: 'The Weekly Audit Advantage: Why Cadence Matters More Than Depth',
           excerpt: 'Most agencies do one big audit per year. Weekly audits catch issues before they hurt your rankings.',
           tag: 'Best Practices',
         },
         {
+          slug: 'content-at-scale',
           date: 'May 6, 2026',
           title: 'Content at Scale: How AI Drafts 800+ Word Posts in Minutes',
           excerpt: 'A behind-the-scenes look at our AI content pipeline — from keyword research to publish-ready drafts.',
@@ -33,10 +36,12 @@ import Layout from '../layouts/Layout.astro';
       ].map((post) => (
         <article class="border-t border-white/5 pt-8 first:border-t-0 first:pt-0">
           <div class="flex items-center gap-3 mb-3">
-            <span class="text-xs text-purple-400 font-medium">{post.tag}</span>
+            <span class="text-xs text-cyan-400 font-medium">{post.tag}</span>
             <span class="text-xs text-muted">{post.date}</span>
           </div>
-          <h2 class="text-xl font-bold mb-3 hover:text-purple-400 transition-colors cursor-pointer">{post.title}</h2>
+          <a href={`/blog/${post.slug}`} class="block group">
+            <h2 class="text-xl font-bold mb-3 group-hover:gradient-text transition-all duration-200">{post.title}</h2>
+          </a>
           <p class="text-muted text-sm leading-relaxed">{post.excerpt}</p>
         </article>
       ))}

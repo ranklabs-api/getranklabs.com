@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'why-ai-beats-agencies' } },
+    { params: { slug: 'weekly-audit-advantage' } },
+    { params: { slug: 'content-at-scale' } },
+  ];
+}
+
+const posts = {
+  'why-ai-beats-agencies': {
+    title: 'Why AI-Powered SEO Beats Traditional Agencies',
+    date: 'May 20, 2026',
+    tag: 'SEO Strategy',
+    body: `
+The math is simple. A traditional SEO agency charges $2,000–$10,000/month. That overhead pays for account managers, specialists, office space, and profit margins. Only a fraction goes toward actually improving your rankings.
+
+At Rank Labs, AI handles the heavy lifting:
+
+**Crawling:** Our AI scans every page, link, and meta tag on your site weekly — not quarterly, not annually. Traditional teams simply can't match this cadence manually.
+
+**Analysis:** 100+ SEO checks run automatically against your site. The AI identifies patterns and prioritizes fixes by impact, not by what's easiest for an intern to handle.
+
+**Content creation:** AI researches your niche, identifies content gaps, and drafts full articles with SEO-optimized titles, meta descriptions, and internal linking strategies. A human team might produce 2–4 posts per month. We deliver 8+.
+
+**Reporting:** Clear, jargon-free reports arrive in your inbox weekly. No meetings, no decks, no "let's circle back."
+
+The result? Agency-quality SEO at a fraction of the cost. Not because we cut corners — because we eliminated the overhead.
+    `.trim(),
+  },
+  'weekly-audit-advantage': {
+    title: 'The Weekly Audit Advantage: Why Cadence Matters More Than Depth',
+    date: 'May 13, 2026',
+    tag: 'Best Practices',
+    body: `
+Most SEO agencies perform one deep audit per year — maybe two if you're lucky. Here's the problem with that approach:
+
+**SEO problems compound.** A broken link costs you rankings every day it's live. Missing meta descriptions bleed click-through rate continuously. Slow pages frustrate users and Google alike. Waiting months to find and fix these issues means months of lost traffic.
+
+Weekly audits change the game:
+
+**Catch issues early.** Broken links, missing tags, and crawl errors get surfaced within days, not months. The fix is usually trivial — but only if you know about it.
+
+**Track what matters.** Weekly snapshots reveal trends. Is your site speed degrading? Are competitors outranking you on key terms? Monthly or quarterly reports smooth over these signals.
+
+**Build momentum.** When fixes are small and frequent, they actually get done. Annual audits produce overwhelming to-do lists that sit in a PDF for 11 months.
+
+**The AI factor.** No human team can afford to crawl your site weekly. Our AI does it automatically — every Monday, before you've had your coffee.
+
+Weekly auditing isn't about doing more work. It's about the right work, at the right time, consistently.
+    `.trim(),
+  },
+  'content-at-scale': {
+    title: 'Content at Scale: How AI Drafts 800+ Word Posts in Minutes',
+    date: 'May 6, 2026',
+    tag: 'Product',
+    body: `
+Here's a peek inside the Rank Labs content pipeline — the formula that turns keyword research into publish-ready blog posts.
+
+**Step 1: Niche Analysis**
+The AI crawls your site and your competitors' sites, identifying your industry, audience, and existing content gaps. It asks: what are people searching for that you're not answering?
+
+**Step 2: Keyword Research**
+The AI cross-references search volume, competition level, and relevance to your business. It prioritizes high-impact, winnable keywords — not vanity terms you'll never rank for.
+
+**Step 3: Content Drafting**
+A full 800+ word post is generated with:
+- SEO-optimized title and meta description
+- Logical section structure (typically 5–7 sections)
+- Internal links to your existing content
+- Natural keyword placement (no stuffing)
+- Readable, engaging prose
+
+**Step 4: Approval**
+The draft lands in your inbox. You read it. You approve it (one click) or request changes. You're always the final decision-maker — the AI is your assistant, not your replacement.
+
+**Step 5: Publishing**
+Approved posts go live on your site, properly formatted, with all meta tags in place. They're added to your content calendar, and the AI starts monitoring their ranking performance.
+
+The entire pipeline — from research to publish — takes minutes, not weeks. That's the formula.
+    `.trim(),
+  },
+};
+
+const { slug } = Astro.params;
+const post = posts[slug];
+
+if (!post) {
+  return Astro.redirect('/blog');
+}
+---
+
+<Layout title={`${post.title} — Rank Labs`}>
+
+<article class="pt-32 pb-20 px-6">
+  <div class="max-w-2xl mx-auto">
+    <a href="/blog" class="text-sm text-cyan-400 hover:text-cyan-300 transition-colors mb-8 inline-block">← Back to Lab Notes</a>
+
+    <div class="flex items-center gap-3 mb-6">
+      <span class="text-xs text-cyan-400 font-medium">{post.tag}</span>
+      <span class="text-xs text-muted">{post.date}</span>
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-bold mb-8">{post.title}</h1>
+
+    <div class="prose prose-invert max-w-none text-muted leading-relaxed space-y-4">
+      {post.body.split('\n\n').map(paragraph => (
+        <p>{paragraph}</p>
+      ))}
+    </div>
+  </div>
+</article>
+
+</Layout>
