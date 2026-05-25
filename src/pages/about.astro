@@ -9,14 +9,34 @@ import Layout from '../layouts/Layout.astro';
     <div class="text-sm text-cyan-300 font-mono mb-4">OUR STORY</div>
     <h1 class="text-4xl md:text-5xl font-bold mb-6">About <span class="gradient-text">Rank Labs</span></h1>
 
-    <div class="prose prose-invert max-w-none">
-      <p class="text-lg text-muted mb-8">
-        Rank Labs was born from a simple observation: traditional SEO agencies are slow, expensive,
-        and opaque. We asked a different question — what if SEO could be treated like a science?
-        Methodical. Repeatable. Measurable.
-      </p>
+    <!-- Founder Story -->
+    <div class="gradient-border rounded-2xl p-8 md:p-10 mb-16 flex flex-col md:flex-row gap-8 items-start">
+      <img src="/founders.jpg" alt="Josiah &amp; wife — founders of Rank Labs" class="w-32 h-32 md:w-40 md:h-40 rounded-xl object-cover shrink-0" />
+      <div>
+        <h2 class="text-xl font-bold mb-3">Built by the people who needed it.</h2>
+        <div class="space-y-3 text-muted text-sm leading-relaxed">
+          <p>
+            Josiah is a Lead SRE Engineer at Disney, where he designs and builds the platforms
+            that power Disney's AI integrations at scale.
+          </p>
+          <p>
+            His wife runs <strong class="text-white">One Take Wonder Marketing</strong> — a marketing and media placement
+            company that helps businesses grow. For years, she hired outside agencies to handle SEO
+            for her clients. The results? Spotty at best. Inconsistent deliverables, vague reports,
+            and pricing that never matched the output.
+          </p>
+          <p>
+            So they built Rank Labs. Her marketing expertise defined what SEO success actually looks like.
+            His platform engineering experience made it automated, consistent, and AI-driven.
+            The result: a formula that covers everything SEO demands — and puts real updates
+            in the hands of the customer, every single week.
+          </p>
+        </div>
+      </div>
+    </div>
 
-      <h2 class="text-2xl font-bold mt-12 mb-4">The Formula</h2>
+    <div class="prose prose-invert max-w-none">
+      <h2 class="text-2xl font-bold mb-4">The Formula</h2>
       <p class="text-muted mb-8">
         Every site that enters the Rank Labs system goes through the same proven formula:
         crawl → analyze → optimize → create → repeat. AI handles the heavy lifting at every
@@ -24,7 +44,7 @@ import Layout from '../layouts/Layout.astro';
         rankings. You get the results without the agency overhead.
       </p>
 
-      <h2 class="text-2xl font-bold mt-12 mb-4">Why a Lab?</h2>
+      <h2 class="text-2xl font-bold mb-4">Why a Lab?</h2>
       <p class="text-muted mb-4">
         Agencies rely on manual processes. Manual processes are slow, inconsistent, and expensive.
         A lab runs experiments at scale. Our AI runs the equivalent of a full SEO team's weekly
@@ -35,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
         You make the calls. That's the formula.
       </p>
 
-      <h2 class="text-2xl font-bold mt-12 mb-4">The Tech Stack</h2>
+      <h2 class="text-2xl font-bold mb-4">The Tech Stack</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         {[
           { label: 'Hosting', value: 'Cloudflare Pages (Global Edge)' },
@@ -52,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
         ))}
       </div>
 
-      <h2 class="text-2xl font-bold mt-12 mb-4">Based in Florida</h2>
+      <h2 class="text-2xl font-bold mb-4">Based in Florida</h2>
       <p class="text-muted">
         Proudly operating from the Sunshine State. We serve businesses across the US —
         from local shops to national brands.
