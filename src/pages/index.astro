@@ -42,8 +42,8 @@ import Layout from '../layouts/Layout.astro';
         <div class="text-sm text-muted mt-1">AI Content Pipeline</div>
       </div>
       <div>
-        <div class="text-3xl font-bold gradient-text">$599</div>
-        <div class="text-sm text-muted mt-1">Per Month. Flat.</div>
+        <div class="text-3xl font-bold gradient-text">From $599</div>
+        <div class="text-sm text-muted mt-1">Per Month</div>
       </div>
     </div>
   </div>
@@ -155,44 +155,83 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- Pricing -->
 <section id="pricing" class="py-24 px-6 bg-surface/30">
-  <div class="max-w-4xl mx-auto text-center">
+  <div class="max-w-6xl mx-auto text-center">
     <div class="text-sm text-cyan-300 font-mono mb-4">THE DEAL</div>
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">One Formula. One Price.</h2>
-    <p class="text-muted mb-16">Everything included. No surprises. No upsells.</p>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Two Formulas. No Fluff.</h2>
+    <p class="text-muted mb-16">Pick the level that fits. Every plan is month-to-month, cancel anytime.</p>
 
-    <div class="gradient-border rounded-2xl p-8 md:p-12 max-w-lg mx-auto text-left">
-      <div class="flex items-center gap-3 mb-2">
-        <div class="text-sm text-cyan-300 font-semibold">THE FORMULA PLAN</div>
-        <div class="text-xs px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-300 font-medium">INTRO OFFER</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- SEO Management -->
+      <div class="gradient-border rounded-2xl p-8 md:p-10 text-left">
+        <div class="text-sm text-purple-300 font-semibold mb-2">SEO MANAGEMENT</div>
+        <div class="text-5xl font-bold mb-1">$599<span class="text-lg text-muted font-normal">/mo</span></div>
+        <p class="text-muted text-sm mb-8">Weekly audits, rankings, and strategy — you handle the site.</p>
+
+        <ul class="space-y-3 mb-8">
+          {[
+            'Weekly automated SEO audits',
+            'Keyword & competitor tracking',
+            'Monthly ranking reports',
+            'Content strategy recommendations',
+            'Technical SEO issue detection',
+            'Priority email support',
+          ].map((feature) => (
+            <li class="flex items-center gap-3 text-sm">
+              <span class="text-green-400 shrink-0">✓</span> {feature}
+            </li>
+          ))}
+        </ul>
+
+        <a href="/contact" class="btn-secondary block text-center w-full">Get Started</a>
       </div>
-      <div class="text-5xl font-bold mb-1">$399<span class="text-lg text-muted font-normal">/mo</span></div>
-      <p class="text-sm text-cyan-300 font-medium mb-4">First 3 months, then $599/mo</p>
-      <p class="text-muted text-sm mb-8">Everything you need to dominate search.</p>
 
-      <ul class="space-y-3 mb-8">
+      <!-- Full Management -->
+      <div class="gradient-border rounded-2xl p-8 md:p-10 text-left relative bg-purple-500/[0.03]">
+        <div class="absolute -top-3 right-6 text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold">MOST POPULAR</div>
+        <div class="text-sm text-cyan-300 font-semibold mb-2">FULL MANAGEMENT</div>
+        <div class="text-5xl font-bold mb-1">$999<span class="text-lg text-muted font-normal">/mo</span></div>
+        <p class="text-muted text-sm mb-8">Everything in SEO + we build, host, and maintain your site. Hands-free.</p>
+
+        <ul class="space-y-3 mb-8">
+          {[
+            'Everything in SEO Management',
+            'AI blog content (2 posts/week)',
+            'Full site hosting on Cloudflare',
+            'Site edits, updates & maintenance',
+            'One-click content approval',
+            'Dedicated Telegram support',
+          ].map((feature) => (
+            <li class="flex items-center gap-3 text-sm">
+              <span class="text-green-400 shrink-0">✓</span> {feature}
+            </li>
+          ))}
+        </ul>
+
+        <a href="/contact" class="btn-primary block text-center w-full">Get the Formula</a>
+      </div>
+    </div>
+
+    <!-- Site Builds -->
+    <div class="mt-16 max-w-lg mx-auto">
+      <div class="text-sm text-cyan-300 font-mono mb-2">ONE-TIME</div>
+      <h3 class="text-xl font-bold mb-2">Need a Site Built?</h3>
+      <p class="text-muted text-sm mb-6">Custom sites on Cloudflare's global edge — fast, modern, zero ongoing dev costs.</p>
+      <div class="space-y-3 text-left">
         {[
-          'Weekly automated SEO audits',
-          'AI blog content (2 posts/week)',
-          'Full site hosting on Cloudflare',
-          'Keyword & competitor tracking',
-          'Monthly ranking reports',
-          'One-click content approval',
-          'Priority email support',
-        ].map((feature) => (
-          <li class="flex items-center gap-3 text-sm">
-            <span class="text-green-400 shrink-0">✓</span> {feature}
-          </li>
+          { pages: 'Landing Page', price: '$1,250', desc: 'Single-page site. Perfect for product launches or lead gen.' },
+          { pages: 'Up to 5 Pages', price: '$2,500', desc: 'Home, About, Services, Blog, Contact — the full stack.' },
+          { pages: '6+ Pages', price: 'Custom', desc: 'Complex sites, e-commerce, dashboards. Let\'s talk.' },
+        ].map((tier) => (
+          <div class="flex items-center justify-between gradient-border rounded-xl p-4">
+            <div>
+              <div class="font-semibold text-sm">{tier.pages}</div>
+              <div class="text-xs text-muted">{tier.desc}</div>
+            </div>
+            <div class="text-lg font-bold gradient-text shrink-0 ml-4">{tier.price}</div>
+          </div>
         ))}
-      </ul>
-
-      <a href="/contact" class="btn-primary block text-center w-full">Get the Formula</a>
-      <p class="text-xs text-muted text-center mt-4">No long-term contract. Cancel anytime.</p>
-
-      <div class="border-t border-white/5 mt-8 pt-6 text-center">
-        <p class="text-sm text-muted">
-          <span class="text-cyan-300 font-medium">Need a site built?</span> We'll create a custom site tailored to your brand — modeled after your favorite sites. <a href="/contact" class="text-cyan-400 hover:underline">Tell us what you're looking for →</a>
-        </p>
       </div>
+      <a href="/contact" class="btn-secondary inline-block mt-8">Tell Us What You Need →</a>
     </div>
   </div>
 </section>

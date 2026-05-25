@@ -9,45 +9,90 @@ import Layout from '../layouts/Layout.astro';
     <div class="text-sm text-cyan-300 font-mono mb-4">WHAT'S IN THE LAB</div>
     <h1 class="text-4xl md:text-5xl font-bold mb-6">Our <span class="gradient-text">Formula</span></h1>
     <p class="text-lg text-muted mb-16 max-w-2xl">
-      Every Rank Labs plan includes the full formula — audits, content, hosting, and reporting. No add-ons, no upsells, no hidden ingredients.
+      Two tiers, one mission: make your site impossible to ignore. Every plan is month-to-month — no contracts, no surprises.
     </p>
 
-    <div class="space-y-16">
-      {[
-        {
-          title: 'Weekly SEO Audits',
-          desc: 'Every Monday, our AI crawler scans your entire site — every page, every link, every meta tag. It checks over 100 SEO factors and delivers a prioritized list of fixes.',
-          bullets: ['Broken link detection & repair', 'Missing meta tags & descriptions', 'Page speed & Core Web Vitals', 'Mobile responsiveness check', 'Schema markup validation', 'Internal link optimization'],
-        },
-        {
-          title: 'AI Blog Content',
-          desc: 'Our AI researches your industry, identifies content gaps, and drafts full articles tailored to your audience. You approve with one click — we handle the rest.',
-          bullets: ['Keyword & competitor research', '800+ word drafts with outlines', 'SEO-optimized titles & meta', 'One-click approval workflow', 'Scheduled publishing', 'Content calendar management'],
-        },
-        {
-          title: 'Site Hosting & Management',
-          desc: 'Your site runs on Cloudflare\'s global edge network — 330+ cities, sub-50ms latency. We handle DNS, SSL, deployments, and monitoring.',
-          bullets: ['Cloudflare Pages hosting', 'Automatic SSL certificates', 'Global CDN & DDoS protection', '99.9% uptime SLA', 'Daily backups', 'One-click rollbacks'],
-        },
-        {
-          title: 'Ranking & Analytics',
-          desc: 'Clear, actionable reports delivered to your inbox. See exactly which keywords are moving, where your competitors are, and what to do next.',
-          bullets: ['Keyword position tracking', 'Competitor gap analysis', 'Traffic trend reports', 'Monthly executive summaries', 'Conversion tracking', 'Custom dashboard (coming soon)'],
-        },
-      ].map((service) => (
-        <div class="border-t border-white/5 pt-12 first:border-t-0 first:pt-0">
-          <h2 class="text-2xl font-bold mb-4">{service.title}</h2>
-          <p class="text-muted mb-6">{service.desc}</p>
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {service.bullets.map((bullet) => (
-              <li class="flex items-center gap-3 text-sm text-muted">
-                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>
-                {bullet}
-              </li>
+    <!-- SEO Management -->
+    <div class="border-t border-white/5 pt-12 mb-16">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+        <div>
+          <div class="text-xs text-purple-300 font-mono mb-2">$599/MO</div>
+          <h2 class="text-2xl font-bold">SEO Management</h2>
+          <p class="text-muted mt-2 max-w-xl">Weekly audits, rankings, and strategy delivered to your inbox. You keep your existing team and site — we provide the intelligence.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Audits & Monitoring</h3>
+          <ul class="space-y-2">
+            {['Weekly automated SEO crawls (100+ checks)', 'Broken link detection & repair recommendations', 'Missing meta tags & descriptions', 'Page speed & Core Web Vitals', 'Mobile responsiveness check'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
             ))}
           </ul>
         </div>
-      ))}
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Rankings & Strategy</h3>
+          <ul class="space-y-2">
+            {['Keyword position tracking', 'Competitor gap analysis', 'Monthly ranking reports', 'Content strategy recommendations', 'Technical SEO issue detection'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Management -->
+    <div class="border-t border-white/5 pt-12 mb-16">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+        <div>
+          <div class="text-xs text-cyan-300 font-mono mb-2">$999/MO</div>
+          <h2 class="text-2xl font-bold">Full Management</h2>
+          <p class="text-muted mt-2 max-w-xl">Everything in SEO Management, plus we build, host, and maintain your site on Cloudflare's global edge. You focus on your business — we handle the rest.</p>
+        </div>
+        <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold">MOST POPULAR</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Site Hosting & Management</h3>
+          <ul class="space-y-2">
+            {['Cloudflare Pages hosting (330+ cities)', 'Automatic SSL certificates', 'Global CDN & DDoS protection', 'Site edits, updates & maintenance', 'One-click rollbacks & daily backups'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">AI Content Pipeline</h3>
+          <ul class="space-y-2">
+            {['AI blog content (2 posts/week)', 'Keyword & competitor research per post', '800+ word SEO-optimized drafts', 'One-click approval workflow', 'Scheduled publishing & content calendar'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site Builds -->
+    <div class="border-t border-white/5 pt-12">
+      <div class="text-xs text-cyan-300 font-mono mb-2">ONE-TIME</div>
+      <h2 class="text-2xl font-bold mb-2">Site Builds</h2>
+      <p class="text-muted mb-8 max-w-xl">Custom sites built on Cloudflare's global edge — fast, modern, zero ongoing dev costs. Every build includes:</p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
+        {['Responsive design (mobile + desktop)', 'SEO-optimized from day one', 'SSL & global CDN included', 'Content management via Telegram', '1 round of revisions included'].map(b => (
+          <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+        ))}
+      </ul>
+      <div class="space-y-3">
+        {[
+          { pages: 'Landing Page — $1,250', desc: 'Single-page site. Perfect for product launches, lead gen, or a simple web presence.' },
+          { pages: 'Up to 5 Pages — $2,500', desc: 'Home, About, Services, Blog, Contact. The full business stack.' },
+          { pages: '6+ Pages — Custom Quote', desc: "Complex sites, e-commerce, dashboards, or anything custom. Let's talk." },
+        ].map((tier) => (
+          <div class="gradient-border rounded-xl p-4">
+            <div class="font-semibold text-sm">{tier.pages}</div>
+            <div class="text-xs text-muted mt-1">{tier.desc}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
