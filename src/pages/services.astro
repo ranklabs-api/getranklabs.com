@@ -48,6 +48,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="text-xs text-cyan-300 font-mono mb-2">$999/MO</div>
           <h2 class="text-2xl font-bold">Full Management</h2>
           <p class="text-muted mt-2 max-w-xl">Everything in SEO Management, plus we build, host, and maintain your site on Cloudflare's global edge. You focus on your business — we handle the rest.</p>
+          <p class="text-xs text-muted mt-2"><span class="text-white font-medium">+ one-time site build or $1,000 migration</span> for new or existing sites</p>
         </div>
         <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold">MOST POPULAR</span>
       </div>
@@ -74,8 +75,8 @@ import Layout from '../layouts/Layout.astro';
     <!-- Site Builds -->
     <div class="border-t border-white/5 pt-12">
       <div class="text-xs text-cyan-300 font-mono mb-2">ONE-TIME</div>
-      <h2 class="text-2xl font-bold mb-2">Site Builds</h2>
-      <p class="text-muted mb-8 max-w-xl">Custom sites built on Cloudflare's global edge — fast, modern, zero ongoing dev costs. Every build includes:</p>
+      <h2 class="text-2xl font-bold mb-2">Site Builds & Migration</h2>
+      <p class="text-muted mb-8 max-w-xl">Custom sites built on Cloudflare's global edge — fast, modern, zero ongoing dev costs. Already have a site? We'll migrate it seamlessly. Every build includes:</p>
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
         {['Responsive design (mobile + desktop)', 'SEO-optimized from day one', 'SSL & global CDN included', 'Content management via Telegram', '1 round of revisions included'].map(b => (
           <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
@@ -85,6 +86,7 @@ import Layout from '../layouts/Layout.astro';
         {[
           { pages: 'Landing Page — $1,250', desc: 'Single-page site. Perfect for product launches, lead gen, or a simple web presence.' },
           { pages: 'Up to 5 Pages — $2,500', desc: 'Home, About, Services, Blog, Contact. The full business stack.' },
+          { pages: 'Site Migration — $1,000', desc: 'Moving from Wix, Squarespace, WordPress? We handle DNS, content, and redirects with zero downtime.' },
           { pages: '6+ Pages — Custom Quote', desc: "Complex sites, e-commerce, dashboards, or anything custom. Let's talk." },
         ].map((tier) => (
           <div class="gradient-border rounded-xl p-4">
