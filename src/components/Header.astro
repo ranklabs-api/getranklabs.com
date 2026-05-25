@@ -10,11 +10,12 @@ const navItems = [
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-lg border-b border-white/5">
   <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3 group">
+    <a href="/" class="flex items-center gap-3 group z-10">
       <img src="/logo.svg" alt="Rank Labs" class="h-8 w-auto" />
       <span class="text-lg font-bold tracking-tight">Rank <span class="gradient-text">Labs</span></span>
     </a>
 
+    <!-- Desktop nav -->
     <div class="hidden md:flex items-center gap-8">
       {navItems.map(item => (
         <a href={item.href} class="text-sm text-muted hover:text-white transition-colors">{item.label}</a>
@@ -22,15 +23,49 @@ const navItems = [
       <a href="/contact" class="btn-primary text-sm">Get Started</a>
     </div>
 
-    <!-- Mobile menu button -->
-    <button id="mobile-menu-btn" class="md:hidden text-white p-2" aria-label="Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden text-white p-2 z-10 relative" aria-label="Toggle menu">
+      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
   </nav>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" class="md:hidden hidden bg-[#0a0a0f]/95 backdrop-blur-lg border-b border-white/5">
+    <div class="px-6 py-6 space-y-4">
+      {navItems.map(item => (
+        <a href={item.href} class="block text-base text-muted hover:text-white transition-colors py-2">{item.label}</a>
+      ))}
+      <a href="/contact" class="btn-primary block text-center mt-4">Get Started</a>
+    </div>
+  </div>
 </header>
 
 <script>
-  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-    // Mobile menu toggle — minimal, can expand later
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden');
+    if (isOpen) {
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    } else {
+      menu.classList.remove('hidden');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+    }
+  });
+
+  // Close menu when a link is clicked
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
   });
 </script>
