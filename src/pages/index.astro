@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="SearchRank — AI-Operated SEO Platform" description="Weekly audits, automated blog content, and full-site management. All powered by AI.">
+<Layout>
 
 <!-- Hero -->
 <section class="relative pt-32 pb-20 px-6 overflow-hidden">
@@ -10,24 +10,24 @@ import Layout from '../layouts/Layout.astro';
   <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-3xl"></div>
 
   <div class="max-w-4xl mx-auto text-center relative">
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/5 text-sm text-purple-300 mb-8">
-      <span class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
-      AI-Powered SEO — Now in Beta
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-sm text-cyan-300 mb-8">
+      <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+      The Secret Formula for SEO — Now in Beta
     </div>
 
     <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
-      Your Site,<br/>
-      <span class="gradient-text">Fully Optimized.</span>
+      We Have the<br/>
+      <span class="gradient-text">Secret Formula</span>
     </h1>
 
     <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10">
-      SearchRank is the first AI-operated SEO platform that builds, manages, and
-      optimizes your entire web presence — weekly audits, automated blog content,
-      and hands-free site management.
+      Rank Labs is the AI-operated SEO platform that builds, manages, and optimizes
+      your entire web presence — like having a mad scientist running your search strategy,
+      minus the lab coat.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/contact" class="btn-primary text-lg">Start Your Free Audit</a>
+      <a href="/contact" class="btn-primary text-lg">Get the Formula →</a>
       <a href="/#how-it-works" class="btn-secondary text-lg">See How It Works</a>
     </div>
 
@@ -42,52 +42,53 @@ import Layout from '../layouts/Layout.astro';
         <div class="text-sm text-muted mt-1">AI Content Pipeline</div>
       </div>
       <div>
-        <div class="text-3xl font-bold gradient-text">$0</div>
-        <div class="text-sm text-muted mt-1">Setup Fee — Launch Today</div>
+        <div class="text-3xl font-bold gradient-text">$299</div>
+        <div class="text-sm text-muted mt-1">Per Month. Flat.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services -->
+<!-- Formula Ingredients -->
 <section id="services" class="py-24 px-6">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Everything Your Site Needs</h2>
-      <p class="text-muted max-w-xl mx-auto">One platform. AI-operated. Zero overhead.</p>
+      <div class="text-sm text-cyan-300 font-mono mb-4">THE FORMULA</div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Every Breakthrough Starts in the Lab</h2>
+      <p class="text-muted max-w-xl mx-auto">Six ingredients. One platform. Zero overhead.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {[
         {
-          icon: '🔍',
+          icon: '🧪',
           title: 'Weekly SEO Audits',
-          desc: 'Every week, our AI crawls your site and surfaces actionable fixes — broken links, missing meta, slow pages, and ranking opportunities.',
+          desc: 'Our AI crawls your site every week like a lab assistant on caffeine — surfacing broken links, missing meta, slow pages, and ranking opportunities.',
         },
         {
-          icon: '✍️',
+          icon: '⚗️',
           title: 'Automated Blog Content',
-          desc: 'AI researches your niche, drafts 800+ word posts, and sends them for your one-click approval. Fresh content, every week.',
+          desc: 'AI researches your niche, formulates 800+ word posts, and sends them for your one-click approval. Fresh content, every week.',
         },
         {
-          icon: '🚀',
+          icon: '🔬',
           title: 'Full Site Management',
           desc: 'We build, host, and maintain your site on Cloudflare\'s global edge. Blazing fast, always online, fully managed.',
         },
         {
           icon: '📊',
           title: 'Ranking Reports',
-          desc: 'Clear, visual reports on your keyword positions, traffic trends, and competitor gaps. No jargon, just insights.',
+          desc: 'Clear, visual reports on your keyword positions, traffic trends, and competitor gaps. The data, distilled.',
         },
         {
-          icon: '🤖',
+          icon: '🧬',
           title: 'AI Content Pipeline',
           desc: 'From keyword research to published post — our AI pipeline handles ideation, writing, optimization, and scheduling.',
         },
         {
-          icon: '🔒',
+          icon: '✅',
           title: 'Approval Workflow',
-          desc: 'You\'re always in control. Review and approve every piece of content before it goes live. One click.',
+          desc: 'You\'re the head scientist. Review and approve every piece of content before it goes live. One click.',
         },
       ].map((service) => (
         <div class="gradient-border rounded-xl p-6 hover:bg-surface-light/50 transition-colors">
@@ -104,15 +105,16 @@ import Layout from '../layouts/Layout.astro';
 <section id="how-it-works" class="py-24 px-6 bg-surface/30">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-      <p class="text-muted">Three steps to a fully managed, AI-optimized website.</p>
+      <div class="text-sm text-cyan-300 font-mono mb-4">THE PROCESS</div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Three Steps to Search Dominance</h2>
+      <p class="text-muted">No complicated onboarding. No endless meetings. Just results.</p>
     </div>
 
     <div class="space-y-8">
       {[
-        { step: '01', title: 'Connect Your Site', desc: 'Point your domain. We handle DNS, hosting on Cloudflare Pages, and initial site setup. Existing site? We\'ll migrate it.' },
-        { step: '02', title: 'AI Takes Over', desc: 'Our AI engine begins weekly crawls, content research, and optimization. You\'ll receive your first audit within 24 hours.' },
-        { step: '03', title: 'Review & Approve', desc: 'Content drafts land in your inbox. One-click approve or request changes. Audits and reports arrive weekly — no meetings needed.' },
+        { step: '01', title: 'Connect Your Site', desc: 'Point your domain. We handle DNS, hosting on Cloudflare Pages, and initial site setup. Existing site? We\'ll migrate it — no downtime.' },
+        { step: '02', title: 'The Formula Activates', desc: 'Our AI begins weekly crawls, content research, and optimization. Your first audit arrives within 24 hours. No meetings, no calls, no waiting.' },
+        { step: '03', title: 'Review & Approve', desc: 'Content drafts land in your inbox. One-click approve or request changes. Audits and reports arrive weekly — you\'re always in control.' },
       ].map((item) => (
         <div class="flex gap-6 items-start">
           <div class="text-4xl font-bold gradient-text font-mono shrink-0">{item.step}</div>
@@ -126,12 +128,13 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-<!-- Results / Social Proof -->
+<!-- Results -->
 <section id="results" class="py-24 px-6">
   <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Built for Growth</h2>
+    <div class="text-sm text-cyan-300 font-mono mb-4">THE RESULTS</div>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">What the Formula Produces</h2>
     <p class="text-muted mb-16 max-w-xl mx-auto">
-      SearchRank combines years of SEO expertise with cutting-edge AI to deliver results that traditional agencies can't match.
+      AI-driven SEO that traditional agencies can't match — at a fraction of the cost.
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -153,11 +156,12 @@ import Layout from '../layouts/Layout.astro';
 <!-- Pricing -->
 <section id="pricing" class="py-24 px-6 bg-surface/30">
   <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
-    <p class="text-muted mb-16">One plan. Everything included. No surprises.</p>
+    <div class="text-sm text-cyan-300 font-mono mb-4">THE DEAL</div>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">One Formula. One Price.</h2>
+    <p class="text-muted mb-16">Everything included. No surprises. No upsells.</p>
 
     <div class="gradient-border rounded-2xl p-8 md:p-12 max-w-lg mx-auto text-left">
-      <div class="text-sm text-purple-300 font-semibold mb-2">SEARCHRANK PLAN</div>
+      <div class="text-sm text-cyan-300 font-semibold mb-2">THE FORMULA PLAN</div>
       <div class="text-5xl font-bold mb-2">$299<span class="text-lg text-muted font-normal">/mo</span></div>
       <p class="text-muted text-sm mb-8">Everything you need to dominate search.</p>
 
@@ -177,7 +181,7 @@ import Layout from '../layouts/Layout.astro';
         ))}
       </ul>
 
-      <a href="/contact" class="btn-primary block text-center w-full">Get Started</a>
+      <a href="/contact" class="btn-primary block text-center w-full">Get the Formula</a>
       <p class="text-xs text-muted text-center mt-4">No long-term contract. Cancel anytime.</p>
     </div>
   </div>
@@ -186,9 +190,9 @@ import Layout from '../layouts/Layout.astro';
 <!-- CTA -->
 <section class="py-24 px-6">
   <div class="max-w-2xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Rank?</h2>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Crack the Code?</h2>
     <p class="text-muted mb-8">
-      Get your free SEO audit and see exactly where your site stands. No obligation, no sales pitch.
+      Get your free SEO audit and discover what the formula can do for your site. No obligation, no sales pitch.
     </p>
     <a href="/contact" class="btn-primary text-lg">Get Your Free Audit →</a>
   </div>

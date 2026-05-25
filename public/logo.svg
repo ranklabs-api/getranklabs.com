@@ -1,14 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
     </linearGradient>
   </defs>
-  <!-- Magnifying glass circle -->
-  <circle cx="42" cy="42" r="24" stroke="url(#g)" stroke-width="5" fill="none"/>
-  <!-- Handle -->
-  <line x1="59" y1="59" x2="82" y2="82" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
-  <!-- Upward arrow inside glass (ranking) -->
-  <path d="M42 52 L42 28 M36 34 L42 27 L48 34" stroke="url(#g)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Flask body -->
+  <path d="M35 25 L35 52 L22 85 C20 89 22 92 28 92 L72 92 C78 92 80 89 78 85 L65 52 L65 25" stroke="url(#g)" stroke-width="4.5" stroke-linejoin="round" fill="none"/>
+  <!-- Flask neck -->
+  <line x1="45" y1="15" x2="45" y2="25" stroke="url(#g)" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="55" y1="15" x2="55" y2="25" stroke="url(#g)" stroke-width="4.5" stroke-linecap="round"/>
+  <line x1="45" y1="15" x2="55" y2="15" stroke="url(#g)" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Liquid level -->
+  <path d="M38 62 L62 62" stroke="url(#g)" stroke-width="2" opacity="0.5"/>
+  <!-- Bubbles -->
+  <circle cx="43" cy="68" r="2.5" fill="url(#g)" opacity="0.6"/>
+  <circle cx="55" cy="74" r="2" fill="url(#g)" opacity="0.4"/>
+  <circle cx="48" cy="80" r="3" fill="url(#g)" opacity="0.5"/>
+  <!-- Upward arrow (ranking) -->
+  <path d="M50 55 L50 35 M44 41 L50 35 L56 41" stroke="url(#g)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

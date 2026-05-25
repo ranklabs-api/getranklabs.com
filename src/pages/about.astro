@@ -2,34 +2,37 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About — SearchRank">
+<Layout title="About — Rank Labs">
 
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-3xl mx-auto">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">About <span class="gradient-text">SearchRank</span></h1>
+    <div class="text-sm text-cyan-300 font-mono mb-4">OUR STORY</div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">About <span class="gradient-text">Rank Labs</span></h1>
 
     <div class="prose prose-invert max-w-none">
       <p class="text-lg text-muted mb-8">
-        SearchRank was born from a simple observation: traditional SEO agencies are slow, expensive, and opaque.
-        Meanwhile, AI can crawl, analyze, and optimize a website faster than any human team — but nobody had
-        productized it into a managed service.
+        Rank Labs was born from a simple observation: traditional SEO agencies are slow, expensive,
+        and opaque. We asked a different question — what if SEO could be treated like a science?
+        Methodical. Repeatable. Measurable.
       </p>
 
-      <h2 class="text-2xl font-bold mt-12 mb-4">Our Mission</h2>
+      <h2 class="text-2xl font-bold mt-12 mb-4">The Formula</h2>
       <p class="text-muted mb-8">
-        Make professional SEO accessible to every business. No retainers, no black-box strategies, no
-        meetings about meetings. Just AI-powered optimization that delivers measurable results — weekly.
+        Every site that enters the Rank Labs system goes through the same proven formula:
+        crawl → analyze → optimize → create → repeat. AI handles the heavy lifting at every
+        stage — crawling thousands of pages, identifying gaps, drafting content, and tracking
+        rankings. You get the results without the agency overhead.
       </p>
 
-      <h2 class="text-2xl font-bold mt-12 mb-4">Why AI-Operated?</h2>
+      <h2 class="text-2xl font-bold mt-12 mb-4">Why a Lab?</h2>
       <p class="text-muted mb-4">
-        Traditional agencies charge $2,000–$10,000/month for a team of specialists. That overhead
-        pays for salaries, not results. SearchRank uses AI to handle the heavy lifting — crawling,
-        content research, drafting, and optimization — at a fraction of the cost.
+        Agencies rely on manual processes. Manual processes are slow, inconsistent, and expensive.
+        A lab runs experiments at scale. Our AI runs the equivalent of a full SEO team's weekly
+        output — every single day — for $299/month.
       </p>
       <p class="text-muted mb-8">
-        You still get human oversight, strategic direction, and final approval on everything. The AI
-        does the work; you and our team make the calls.
+        You still get human oversight and final approval on everything. The AI does the work.
+        You make the calls. That's the formula.
       </p>
 
       <h2 class="text-2xl font-bold mt-12 mb-4">The Tech Stack</h2>
@@ -43,7 +46,7 @@ import Layout from '../layouts/Layout.astro';
           { label: 'Infrastructure', value: 'Kubernetes (k3s)' },
         ].map((item) => (
           <div class="bg-surface rounded-lg p-4">
-            <div class="text-xs text-purple-400 mb-1">{item.label}</div>
+            <div class="text-xs text-cyan-400 mb-1">{item.label}</div>
             <div class="text-sm">{item.value}</div>
           </div>
         ))}
