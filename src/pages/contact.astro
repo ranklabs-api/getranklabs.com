@@ -153,19 +153,23 @@ import Layout from '../layouts/Layout.astro';
       return;
     }
 
-    // For now: send to Rank Labs via email
-    const subject = encodeURIComponent(
-      isNewSite
-        ? `New Site Request from ${data.name}`
-        : `Free Audit Request from ${data.name}`
-    );
-    const body = encodeURIComponent(JSON.stringify(data, null, 2));
-    window.location.href = `mailto:hello@getranklabs.com?subject=${subject}&body=${body}`;
+    // Send to Rank Labs API
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    // Fallback message
-    setTimeout(() => {
-      alert("Thanks, " + data.name + "! We'll review your request and get back to you within 24 hours.");
-    }, 100);
+      if (response.ok) {
+        alert("Thanks, " + data.name + "! We'll review your request and get back to you within 24 hours.");
+      } else {
+        const err = await response.json();
+        alert("Something went wrong: " + (err.error || 'Please try again.'));
+      }
+    } catch (e) {
+      alert("Unable to submit. Please email us at hello@getranklabs.com");
+    }
   }
 </script>
 
