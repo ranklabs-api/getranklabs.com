@@ -17,10 +17,18 @@ export async function onRequestPost(context) {
     }
 
     // Format Telegram message
+    // Generate submission ID
+    const subId = `SUB-${Date.now().toString(36).toUpperCase()}`;
+    
+    // Format Telegram message
     const typeLabel = data.type === "existing-site" ? "🔬 Free SEO Audit" : "🔨 New Site Build";
-    let text = `<b>${typeLabel} Request</b>\n\n`;
+    let text = `<b>${typeLabel} Request</b>\n`;
+    text += `<code>${subId}</code>\n\n`;
     text += `<b>Name:</b> ${data.name}\n`;
     text += `<b>Email:</b> ${data.email}\n`;
+    
+    // Build command for Josiah to use
+    let cmd = `/onboard ${subId}`;
     
     if (data.type === "existing-site") {
       text += `<b>Website:</b> ${data.url || "N/A"}\n`;
@@ -38,7 +46,7 @@ export async function onRequestPost(context) {
     
     if (data.notes) text += `<b>Notes:</b> ${data.notes.substring(0, 300)}\n`;
     text += `\n<b>Submitted:</b> ${new Date(data.submittedAt).toLocaleString()}\n`;
-    text += `\n<i>Reply "approve" to start onboarding, or "reject" to decline.</i>`;
+    text += `\n<i>Reply "approve ${subId}" to start onboarding.</i>`;
 
     // Send to Telegram
     const tgResponse = await fetch(
