@@ -16,24 +16,30 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Format Telegram message
-    // Generate submission ID
+    // Format Telegram message based on type
     const subId = `SUB-${Date.now().toString(36).toUpperCase()}`;
     
-    // Format Telegram message
-    const typeLabel = data.type === "existing-site" ? "🔬 Free SEO Audit" : "🔨 New Site Build";
-    let text = `<b>${typeLabel} Request</b>\n`;
-    text += `<code>${subId}</code>\n\n`;
-    text += `<b>Name:</b> ${data.name}\n`;
-    text += `<b>Email:</b> ${data.email}\n`;
-    
-    // Build command for Josiah to use
-    let cmd = `/onboard ${subId}`;
-    
-    if (data.type === "existing-site") {
+    let typeLabel, text;
+    if (data.type === "contact") {
+      typeLabel = "💬 New Message";
+      text = `<b>${typeLabel}</b>\n<code>${subId}</code>\n\n`;
+      text += `<b>Name:</b> ${data.name}\n`;
+      text += `<b>Email:</b> ${data.email}\n`;
+      if (data.url) text += `<b>Website:</b> ${data.url}\n`;
+      if (data.notes) text += `<b>Message:</b> ${data.notes.substring(0, 500)}\n`;
+    } else if (data.type === "existing-site") {
+      typeLabel = "🔬 Free SEO Audit";
+      text = `<b>${typeLabel} Request</b>\n<code>${subId}</code>\n\n`;
+      text += `<b>Name:</b> ${data.name}\n`;
+      text += `<b>Email:</b> ${data.email}\n`;
       text += `<b>Website:</b> ${data.url || "N/A"}\n`;
+      if (data.notes) text += `<b>Notes:</b> ${data.notes.substring(0, 300)}\n`;
     } else {
-      text += `<b>Site Type:</b> ${data.siteType || "Not specified"}\n`;
+      typeLabel = "🔨 New Site Build";
+      text = `<b>${typeLabel} Request</b>\n<code>${subId}</code>\n\n`;
+      text += `<b>Name:</b> ${data.name}\n`;
+      text += `<b>Email:</b> ${data.email}\n`;
+      if (data.siteType) text += `<b>Site Type:</b> ${data.siteType}\n`;
       if (data.modelSites && data.modelSites.length > 0) {
         text += `<b>Model Sites:</b> ${data.modelSites.join(", ")}\n`;
       }
@@ -42,11 +48,13 @@ export async function onRequestPost(context) {
       }
       if (data.branding) text += `<b>Branding:</b> ${data.branding.substring(0, 200)}\n`;
       if (data.timeline) text += `<b>Timeline/Budget:</b> ${data.timeline}\n`;
+      if (data.notes) text += `<b>Notes:</b> ${data.notes.substring(0, 300)}\n`;
     }
     
-    if (data.notes) text += `<b>Notes:</b> ${data.notes.substring(0, 300)}\n`;
-    text += `\n<b>Submitted:</b> ${new Date(data.submittedAt).toLocaleString()}\n`;
-    text += `\n<i>Reply "approve ${subId}" to start onboarding.</i>`;
+    text += `\n<b>Submitted:</b> ${new Date(data.submittedAt).toLocaleString()}`;
+    if (data.type !== "contact") {
+      text += `\n\n<i>Reply "approve ${subId}" to start onboarding.</i>`;
+    }
 
     // Send to Telegram
     const tgResponse = await fetch(

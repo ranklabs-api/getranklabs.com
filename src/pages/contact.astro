@@ -5,172 +5,93 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Contact — Rank Labs">
 
 <section class="pt-32 pb-20 px-6">
-  <div class="max-w-2xl mx-auto text-center">
-    <div class="text-sm text-cyan-300 font-mono mb-4">GET STARTED</div>
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Get the <span class="gradient-text">Formula</span></h1>
+  <div class="max-w-xl mx-auto text-center">
+    <div class="text-sm text-cyan-300 font-mono mb-4">GET IN TOUCH</div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Let's <span class="gradient-text">Talk</span></h1>
     <p class="text-lg text-muted mb-12">
-      Tell us about your site and we'll deliver a comprehensive SEO audit within 24 hours — free. No strings attached.
+      Got a question? Want a free SEO audit? Just want to say hi? Drop us a message.
     </p>
 
-    <form id="contact-form" class="text-left space-y-6" onsubmit="event.preventDefault(); handleSubmit()">
-      <!-- Site status toggle -->
+    <form id="contact-form" class="text-left space-y-5">
       <div>
-        <label class="block text-sm font-medium mb-3">Do you already have a website?</label>
-        <div class="grid grid-cols-2 gap-3">
-          <button type="button" id="has-site-yes" class="px-4 py-3 bg-surface border border-cyan-500/50 rounded-lg text-sm font-medium text-cyan-300 hover:border-cyan-400 transition-colors" onclick="toggleSiteMode(true)">✅ Yes, I have a site</button>
-          <button type="button" id="has-site-no" class="px-4 py-3 bg-surface border border-white/10 rounded-lg text-sm font-medium text-muted hover:border-white/20 transition-colors" onclick="toggleSiteMode(false)">🔨 I need a site built</button>
-        </div>
+        <label class="block text-sm font-medium mb-2">Name *</label>
+        <input type="text" id="name" name="name" required class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="Your name">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2">Email *</label>
+        <input type="email" id="email" name="email" required class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="you@example.com">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2">Website (optional)</label>
+        <input type="url" id="url" name="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="https://yoursite.com">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2">Message</label>
+        <textarea id="message" name="message" rows="4" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none" placeholder="Tell us about your project, goals, or just say hi..."></textarea>
       </div>
 
-      <!-- Existing site fields -->
-      <div id="existing-site-fields">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium mb-2">Name</label>
-            <input type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="John Smith" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-2">Email</label>
-            <input type="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="john@company.com" />
-          </div>
-        </div>
-        <div class="mt-4">
-          <label class="block text-sm font-medium mb-2">Website URL</label>
-          <input type="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="https://yoursite.com" />
-        </div>
-      </div>
-
-      <!-- New site fields (hidden by default) -->
-      <div id="new-site-fields" class="hidden space-y-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium mb-2">Name</label>
-            <input type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="John Smith" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-2">Email</label>
-            <input type="email" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="john@company.com" />
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-2">What kind of site do you need?</label>
-          <input type="text" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="e.g. E-commerce store, SaaS landing page, portfolio, blog..." />
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-2">3 sites you'd like to model yours after</label>
-          <div class="space-y-2">
-            <input type="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="https://example.com — site #1" />
-            <input type="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="https://example.com — site #2" />
-            <input type="url" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" placeholder="https://example.com — site #3" />
-          </div>
-          <p class="text-xs text-muted mt-2">Don't overthink it — just share sites whose vibe you like.</p>
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-2">Pages you need</label>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {['Home','About','Services','Blog','Contact','Pricing','FAQ','Gallery','Testimonials','Other'].map(page => (
-              <label class="flex items-center gap-2 text-sm text-muted cursor-pointer">
-                <input type="checkbox" class="accent-purple-500" /> {page}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-2">Any content or branding you already have?</label>
-          <textarea rows="3" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none" placeholder="Logo, brand colors, existing copy, photos, style guide... anything helps!"></textarea>
-        </div>
-
-        <div>
-          <label class="block text-sm font-medium mb-2">Timeline & budget</label>
-          <textarea rows="2" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none" placeholder="When do you need it live? What's your rough budget range?"></textarea>
-        </div>
-      </div>
-
-      <!-- Shared field -->
-      <div class="mt-4">
-        <label class="block text-sm font-medium mb-2">Anything else we should know?</label>
-        <textarea rows="3" class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none" placeholder="Goals, challenges, competitors, timeline..."></textarea>
-      </div>
-
-      <button type="submit" class="btn-primary w-full">Submit →</button>
-      <p class="text-xs text-muted text-center">No spam. No sales calls. Just your free audit.</p>
+      <button type="submit" class="btn-primary w-full">Send Message →</button>
+      <p class="text-xs text-muted text-center">No spam. No sales calls. Just good conversation.</p>
     </form>
+
+    <div id="form-status" class="mt-4 text-sm hidden"></div>
   </div>
 </section>
 
-<script is:inline>
-  function toggleSiteMode(hasSite) {
-    const yesBtn = document.getElementById('has-site-yes');
-    const noBtn = document.getElementById('has-site-no');
-    const existingFields = document.getElementById('existing-site-fields');
-    const newSiteFields = document.getElementById('new-site-fields');
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
 
-    if (hasSite) {
-      yesBtn.className = 'px-4 py-3 bg-surface border border-cyan-500/50 rounded-lg text-sm font-medium text-cyan-300 hover:border-cyan-400 transition-colors';
-      noBtn.className = 'px-4 py-3 bg-surface border border-white/10 rounded-lg text-sm font-medium text-muted hover:border-white/20 transition-colors';
-      existingFields.classList.remove('hidden');
-      newSiteFields.classList.add('hidden');
-    } else {
-      noBtn.className = 'px-4 py-3 bg-surface border border-cyan-500/50 rounded-lg text-sm font-medium text-cyan-300 hover:border-cyan-400 transition-colors';
-      yesBtn.className = 'px-4 py-3 bg-surface border border-white/10 rounded-lg text-sm font-medium text-muted hover:border-white/20 transition-colors';
-      existingFields.classList.add('hidden');
-      newSiteFields.classList.remove('hidden');
-    }
-  }
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-  function handleSubmit() {
-    const form = document.getElementById('contact-form');
-    const isNewSite = document.getElementById('new-site-fields').classList.contains('hidden') === false;
-
-    // Collect common fields
-    const nameInputs = form.querySelectorAll('input[type="text"]');
-    const emailInput = form.querySelector('input[type="email"]');
-    const urlInput = form.querySelector('input[type="url"]');
-    const textareas = form.querySelectorAll('textarea');
-    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+    const btn = form.querySelector('button');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
 
     const data = {
-      type: isNewSite ? 'new-site' : 'existing-site',
-      name: isNewSite ? document.querySelector('#new-site-fields input[type="text"]')?.value : document.querySelector('#existing-site-fields input[type="text"]')?.value,
-      email: isNewSite ? document.querySelector('#new-site-fields input[type="email"]')?.value : document.querySelector('#existing-site-fields input[type="email"]')?.value,
-      url: isNewSite ? null : document.querySelector('#existing-site-fields input[type="url"]')?.value,
-      siteType: isNewSite ? document.querySelector('#new-site-fields input[type="text"]:nth-of-type(2)')?.value : null,
-      modelSites: isNewSite ? Array.from(document.querySelectorAll('#new-site-fields input[type="url"]')).map(i => i.value).filter(Boolean) : [],
-      pages: Array.from(checkboxes).map(cb => cb.parentElement?.textContent?.trim()).filter(Boolean),
-      branding: textareas[0]?.value || '',
-      timeline: textareas[1]?.value || '',
-      notes: textareas[2]?.value || textareas[0]?.value || '',
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      url: document.getElementById('url').value.trim(),
+      notes: document.getElementById('message').value.trim(),
+      type: 'contact',
       submittedAt: new Date().toISOString(),
     };
 
-    // Basic validation
     if (!data.name || !data.email) {
-      alert('Please fill in your name and email.');
+      status.className = 'mt-4 text-sm text-red-400';
+      status.textContent = 'Please fill in your name and email.';
+      status.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = 'Send Message \u2192';
       return;
     }
 
-    // Send to Rank Labs API
     try {
-      const response = await fetch('/api/contact', {
+      const resp = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        alert("Thanks, " + data.name + "! We'll review your request and get back to you within 24 hours.");
+      if (resp.ok) {
+        status.className = 'mt-4 text-sm text-green-400';
+        status.textContent = 'Message sent! We\'ll get back to you soon.';
+        form.reset();
       } else {
-        const err = await response.json();
-        alert("Something went wrong: " + (err.error || 'Please try again.'));
+        const err = await resp.json().catch(() => ({}));
+        status.className = 'mt-4 text-sm text-red-400';
+        status.textContent = err.error || 'Something went wrong. Please try again.';
       }
-    } catch (e) {
-      alert("Unable to submit. Please email us at hello@getranklabs.com");
+    } catch (err) {
+      status.className = 'mt-4 text-sm text-red-400';
+      status.textContent = 'Unable to send. Please email hello@getranklabs.com';
     }
-  }
+
+    status.classList.remove('hidden');
+    btn.disabled = false;
+    btn.textContent = 'Send Message \u2192';
+  });
 </script>
 
 </Layout>
