@@ -56,14 +56,17 @@ export async function onRequestPost(context) {
       text += `\n\n<i>Reply "approve ${subId}" to start onboarding.</i>`;
     }
 
-    // Send to Telegram
+    // Send to Telegram (token from Cloudflare secret)
+    const TELEGRAM_TOKEN = context.env.TELEGRAM_BOT_TOKEN;
+    const CHAT_ID = context.env.TELEGRAM_CHAT_ID || "5016070713";
+    
     const tgResponse = await fetch(
-      `https://api.telegram.org/bot8542811180:AAFKDTRTBzH6lOZWdD-p1S1U7uB7z5RzeX0/sendMessage`,
+      `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_id: "5016070713",
+          chat_id: CHAT_ID,
           text: text,
           parse_mode: "HTML",
           disable_web_page_preview: true,
