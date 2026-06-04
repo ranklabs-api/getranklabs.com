@@ -16,7 +16,7 @@ export async function onRequestPost(context) {
     const body = await context.request.text();
 
     // Verify Stripe signature
-    event = await verifyStripeSignature(body, sig, WEBHOOK_SECRET, STRIPE_SECRET_KEY);
+    event = await verifyStripeSignature(body, sig, WEBHOOK_SECRET);
     if (!event) {
       return new Response("Invalid signature", { status: 400 });
     }
@@ -50,26 +50,60 @@ export async function onRequestPost(context) {
   });
 }
 
-// ── Signature Verification ───────────────────────────────────────────────
+// ── Signature Verification (HMAC-SHA256) ─────────────────────────────────
 
-async function verifyStripeSignature(body, sig, webhookSecret, secretKey) {
-  // Use Stripe API to verify — simpler than crypto library in Workers
-  const resp = await fetch("https://api.stripe.com/v1/webhook_endpoints/verify", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${secretKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      payload: body,
-      signature: sig,
-      secret: webhookSecret,
-    }),
-  });
+async function verifyStripeSignature(body, sig, webhookSecret) {
+  // Parse signature header: "t=1234567890,v1=abc123..."
+  const parts = {};
+  for (const part of sig.split(",")) {
+    const [k, v] = part.trim().split("=");
+    parts[k] = v;
+  }
 
-  if (!resp.ok) return null;
+  const timestamp = parts.t;
+  const signature = parts.v1;
 
-  // Parse the event ourselves since Stripe verified it
+  if (!timestamp || !signature) {
+    console.error("Missing t= or v1= in signature header");
+    return null;
+  }
+
+  // Compute expected signature: HMAC-SHA256(secret, "t.body")
+  const signedPayload = `${timestamp}.${body}`;
+
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(webhookSecret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+
+  const sigBytes = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(signedPayload)
+  );
+
+  // Convert to hex
+  const expected = Array.from(new Uint8Array(sigBytes))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+
+  // Timing-safe comparison
+  if (expected.length !== signature.length) return null;
+  let ok = 0;
+  for (let i = 0; i < expected.length; i++) {
+    ok |= expected.charCodeAt(i) ^ signature.charCodeAt(i);
+  }
+
+  if (ok !== 0) {
+    console.error("Signature mismatch");
+    return null;
+  }
+
+  // Signature verified — parse the event
   return JSON.parse(body);
 }
 
