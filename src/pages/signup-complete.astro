@@ -3,8 +3,42 @@ import Layout from '../layouts/Layout.astro';
 
 const plan = Astro.url.searchParams.get('plan') || 'seo_management';
 const plans = {
-  seo_management: { label: 'SEO Management', price: '$599/mo', firstAudit: 'within 24 hours', features: ['Weekly automated SEO audits (100+ checks)', 'Keyword & competitor tracking', 'Technical SEO & schema markup', 'Monthly ranking reports', 'Content strategy & calendar'] },
-  full_management: { label: 'Full Management', price: '$999/mo', firstAudit: 'within 24 hours', features: ['Everything in SEO Management', 'Weekly blog content (researched & written)', 'Full site hosting on global edge', 'Unlimited site edits & updates', 'Google Business Profile optimization', 'Business listing management', 'Local SEO & citation strategy'] },
+  seo_management: { 
+    label: 'SEO Management', 
+    price: '$599/mo', 
+    firstAudit: 'within 24 hours', 
+    features: [
+      'Weekly automated SEO audits (100+ checks)',
+      'Keyword & competitor tracking',
+      'Long-tail & seasonal keyword research',
+      'Backlink profile monitoring',
+      'Monthly ranking reports',
+      'Content strategy & calendar',
+      'Technical SEO & schema markup',
+      'Internal link optimization',
+      'Conversion-focused recommendations',
+      '3/6/12 month performance benchmarks',
+      'Core Web Vitals monitoring',
+      'Priority email support',
+    ]
+  },
+  full_management: { 
+    label: 'Full Management', 
+    price: '$999/mo', 
+    firstAudit: 'within 24 hours', 
+    features: [
+      'Everything in SEO Management',
+      'Weekly blog content (researched & written)',
+      'Full site hosting on global edge network',
+      'Unlimited site edits & updates',
+      'Easy content approval workflow',
+      'Google Business Profile optimization',
+      'Business listing management',
+      'Service-area landing pages',
+      'Local SEO & citation strategy',
+      'Dedicated support',
+    ]
+  },
 };
 const info = plans[plan] || plans.seo_management;
 ---
