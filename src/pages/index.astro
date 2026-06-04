@@ -21,8 +21,8 @@ import Layout from '../layouts/Layout.astro';
     </h1>
 
     <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10">
-      Rank Labs is the AI-operated SEO platform that builds, manages, and optimizes
-      your entire web presence — like having a mad scientist running your search strategy,
+      Rank Labs is the automated SEO platform that builds, manages, and optimizes
+      your entire web presence — like having a search scientist running your strategy,
       minus the lab coat.
     </p>
 
@@ -38,8 +38,8 @@ import Layout from '../layouts/Layout.astro';
         <div class="text-sm text-muted mt-1">Automated SEO Audits</div>
       </div>
       <div>
-        <div class="text-3xl font-bold gradient-text">100%</div>
-        <div class="text-sm text-muted mt-1">AI Content Pipeline</div>
+        <div class="text-3xl font-bold gradient-text">Always On</div>
+        <div class="text-sm text-muted mt-1">Content Pipeline</div>
       </div>
       <div>
         <div class="text-3xl font-bold gradient-text">From $599</div>
@@ -55,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="text-center mb-16">
       <div class="text-sm text-cyan-300 font-mono mb-4">THE FORMULA</div>
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Every Breakthrough Starts in the Lab</h2>
-      <p class="text-muted max-w-xl mx-auto">Six ingredients. One platform. Zero overhead.</p>
+      <p class="text-muted max-w-xl mx-auto">Seven ingredients. One platform. Zero overhead.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -63,32 +63,37 @@ import Layout from '../layouts/Layout.astro';
         {
           icon: '🧪',
           title: 'Weekly SEO Audits',
-          desc: 'Our AI crawls your site every week like a lab assistant on caffeine — surfacing broken links, missing meta, slow pages, and ranking opportunities.',
+          desc: 'Your site gets audited every week — 100+ checks covering broken links, missing meta tags, page speed, mobile responsiveness, and more. Actionable reports, not jargon.',
         },
         {
-          icon: '⚗️',
-          title: 'Automated Blog Content',
-          desc: 'AI researches your niche, formulates 800+ word posts, and sends them for your one-click approval. Fresh content, every week.',
-        },
-        {
-          icon: '🔬',
-          title: 'Full Site Management',
-          desc: 'We build, host, and maintain your site on Cloudflare\'s global edge. Blazing fast, always online, fully managed.',
+          icon: '📝',
+          title: 'Fresh Content, Every Week',
+          desc: 'Research-backed blog posts drafted for your niche, sent for your approval. Optimized for search with the right keywords and structure.',
         },
         {
           icon: '📊',
-          title: 'Ranking Reports',
-          desc: 'Clear, visual reports on your keyword positions, traffic trends, and competitor gaps. The data, distilled.',
+          title: 'Ranking & Competitor Reports',
+          desc: 'Clear reports on your keyword positions, backlink profile, and competitor gaps. Know exactly where you stand and what to do next.',
         },
         {
-          icon: '🧬',
-          title: 'AI Content Pipeline',
-          desc: 'From keyword research to published post — our AI pipeline handles ideation, writing, optimization, and scheduling.',
+          icon: '🏗️',
+          title: 'Technical SEO & Structure',
+          desc: 'Schema markup, internal link optimization, sitemap strategy, canonical audits — the foundation search engines reward.',
         },
         {
-          icon: '✅',
-          title: 'Approval Workflow',
-          desc: 'You\'re the head scientist. Review and approve every piece of content before it goes live. One click.',
+          icon: '📅',
+          title: 'Content Calendar & Strategy',
+          desc: 'Seasonal content planning, topic clusters, content gap analysis. A roadmap for what to publish and when.',
+        },
+        {
+          icon: '📍',
+          title: 'Local SEO & Listings',
+          desc: 'Google Business Profile optimization, local schema, service-area landing pages, and business listing management for multi-location visibility.',
+        },
+        {
+          icon: '🚀',
+          title: 'Full Site Management',
+          desc: 'We build, host, and maintain your site on a global edge network. Blazing fast, always online, fully managed — from design to daily updates.',
         },
       ].map((service) => (
         <div class="gradient-border rounded-xl p-6 hover:bg-surface-light/50 transition-colors">
@@ -112,9 +117,9 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="space-y-8">
       {[
-        { step: '01', title: 'Connect Your Site', desc: 'Point your domain. We handle DNS, hosting on Cloudflare Pages, and initial site setup. Existing site? We\'ll migrate it — no downtime.' },
-        { step: '02', title: 'The Formula Activates', desc: 'Our AI begins weekly crawls, content research, and optimization. Your first audit arrives within 24 hours. No meetings, no calls, no waiting.' },
-        { step: '03', title: 'Review & Approve', desc: 'Content drafts land in your inbox. One-click approve or request changes. Audits and reports arrive weekly — you\'re always in control.' },
+        { step: '01', title: 'Connect Your Site', desc: 'Point your domain. We handle DNS, hosting, and initial site setup. Existing site? We\'ll migrate it — no downtime.' },
+        { step: '02', title: 'The Formula Activates', desc: 'Our system begins weekly audits, content research, and optimization. Your first report arrives within 24 hours. No meetings, no calls, no waiting.' },
+        { step: '03', title: 'Review & Approve', desc: 'Content drafts land in your inbox for easy approval. Audits and reports arrive weekly — you\'re always in control, with fixes just a reply away.' },
       ].map((item) => (
         <div class="flex gap-6 items-start">
           <div class="text-4xl font-bold gradient-text font-mono shrink-0">{item.step}</div>
@@ -134,7 +139,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="text-sm text-cyan-300 font-mono mb-4">THE RESULTS</div>
     <h2 class="text-3xl md:text-4xl font-bold mb-4">What the Formula Produces</h2>
     <p class="text-muted mb-16 max-w-xl mx-auto">
-      AI-driven SEO that traditional agencies can't match — at a fraction of the cost.
+      Automated SEO that traditional agencies can't match — at a fraction of the cost.
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -142,7 +147,7 @@ import Layout from '../layouts/Layout.astro';
         { value: '24h', label: 'First Audit Delivered' },
         { value: '100+', label: 'SEO Checks Per Audit' },
         { value: 'Weekly', label: 'Fresh Content Drafts' },
-        { value: '99.9%', label: 'Uptime on Cloudflare' },
+        { value: '99.9%', label: 'Uptime Guaranteed' },
       ].map((stat) => (
         <div>
           <div class="text-3xl font-bold gradient-text mb-1">{stat.value}</div>
@@ -169,11 +174,15 @@ import Layout from '../layouts/Layout.astro';
 
         <ul class="space-y-3 mb-8">
           {[
-            'Weekly automated SEO audits',
+            'Weekly SEO audits (100+ checks)',
             'Keyword & competitor tracking',
+            'Backlink profile monitoring',
             'Monthly ranking reports',
-            'Content strategy recommendations',
-            'Technical SEO issue detection',
+            'Content strategy & calendar',
+            'Technical SEO & schema markup',
+            'Internal link optimization',
+            'CTA & conversion recommendations',
+            '3/6/12 month performance benchmarks',
             'Priority email support',
           ].map((feature) => (
             <li class="flex items-center gap-3 text-sm">
@@ -196,11 +205,15 @@ import Layout from '../layouts/Layout.astro';
         <ul class="space-y-3 mb-8">
           {[
             'Everything in SEO Management',
-            'AI blog content (2 posts/week)',
-            'Full site hosting on Cloudflare',
-            'Site edits, updates & maintenance',
-            'One-click content approval',
-            'Dedicated Telegram support',
+            'Weekly blog content (researched & written)',
+            'Full site hosting on global edge network',
+            'Unlimited site edits & updates',
+            'Easy content approval workflow',
+            'Google Business Profile optimization',
+            'Business listing management',
+            'Service-area landing pages',
+            'Local SEO & citation strategy',
+            'Dedicated support',
           ].map((feature) => (
             <li class="flex items-center gap-3 text-sm">
               <span class="text-green-400 shrink-0">✓</span> {feature}
@@ -216,7 +229,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="mt-16 max-w-lg mx-auto">
       <div class="text-sm text-cyan-300 font-mono mb-2">ONE-TIME</div>
       <h3 class="text-xl font-bold mb-2">Site Builds & Migration</h3>
-      <p class="text-muted text-sm mb-6">Custom sites on Cloudflare's global edge. Or bring your existing site — we'll migrate it seamlessly.</p>
+      <p class="text-muted text-sm mb-6">Custom sites on a global edge network. Or bring your existing site — we'll migrate it seamlessly.</p>
       <div class="space-y-3 text-left">
         {[
           { pages: 'Landing Page', price: '$1,250', desc: 'Single-page site. Perfect for product launches or lead gen.' },

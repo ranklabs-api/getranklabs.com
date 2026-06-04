@@ -21,11 +21,12 @@ import Layout from '../layouts/Layout.astro';
           <p class="text-muted mt-2 max-w-xl">Weekly audits, rankings, and strategy delivered to your inbox. You keep your existing team and site — we provide the intelligence.</p>
         </div>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div>
           <h3 class="font-semibold text-sm text-cyan-300 mb-3">Audits & Monitoring</h3>
           <ul class="space-y-2">
-            {['Weekly automated SEO crawls (100+ checks)', 'Broken link detection & repair recommendations', 'Missing meta tags & descriptions', 'Page speed & Core Web Vitals', 'Mobile responsiveness check'].map(b => (
+            {['Weekly automated SEO audits (100+ checks)', 'Broken link detection & repair', 'Missing meta tags & descriptions', 'Page speed & Core Web Vitals', 'Mobile responsiveness check', 'Structured data verification', 'Sitemap & canonical strategy'].map(b => (
               <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
             ))}
           </ul>
@@ -33,7 +34,15 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <h3 class="font-semibold text-sm text-cyan-300 mb-3">Rankings & Strategy</h3>
           <ul class="space-y-2">
-            {['Keyword position tracking', 'Competitor gap analysis', 'Monthly ranking reports', 'Content strategy recommendations', 'Technical SEO issue detection'].map(b => (
+            {['Keyword position tracking', 'Competitor gap analysis', 'Backlink profile monitoring', 'Monthly ranking reports', 'Content strategy recommendations', 'Technical SEO issue detection', 'CTA & conversion recommendations'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Content & Structure</h3>
+          <ul class="space-y-2">
+            {['Content gap analysis', 'Topic cluster planning', 'Seasonal content calendar', 'Internal link optimization', 'FAQ schema implementation', 'Local schema markup', '3/6/12 month performance benchmarks'].map(b => (
               <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
             ))}
           </ul>
@@ -47,24 +56,33 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <div class="text-xs text-cyan-300 font-mono mb-2">$999/MO</div>
           <h2 class="text-2xl font-bold">Full Management</h2>
-          <p class="text-muted mt-2 max-w-xl">Everything in SEO Management, plus we build, host, and maintain your site on Cloudflare's global edge. You focus on your business — we handle the rest.</p>
+          <p class="text-muted mt-2 max-w-xl">Everything in SEO Management, plus we build, host, and maintain your site. You focus on your business — we handle the rest.</p>
           <p class="text-xs text-muted mt-2"><span class="text-white font-medium">+ one-time site build or $1,000 migration</span> for new or existing sites</p>
         </div>
-        <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold">MOST POPULAR</span>
+        <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold shrink-0 h-fit">MOST POPULAR</span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div>
           <h3 class="font-semibold text-sm text-cyan-300 mb-3">Site Hosting & Management</h3>
           <ul class="space-y-2">
-            {['Cloudflare Pages hosting (330+ cities)', 'Automatic SSL certificates', 'Global CDN & DDoS protection', 'Site edits, updates & maintenance', 'One-click rollbacks & daily backups'].map(b => (
+            {['Global edge hosting (330+ cities)', 'Automatic SSL certificates', 'Global CDN & DDoS protection', 'Unlimited site edits & updates', 'One-click rollbacks & daily backups', 'Site fixes on demand'].map(b => (
               <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
             ))}
           </ul>
         </div>
         <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">AI Content Pipeline</h3>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Content Creation</h3>
           <ul class="space-y-2">
-            {['AI blog content (2 posts/week)', 'Keyword & competitor research per post', '800+ word SEO-optimized drafts', 'One-click approval workflow', 'Scheduled publishing & content calendar'].map(b => (
+            {['Weekly blog content (researched & written)', 'Keyword & competitor research per post', '800+ word SEO-optimized drafts', 'Easy approval workflow', 'Scheduled publishing & content calendar', 'Service-area landing pages'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Local SEO & Listings</h3>
+          <ul class="space-y-2">
+            {['Google Business Profile optimization', 'Business listing management', 'Local schema markup', 'Service-area page strategy', 'City + service keyword targeting', 'Review monitoring & response'].map(b => (
               <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
             ))}
           </ul>
@@ -76,9 +94,9 @@ import Layout from '../layouts/Layout.astro';
     <div class="border-t border-white/5 pt-12">
       <div class="text-xs text-cyan-300 font-mono mb-2">ONE-TIME</div>
       <h2 class="text-2xl font-bold mb-2">Site Builds & Migration</h2>
-      <p class="text-muted mb-8 max-w-xl">Custom sites built on Cloudflare's global edge — fast, modern, zero ongoing dev costs. Already have a site? We'll migrate it seamlessly. Every build includes:</p>
+      <p class="text-muted mb-8 max-w-xl">Custom sites built on a global edge network — fast, modern, zero ongoing dev costs. Already have a site? We'll migrate it seamlessly. Every build includes:</p>
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
-        {['Responsive design (mobile + desktop)', 'SEO-optimized from day one', 'SSL & global CDN included', 'Content management via Telegram', '1 round of revisions included'].map(b => (
+        {['Responsive design (mobile + desktop)', 'SEO-optimized from day one', 'SSL & global CDN included', 'Easy content management', '1 round of revisions included'].map(b => (
           <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
         ))}
       </ul>
