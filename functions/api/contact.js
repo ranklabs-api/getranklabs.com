@@ -77,6 +77,28 @@ export async function onRequestPost(context) {
     const tgResult = await tgResponse.json();
     
     if (tgResult.ok) {
+      // Also send email notification via Resend
+      const resendKey = context.env.RESEND_API_KEY;
+      if (resendKey) {
+        try {
+          let subject, htmlBody;
+          if (data.type === "contact") {
+            subject = `💬 New Contact: ${data.name}`;
+            htmlBody = `<div style="font-family:-apple-system,sans-serif;background:#0f1117;color:#e1e4e8;padding:24px;border-radius:12px"><h2 style="color:#7c3aed">💬 New Message</h2><p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p>${data.url ? `<p><strong>Website:</strong> ${data.url}</p>` : ''}${data.notes ? `<p><strong>Message:</strong></p><p style="background:#161b22;padding:12px;border-radius:8px">${data.notes}</p>` : ''}</div>`;
+          } else {
+            subject = `🔬 Free Audit Request: ${data.name}`;
+            htmlBody = `<div style="font-family:-apple-system,sans-serif;background:#0f1117;color:#e1e4e8;padding:24px;border-radius:12px"><h2 style="color:#7c3aed">🔬 Free SEO Audit Request</h2><p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Website:</strong> ${data.url || 'N/A'}</p>${data.notes ? `<p><strong>Notes:</strong> ${data.notes}</p>` : ''}</div>`;
+          }
+          await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: { "Authorization": `Bearer ${resendKey}`, "Content-Type": "application/json" },
+            body: JSON.stringify({ from: "Rank Labs <hello@getranklabs.com>", to: "josiah@getranklabs.com", subject, html: htmlBody }),
+          });
+        } catch (e) {
+          console.error("Contact email failed:", e.message);
+        }
+      }
+
       return new Response(JSON.stringify({ success: true }), {
         status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
