@@ -41,10 +41,10 @@ const planLabel = planInfo.label;
           placeholder="Your Business LLC">
       </div>
       <div>
-        <label class="block text-sm font-medium mb-2">Website URL <span class="text-muted font-normal">(optional)</span></label>
-        <input type="url" id="website" name="website" 
+        <label class="block text-sm font-medium mb-2">Website URL {plan === 'full_management' ? <span class="text-muted font-normal">(optional)</span> : <span class="text-purple-400">*</span>}</label>
+        <input type="text" id="website" name="website" 
           class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
-          placeholder="https://yoursite.com">
+          placeholder="yoursite.com">
       </div>
 
       <input type="hidden" name="plan" value={plan}>
@@ -75,16 +75,34 @@ const planLabel = planInfo.label;
     btn.textContent = 'Preparing checkout...';
     error.classList.add('hidden');
     
+    let website = document.getElementById('website').value.trim();
+    const businessName = document.getElementById('business_name').value.trim();
+    const selectedPlan = document.querySelector('[name=plan]').value;
+    
+    // Auto-prepend https:// if no protocol
+    if (website && !/^https?:\\/\\//i.test(website)) {
+      website = 'https://' + website;
+    }
+    
     const data = {
       name: document.getElementById('name').value.trim(),
       email: document.getElementById('email').value.trim(),
-      website: document.getElementById('website').value.trim(),
-      business_name: document.getElementById('business_name').value.trim(),
-      plan: document.querySelector('[name=plan]').value,
+      website,
+      business_name: businessName,
+      plan: selectedPlan,
     };
     
     if (!data.name || !data.email) {
       error.textContent = 'Please fill in your name and email.';
+      error.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = originalText;
+      return;
+    }
+
+    // Website required for SEO Management
+    if (selectedPlan === 'seo_management' && !website) {
+      error.textContent = 'Website URL is required for SEO Management.';
       error.classList.remove('hidden');
       btn.disabled = false;
       btn.textContent = originalText;
