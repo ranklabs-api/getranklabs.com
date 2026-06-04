@@ -1,0 +1,18 @@
+{
+  "customer_id": "getranklabs",
+  "business_name": "Rank Labs",
+  "site_url": "https://getranklabs.com",
+  "contact_name": "Josiah",
+  "contact_email": "josiahearl@gmail.com",
+  "plan": "internal",
+  "plan_features": [
+    "seo_audit",
+    "blog_posts",
+    "site_updates"
+  ],
+  "cf_project": "getranklabs",
+  "github_repo": "ranklabs-api/getranklabs.com",
+  "type": "astro",
+  "provisioning_state": "live",
+  "ga4_property_id": "properties/539456549"
+}
