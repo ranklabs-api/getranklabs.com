@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Parse plan from URL
+const plan = Astro.url.searchParams.get('plan') || 'seo_management';
+const plans = {
+  seo_management: { label: 'SEO Management ($599/mo)', gradient: 'from-purple-500 to-purple-700' },
+  full_management: { label: 'Full Management ($999/mo)', gradient: 'from-cyan-500 to-purple-500' },
+};
+const planInfo = plans[plan] || plans.seo_management;
+const planLabel = planInfo.label;
+---
+
+<Layout title={`Get Started — ${planInfo.label}`}>
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-lg mx-auto">
+    <div class="text-sm text-cyan-300 font-mono mb-4">STEP 1 OF 2</div>
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Almost There</h1>
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-surface/50 text-sm text-muted mb-8">
+      <span class={`w-2 h-2 rounded-full bg-gradient-to-r ${planInfo.gradient}`}></span>
+      {planLabel}
+    </div>
+
+    <form id="signup-form" class="space-y-5 text-left">
+      <div>
+        <label class="block text-sm font-medium mb-2">Your Name <span class="text-purple-400">*</span></label>
+        <input type="text" id="name" name="name" required 
+          class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
+          placeholder="Jane Smith">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2">Email <span class="text-purple-400">*</span></label>
+        <input type="email" id="email" name="email" required 
+          class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
+          placeholder="jane@example.com">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2">Business Name <span class="text-muted font-normal">(optional)</span></label>
+        <input type="text" id="business_name" name="business_name" 
+          class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
+          placeholder="Your Business LLC">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2">Website URL <span class="text-muted font-normal">(optional)</span></label>
+        <input type="url" id="website" name="website" 
+          class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
+          placeholder="https://yoursite.com">
+      </div>
+
+      <input type="hidden" name="plan" value={plan}>
+      
+      <button type="submit" class="btn-primary w-full text-lg py-4">
+        Continue to Secure Payment →
+      </button>
+      <div class="flex items-center justify-center gap-2 text-xs text-muted">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secured by Stripe · Cancel anytime
+      </div>
+    </form>
+    
+    <div id="form-error" class="mt-4 text-sm text-red-400 hidden"></div>
+  </div>
+</section>
+</Layout>
+
+<script>
+  const form = document.getElementById('signup-form');
+  const error = document.getElementById('form-error');
+  
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Preparing checkout...';
+    error.classList.add('hidden');
+    
+    const data = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      website: document.getElementById('website').value.trim(),
+      business_name: document.getElementById('business_name').value.trim(),
+      plan: document.querySelector('[name=plan]').value,
+    };
+    
+    if (!data.name || !data.email) {
+      error.textContent = 'Please fill in your name and email.';
+      error.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = originalText;
+      return;
+    }
+    
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      error.textContent = 'Please enter a valid email address.';
+      error.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = originalText;
+      return;
+    }
+    
+    try {
+      const resp = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      
+      const result = await resp.json();
+      if (result.url) {
+        window.location.href = result.url;
+      } else {
+        error.textContent = result.error || 'Something went wrong. Please try again.';
+        error.classList.remove('hidden');
+      }
+    } catch (err) {
+      error.textContent = 'Connection error. Please check your internet and try again.';
+      error.classList.remove('hidden');
+    }
+    
+    btn.disabled = false;
+    btn.textContent = originalText;
+  });
+</script>

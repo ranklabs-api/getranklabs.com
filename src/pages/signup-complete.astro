@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const plan = Astro.url.searchParams.get('plan') || 'seo_management';
+const plans = {
+  seo_management: { label: 'SEO Management', price: '$599/mo', firstAudit: 'within 24 hours', features: ['Weekly automated SEO audits (100+ checks)', 'Keyword & competitor tracking', 'Technical SEO & schema markup', 'Monthly ranking reports', 'Content strategy & calendar'] },
+  full_management: { label: 'Full Management', price: '$999/mo', firstAudit: 'within 24 hours', features: ['Everything in SEO Management', 'Weekly blog content (researched & written)', 'Full site hosting on global edge', 'Unlimited site edits & updates', 'Google Business Profile optimization', 'Business listing management', 'Local SEO & citation strategy'] },
+};
+const info = plans[plan] || plans.seo_management;
+---
+
+<Layout title="Welcome to Rank Labs!">
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-xl mx-auto text-center">
+    <div class="text-5xl mb-6">🎉</div>
+    <div class="text-sm text-green-300 font-mono mb-4">PAYMENT CONFIRMED</div>
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Welcome to Rank Labs!</h1>
+    <p class="text-lg text-muted mb-2">Your <span class="text-white font-semibold">{info.label}</span> plan is now active.</p>
+    <p class="text-muted mb-8">Check your inbox — we just sent your confirmation and onboarding details.</p>
+
+    <div class="gradient-border rounded-xl p-6 mb-8 text-left bg-surface/30">
+      <h3 class="font-semibold text-sm text-cyan-300 mb-3">What Happens Next</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3 text-sm text-muted">
+          <span class="text-green-400 mt-0.5 shrink-0">✓</span>
+          <span><strong class="text-white">First audit delivers {info.firstAudit}.</strong> We're already crawling your site.</span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-muted">
+          <span class="text-green-400 mt-0.5 shrink-0">✓</span>
+          <span><strong class="text-white">Onboarding email in your inbox.</strong> Everything you need to know about your plan.</span>
+        </li>
+        <li class="flex items-start gap-3 text-sm text-muted">
+          <span class="text-green-400 mt-0.5 shrink-0">✓</span>
+          <span><strong class="text-white">Weekly reports every Monday.</strong> Rankings, fixes, and fresh content — delivered automatically.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="gradient-border rounded-xl p-6 mb-8 text-left bg-surface/30">
+      <h3 class="font-semibold text-sm text-cyan-300 mb-3">Your {info.label} Plan</h3>
+      <ul class="space-y-2">
+        {info.features.map((f) => (
+          <li class="flex items-center gap-3 text-sm text-muted">
+            <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>
+            {f}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="text-sm text-muted mb-8">
+      Questions? Reply to your onboarding email or reach us at{' '}
+      <a href="mailto:hello@getranklabs.com" class="text-cyan-300 hover:text-cyan-200">hello@getranklabs.com</a>
+    </p>
+
+    <a href="/" class="btn-secondary">Back to Home</a>
+  </div>
+</section>
+</Layout>
