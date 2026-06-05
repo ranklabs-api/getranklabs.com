@@ -1,24 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-// Parse plan from URL
-const plan = Astro.url.searchParams.get('plan') || 'seo_management';
-const plans = {
-  seo_management: { label: 'SEO Management ($599/mo)', gradient: 'from-purple-500 to-purple-700' },
-  full_management: { label: 'Full Management ($999/mo)', gradient: 'from-cyan-500 to-purple-500' },
-};
-const planInfo = plans[plan] || plans.seo_management;
-const planLabel = planInfo.label;
 ---
 
-<Layout title={`Get Started — ${planInfo.label}`}>
+<Layout title="Get Started">
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-lg mx-auto">
     <div class="text-sm text-cyan-300 font-mono mb-4">STEP 1 OF 2</div>
     <h1 class="text-3xl md:text-4xl font-bold mb-2">Almost There</h1>
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-surface/50 text-sm text-muted mb-8">
-      <span class={`w-2 h-2 rounded-full bg-gradient-to-r ${planInfo.gradient}`}></span>
-      {planLabel}
+      <span id="plan-dot" class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-purple-700"></span>
+      <span id="plan-label">Loading...</span>
     </div>
 
     <form id="signup-form" class="space-y-5 text-left">
@@ -41,13 +32,13 @@ const planLabel = planInfo.label;
           placeholder="Your Business LLC">
       </div>
       <div>
-        <label class="block text-sm font-medium mb-2">Website URL {plan === 'seo_management' ? <span class="text-purple-400">*</span> : <span class="text-muted font-normal">(optional)</span>}</label>
+        <label class="block text-sm font-medium mb-2" id="website-label">Website URL <span class="text-purple-400">*</span></label>
         <input type="text" id="website" name="website"
           class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
           placeholder="yoursite.com">
       </div>
 
-      <input type="hidden" name="plan" value={plan}>
+      <input type="hidden" name="plan" id="plan-input" value="seo_management">
       
       <button type="submit" class="btn-primary w-full text-lg py-4">
         Continue to Secure Payment →
@@ -64,6 +55,36 @@ const planLabel = planInfo.label;
 </Layout>
 
 <script>
+  // Parse plan from URL (SSG-compatible — runs client-side)
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan') || 'seo_management';
+  
+  const plans = {
+    seo_management: { label: 'SEO Management ($599/mo)', gradient: 'from-purple-500 to-purple-700', websiteRequired: true },
+    full_management: { label: 'Full Management ($999/mo)', gradient: 'from-cyan-500 to-purple-500', websiteRequired: false },
+  };
+  
+  const planInfo = plans[plan] || plans.seo_management;
+  
+  // Update hidden input
+  document.getElementById('plan-input').value = plan;
+  
+  // Update UI
+  document.getElementById('plan-label').textContent = planInfo.label;
+  document.getElementById('plan-dot').className = `w-2 h-2 rounded-full bg-gradient-to-r ${planInfo.gradient}`;
+  
+  // Update website field
+  const websiteLabel = document.getElementById('website-label');
+  if (planInfo.websiteRequired) {
+    websiteLabel.innerHTML = 'Website URL <span class="text-purple-400">*</span>';
+  } else {
+    websiteLabel.innerHTML = 'Website URL <span class="text-muted font-normal">(optional)</span>';
+  }
+  
+  // Update page title
+  document.title = `Get Started — ${planInfo.label}`;
+  
+  // Form submission
   const form = document.getElementById('signup-form');
   const error = document.getElementById('form-error');
   
@@ -77,7 +98,7 @@ const planLabel = planInfo.label;
     
     let website = document.getElementById('website').value.trim();
     const businessName = document.getElementById('business_name').value.trim();
-    const selectedPlan = document.querySelector('[name=plan]').value;
+    const selectedPlan = document.getElementById('plan-input').value;
     
     // Auto-prepend https:// if no protocol
     if (website && !/^https?:\/\//i.test(website)) {
