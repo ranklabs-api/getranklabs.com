@@ -51,6 +51,8 @@ export async function onRequestPost(context) {
     };
     if (data.website) metadata.website = data.website;
     if (data.business_name) metadata.business_name = data.business_name;
+    if (data.has_site) metadata.has_site = data.has_site;
+    if (data.competitor_sites) metadata.competitor_sites = JSON.stringify(data.competitor_sites);
 
     // Build form body
     const params = new URLSearchParams({

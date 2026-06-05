@@ -31,11 +31,48 @@ import Layout from '../layouts/Layout.astro';
           class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
           placeholder="Your Business LLC">
       </div>
-      <div>
+      <div id="website-field">
         <label class="block text-sm font-medium mb-2" id="website-label">Website URL <span class="text-purple-400">*</span></label>
         <input type="text" id="website" name="website"
           class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
           placeholder="yoursite.com">
+      </div>
+
+      <!-- Full Management: existing site question -->
+      <div id="full-mgmt-has-site" class="hidden space-y-5">
+        <div class="border-t border-white/5 pt-5">
+          <label class="block text-sm font-medium mb-3">Do you already have a website? <span class="text-purple-400">*</span></label>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 p-3 rounded-lg border border-white/10 bg-surface/50 cursor-pointer hover:border-purple-500/40 transition-colors">
+              <input type="radio" name="has_site" value="yes" class="accent-purple-500">
+              <span class="text-sm">Yes, I have an existing site to migrate</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-lg border border-white/10 bg-surface/50 cursor-pointer hover:border-purple-500/40 transition-colors">
+              <input type="radio" name="has_site" value="no" class="accent-purple-500">
+              <span class="text-sm">No, I need a site built from scratch</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Competitor sites (shown when "no" selected) -->
+        <div id="competitor-sites" class="hidden space-y-4">
+          <div class="border-t border-white/5 pt-5">
+            <label class="block text-sm font-medium mb-2">List 3 competitor sites you like <span class="text-purple-400">*</span></label>
+            <p class="text-xs text-muted mb-3">We'll pull design elements and features you love from these sites.</p>
+            
+            <div class="space-y-3">
+              <input type="text" id="comp_site_1" name="comp_site_1" 
+                class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
+                placeholder="competitor1.com">
+              <input type="text" id="comp_site_2" name="comp_site_2" 
+                class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
+                placeholder="competitor2.com">
+              <input type="text" id="comp_site_3" name="comp_site_3" 
+                class="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-purple-500 transition-colors" 
+                placeholder="competitor3.com">
+            </div>
+          </div>
+        </div>
       </div>
 
       <input type="hidden" name="plan" id="plan-input" value="seo_management">
@@ -60,8 +97,8 @@ import Layout from '../layouts/Layout.astro';
   const plan = params.get('plan') || 'seo_management';
   
   const plans = {
-    seo_management: { label: 'SEO Management ($599/mo)', gradient: 'from-purple-500 to-purple-700', websiteRequired: true },
-    full_management: { label: 'Full Management ($999/mo)', gradient: 'from-cyan-500 to-purple-500', websiteRequired: false },
+    seo_management: { label: 'SEO Management ($599/mo)', gradient: 'from-purple-500 to-purple-700', websiteRequired: true, isFullMgmt: false },
+    full_management: { label: 'Full Management ($999/mo)', gradient: 'from-cyan-500 to-purple-500', websiteRequired: false, isFullMgmt: true },
   };
   
   const planInfo = plans[plan] || plans.seo_management;
@@ -79,6 +116,23 @@ import Layout from '../layouts/Layout.astro';
     websiteLabel.innerHTML = 'Website URL <span class="text-purple-400">*</span>';
   } else {
     websiteLabel.innerHTML = 'Website URL <span class="text-muted font-normal">(optional)</span>';
+  }
+  
+  // Show Full Management fields
+  if (planInfo.isFullMgmt) {
+    document.getElementById('full-mgmt-has-site').classList.remove('hidden');
+    
+    // Toggle competitor sites based on radio selection
+    document.querySelectorAll('input[name="has_site"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const compSites = document.getElementById('competitor-sites');
+        if (radio.value === 'no') {
+          compSites.classList.remove('hidden');
+        } else {
+          compSites.classList.add('hidden');
+        }
+      });
+    });
   }
   
   // Update page title
@@ -112,6 +166,35 @@ import Layout from '../layouts/Layout.astro';
       business_name: businessName,
       plan: selectedPlan,
     };
+    
+    // Full Management extra fields
+    if (selectedPlan === 'full_management') {
+      const hasSite = document.querySelector('input[name="has_site"]:checked');
+      if (!hasSite) {
+        error.textContent = 'Please select whether you have an existing website.';
+        error.classList.remove('hidden');
+        btn.disabled = false;
+        btn.textContent = originalText;
+        return;
+      }
+      data.has_site = hasSite.value;
+      
+      if (hasSite.value === 'no') {
+        const comp1 = document.getElementById('comp_site_1').value.trim();
+        const comp2 = document.getElementById('comp_site_2').value.trim();
+        const comp3 = document.getElementById('comp_site_3').value.trim();
+        
+        const competitorSites = [comp1, comp2, comp3].filter(s => s.length > 0);
+        if (competitorSites.length === 0) {
+          error.textContent = 'Please list at least one competitor site you like.';
+          error.classList.remove('hidden');
+          btn.disabled = false;
+          btn.textContent = originalText;
+          return;
+        }
+        data.competitor_sites = competitorSites;
+      }
+    }
     
     if (!data.name || !data.email) {
       error.textContent = 'Please fill in your name and email.';
