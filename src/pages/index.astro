@@ -12,18 +12,18 @@ import Layout from '../layouts/Layout.astro';
   <div class="max-w-4xl mx-auto text-center relative">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-sm text-cyan-300 mb-8">
       <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-      The Secret Formula for SEO — Now Available
+      The Secret Formula for SEO + GEO — Now Available
     </div>
 
     <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
-      We Have the<br/>
-      <span class="gradient-text">Secret Formula</span>
+      SEO Leads.<br/>
+      <span class="gradient-text">GEO Wins.</span>
     </h1>
 
     <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10">
-      Rank Labs is the automated SEO platform that builds, manages, and optimizes
-      your entire web presence — like having a search scientist running your strategy,
-      minus the lab coat.
+      Rank Labs is the automated SEO + GEO platform. We optimize your site for Google
+      <em>and</em> every AI engine — ChatGPT, Claude, Gemini, Perplexity. Because if your
+      business isn&apos;t visible where people are asking questions, it&apos;s invisible.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -32,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <!-- Stats -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-20 pt-12 border-t border-white/5">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-8 mt-20 pt-12 border-t border-white/5">
       <div>
         <div class="text-3xl font-bold gradient-text">Weekly</div>
         <div class="text-sm text-muted mt-1">Automated SEO Audits</div>
@@ -40,6 +40,10 @@ import Layout from '../layouts/Layout.astro';
       <div>
         <div class="text-3xl font-bold gradient-text">Always On</div>
         <div class="text-sm text-muted mt-1">Content Pipeline</div>
+      </div>
+      <div>
+        <div class="text-3xl font-bold gradient-text">18%</div>
+        <div class="text-sm text-muted mt-1">Of Searches Now AI</div>
       </div>
       <div>
         <div class="text-3xl font-bold gradient-text">From $599</div>
@@ -55,7 +59,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="text-center mb-16">
       <div class="text-sm text-cyan-300 font-mono mb-4">THE FORMULA</div>
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Every Breakthrough Starts in the Lab</h2>
-      <p class="text-muted max-w-xl mx-auto">Seven ingredients. One platform. Zero overhead.</p>
+      <p class="text-muted max-w-xl mx-auto">Eight ingredients. One platform. Zero overhead.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -95,6 +99,11 @@ import Layout from '../layouts/Layout.astro';
           title: 'Full Site Management',
           desc: 'We build, host, and maintain your site on a global edge network. Blazing fast, always online, fully managed — from design to daily updates.',
         },
+        {
+          icon: '🤖',
+          title: 'AI Search (GEO)',
+          desc: 'Generative Engine Optimization — we ensure your business shows up in ChatGPT, Claude, Gemini, and Perplexity. AI bot access, structured data, direct answers, and third-party authority signals.',
+        },
       ].map((service) => (
         <div class="gradient-border rounded-xl p-6 hover:bg-surface-light/50 transition-colors">
           <div class="text-3xl mb-4">{service.icon}</div>
@@ -106,19 +115,96 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
+<!-- GEO — The Edge -->
+<section id="geo" class="py-24 px-6 bg-surface/30 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-purple-500/5 to-cyan-500/5"></div>
+  <div class="max-w-6xl mx-auto relative">
+    <div class="text-center mb-16">
+      <div class="text-sm text-cyan-300 font-mono mb-4">THE EDGE</div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Most Agencies Stop at SEO.<br/>
+        <span class="gradient-text">We Go Where Search Is Going.</span>
+      </h2>
+      <p class="text-muted max-w-2xl mx-auto">
+        AI search engines now handle an estimated 18% of all queries — up from 2% a year ago. 
+        69% of buyers chose a different vendor because of what an AI chatbot recommended. 
+        If your business isn&apos;t optimized for AI, you&apos;re invisible to a fast-growing audience.
+      </p>
+    </div>
+
+    <!-- 4 AI engines -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+      {[
+        { engine: 'ChatGPT', users: '800M+ weekly', src: 'Powered by Bing + GPTBot', color: 'from-green-500/20 to-green-500/5' },
+        { engine: 'Claude', users: 'Millions weekly', src: 'Powered by Brave + ClaudeBot', color: 'from-orange-500/20 to-orange-500/5' },
+        { engine: 'Gemini', users: 'Integrated in Google', src: 'Powered by Google + Knowledge Graph', color: 'from-blue-500/20 to-blue-500/5' },
+        { engine: 'Perplexity', users: 'Fastest growing', src: 'Powered by Google + Proprietary', color: 'from-purple-500/20 to-purple-500/5' },
+      ].map((engine) => (
+        <div class={`gradient-border rounded-xl p-6 text-center bg-gradient-to-b ${engine.color}`}>
+          <div class="text-2xl font-bold mb-1">{engine.engine}</div>
+          <div class="text-xs text-cyan-300 mb-3">{engine.users}</div>
+          <div class="text-xs text-muted">{engine.src}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- What GEO does -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div>
+        <h3 class="font-semibold text-lg mb-4 text-cyan-300">What GEO Does For Your Business</h3>
+        <ul class="space-y-3">
+          {[
+            'Ensures AI bots can crawl and understand your site',
+            'Structures your content for direct AI answers',
+            'Builds third-party mentions and authority signals',
+            'Makes your business visible in ChatGPT, Claude, Gemini & Perplexity',
+            'Future-proofs your online presence as search shifts to AI',
+          ].map(item => (
+            <li class="flex items-start gap-3 text-sm text-muted">
+              <span class="text-green-400 shrink-0 mt-0.5">✓</span> {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg mb-4 text-cyan-300">Why Now</h3>
+        <ul class="space-y-4">
+          {[
+            { stat: '51%', desc: 'of B2B buyers start research in AI chatbots more than Google' },
+            { stat: '69%', desc: 'chose a different vendor based on AI recommendations' },
+            { stat: '99%', desc: 'of measurable AI referrals come from ChatGPT, Claude, Gemini & Perplexity' },
+          ].map(item => (
+            <li class="flex items-start gap-4">
+              <span class="text-2xl font-bold gradient-text shrink-0 w-16">{item.stat}</span>
+              <span class="text-sm text-muted">{item.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="text-sm text-muted mb-4">
+        Sources: AI Magicx 2026, Atlantis Marketing 2026, AmIVisibleOnAI
+      </p>
+      <a href="/contact" class="btn-primary">Get Visible in AI Search →</a>
+    </div>
+  </div>
+</section>
+
 <!-- How It Works -->
 <section id="how-it-works" class="py-24 px-6 bg-surface/30">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-16">
       <div class="text-sm text-cyan-300 font-mono mb-4">THE PROCESS</div>
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Three Steps to Search Dominance</h2>
-      <p class="text-muted">No complicated onboarding. No endless meetings. Just results.</p>
+      <p class="text-muted">No complicated onboarding. No endless meetings. Just results — on Google and in AI.</p>
     </div>
 
     <div class="space-y-8">
       {[
         { step: '01', title: 'Connect Your Site', desc: 'Point your domain. We handle DNS, hosting, and initial site setup. Existing site? We\'ll migrate it — no downtime.' },
-        { step: '02', title: 'The Formula Activates', desc: 'Our system begins weekly audits, content research, and optimization. Your first report arrives within 24 hours. No meetings, no calls, no waiting.' },
+        { step: '02', title: 'The Formula Activates', desc: 'Our system begins weekly audits, content research, GEO optimization, and AI engine visibility checks. Your first report arrives within 24 hours.' },
         { step: '03', title: 'Review & Approve', desc: 'Content drafts land in your inbox for easy approval. Audits and reports arrive weekly — you\'re always in control, with fixes just a reply away.' },
       ].map((item) => (
         <div class="flex gap-6 items-start">
@@ -139,7 +225,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="text-sm text-cyan-300 font-mono mb-4">THE RESULTS</div>
     <h2 class="text-3xl md:text-4xl font-bold mb-4">What the Formula Produces</h2>
     <p class="text-muted mb-16 max-w-xl mx-auto">
-      Automated SEO that traditional agencies can't match — at a fraction of the cost.
+      Automated SEO + GEO that traditional agencies can&apos;t match — at a fraction of the cost.
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -170,7 +256,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="gradient-border rounded-2xl p-8 md:p-10 text-left">
         <div class="text-sm text-purple-300 font-semibold mb-2">SEO MANAGEMENT</div>
         <div class="text-5xl font-bold mb-1">$599<span class="text-lg text-muted font-normal">/mo</span></div>
-        <p class="text-muted text-sm mb-8">Weekly audits, rankings, and strategy — you handle the site.</p>
+        <p class="text-muted text-sm mb-8">Weekly audits, rankings, AI visibility checks, and strategy — you handle the site.</p>
 
         <ul class="space-y-3 mb-8">
           {[
@@ -182,6 +268,7 @@ import Layout from '../layouts/Layout.astro';
             'Content strategy & calendar',
             'Technical SEO & schema markup',
             'Internal link optimization',
+            'AI search visibility monitoring',
             'Conversion-focused recommendations',
             '3/6/12 month performance benchmarks',
             'Core Web Vitals monitoring',
@@ -201,7 +288,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="absolute -top-3 right-6 text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold">MOST POPULAR</div>
         <div class="text-sm text-cyan-300 font-semibold mb-2">FULL MANAGEMENT</div>
         <div class="text-5xl font-bold mb-1">$999<span class="text-lg text-muted font-normal">/mo</span></div>
-        <p class="text-muted text-sm mb-4">Everything in SEO + we build, host, and maintain your site. Hands-free.</p>
+        <p class="text-muted text-sm mb-4">Everything in SEO + we build, host, optimize for AI, and maintain your site. Hands-free.</p>
         <p class="text-xs text-muted mb-8 pb-6 border-b border-white/5">+ one-time site build or <span class="text-white font-medium">$1,000 migration</span> for existing sites</p>
 
         <ul class="space-y-3 mb-8">
@@ -210,6 +297,7 @@ import Layout from '../layouts/Layout.astro';
             'Weekly blog content (researched & written)',
             'Full site hosting on global edge network',
             'Unlimited site edits & updates',
+            'GEO — AI search optimization',
             'Easy content approval workflow',
             'Google Business Profile optimization',
             'Business listing management',
@@ -231,7 +319,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="mt-16 max-w-lg mx-auto">
       <div class="text-sm text-cyan-300 font-mono mb-2">ONE-TIME</div>
       <h3 class="text-xl font-bold mb-2">Site Builds & Migration</h3>
-      <p class="text-muted text-sm mb-6">Custom sites on a global edge network. Or bring your existing site — we'll migrate it seamlessly.</p>
+      <p class="text-muted text-sm mb-6">Custom sites on a global edge network. Or bring your existing site — we&apos;ll migrate it seamlessly.</p>
       <div class="space-y-3 text-left">
         {[
           { pages: 'Landing Page', price: '$1,250', desc: 'Single-page site. Perfect for product launches or lead gen.' },
@@ -256,9 +344,10 @@ import Layout from '../layouts/Layout.astro';
 <!-- CTA -->
 <section class="py-24 px-6">
   <div class="max-w-2xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Crack the Code?</h2>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">SEO + GEO = Unfair Advantage</h2>
     <p class="text-muted mb-8">
-      Get your free SEO audit and discover what the formula can do for your site. No obligation, no sales pitch.
+      Get your free SEO + AI visibility audit. See where you rank on Google <em>and</em> whether 
+      ChatGPT, Claude, and Gemini know your business exists. No obligation.
     </p>
     <a href="/contact" class="btn-primary text-lg">Get Your Free Audit →</a>
   </div>
