@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="FAQ — Rank Labs"
+  description="Frequently asked questions about Rank Labs SEO services. How AI-powered SEO works, pricing, what's included, and how to get started."
+>
+  <div class="max-w-3xl mx-auto px-4 py-16 sm:py-24">
+    <h1 class="text-4xl sm:text-5xl font-extrabold gradient-text mb-4">Frequently Asked Questions</h1>
+    <p class="text-lg text-gray-400 mb-12">Everything you need to know about AI-powered SEO with Rank Labs.</p>
+
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does Rank Labs differ from a traditional SEO agency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Traditional agencies charge $2,000–$10,000/month for manual work done by account managers, specialists, and interns. Rank Labs uses AI to handle crawling, analysis, content creation, and reporting — delivering agency-quality SEO at a fraction of the cost by eliminating human overhead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in SEO Management ($599/mo)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SEO Management includes weekly automated site audits (100+ checks), keyword rank tracking via DataForSEO, AI-powered blog content (4–8 posts/month), monthly improvement reports showing before/after metrics, technical SEO monitoring (canonical URLs, sitemaps, schema markup), and AI engine visibility tracking across ChatGPT, Gemini, Claude, and Perplexity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in Full Management ($999/mo)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Full Management includes everything in SEO Management plus: complete site hosting on Cloudflare Pages, blog approval pipeline (AI drafts → you approve → we publish), internal link architecture optimization, business listing management (Google Business Profile, Bing Places), conversion-focused A/B testing, service-area landing pages, and priority same-day fix processing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly will I see results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SEO is a long-term strategy. Most customers see measurable ranking improvements within 3–6 months. Our weekly audits catch issues immediately — broken links, missing tags, and crawl errors are fixed within days, not months. Our 12-month benchmark targets 75–100% organic traffic increase and 100+ keywords in the top 20 positions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to know anything about SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Rank Labs is fully managed. Our AI handles all technical SEO, content creation, and reporting. You receive clear, jargon-free weekly reports showing your site's health score, keyword rankings, and what was improved. If something needs your attention, it's clearly explained in plain English."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is GEO (Generative Engine Optimization)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GEO is the emerging practice of optimizing your site for AI-powered search engines like ChatGPT, Gemini, Claude, and Perplexity. Unlike traditional SEO (Google-focused), GEO ensures your business appears in AI-generated answers. Our weekly reports include per-engine scores showing how visible your site is to each AI engine, and our 6-step GEO checklist covers everything from schema markup to backlinks to business listing consistency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do weekly audits work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every week, our AI crawls every page of your site and runs 100+ SEO checks — title tags, meta descriptions, H1 structure, canonical URLs, Open Graph tags, schema markup, page speed, mobile friendliness, broken links, image alt text, and more. You receive a branded HTML report with your score, grade, findings, and fix-it prompts. The report also includes keyword rankings, backlink monitoring, and AI engine visibility scores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I find something wrong in my report?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every report includes fix-it prompts. Simply reply to the report email describing what you want us to address — for example, 'Fix the canonical URLs' or 'Add meta descriptions to the blog posts.' Our automated fix system processes approved requests, applies the changes to your site, re-crawls, re-audits, and sends you an updated report confirming everything is resolved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I cancel anytime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All Rank Labs plans are month-to-month with no long-term contracts. You keep full ownership of your site, content, and domain — nothing is locked into our platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get started?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visit our services page at getranklabs.com/services to compare plans. Choose SEO Management ($599/mo) or Full Management ($999/mo), provide your website URL, and complete checkout via Stripe. Your first SEO audit arrives within 24 hours, and weekly reports begin on your scheduled day (Mon–Thu)."
+          }
+        }
+      ]
+    }`} />
+
+    <div class="space-y-6">
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">How does Rank Labs differ from a traditional SEO agency?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          Traditional agencies charge $2,000–$10,000/month for manual work done by account managers, specialists, and interns. Rank Labs uses AI to handle crawling, analysis, content creation, and reporting — delivering <strong class="text-white">agency-quality SEO at a fraction of the cost</strong> by eliminating human overhead.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">What's included in SEO Management ($599/mo)?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          <strong class="text-white">SEO Management</strong> includes weekly automated site audits (100+ checks), keyword rank tracking via DataForSEO, AI-powered blog content (4–8 posts/month), monthly improvement reports showing before/after metrics, technical SEO monitoring (canonical URLs, sitemaps, schema markup), and AI engine visibility tracking across ChatGPT, Gemini, Claude, and Perplexity.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">What's included in Full Management ($999/mo)?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          <strong class="text-white">Full Management</strong> includes everything in SEO Management plus: complete site hosting on Cloudflare Pages, blog approval pipeline (AI drafts → you approve → we publish), internal link architecture optimization, business listing management (Google Business Profile, Bing Places), conversion-focused A/B testing, service-area landing pages, and priority same-day fix processing.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">How quickly will I see results?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          SEO is a long-term strategy. Most customers see measurable ranking improvements within <strong class="text-white">3–6 months</strong>. Our weekly audits catch issues immediately — broken links, missing tags, and crawl errors are fixed within days, not months. Our 12-month benchmark targets 75–100% organic traffic increase and 100+ keywords in the top 20 positions.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">Do I need to know anything about SEO?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          <strong class="text-white">No.</strong> Rank Labs is fully managed. Our AI handles all technical SEO, content creation, and reporting. You receive clear, jargon-free weekly reports showing your site's health score, keyword rankings, and what was improved. If something needs your attention, it's clearly explained in plain English.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">What is GEO (Generative Engine Optimization)?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          GEO is the emerging practice of optimizing your site for <strong class="text-white">AI-powered search engines</strong> like ChatGPT, Gemini, Claude, and Perplexity. Unlike traditional SEO (Google-focused), GEO ensures your business appears in AI-generated answers. Our weekly reports include per-engine scores and a 6-step GEO checklist covering schema markup, backlinks, and business listing consistency.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">How do weekly audits work?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          Every week, our AI crawls every page of your site and runs 100+ SEO checks — title tags, meta descriptions, H1 structure, canonical URLs, Open Graph tags, schema markup, page speed, mobile friendliness, broken links, image alt text, and more. You receive a <strong class="text-white">branded HTML report</strong> with your score, grade, findings, and fix-it prompts. The report also includes keyword rankings, backlink monitoring, and AI engine visibility scores.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">What if I find something wrong in my report?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          Every report includes fix-it prompts. Simply <strong class="text-white">reply to the report email</strong> describing what you want us to address — for example, "Fix the canonical URLs" or "Add meta descriptions to the blog posts." Our automated fix system processes approved requests, applies the changes, re-crawls, re-audits, and sends you an updated report confirming everything is resolved.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">Can I cancel anytime?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          <strong class="text-white">Yes.</strong> All Rank Labs plans are month-to-month with no long-term contracts. You keep full ownership of your site, content, and domain — nothing is locked into our platform.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg p-6 cursor-pointer">
+        <summary class="text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">How do I get started?</summary>
+        <p class="mt-4 text-gray-400 leading-relaxed">
+          Visit our <a href="/services" class="text-cyan-400 hover:underline">services page</a> to compare plans. Choose SEO Management ($599/mo) or Full Management ($999/mo), provide your website URL, and complete checkout via Stripe. Your first SEO audit arrives within 24 hours, and weekly reports begin on your scheduled day (Mon–Thu).
+        </p>
+      </details>
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-gray-400 mb-4">Ready to get started?</p>
+      <a href="/services" class="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-purple-500 hover:to-blue-500 transition-all">
+        View Plans & Pricing →
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details summary { list-style: none; }
+  details summary::before { content: '+ '; color: #06b6d4; font-weight: bold; font-family: monospace; font-size: 1.2em; }
+  details[open] summary::before { content: '− '; }
+</style>
