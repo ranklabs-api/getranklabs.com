@@ -3,7 +3,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
-const { title = 'Rank Labs — We Have the Secret Formula for SEO', description = 'AI-operated SEO platform. Weekly audits, automated blog content, and hands-free site management. The secret formula for search dominance.' } = Astro.props;
+const { title = 'Rank Labs — We Have the Secret Formula for SEO', description = 'AI-operated SEO platform. Weekly audits, automated blog content, and hands-free site management. The secret formula for search dominance.', image = '/og-image.png' } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site).href;
 ---
 
 <!doctype html>
@@ -13,8 +16,39 @@ const { title = 'Rank Labs — We Have the Secret Formula for SEO', description 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={Astro.url.pathname === '/' ? 'website' : 'article'} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Rank Labs" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Rank Labs",
+      "url": "https://getranklabs.com",
+      "logo": "https://getranklabs.com/logo.svg",
+      "description": "AI-operated SEO platform. Weekly audits, automated blog content, and hands-free site management.",
+      "sameAs": [
+        "https://www.instagram.com/getranklabs/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "hello@getranklabs.com"
+      }
+    }`} />
+
     <!-- SEO by Rank Labs -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
