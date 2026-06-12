@@ -110,57 +110,135 @@ import Layout from '../layouts/Layout.astro';
         <span class="gradient-text">AI Engine That Matters.</span>
       </h2>
       <p class="text-muted max-w-2xl mx-auto">
-        More people are asking ChatGPT, Claude, Gemini, and Perplexity for recommendations than ever before. 
-        If your business isn't showing up in those answers, you're invisible to a fast-growing audience.
+        More people are asking ChatGPT, Claude, Gemini, and Perplexity for recommendations than ever before — 
+        and each engine looks for different signals. Here's exactly how we make you visible on each one.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-      {[
-        { engine: 'ChatGPT', users: '800M+ weekly', src: 'Powered by Bing + GPTBot', color: 'from-green-500/20 to-green-500/5' },
-        { engine: 'Claude', users: 'Millions weekly', src: 'Powered by Brave + ClaudeBot', color: 'from-orange-500/20 to-orange-500/5' },
-        { engine: 'Gemini', users: 'Integrated in Google', src: 'Powered by Google + Knowledge Graph', color: 'from-blue-500/20 to-blue-500/5' },
-        { engine: 'Perplexity', users: 'Fastest growing', src: 'Powered by Google + Proprietary', color: 'from-purple-500/20 to-purple-500/5' },
-      ].map((engine) => (
-        <div class={`gradient-border rounded-xl p-6 text-center bg-gradient-to-b ${engine.color}`}>
-          <div class="text-2xl font-bold mb-1">{engine.engine}</div>
-          <div class="text-xs text-cyan-300 mb-3">{engine.users}</div>
-          <div class="text-xs text-muted">{engine.src}</div>
+    <!-- Per-Engine Checklist -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+      <!-- ChatGPT -->
+      <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-green-500/5 to-transparent">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="text-2xl font-bold">🤖 ChatGPT</div>
+          <div class="text-xs text-green-400 font-mono">800M+ weekly · Bing + GPTBot</div>
         </div>
-      ))}
+        <p class="text-xs text-muted mb-4">ChatGPT pulls from Bing's search index. We make sure your site is the answer it finds.</p>
+        <ol class="space-y-3">
+          {[
+            { step: '01', label: 'Meta Description Optimization', desc: 'Every page gets a crisp, AI-readable description (50–160 chars) — the exact format ChatGPT extracts for direct answers.' },
+            { step: '02', label: 'Structured Data / Schema Markup', desc: 'We deploy JSON-LD schema so ChatGPT understands what your business does, where it operates, and what it offers — without guessing.' },
+            { step: '03', label: 'Direct-Answer Content', desc: 'We structure content so ChatGPT can pull clean answers from your pages — service definitions, location data, FAQs, pricing.' },
+            { step: '04', label: 'GPTBot Crawl Access', desc: 'We verify GPTBot can crawl every page. No blocked paths, no missing content — ChatGPT can read your entire site.' },
+            { step: '05', label: 'Open Graph & Social Signals', desc: 'OG tags ensure your content previews correctly when ChatGPT cites your business — driving clicks from AI recommendations.' },
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="text-green-400 font-mono text-xs shrink-0 mt-0.5">{item.step}</span>
+              <div>
+                <div class="font-medium text-white text-sm">{item.label}</div>
+                <div class="text-muted text-xs mt-0.5">{item.desc}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- Claude -->
+      <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-orange-500/5 to-transparent">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="text-2xl font-bold">🧠 Claude</div>
+          <div class="text-xs text-orange-400 font-mono">Millions weekly · Brave + ClaudeBot</div>
+        </div>
+        <p class="text-xs text-muted mb-4">Claude prioritizes depth and authority. Short pages without backlinks are invisible here.</p>
+        <ol class="space-y-3">
+          {[
+            { step: '01', label: 'Substantial Content Depth', desc: 'Claude favors pages with 800+ words of substantive content. We ensure every key page has the depth Claude looks for.' },
+            { step: '02', label: 'Authoritative Backlink Building', desc: 'We monitor, audit, and grow your backlink profile — Claude ranks sources by citation count and domain authority.' },
+            { step: '03', label: 'ClaudeBot Crawl Access', desc: 'We configure robots.txt and verify ClaudeBot can access and index every important page on your site.' },
+            { step: '04', label: 'Open Graph Tags', desc: 'OG title, description, and image tags tell Claude exactly how to represent your business when it cites you.' },
+            { step: '05', label: 'Citation Consistency', desc: 'We ensure your business name, address, and phone are consistent everywhere — Claude cross-references citations to verify authority.' },
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="text-orange-400 font-mono text-xs shrink-0 mt-0.5">{item.step}</span>
+              <div>
+                <div class="font-medium text-white text-sm">{item.label}</div>
+                <div class="text-muted text-xs mt-0.5">{item.desc}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- Gemini -->
+      <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-blue-500/5 to-transparent">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="text-2xl font-bold">🔍 Gemini</div>
+          <div class="text-xs text-blue-400 font-mono">Integrated in Google · Knowledge Graph</div>
+        </div>
+        <p class="text-xs text-muted mb-4">Gemini is Google's AI. It pulls from Google Search and the Knowledge Graph — your Google presence IS your Gemini presence.</p>
+        <ol class="space-y-3">
+          {[
+            { step: '01', label: 'Google Business Profile Optimization', desc: 'The #1 signal for Gemini. We optimize your GBP — categories, services, photos, reviews, posts — so Gemini surfaces you for local queries.' },
+            { step: '02', label: 'Structured Data / Schema Markup', desc: 'Organization, LocalBusiness, and FAQ schema feed directly into Google\'s Knowledge Graph, which Gemini relies on.' },
+            { step: '03', label: 'Page Speed & Mobile Optimization', desc: 'Gemini inherits Google\'s ranking signals. Fast-loading, mobile-friendly pages get priority in AI-generated answers.' },
+            { step: '04', label: 'Title Tags & Meta Strategy', desc: 'Clean, keyword-aware title tags help Google — and therefore Gemini — understand what each page is about.' },
+            { step: '05', label: 'Review & Reputation Monitoring', desc: 'Gemini surfaces businesses with strong review profiles. We track and help you build reviews across Google, Facebook, and industry platforms.' },
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="text-blue-400 font-mono text-xs shrink-0 mt-0.5">{item.step}</span>
+              <div>
+                <div class="font-medium text-white text-sm">{item.label}</div>
+                <div class="text-muted text-xs mt-0.5">{item.desc}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- Perplexity -->
+      <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-purple-500/5 to-transparent">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="text-2xl font-bold">⚡ Perplexity</div>
+          <div class="text-xs text-purple-400 font-mono">Fastest growing · Proprietary + Google</div>
+        </div>
+        <p class="text-xs text-muted mb-4">Perplexity cites its sources inline. If your content is structured for citation, you show up — with a clickable link.</p>
+        <ol class="space-y-3">
+          {[
+            { step: '01', label: 'FAQ & Direct-Answer Content', desc: 'Perplexity favors pages that directly answer questions. We build FAQ sections and Q&A content across your site.' },
+            { step: '02', label: 'Structured Data for Source Citation', desc: 'Schema markup (FAQ, HowTo, Article) tells Perplexity your content is a citable source — with proper attribution.' },
+            { step: '03', label: 'PerplexityBot Crawl Access', desc: 'We ensure PerplexityBot is allowed in robots.txt and can reach every page we want cited.' },
+            { step: '04', label: 'Fresh Content Signals', desc: 'Perplexity rewards recently updated content. Weekly blog posts and regular site updates signal freshness to the engine.' },
+            { step: '05', label: 'Clean, Crawlable Page Structure', desc: 'Well-structured headings, short paragraphs, and clear section labels make your content easy for Perplexity to extract and cite.' },
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="text-purple-400 font-mono text-xs shrink-0 mt-0.5">{item.step}</span>
+              <div>
+                <div class="font-medium text-white text-sm">{item.label}</div>
+                <div class="text-muted text-xs mt-0.5">{item.desc}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <div>
-        <h3 class="font-semibold text-lg mb-4 text-cyan-300">What Happens When You're AI-Visible</h3>
-        <ul class="space-y-3">
-          {[
-            'AI assistants cite and recommend your business to users',
-            'Your content gets extracted as direct answers in AI responses',
-            'You show up when people ask "best [service] near me" to ChatGPT or Claude',
-            'Third-party mentions and authority signals compound over time',
-            'Google rankings improve as a natural side effect of AI-focused work',
-          ].map(item => (
-            <li class="flex items-start gap-3 text-sm text-muted">
-              <span class="text-green-400 shrink-0 mt-0.5">✓</span> {item}
-            </li>
-          ))}
-        </ul>
+    <!-- Why Businesses Are Moving Now -->
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8">
+        <h3 class="text-xl font-bold mb-2">Why Businesses Are Moving Now</h3>
+        <p class="text-muted text-sm">Every month you wait, your competitors are getting cited by AI instead of you.</p>
       </div>
-      <div>
-        <h3 class="font-semibold text-lg mb-4 text-cyan-300">Why Businesses Are Moving Now</h3>
-        <ul class="space-y-4">
-          {[
-            { stat: '51%', desc: 'of B2B buyers start research in AI chatbots more than Google' },
-            { stat: '69%', desc: 'chose a different vendor based on AI recommendations' },
-            { stat: '99%', desc: 'of measurable AI referrals come from ChatGPT, Claude, Gemini & Perplexity' },
-          ].map(item => (
-            <li class="flex items-start gap-4">
-              <span class="text-2xl font-bold gradient-text shrink-0 w-16">{item.stat}</span>
-              <span class="text-sm text-muted">{item.desc}</span>
-            </li>
-          ))}
-        </ul>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {[
+          { stat: '51%', desc: 'of B2B buyers start research in AI chatbots more than Google' },
+          { stat: '69%', desc: 'chose a different vendor based on AI recommendations' },
+          { stat: '99%', desc: 'of measurable AI referrals come from ChatGPT, Claude, Gemini & Perplexity' },
+        ].map(item => (
+          <div class="gradient-border rounded-xl p-6 text-center">
+            <div class="text-3xl font-bold gradient-text mb-2">{item.stat}</div>
+            <div class="text-xs text-muted leading-relaxed">{item.desc}</div>
+          </div>
+        ))}
       </div>
     </div>
   </div>
