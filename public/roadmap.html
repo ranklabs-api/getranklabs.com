@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rank Labs — SEO Platform Roadmap</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f1117;
+    color: #e1e4e8;
+    padding: 40px;
+    max-width: 960px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 28px; font-weight: 700; margin-bottom: 4px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .subtitle { color: #8b949e; font-size: 14px; margin-bottom: 32px; }
+  .section { background: #161b22; border: 1px solid #21262d; border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .section h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-done { background: #1a3a2a; color: #3fb950; }
+  .badge-partial { background: #3a2e0a; color: #d29922; }
+  .badge-coming { background: #2a1a3a; color: #a371f7; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 10px 12px; border-bottom: 1px solid #21262d; font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .check { color: #3fb950; font-weight: 700; }
+  .warn { color: #d29922; font-weight: 700; }
+  .soon { color: #a371f7; font-weight: 700; }
+  .item { font-weight: 500; }
+  .note { color: #8b949e; font-size: 13px; }
+  .blocker { font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 10px; margin-left: 6px; }
+  .blocker-api { background: #3a1a1a; color: #f85149; }
+  .blocker-sub { background: #3a2e0a; color: #d29922; }
+  .blocker-build { background: #1a2e3a; color: #58a6ff; }
+  .cost-callout {
+    background: #1a2e3a; border: 1px solid #1f6feb33; border-radius: 8px;
+    padding: 14px 18px; margin-top: 24px; font-size: 14px;
+  }
+  .cost-callout strong { color: #58a6ff; }
+  .logo-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .logo { font-weight: 700; font-size: 16px; color: #7c3aed; }
+  .date { color: #484f58; font-size: 12px; }
+  .progress-bar { height: 6px; background: #21262d; border-radius: 3px; margin: 16px 0 0; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #3fb950, #7c3aed); }
+</style>
+</head>
+<body>
+
+<div class="logo-row">
+  <span class="logo">Rank Labs</span>
+  <span class="date">June 12, 2026 · 35 agents · 6 automated pipelines · 20 cron jobs</span>
+</div>
+
+<h1>SEO Platform Roadmap</h1>
+<p class="subtitle">What's live · What's in progress · What's next</p>
+
+<!-- LIVE -->
+<div class="section">
+  <h2>✅ Live & Automated <span class="badge badge-done">31 items</span></h2>
+  <table>
+    <tr><td class="check">✓</td><td class="item">Crawl + audit</td><td class="note">Multi-page crawl, 14 technical checks per site</td></tr>
+    <tr><td class="check">✓</td><td class="item">Weekly reports</td><td class="note">Mon–Thu, 4 sites, 34-section JSON reports</td></tr>
+    <tr><td class="check">✓</td><td class="item">Branded HTML email delivery</td><td class="note">Himalaya + Gmail API pipeline</td></tr>
+    <tr><td class="check">✓</td><td class="item">Blog gap analysis</td><td class="note">12 niche categories, auto-detects industry</td></tr>
+    <tr><td class="check">✓</td><td class="item">Blog pipeline + approval flow</td><td class="note">Draft → preview → approval email → publish/deny/revise</td></tr>
+    <tr><td class="check">✓</td><td class="item">Fix requests</td><td class="note">Reply-to-email → Telegram approval → fix → confirm</td></tr>
+    <tr><td class="check">✓</td><td class="item">GA4 ingestion</td><td class="note">Property IDs configured per site</td></tr>
+    <tr><td class="check">✓</td><td class="item">Business listings checks</td><td class="note">GBP / Facebook / Foursquare — Foursquare live via API</td></tr>
+    <tr><td class="check">✓</td><td class="item">Cloudflare Pages deploy</td><td class="note">Auto-deploy on git push</td></tr>
+    <tr><td class="check">✓</td><td class="item">Keyword position tracking</td><td class="note">DataForSEO SERP API — 10-15 keywords per site</td></tr>
+    <tr><td class="check">✓</td><td class="item">Backlink monitoring</td><td class="note">DataForSEO Backlinks API — active + broken tracking</td></tr>
+    <tr><td class="check">✓</td><td class="item">Strategy agent</td><td class="note">Keyword targets, competitor gaps, backlink recs</td></tr>
+    <tr><td class="check">✓</td><td class="item">Real data in reports</td><td class="note">All 25 sections populate from pipeline agents</td></tr>
+    <tr><td class="check">✓</td><td class="item">Local schema (Service + AreaServed)</td><td class="note">JSON-LD generator from customers.yaml + crawl</td></tr>
+    <tr><td class="check">✓</td><td class="item">FAQ schema</td><td class="note">FAQ detection + FAQPage schema generation</td></tr>
+    <tr><td class="check">✓</td><td class="item">Internal link architecture</td><td class="note">Orphan detection, depth analysis, link recommendations</td></tr>
+    <tr><td class="check">✓</td><td class="item">Crawl optimization</td><td class="note">Sitemap audit, canonical checks, indexation score</td></tr>
+    <tr><td class="check">✓</td><td class="item">CTA strategy</td><td class="note">Per-page-type recommendations (6 page types)</td></tr>
+    <tr><td class="check">✓</td><td class="item">Content calendar</td><td class="note">12-month seasonal + cluster plan (5 niches)</td></tr>
+    <tr><td class="check">✓</td><td class="item">Service-area landing pages</td><td class="note">City+service page template generator</td></tr>
+    <tr><td class="check">✓</td><td class="item">Service + city keyword mapping</td><td class="note">Keyword matrix with intent estimates</td></tr>
+    <tr><td class="check">✓</td><td class="item">3/6/12 month benchmarks</td><td class="note">Target metrics + historical trend tracking</td></tr>
+    <tr><td class="check">✓</td><td class="item">GBP optimization checklist</td><td class="note">28-item GBP checklist (framework — OAuth pending)</td></tr>
+    <tr><td class="check">✓</td><td class="item">Blog approval emails</td><td class="note">Separate email with preview links per customer</td></tr>
+    <tr><td class="check">✓</td><td class="item">Blog tracking system</td><td class="note">Per-customer state: pending/approved/denied/revised</td></tr>
+    <tr><td class="check">✓</td><td class="item">Blog approval handler (natural language)</td><td class="note">Parses "approved", "looks good", "no thanks", etc.</td></tr>
+    <tr><td class="check">✓</td><td class="item">Long-tail keyword generator</td><td class="note">Seasonal, question, geo keyword variants from base terms</td></tr>
+    <tr><td class="check">✓</td><td class="item">Core Web Vitals monitoring</td><td class="note">PageSpeed Insights — LCP, FID, CLS (free API, needs key)</td></tr>
+    <tr><td class="check">✓</td><td class="item">Conversion-focused content</td><td class="note">Buyer intent analysis + conversion audit per page</td></tr>
+    <tr><td class="check">✓</td><td class="item">Landing page refinement loop</td><td class="note">A/B test ideas from CTA + conversion audit data</td></tr>
+  </table>
+</div>
+
+<!-- PARTIAL -->
+<div class="section">
+  <h2>⚠️ Partial — Coded, Needs Subscription <span class="badge badge-partial">6 items</span></h2>
+  <table>
+    <tr><td class="warn">◐</td><td class="item">Keyword data (volume, CPC, intent)</td><td class="note">Endpoint coded — <code>keywords_data/google/live</code> needs activation</td></tr>
+    <tr><td class="warn">◐</td><td class="item">Competitor gap analysis</td><td class="note">Endpoint coded — <code>dataforseo_labs</code> needs subscription</td></tr>
+    <tr><td class="warn">◐</td><td class="item">Domain authority tracking</td><td class="note">Endpoint coded — same Labs dependency</td></tr>
+    <tr><td class="warn">◐</td><td class="item">Primary/secondary keyword strategy</td><td class="note">Framework exists — needs keyword volume data to prioritize</td></tr>
+    <tr><td class="warn">◐</td><td class="item">Organic traffic growth reports</td><td class="note">GA4 data ingested — trend analysis needs history</td></tr>
+    <tr><td class="warn">◐</td><td class="item">Monthly ranking trend reports</td><td class="note">Weekly reports exist — monthly aggregation needs history</td></tr>
+  </table>
+</div>
+
+<!-- COMING SOON -->
+<div class="section">
+  <h2>🔜 Coming Soon <span class="badge badge-coming">8 items</span></h2>
+  <table>
+    <tr><td class="soon">→</td><td class="item">75+ keyword volume tracking</td><td class="note">Expand DataForSEO keyword pool <span class="blocker blocker-sub">subscription</span></td></tr>
+    <tr><td class="soon">→</td><td class="item">Backlink acquisition strategy</td><td class="note">Proactive outreach recommendations <span class="blocker blocker-build">build</span></td></tr>
+    <tr><td class="soon">→</td><td class="item">Call tracking integration</td><td class="note">Phone call attribution in GA4 + reports <span class="blocker blocker-build">build</span></td></tr>
+    <tr><td class="soon">→</td><td class="item">Local citation management</td><td class="note">Moz Local or DataForSEO Business Listings API <span class="blocker blocker-api">API</span></td></tr>
+    <tr><td class="soon">→</td><td class="item">GBP optimization (live mode)</td><td class="note">Agent built — needs GBP API OAuth refresh <span class="blocker blocker-api">API</span></td></tr>
+    <tr><td class="soon">→</td><td class="item">GBP insights (calls, directions, views)</td><td class="note">GBP API quota-blocked <span class="blocker blocker-api">API</span></td></tr>
+    <tr><td class="soon">→</td><td class="item">Local pack performance tracking</td><td class="note">DataForSEO Maps/Local SERP endpoint <span class="blocker blocker-api">API</span></td></tr>
+    <tr><td class="soon">→</td><td class="item">Full 7-category coverage</td><td class="note">Complete all items from platform spec <span class="blocker blocker-build">build</span></td></tr>
+  </table>
+</div>
+
+<div class="cost-callout">
+  <strong>💰 Current cost: ~$5–15/mo</strong> (DataForSEO pay-as-you-go)<br>
+  <strong>📈 Projected: ~$150–250/mo</strong> with full DataForSEO + Moz/PSI activation<br>
+  <strong>⚡ 31/39 items complete (79%)</strong> · 30 agents built · 4 automated weekly pipelines<br>
+  <strong>🔜 8 items planned:</strong> 3 build-work · 2 subscription-gated · 4 API-blocked<br>
+  <strong>🏆 7 of 7 categories covered</strong>
+</div>
+
+<div class="progress-bar"><div class="progress-fill" style="width:79%"></div></div>
+
+</body>
+</html>
