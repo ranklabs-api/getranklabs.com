@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rank Labs — Items Requiring Josiah's Intervention</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #0d1117; --border: rgba(255,255,255,0.06);
+    --text: #e1e4e8; --muted: #8b949e;
+    --red: #f85149; --red-bg: rgba(248,81,73,0.1);
+    --yellow: #d29922; --yellow-bg: rgba(210,153,34,0.1);
+    --cyan: #06b6d4; --green: #3fb950;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 40px; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; background: linear-gradient(135deg, #7c3aed, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+  .date { color: #484f58; font-size: 12px; margin-bottom: 32px; }
+  .section { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+  .section h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .badge { font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; }
+  .badge-blocked { background: var(--red-bg); color: var(--red); }
+  .badge-manual { background: var(--yellow-bg); color: var(--yellow); }
+  .item { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: flex-start; }
+  .item:last-child { border-bottom: none; }
+  .item-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .item-content { flex: 1; }
+  .item-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .item-desc { color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .item-action { background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.15); border-radius: 6px; padding: 8px 12px; margin-top: 8px; font-size: 12px; color: var(--red); }
+  .item-action strong { color: #ff7b72; }
+  .customers { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .customer-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--muted); }
+  .customer-tag .count { color: var(--red); }
+  .summary-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+  .summary-stat { text-align: center; }
+  .summary-stat .num { font-size: 28px; font-weight: 700; color: var(--red); }
+  .summary-stat .label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  a { color: var(--cyan); }
+</style>
+</head>
+<body>
+
+<h1>⚠️ Items Requiring Josiah's Intervention</h1>
+<p class="subtitle">What's blocking onboarding — and what needs to happen to get it GREEN</p>
+<p class="date">June 12, 2026 · 6 sites audited · 3 sites SEO-fixed today</p>
+
+<div class="summary-bar">
+  <div class="summary-stat"><div class="num">12</div><div class="label">Total Blocked Items</div></div>
+  <div class="summary-stat"><div class="num">5</div><div class="label">Need Your Action</div></div>
+  <div class="summary-stat"><div class="num">4</div><div class="label">Need Payment/Subscription</div></div>
+  <div class="summary-stat"><div class="num">3</div><div class="label">Need k3s/Infrastructure</div></div>
+</div>
+
+<div class="section">
+  <h2>🔴 Requires Payment or Subscription <span class="badge badge-blocked">4 items</span></h2>
+
+  <div class="item">
+    <div class="item-icon">💰</div>
+    <div class="item-content">
+      <div class="item-title">DataForSEO Keywords Data — Activation Needed</div>
+      <div class="item-desc">The <code>keywords_data/google/live</code> endpoint returns keyword volume, CPC, and competition data. Currently disabled — needs subscription activation at dataforseo.com. Without this, keyword volume columns show zero.</div>
+      <div class="item-action"><strong>Josiah action:</strong> Log into dataforseo.com → activate Keywords Data API. ~$0.0006/request pay-as-you-go.</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">6</span> sites</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">💰</div>
+    <div class="item-content">
+      <div class="item-title">DataForSEO Labs — Competitor + Domain Authority</div>
+      <div class="item-desc">The <code>dataforseo_labs</code> endpoints (ranked_keywords, domain_rank_overview) need a Labs subscription. Competitor gap analysis and domain authority scores are coded but return empty without this.</div>
+      <div class="item-action"><strong>Josiah action:</strong> Log into dataforseo.com → activate Labs add-on. ~$50-100/mo estimated.</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">6</span> sites</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">💰</div>
+    <div class="item-content">
+      <div class="item-title">PageSpeed Insights API Key</div>
+      <div class="item-desc">Core Web Vitals agent needs a PAGESPEED_API_KEY. The PageSpeed Insights API is free (25,000 requests/day). Currently missing from .env.</div>
+      <div class="item-action"><strong>Josiah action:</strong> Get free API key at developers.google.com/speed/docs/insights → add PAGESPEED_API_KEY to .env</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">6</span> sites</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">💰</div>
+    <div class="item-content">
+      <div class="item-title">Stripe — Test → Live Mode</div>
+      <div class="item-desc">Stripe is in test mode. Payment links and subscriptions use test keys. Before real customers sign up, switch to live keys.</div>
+      <div class="item-action"><strong>Josiah action:</strong> Dashboard → activate live mode. Update STRIPE_API_KEY in .env to sk_live_...</div>
+      <div class="customers"><span class="customer-tag">Platform</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🟡 Requires Josiah's Manual Action <span class="badge badge-manual">5 items</span></h2>
+
+  <div class="item">
+    <div class="item-icon">🔑</div>
+    <div class="item-content">
+      <div class="item-title">Google Business Profile — Create / Verify Listings</div>
+      <div class="item-desc">GBP is 35% of the Gemini GEO score. Without a verified GBP, Gemini maxes out at 65/100. GBP API is OAuth quota-blocked (case #4-3589000040985) so we can't automate this yet.</div>
+      <div class="item-action"><strong>Josiah action:</strong> Create GBP listings for Maritime DJP (boat rentals), Colonoscopy KC (medical), and any other sites without them. Add seo-admin@getranklabs.com as Manager.</div>
+      <div class="customers">
+        <span class="customer-tag">Maritime DJP ❌</span>
+        <span class="customer-tag">Colonoscopy KC ❌</span>
+        <span class="customer-tag">Sophia AI ⊘ (N/A)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">🔑</div>
+    <div class="item-content">
+      <div class="item-title">GBP Optimization — OAuth Quota Pending</div>
+      <div class="item-desc">The 28-item GBP checklist agent is built but needs live GBP API access to run checks. OAuth quota increase request open since June 2.</div>
+      <div class="item-action"><strong>Josiah action:</strong> Check console.cloud.google.com → project 722373091691 → mybusinessaccountmanagement → Quotas. If still pending, follow up on case #4-3589000040985.</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">5</span> sites with GBP</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">🔑</div>
+    <div class="item-content">
+      <div class="item-title">GA4 — Grant Service Account Viewer Access</div>
+      <div class="item-desc">GA4 property IDs are configured in customers.yaml, but the hermes-seo@ranklabs-497520 service account needs Viewer access on each GA4 property for data to flow. Currently showing "CONFIGURED" with all-zero data.</div>
+      <div class="item-action"><strong>Josiah action:</strong> In GA4 Admin → Property Access Management → Add hermes-seo@ranklabs-497520.iam.gserviceaccount.com as Viewer for each property.</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">5</span> sites with GA4</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">🔑</div>
+    <div class="item-content">
+      <div class="item-title">Google Search Console — One-Time OAuth Verification</div>
+      <div class="item-desc">GSC site verification is coded and ready, but requires a one-time OAuth browser login to get the initial token. The Site Verification API is already enabled on project ranklabs-497520.</div>
+      <div class="item-action"><strong>Josiah action:</strong> Open terminal, run <code>python3 -c "from ranklabs_google_oauth import login; login()"</code>. Browser window opens → sign in as josiahearl@gmail.com → approve. Token saved. Then I handle the rest.</div>
+      <div class="customers">
+        <span class="customer-tag">Maritime DJP ❌</span>
+        <span class="customer-tag">TrySoph ⊘</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">🔑</div>
+    <div class="item-content">
+      <div class="item-title">Foursquare Listings — Not Yet Created</div>
+      <div class="item-desc">Most businesses don't exist on Foursquare yet. The Places API can check but can't create listings programmatically (needs Placemaker API or manual dashboard).</div>
+      <div class="item-action"><strong>Josiah action:</strong> Create Foursquare listings manually at foursquare.com/add-business, or we can use the Placemaker API if you prefer automated. Low priority — Foursquare is the least impactful listing platform.</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">6</span> sites</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🔧 Requires k3s / Infrastructure <span class="badge badge-manual">3 items</span></h2>
+
+  <div class="item">
+    <div class="item-icon">🖥️</div>
+    <div class="item-content">
+      <div class="item-title">GA4 Data Flowing — k3s Port-Forward Needed</div>
+      <div class="item-desc">The GA4 ingest agent pulls real traffic data but requires Postgres port-forward (kubectl port-forward -n database postgresql-0 15432:5432). Cron jobs run in isolated sessions — port-forward doesn't persist.</div>
+      <div class="item-action"><strong>Fix needed:</strong> Either set up a permanent Postgres tunnel, or update the GA4 ingest to use the k3s internal service DNS. The cron workflow already has the step documented.</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">5</span> sites with GA4</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">🖥️</div>
+    <div class="item-content">
+      <div class="item-title">Metrics Snapshots — Postgres Connection</div>
+      <div class="item-desc">Weekly metric_snapshots save to Postgres, powering monthly improvement reports. Same port-forward issue as GA4. Snapshots work when k3s is accessible but fail silently otherwise.</div>
+      <div class="item-action"><strong>Fix needed:</strong> Same as GA4 — persistent Postgres access for cron agents.</div>
+      <div class="customers"><span class="customer-tag">All <span class="count">6</span> sites</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">🖥️</div>
+    <div class="item-content">
+      <div class="item-title">Sophia AI / TrySoph — Not on Rank Labs Platform</div>
+      <div class="item-desc">TrySoph runs on Railway with its own backend (jeremiahearl/medreceptionist-backend). It's a separate product with its own deployment pipeline. Our standard onboarding checklist doesn't fully apply — it's a SaaS product, not a managed marketing site.</div>
+      <div class="item-action"><strong>Note:</strong> TrySoph should have its own separate onboarding checklist. Many items (GBP, GA4, site provisioning) are N/A or handled differently. The weekly SEO audit cron is not configured for TrySoph.</div>
+      <div class="customers"><span class="customer-tag">TrySoph</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>✅ Fixed Today (June 12) <span class="badge" style="background:rgba(63,185,80,0.1);color:#3fb950;">3 sites</span></h2>
+
+  <div class="item">
+    <div class="item-icon">✅</div>
+    <div class="item-content">
+      <div class="item-title">Colonoscopy KC — OG, Twitter, Schema, Canonical Added</div>
+      <div class="item-desc">Layout.astro now has full OG tags, Twitter Card, MedicalOrganization schema, and canonical URL. One edit fixed all 9+ pages. Pushed + deploying via GitHub Actions.</div>
+      <div class="customers"><span class="customer-tag" style="color:var(--green)">Now GREEN</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">✅</div>
+    <div class="item-content">
+      <div class="item-title">Maritime DJP — Twitter Cards Added</div>
+      <div class="item-desc">Already had OG, schema, and canonical. Added Twitter Card tags to Layout.astro. Full coverage now on all 6 pages.</div>
+      <div class="customers"><span class="customer-tag" style="color:var(--green)">Now GREEN</span></div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-icon">✅</div>
+    <div class="item-content">
+      <div class="item-title">Sincerely Cozy — OG, Twitter, Schema, Canonical Added</div>
+      <div class="item-desc">Static HTML site — added SEO tags to all 7 HTML files (3 main pages + 3 blog posts + blog index). Organization schema, per-page OG titles/descriptions, Twitter Cards, canonical URLs.</div>
+      <div class="customers"><span class="customer-tag" style="color:var(--green)">Now GREEN</span></div>
+    </div>
+  </div>
+</div>
+
+<p style="color:var(--muted);font-size:12px;text-align:center;margin-top:32px;">
+  View full tracker: <a href="https://getranklabs.com/onboarding-tracker">getranklabs.com/onboarding-tracker</a> ·
+  Roadmap: <a href="https://getranklabs.com/roadmap.html">getranklabs.com/roadmap.html</a>
+</p>
+
+</body>
+</html>
