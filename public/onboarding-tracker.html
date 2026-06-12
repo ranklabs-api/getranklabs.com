@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rank Labs — Customer Onboarding Tracker</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #0d1117;
+    --border: rgba(255,255,255,0.06);
+    --text: #e1e4e8;
+    --muted: #8b949e;
+    --green: #3fb950;
+    --green-bg: rgba(63,185,80,0.12);
+    --yellow: #d29922;
+    --yellow-bg: rgba(210,153,34,0.12);
+    --red: #f85149;
+    --red-bg: rgba(248,81,73,0.12);
+    --gray: #484f58;
+    --gray-bg: rgba(72,79,88,0.12);
+    --cyan: #06b6d4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text); padding: 40px;
+    max-width: 1400px; margin: 0 auto; line-height: 1.5;
+  }
+  header { margin-bottom: 40px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--muted); font-size: 14px; }
+  .legend { display: flex; gap: 24px; margin: 20px 0; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+  .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .dot-done { background: var(--green); }
+  .dot-progress { background: var(--yellow); }
+  .dot-missing { background: var(--red); }
+  .dot-na { background: var(--gray); }
+  
+  .phase { margin-bottom: 32px; }
+  .phase-header {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 24px; margin-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer;
+  }
+  .phase-header:hover { border-color: rgba(255,255,255,0.12); }
+  .phase-name { font-size: 16px; font-weight: 600; }
+  .phase-count { font-size: 13px; color: var(--muted); }
+  .phase-progress { width: 120px; height: 6px; background: #21262d; border-radius: 3px; overflow: hidden; }
+  .phase-progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+  
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    position: sticky; top: 0; background: var(--surface);
+    padding: 10px 12px; text-align: left; font-weight: 600;
+    border-bottom: 2px solid var(--border); white-space: nowrap;
+  }
+  thead th:first-child { min-width: 200px; }
+  thead th.customer-col { 
+    min-width: 110px; text-align: center; font-size: 12px;
+  }
+  .plan-badge {
+    font-size: 10px; font-weight: 600; padding: 1px 6px;
+    border-radius: 4px; margin-left: 4px;
+  }
+  .plan-full { background: rgba(6,182,212,0.15); color: var(--cyan); }
+  .plan-geo { background: rgba(168,85,247,0.15); color: #a855f7; }
+  
+  tbody td {
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    text-align: center; font-size: 13px; font-weight: 600;
+  }
+  tbody td:first-child { text-align: left; font-weight: 400; color: var(--text); }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  
+  .status-done { color: var(--green); background: var(--green-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  .status-progress { color: var(--yellow); background: var(--yellow-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  .status-missing { color: var(--red); background: var(--red-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  .status-na { color: var(--gray); background: var(--gray-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  
+  .summary-bar {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px; margin-bottom: 40px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
+  }
+  .summary-stat { text-align: center; }
+  .summary-stat .num { font-size: 32px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .num-green { color: var(--green); }
+  .num-yellow { color: var(--yellow); }
+  .num-red { color: var(--red); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Customer Onboarding Tracker</h1>
+  <p class="subtitle">Which checklist items are GREEN per customer · Last updated: June 12, 2026</p>
+  <div class="legend">
+    <div class="legend-item"><span class="dot dot-done"></span> Done (GREEN)</div>
+    <div class="legend-item"><span class="dot dot-progress"></span> In Progress</div>
+    <div class="legend-item"><span class="dot dot-missing"></span> Not Started</div>
+    <div class="legend-item"><span class="dot dot-na"></span> N/A (wrong plan)</div>
+  </div>
+</header>
+
+<div class="summary-bar" id="summary"></div>
+
+<!-- PHASE 1: Provisioning (Full Management only) -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">🏗️ Phase 1: Site Provisioning</span>
+    <span class="phase-count">Full Management only · 11 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
+        </tr>
+      </thead>
+      <tbody id="phase1"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 2: SEO Foundation -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">🔍 Phase 2: SEO Foundation</span>
+    <span class="phase-count">All plans · 16 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
+        </tr>
+      </thead>
+      <tbody id="phase2"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 3: GEO Visibility -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">🌐 Phase 3: GEO Engine Visibility</span>
+    <span class="phase-count">All plans · 6 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs</th>
+          <th class="customer-col">OTWM</th>
+          <th class="customer-col">Sincerely Cozy</th>
+          <th class="customer-col">Colonoscopy KC</th>
+          <th class="customer-col">Maritime DJP</th>
+          <th class="customer-col">Sophia AI</th>
+        </tr>
+      </thead>
+      <tbody id="phase3"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 4: Data & Tracking -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">📊 Phase 4: Data & Tracking</span>
+    <span class="phase-count">All plans · 8 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs</th>
+          <th class="customer-col">OTWM</th>
+          <th class="customer-col">Sincerely Cozy</th>
+          <th class="customer-col">Colonoscopy KC</th>
+          <th class="customer-col">Maritime DJP</th>
+          <th class="customer-col">Sophia AI</th>
+        </tr>
+      </thead>
+      <tbody id="phase4"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 5: Content Pipeline (Full only) -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">✍️ Phase 5: Content Pipeline</span>
+    <span class="phase-count">Full Management only · 7 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
+        </tr>
+      </thead>
+      <tbody id="phase5"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 6: Build-Work Agents (Full only) -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">🤖 Phase 6: Build-Work Agents</span>
+    <span class="phase-count">Full Management only · 14 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
+          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
+        </tr>
+      </thead>
+      <tbody id="phase6"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 7: Business Listings -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">📋 Phase 7: Business Listings</span>
+    <span class="phase-count">All plans · 5 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs</th>
+          <th class="customer-col">OTWM</th>
+          <th class="customer-col">Sincerely Cozy</th>
+          <th class="customer-col">Colonoscopy KC</th>
+          <th class="customer-col">Maritime DJP</th>
+          <th class="customer-col">Sophia AI</th>
+        </tr>
+      </thead>
+      <tbody id="phase7"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PHASE 8: Reporting & Delivery -->
+<div class="phase">
+  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
+    <span class="phase-name">📧 Phase 8: Reporting & Delivery</span>
+    <span class="phase-count">All plans · 6 items</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th class="customer-col">Rank Labs</th>
+          <th class="customer-col">OTWM</th>
+          <th class="customer-col">Sincerely Cozy</th>
+          <th class="customer-col">Colonoscopy KC</th>
+          <th class="customer-col">Maritime DJP</th>
+          <th class="customer-col">Sophia AI</th>
+        </tr>
+      </thead>
+      <tbody id="phase8"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────
+// EDIT THIS SECTION to update statuses.
+// Statuses: 'done' (green ✓), 'progress' (yellow ◐), 'missing' (red ✗), 'na' (gray —)
+// Customers: 0=RankLabs, 1=OTWM, 2=SincerelyCozy, 3=ColonoscopyKC, 4=MaritimeDJP, 5=SophiaAI
+
+const phases = [
+  {
+    id: 'phase1', name: 'Site Provisioning', fullOnly: true,
+    items: [
+      ['Site source acquired','done','done','done','done','done','done'],
+      ['GitHub repo created','done','done','done','done','done','done'],
+      ['Site pushed to GitHub','done','done','done','done','done','done'],
+      ['Cloudflare Pages project','done','done','done','done','done','done'],
+      ['Auto-deploy workflow','done','done','done','done','done','done'],
+      ['Custom domain + DNS','done','done','done','done','done','done'],
+      ['DNS migration (if needed)','na','done','na','done','done','na'],
+      ['Customer in customers.yaml','done','done','done','done','done','done'],
+      ['Keywords file created','done','done','done','done','done','done'],
+      ['Competitors configured','done','done','done','done','missing','done'],
+      ['Cron job scheduled','done','done','done','done','done','missing'],
+    ]
+  },
+  {
+    id: 'phase2', name: 'SEO Foundation', fullOnly: false,
+    items: [
+      ['Initial multi-page crawl','done','done','done','done','done','done'],
+      ['Initial audit (all pages)','done','done','done','done','done','done'],
+      ['Title tags — all unique','done','done','done','done','missing','done'],
+      ['Meta descriptions — all unique','done','done','done','done','missing','done'],
+      ['H1 structure — one per page','done','done','done','done','missing','done'],
+      ['Canonical URLs','done','done','done','done','missing','done'],
+      ['Open Graph tags','done','done','done','done','missing','done'],
+      ['Twitter Card tags','done','done','done','done','missing','done'],
+      ['Schema markup (full stack)','done','done','done','done','missing','done'],
+      ['Sitemap','done','done','done','done','done','done'],
+      ['Image alt text','done','done','done','done','missing','missing'],
+      ['Page speed optimization','done','done','progress','done','missing','missing'],
+      ['Mobile responsive','done','done','done','done','done','done'],
+      ['Zero broken links','done','done','done','done','done','done'],
+      ['robots.txt optimized','done','done','done','done','missing','done'],
+      ['HTTPS enforced','done','done','done','done','done','done'],
+    ]
+  },
+  {
+    id: 'phase3', name: 'GEO Engine Visibility', fullOnly: false,
+    items: [
+      ['GEO engine scoring live','done','done','done','done','missing','missing'],
+      ['ChatGPT 100/100','done','done','done','done','missing','missing'],
+      ['Claude 100/100','progress','progress','progress','progress','missing','missing'],
+      ['Gemini 65+/100','done','done','done','done','missing','missing'],
+      ['Perplexity 100/100','done','done','done','done','missing','missing'],
+      ['GEO checklist on site','done','na','na','na','na','na'],
+    ]
+  },
+  {
+    id: 'phase4', name: 'Data & Tracking', fullOnly: false,
+    items: [
+      ['Keyword position tracking','done','done','done','done','done','missing'],
+      ['Backlink monitoring','done','done','done','done','done','missing'],
+      ['Competitor gap analysis','progress','progress','progress','progress','missing','missing'],
+      ['Keyword volume data','missing','missing','missing','missing','missing','missing'],
+      ['GA4 connected','done','done','done','done','done','na'],
+      ['GA4 data flowing','missing','missing','missing','missing','missing','na'],
+      ['GSC verified','done','done','done','done','missing','na'],
+      ['Metrics snapshots','progress','done','done','done','missing','missing'],
+    ]
+  },
+  {
+    id: 'phase5', name: 'Content Pipeline', fullOnly: true,
+    items: [
+      ['Blog agent first run','done','done','done','done','missing','missing'],
+      ['Blog tracker initialized','done','done','done','done','missing','missing'],
+      ['First blog approval email sent','done','done','done','done','missing','missing'],
+      ['Blog approval handler active','done','done','done','done','missing','missing'],
+      ['Blog published to live site','done','done','done','done','missing','missing'],
+      ['Blog images inserted','done','done','progress','progress','missing','missing'],
+      ['Blog pipeline verified','done','done','done','done','missing','missing'],
+    ]
+  },
+  {
+    id: 'phase6', name: 'Build-Work Agents', fullOnly: true,
+    items: [
+      ['Local Schema','done','done','done','done','missing','missing'],
+      ['FAQ Schema','done','done','done','done','missing','missing'],
+      ['Link Architecture','done','done','done','done','missing','missing'],
+      ['Crawl Optimization','done','done','done','done','missing','missing'],
+      ['CTA Strategy','done','done','done','done','missing','missing'],
+      ['Long-Tail Keywords','done','done','done','done','missing','missing'],
+      ['Core Web Vitals','done','done','done','done','missing','missing'],
+      ['Conversion Content','done','done','done','done','missing','missing'],
+      ['Landing Refinement','done','done','done','done','missing','missing'],
+      ['Content Calendar','done','done','done','done','missing','missing'],
+      ['Service Pages','done','done','done','done','missing','missing'],
+      ['Keyword Mapping','done','done','done','done','missing','missing'],
+      ['Benchmarks','done','done','done','done','missing','missing'],
+      ['GBP Optimization','progress','progress','progress','progress','missing','missing'],
+    ]
+  },
+  {
+    id: 'phase7', name: 'Business Listings', fullOnly: false,
+    items: [
+      ['Google Business Profile verified','done','done','done','missing','missing','na'],
+      ['GBP optimization applied','progress','progress','progress','missing','missing','na'],
+      ['Facebook Page verified','done','done','done','missing','missing','na'],
+      ['Foursquare listing verified','missing','missing','missing','missing','missing','missing'],
+      ['Bing Places verified','done','done','done','missing','missing','na'],
+    ]
+  },
+  {
+    id: 'phase8', name: 'Reporting & Delivery', fullOnly: false,
+    items: [
+      ['Weekly report generates','done','done','done','done','done','missing'],
+      ['All 25 sections GREEN','progress','progress','progress','progress','progress','missing'],
+      ['Report email delivers','done','done','done','done','done','missing'],
+      ['Fix request pipeline','done','done','done','done','missing','missing'],
+      ['Monthly improvement report','done','done','done','done','missing','missing'],
+      ['Provisioning state → complete','done','done','done','done','missing','missing'],
+    ]
+  },
+];
+
+const statusLabels = {
+  done: '✓', progress: '◐', missing: '✗', na: '—'
+};
+const statusClasses = {
+  done: 'status-done', progress: 'status-progress', missing: 'status-missing', na: 'status-na'
+};
+
+// Render tables
+phases.forEach(phase => {
+  const tbody = document.getElementById(phase.id);
+  if (!tbody) return;
+  
+  phase.items.forEach(([item, ...statuses]) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + item + '</td>' + 
+      statuses.map(s => {
+        const cls = statusClasses[s] || 'status-na';
+        const label = statusLabels[s] || '—';
+        return '<td><span class="' + cls + '">' + label + '</span></td>';
+      }).join('');
+    tbody.appendChild(tr);
+  });
+});
+
+// Summary stats
+const customers = ['Rank Labs', 'One Take Wonder', 'Sincerely Cozy', 'Colonoscopy KC', 'Maritime DJP', 'Sophia AI'];
+const summaryDiv = document.getElementById('summary');
+
+customers.forEach((name, ci) => {
+  let done = 0, progress = 0, missing = 0, total = 0;
+  phases.forEach(phase => {
+    phase.items.forEach(item => {
+      const s = item[ci + 1];
+      if (s === 'na') return;
+      total++;
+      if (s === 'done') done++;
+      else if (s === 'progress') progress++;
+      else if (s === 'missing') missing++;
+    });
+  });
+  
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const color = pct >= 80 ? 'num-green' : pct >= 50 ? 'num-yellow' : 'num-red';
+  
+  const stat = document.createElement('div');
+  stat.className = 'summary-stat';
+  stat.innerHTML = `
+    <div class="num ${color}">${pct}%</div>
+    <div class="label">${name}<br><span style="font-size:11px">${done}/${total} done</span></div>
+  `;
+  summaryDiv.appendChild(stat);
+});
+</script>
+
+</body>
+</html>
