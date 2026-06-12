@@ -1,503 +1,309 @@
-     1|     1|<!DOCTYPE html>
-     2|     2|<html lang="en">
-     3|     3|<head>
-     4|     4|<meta charset="UTF-8">
-     5|     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|     6|<title>Rank Labs — Customer Onboarding Tracker</title>
-     7|     7|<style>
-     8|     8|  :root {
-     9|     9|    --bg: #0a0a0f;
-    10|    10|    --surface: #0d1117;
-    11|    11|    --border: rgba(255,255,255,0.06);
-    12|    12|    --text: #e1e4e8;
-    13|    13|    --muted: #8b949e;
-    14|    14|    --green: #3fb950;
-    15|    15|    --green-bg: rgba(63,185,80,0.12);
-    16|    16|    --yellow: #d29922;
-    17|    17|    --yellow-bg: rgba(210,153,34,0.12);
-    18|    18|    --red: #f85149;
-    19|    19|    --red-bg: rgba(248,81,73,0.12);
-    20|    20|    --gray: #484f58;
-    21|    21|    --gray-bg: rgba(72,79,88,0.12);
-    22|    22|    --cyan: #06b6d4;
-    23|    23|  }
-    24|    24|  * { margin: 0; padding: 0; box-sizing: border-box; }
-    25|    25|  body {
-    26|    26|    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    27|    27|    background: var(--bg); color: var(--text); padding: 40px;
-    28|    28|    max-width: 1400px; margin: 0 auto; line-height: 1.5;
-    29|    29|  }
-    30|    30|  header { margin-bottom: 40px; }
-    31|    31|  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px;
-    32|    32|    background: linear-gradient(135deg, #7c3aed, #3b82f6);
-    33|    33|    -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    34|    34|  .subtitle { color: var(--muted); font-size: 14px; }
-    35|    35|  .legend { display: flex; gap: 24px; margin: 20px 0; flex-wrap: wrap; }
-    36|    36|  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
-    37|    37|  .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-    38|    38|  .dot-done { background: var(--green); }
-    39|    39|  .dot-progress { background: var(--yellow); }
-    40|    40|  .dot-missing { background: var(--red); }
-    41|    41|  .dot-na { background: var(--gray); }
-    42|    42|  
-    43|    43|  .phase { margin-bottom: 32px; }
-    44|    44|  .phase-header {
-    45|    45|    background: var(--surface); border: 1px solid var(--border);
-    46|    46|    border-radius: 10px; padding: 16px 24px; margin-bottom: 12px;
-    47|    47|    display: flex; justify-content: space-between; align-items: center;
-    48|    48|    cursor: pointer;
-    49|    49|  }
-    50|    50|  .phase-header:hover { border-color: rgba(255,255,255,0.12); }
-    51|    51|  .phase-name { font-size: 16px; font-weight: 600; }
-    52|    52|  .phase-count { font-size: 13px; color: var(--muted); }
-    53|    53|  .phase-progress { width: 120px; height: 6px; background: #21262d; border-radius: 3px; overflow: hidden; }
-    54|    54|  .phase-progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
-    55|    55|  
-    56|    56|  .table-wrap { overflow-x: auto; }
-    57|    57|  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    58|    58|  thead th {
-    59|    59|    position: sticky; top: 0; background: var(--surface);
-    60|    60|    padding: 10px 12px; text-align: left; font-weight: 600;
-    61|    61|    border-bottom: 2px solid var(--border); white-space: nowrap;
-    62|    62|  }
-    63|    63|  thead th:first-child { min-width: 200px; }
-    64|    64|  thead th.customer-col { 
-    65|    65|    min-width: 110px; text-align: center; font-size: 12px;
-    66|    66|  }
-    67|    67|  .plan-badge {
-    68|    68|    font-size: 10px; font-weight: 600; padding: 1px 6px;
-    69|    69|    border-radius: 4px; margin-left: 4px;
-    70|    70|  }
-    71|    71|  .plan-full { background: rgba(6,182,212,0.15); color: var(--cyan); }
-    72|    72|  .plan-geo { background: rgba(168,85,247,0.15); color: #a855f7; }
-    73|    73|  
-    74|    74|  tbody td {
-    75|    75|    padding: 8px 12px; border-bottom: 1px solid var(--border);
-    76|    76|    text-align: center; font-size: 13px; font-weight: 600;
-    77|    77|  }
-    78|    78|  tbody td:first-child { text-align: left; font-weight: 400; color: var(--text); }
-    79|    79|  tbody tr:hover { background: rgba(255,255,255,0.02); }
-    80|    80|  
-    81|    81|  .status-done { color: var(--green); background: var(--green-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
-    82|    82|  .status-progress { color: var(--yellow); background: var(--yellow-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
-    83|    83|  .status-missing { color: var(--red); background: var(--red-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
-    84|    84|  .status-na { color: var(--gray); background: var(--gray-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
-    85|    85|  
-    86|    86|  .summary-bar {
-    87|    87|    background: var(--surface); border: 1px solid var(--border);
-    88|    88|    border-radius: 10px; padding: 20px 24px; margin-bottom: 40px;
-    89|    89|    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
-    90|    90|  }
-    91|    91|  .summary-stat { text-align: center; }
-    92|    92|  .summary-stat .num { font-size: 32px; font-weight: 700; }
-    93|    93|  .summary-stat .label { font-size: 12px; color: var(--muted); margin-top: 4px; }
-    94|    94|  .num-green { color: var(--green); }
-    95|    95|  .num-yellow { color: var(--yellow); }
-    96|    96|  .num-red { color: var(--red); }
-    97|    97|</style>
-    98|    98|</head>
-    99|    99|<body>
-   100|   100|
-   101|   101|<header>
-   102|   102|  <h1>Customer Onboarding Tracker</h1>
-   103|   103|  <p class="subtitle">Which checklist items are GREEN per customer · Last updated: June 12, 2026</p>
-   104|   104|  <div class="legend">
-   105|   105|    <div class="legend-item"><span class="dot dot-done"></span> Done (GREEN)</div>
-   106|   106|    <div class="legend-item"><span class="dot dot-progress"></span> In Progress</div>
-   107|   107|    <div class="legend-item"><span class="dot dot-missing"></span> Not Started</div>
-   108|   108|    <div class="legend-item"><span class="dot dot-na"></span> N/A (wrong plan)</div>
-   109|   109|  </div>
-   110|   110|</header>
-   111|   111|
-   112|   112|<div class="summary-bar" id="summary"></div>
-   113|   113|
-   114|   114|<!-- PHASE 1: Provisioning (Full Management only) -->
-   115|   115|<div class="phase">
-   116|   116|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   117|   117|    <span class="phase-name">🏗️ Phase 1: Site Provisioning</span>
-   118|   118|    <span class="phase-count">Full Management only · 10 items</span>
-   119|   119|  </div>
-   120|   120|  <div class="table-wrap">
-   121|   121|    <table>
-   122|   122|      <thead>
-   123|   123|        <tr>
-   124|   124|          <th>Checklist Item</th>
-   125|   125|          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
-   126|   126|          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
-   127|   127|          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
-   128|   128|          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
-   129|   129|          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
-   130|   130|          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
-   131|   131|        </tr>
-   132|   132|      </thead>
-   133|   133|      <tbody id="phase1"></tbody>
-   134|   134|    </table>
-   135|   135|  </div>
-   136|   136|</div>
-   137|   137|
-   138|   138|<!-- PHASE 2: SEO Foundation -->
-   139|   139|<div class="phase">
-   140|   140|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   141|   141|    <span class="phase-name">🔍 Phase 2: SEO Foundation</span>
-   142|   142|    <span class="phase-count">All plans · 16 items</span>
-   143|   143|  </div>
-   144|   144|  <div class="table-wrap">
-   145|   145|    <table>
-   146|   146|      <thead>
-   147|   147|        <tr>
-   148|   148|          <th>Checklist Item</th>
-   149|   149|          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
-   150|   150|          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
-   151|   151|          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
-   152|   152|          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
-   153|   153|          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
-   154|   154|          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
-   155|   155|        </tr>
-   156|   156|      </thead>
-   157|   157|      <tbody id="phase2"></tbody>
-   158|   158|    </table>
-   159|   159|  </div>
-   160|   160|</div>
-   161|   161|
-   162|   162|<!-- PHASE 3: GEO Visibility -->
-   163|   163|<div class="phase">
-   164|   164|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   165|   165|    <span class="phase-name">🌐 Phase 3: GEO Engine Visibility</span>
-   166|   166|    <span class="phase-count">All plans · 6 items</span>
-   167|   167|  </div>
-   168|   168|  <div class="table-wrap">
-   169|   169|    <table>
-   170|   170|      <thead>
-   171|   171|        <tr>
-   172|   172|          <th>Checklist Item</th>
-   173|   173|          <th class="customer-col">Rank Labs</th>
-   174|   174|          <th class="customer-col">OTWM</th>
-   175|   175|          <th class="customer-col">Sincerely Cozy</th>
-   176|   176|          <th class="customer-col">Colonoscopy KC</th>
-   177|   177|          <th class="customer-col">Maritime DJP</th>
-   178|   178|          <th class="customer-col">Sophia AI</th>
-   179|   179|        </tr>
-   180|   180|      </thead>
-   181|   181|      <tbody id="phase3"></tbody>
-   182|   182|    </table>
-   183|   183|  </div>
-   184|   184|</div>
-   185|   185|
-   186|   186|<!-- PHASE 4: Data & Tracking -->
-   187|   187|<div class="phase">
-   188|   188|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   189|   189|    <span class="phase-name">📊 Phase 4: Data & Tracking</span>
-   190|   190|    <span class="phase-count">All plans · 8 items</span>
-   191|   191|  </div>
-   192|   192|  <div class="table-wrap">
-   193|   193|    <table>
-   194|   194|      <thead>
-   195|   195|        <tr>
-   196|   196|          <th>Checklist Item</th>
-   197|   197|          <th class="customer-col">Rank Labs</th>
-   198|   198|          <th class="customer-col">OTWM</th>
-   199|   199|          <th class="customer-col">Sincerely Cozy</th>
-   200|   200|          <th class="customer-col">Colonoscopy KC</th>
-   201|   201|          <th class="customer-col">Maritime DJP</th>
-   202|   202|          <th class="customer-col">Sophia AI</th>
-   203|   203|        </tr>
-   204|   204|      </thead>
-   205|   205|      <tbody id="phase4"></tbody>
-   206|   206|    </table>
-   207|   207|  </div>
-   208|   208|</div>
-   209|   209|
-   210|   210|<!-- PHASE 5: Content Pipeline (Full only) -->
-   211|   211|<div class="phase">
-   212|   212|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   213|   213|    <span class="phase-name">✍️ Phase 5: Content Pipeline</span>
-   214|   214|    <span class="phase-count">Full Management only · 7 items</span>
-   215|   215|  </div>
-   216|   216|  <div class="table-wrap">
-   217|   217|    <table>
-   218|   218|      <thead>
-   219|   219|        <tr>
-   220|   220|          <th>Checklist Item</th>
-   221|   221|          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
-   222|   222|          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
-   223|   223|          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
-   224|   224|          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
-   225|   225|          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
-   226|   226|          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
-   227|   227|        </tr>
-   228|   228|      </thead>
-   229|   229|      <tbody id="phase5"></tbody>
-   230|   230|    </table>
-   231|   231|  </div>
-   232|   232|</div>
-   233|   233|
-   234|   234|<!-- PHASE 6: Build-Work Agents (Full only) -->
-   235|   235|<div class="phase">
-   236|   236|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   237|   237|    <span class="phase-name">🤖 Phase 6: Build-Work Agents</span>
-   238|   238|    <span class="phase-count">Full Management only · 14 items</span>
-   239|   239|  </div>
-   240|   240|  <div class="table-wrap">
-   241|   241|    <table>
-   242|   242|      <thead>
-   243|   243|        <tr>
-   244|   244|          <th>Checklist Item</th>
-   245|   245|          <th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th>
-   246|   246|          <th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th>
-   247|   247|          <th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th>
-   248|   248|          <th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th>
-   249|   249|          <th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th>
-   250|   250|          <th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th>
-   251|   251|        </tr>
-   252|   252|      </thead>
-   253|   253|      <tbody id="phase6"></tbody>
-   254|   254|    </table>
-   255|   255|  </div>
-   256|   256|</div>
-   257|   257|
-   258|   258|<!-- PHASE 7: Business Listings -->
-   259|   259|<div class="phase">
-   260|   260|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   261|   261|    <span class="phase-name">📋 Phase 7: Business Listings</span>
-   262|   262|    <span class="phase-count">All plans · 5 items</span>
-   263|   263|  </div>
-   264|   264|  <div class="table-wrap">
-   265|   265|    <table>
-   266|   266|      <thead>
-   267|   267|        <tr>
-   268|   268|          <th>Checklist Item</th>
-   269|   269|          <th class="customer-col">Rank Labs</th>
-   270|   270|          <th class="customer-col">OTWM</th>
-   271|   271|          <th class="customer-col">Sincerely Cozy</th>
-   272|   272|          <th class="customer-col">Colonoscopy KC</th>
-   273|   273|          <th class="customer-col">Maritime DJP</th>
-   274|   274|          <th class="customer-col">Sophia AI</th>
-   275|   275|        </tr>
-   276|   276|      </thead>
-   277|   277|      <tbody id="phase7"></tbody>
-   278|   278|    </table>
-   279|   279|  </div>
-   280|   280|</div>
-   281|   281|
-   282|   282|<!-- PHASE 8: Reporting & Delivery -->
-   283|   283|<div class="phase">
-   284|   284|  <div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
-   285|   285|    <span class="phase-name">📧 Phase 8: Reporting & Delivery</span>
-   286|   286|    <span class="phase-count">All plans · 6 items</span>
-   287|   287|  </div>
-   288|   288|  <div class="table-wrap">
-   289|   289|    <table>
-   290|   290|      <thead>
-   291|   291|        <tr>
-   292|   292|          <th>Checklist Item</th>
-   293|   293|          <th class="customer-col">Rank Labs</th>
-   294|   294|          <th class="customer-col">OTWM</th>
-   295|   295|          <th class="customer-col">Sincerely Cozy</th>
-   296|   296|          <th class="customer-col">Colonoscopy KC</th>
-   297|   297|          <th class="customer-col">Maritime DJP</th>
-   298|   298|          <th class="customer-col">Sophia AI</th>
-   299|   299|        </tr>
-   300|   300|      </thead>
-   301|   301|      <tbody id="phase8"></tbody>
-   302|   302|    </table>
-   303|   303|  </div>
-   304|   304|</div>
-   305|   305|
-   306|   306|<script>
-   307|   307|// ── DATA ──────────────────────────────────────────
-   308|   308|// EDIT THIS SECTION to update statuses.
-   309|   309|// Statuses: 'done' (green ✓), 'progress' (yellow ◐), 'missing' (red ✗), 'na' (gray —)
-   310|   310|// Customers: 0=RankLabs, 1=OTWM, 2=SincerelyCozy, 3=ColonoscopyKC, 4=MaritimeDJP, 5=SophiaAI
-   311|   311|
-   312|   312|const phases = [
-   313|   313|  {
-   314|   314|    id: 'phase1', name: 'Site Provisioning', fullOnly: true,
-   315|   315|    items: [
-   316|   316|      ['Site source acquired','done','done','done','done','done','done'],
-   317|   317|      ['GitHub repo created','done','done','done','done','done','done'],
-   318|   318|      ['Site pushed to GitHub','done','done','done','done','done','done'],
-   319|   319|      ['Cloudflare Pages project','done','done','done','done','done','done'],
-   320|   320|      ['Auto-deploy workflow','done','done','done','done','done','done'],
-   321|   321|      ['Custom domain + DNS','done','done','done','done','done','done'],
-   322|   322|      ['DNS migration (if needed)','na','done','na','done','done','na'],
-   323|   323|   324|      ['Keywords file created','done','done','done','done','done','done'],
-   324|   325|      ['Competitors configured','done','done','done','done','missing','done'],
-   325|   326|      ['Cron job scheduled','done','done','done','done','done','missing'],
-   326|   327|    ]
-   327|   328|  },
-   328|   329|  {
-   329|   330|    id: 'phase2', name: 'SEO Foundation', fullOnly: false,
-   330|   331|    items: [
-   331|   332|      ['Initial multi-page crawl','done','done','done','done','done','done'],
-   332|   333|      ['Initial audit (all pages)','done','done','done','done','done','done'],
-   333|   334|      ['Title tags — all unique','done','done','done','done','missing','done'],
-   334|   335|      ['Meta descriptions — all unique','done','done','done','done','missing','done'],
-   335|   336|      ['H1 structure — one per page','done','done','done','done','missing','done'],
-   336|   337|      ['Canonical URLs','done','done','done','done','missing','done'],
-   337|   338|      ['Open Graph tags','done','done','done','done','missing','done'],
-   338|   339|      ['Twitter Card tags','done','done','done','done','missing','done'],
-   339|   340|      ['Schema markup (full stack)','done','done','done','done','missing','done'],
-   340|   341|      ['Sitemap','done','done','done','done','done','done'],
-   341|   342|      ['Image alt text','done','done','done','done','missing','missing'],
-   342|   343|      ['Page speed optimization','done','done','progress','done','missing','missing'],
-   343|   344|      ['Mobile responsive','done','done','done','done','done','done'],
-   344|   345|      ['Zero broken links','done','done','done','done','done','done'],
-   345|   346|      ['robots.txt optimized','done','done','done','done','missing','done'],
-   346|   347|      ['HTTPS enforced','done','done','done','done','done','done'],
-   347|   348|    ]
-   348|   349|  },
-   349|   350|  {
-   350|   351|      {
-   351|    id: 'phase3', name: 'GEO Engine Visibility', fullOnly: false,
-   352|    items: [
-   353|      ['ChatGPT: Meta description optimized','done','done','done','done','missing','missing'],
-   354|      ['ChatGPT: Schema markup deployed','done','done','done','done','missing','done'],
-   355|      ['ChatGPT: Direct-answer content structured','done','done','done','progress','missing','missing'],
-   356|      ['ChatGPT: GPTBot crawl access verified','done','done','done','done','missing','done'],
-   357|      ['ChatGPT: OG tags + social signals','done','done','done','done','missing','done'],
-   358|      ['→ ChatGPT score 100/100','done','done','done','done','missing','missing'],
-   359|      ['Claude: Content depth 800+ words key pages','done','done','progress','progress','missing','missing'],
-   360|      ['Claude: Authoritative backlinks present','progress','progress','progress','progress','missing','missing'],
-   361|      ['Claude: ClaudeBot crawl access verified','done','done','done','done','missing','done'],
-   362|      ['Claude: OG tags deployed','done','done','done','done','missing','done'],
-   363|      ['Claude: Citation consistency verified','progress','progress','progress','progress','missing','missing'],
-   364|      ['→ Claude score 100/100','progress','progress','progress','progress','missing','missing'],
-   365|      ['Gemini: Google Business Profile verified','done','done','done','missing','missing','na'],
-   366|      ['Gemini: Schema markup deployed','done','done','done','done','missing','done'],
-   367|      ['Gemini: Page speed optimized (<3s)','done','done','progress','done','missing','missing'],
-   368|      ['Gemini: Title tags present + unique','done','done','done','done','missing','done'],
-   369|      ['Gemini: Mobile-friendly verified','done','done','done','done','done','done'],
-   370|      ['Gemini: Review & reputation monitoring','progress','progress','progress','missing','missing','na'],
-   371|      ['→ Gemini score 65+/100','done','done','done','done','missing','missing'],
-   372|      ['Perplexity: FAQ + direct-answer content','done','done','done','done','missing','missing'],
-   373|      ['Perplexity: Schema markup for citations','done','done','done','done','missing','done'],
-   374|      ['Perplexity: PerplexityBot crawl access','done','done','done','done','missing','done'],
-   375|      ['Perplexity: Fresh content signals','done','done','done','done','missing','missing'],
-   376|      ['Perplexity: Clean crawlable page structure','done','done','done','done','missing','done'],
-   377|      ['→ Perplexity score 100/100','done','done','done','done','missing','missing'],
-   378|      ['GEO checklist on marketing site','done','na','na','na','na','na'],
-   379|    ]
-   380|  },
-   381|id: 'phase4', name: 'Data & Tracking', fullOnly: false,
-   382|   363|    items: [
-   383|   364|      ['Keyword position tracking','done','done','done','done','done','missing'],
-   384|   365|      ['Backlink monitoring','done','done','done','done','done','missing'],
-   385|   366|      ['Competitor gap analysis','progress','progress','progress','progress','missing','missing'],
-   386|   367|      ['Keyword volume data','missing','missing','missing','missing','missing','missing'],
-   387|   368|      ['GA4 connected','done','done','done','done','done','na'],
-   388|   369|      ['GA4 data flowing','missing','missing','missing','missing','missing','na'],
-   389|   370|      ['GSC verified','done','done','done','done','missing','na'],
-   390|   371|      ['Metrics snapshots','progress','done','done','done','missing','missing'],
-   391|   372|    ]
-   392|   373|  },
-   393|   374|  {
-   394|   375|    id: 'phase5', name: 'Content Pipeline', fullOnly: true,
-   395|   376|    items: [
-   396|   377|      ['Blog agent first run','done','done','done','done','missing','missing'],
-   397|   378|      ['Blog tracker initialized','done','done','done','done','missing','missing'],
-   398|   379|      ['First blog approval email sent','done','done','done','done','missing','missing'],
-   399|   380|      ['Blog approval handler active','done','done','done','done','missing','missing'],
-   400|   381|      ['Blog published to live site','done','done','done','done','missing','missing'],
-   401|   382|      ['Blog images inserted','done','done','progress','progress','missing','missing'],
-   402|   383|      ['Blog pipeline verified','done','done','done','done','missing','missing'],
-   403|   384|    ]
-   404|   385|  },
-   405|   386|  {
-   406|   387|    id: 'phase6', name: 'Build-Work Agents', fullOnly: true,
-   407|   388|    items: [
-   408|   389|      ['Local Schema','done','done','done','done','missing','missing'],
-   409|   390|      ['FAQ Schema','done','done','done','done','missing','missing'],
-   410|   391|      ['Link Architecture','done','done','done','done','missing','missing'],
-   411|   392|      ['Crawl Optimization','done','done','done','done','missing','missing'],
-   412|   393|      ['CTA Strategy','done','done','done','done','missing','missing'],
-   413|   394|      ['Long-Tail Keywords','done','done','done','done','missing','missing'],
-   414|   395|      ['Core Web Vitals','done','done','done','done','missing','missing'],
-   415|   396|      ['Conversion Content','done','done','done','done','missing','missing'],
-   416|   397|      ['Landing Refinement','done','done','done','done','missing','missing'],
-   417|   398|      ['Content Calendar','done','done','done','done','missing','missing'],
-   418|   399|      ['Service Pages','done','done','done','done','missing','missing'],
-   419|   400|      ['Keyword Mapping','done','done','done','done','missing','missing'],
-   420|   401|      ['Benchmarks','done','done','done','done','missing','missing'],
-   421|   402|      ['GBP Optimization','progress','progress','progress','progress','missing','missing'],
-   422|   403|    ]
-   423|   404|  },
-   424|   405|  {
-   425|   406|    id: 'phase7', name: 'Business Listings', fullOnly: false,
-   426|   407|    items: [
-   427|   408|      ['Google Business Profile verified','done','done','done','missing','missing','na'],
-   428|   409|      ['GBP optimization applied','progress','progress','progress','missing','missing','na'],
-   429|   410|      ['Facebook Page verified','done','done','done','missing','missing','na'],
-   430|   411|      ['Foursquare listing verified','missing','missing','missing','missing','missing','missing'],
-   431|   412|      ['Bing Places verified','done','done','done','missing','missing','na'],
-   432|   413|    ]
-   433|   414|  },
-   434|   415|  {
-   435|   416|    id: 'phase8', name: 'Reporting & Delivery', fullOnly: false,
-   436|   417|    items: [
-   437|   418|      ['Weekly report generates','done','done','done','done','done','missing'],
-   438|   419|      ['All 25 sections GREEN','progress','progress','progress','progress','progress','missing'],
-   439|   420|      ['Report email delivers','done','done','done','done','done','missing'],
-   440|   421|      ['Fix request pipeline','done','done','done','done','missing','missing'],
-   441|   422|      ['Monthly improvement report','done','done','done','done','missing','missing'],
-   442|   423|      ['Provisioning state → complete','done','done','done','done','missing','missing'],
-   443|   424|    ]
-   444|   425|  },
-   445|   426|];
-   446|   427|
-   447|   428|const statusLabels = {
-   448|   429|  done: '✓', progress: '◐', missing: '✗', na: '—'
-   449|   430|};
-   450|   431|const statusClasses = {
-   451|   432|  done: 'status-done', progress: 'status-progress', missing: 'status-missing', na: 'status-na'
-   452|   433|};
-   453|   434|
-   454|   435|// Render tables
-   455|   436|phases.forEach(phase => {
-   456|   437|  const tbody = document.getElementById(phase.id);
-   457|   438|  if (!tbody) return;
-   458|   439|  
-   459|   440|  phase.items.forEach(([item, ...statuses]) => {
-   460|   441|    const tr = document.createElement('tr');
-   461|   442|    tr.innerHTML = '<td>' + item + '</td>' + 
-   462|   443|      statuses.map(s => {
-   463|   444|        const cls = statusClasses[s] || 'status-na';
-   464|   445|        const label = statusLabels[s] || '—';
-   465|   446|        return '<td><span class="' + cls + '">' + label + '</span></td>';
-   466|   447|      }).join('');
-   467|   448|    tbody.appendChild(tr);
-   468|   449|  });
-   469|   450|});
-   470|   451|
-   471|   452|// Summary stats
-   472|   453|const customers = ['Rank Labs', 'One Take Wonder', 'Sincerely Cozy', 'Colonoscopy KC', 'Maritime DJP', 'Sophia AI'];
-   473|   454|const summaryDiv = document.getElementById('summary');
-   474|   455|
-   475|   456|customers.forEach((name, ci) => {
-   476|   457|  let done = 0, progress = 0, missing = 0, total = 0;
-   477|   458|  phases.forEach(phase => {
-   478|   459|    phase.items.forEach(item => {
-   479|   460|      const s = item[ci + 1];
-   480|   461|      if (s === 'na') return;
-   481|   462|      total++;
-   482|   463|      if (s === 'done') done++;
-   483|   464|      else if (s === 'progress') progress++;
-   484|   465|      else if (s === 'missing') missing++;
-   485|   466|    });
-   486|   467|  });
-   487|   468|  
-   488|   469|  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-   489|   470|  const color = pct >= 80 ? 'num-green' : pct >= 50 ? 'num-yellow' : 'num-red';
-   490|   471|  
-   491|   472|  const stat = document.createElement('div');
-   492|   473|  stat.className = 'summary-stat';
-   493|   474|  stat.innerHTML = `
-   494|   475|    <div class="num ${color}">${pct}%</div>
-   495|   476|    <div class="label">${name}<br><span style="font-size:11px">${done}/${total} done</span></div>
-   496|   477|  `;
-   497|   478|  summaryDiv.appendChild(stat);
-   498|   479|});
-   499|   480|</script>
-   500|   481|
-   501|   482|</body>
-   502|   483|</html>
-   503|   484|
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rank Labs — Customer Onboarding Tracker</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #0d1117;
+    --border: rgba(255,255,255,0.06);
+    --text: #e1e4e8;
+    --muted: #8b949e;
+    --green: #3fb950;
+    --green-bg: rgba(63,185,80,0.12);
+    --yellow: #d29922;
+    --yellow-bg: rgba(210,153,34,0.12);
+    --red: #f85149;
+    --red-bg: rgba(248,81,73,0.12);
+    --gray: #484f58;
+    --gray-bg: rgba(72,79,88,0.12);
+    --cyan: #06b6d4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text); padding: 40px;
+    max-width: 1400px; margin: 0 auto; line-height: 1.5;
+  }
+  header { margin-bottom: 40px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--muted); font-size: 14px; }
+  .legend { display: flex; gap: 24px; margin: 20px 0; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+  .dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .dot-done { background: var(--green); }
+  .dot-progress { background: var(--yellow); }
+  .dot-missing { background: var(--red); }
+  .dot-na { background: var(--gray); }
+  .phase { margin-bottom: 32px; }
+  .phase-header {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 24px; margin-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer;
+  }
+  .phase-header:hover { border-color: rgba(255,255,255,0.12); }
+  .phase-name { font-size: 16px; font-weight: 600; }
+  .phase-count { font-size: 13px; color: var(--muted); }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    position: sticky; top: 0; background: var(--surface);
+    padding: 10px 12px; text-align: left; font-weight: 600;
+    border-bottom: 2px solid var(--border); white-space: nowrap;
+  }
+  thead th:first-child { min-width: 200px; }
+  thead th.customer-col { 
+    min-width: 110px; text-align: center; font-size: 12px;
+  }
+  .plan-badge {
+    font-size: 10px; font-weight: 600; padding: 1px 6px;
+    border-radius: 4px; margin-left: 4px;
+  }
+  .plan-full { background: rgba(6,182,212,0.15); color: var(--cyan); }
+  .plan-geo { background: rgba(168,85,247,0.15); color: #a855f7; }
+  tbody td {
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    text-align: center; font-size: 13px; font-weight: 600;
+  }
+  tbody td:first-child { text-align: left; font-weight: 400; color: var(--text); }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  .status-done { color: var(--green); background: var(--green-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  .status-progress { color: var(--yellow); background: var(--yellow-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  .status-missing { color: var(--red); background: var(--red-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  .status-na { color: var(--gray); background: var(--gray-bg); border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  .summary-bar {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px; margin-bottom: 40px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
+  }
+  .summary-stat { text-align: center; }
+  .summary-stat .num { font-size: 32px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .num-green { color: var(--green); }
+  .num-yellow { color: var(--yellow); }
+  .num-red { color: var(--red); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Customer Onboarding Tracker</h1>
+  <p class="subtitle">Which checklist items are GREEN per customer · Last updated: June 12, 2026</p>
+  <div class="legend">
+    <div class="legend-item"><span class="dot dot-done"></span> Done (GREEN)</div>
+    <div class="legend-item"><span class="dot dot-progress"></span> In Progress</div>
+    <div class="legend-item"><span class="dot dot-missing"></span> Not Started</div>
+    <div class="legend-item"><span class="dot dot-na"></span> N/A (wrong plan)</div>
+  </div>
+</header>
+
+<div class="summary-bar" id="summary"></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">🏗️ Phase 1: Site Provisioning</span><span class="phase-count">Full Management only · 10 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th></tr></thead><tbody id="phase1"></tbody></table></div></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">🔍 Phase 2: SEO Foundation</span><span class="phase-count">All plans · 17 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th></tr></thead><tbody id="phase2"></tbody></table></div></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">🌐 Phase 3: GEO Engine Visibility</span><span class="phase-count">All plans · 27 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs</th><th class="customer-col">OTWM</th><th class="customer-col">Sincerely Cozy</th><th class="customer-col">Colonoscopy KC</th><th class="customer-col">Maritime DJP</th><th class="customer-col">Sophia AI</th></tr></thead><tbody id="phase3"></tbody></table></div></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">📊 Phase 4: Data & Tracking</span><span class="phase-count">All plans · 8 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs</th><th class="customer-col">OTWM</th><th class="customer-col">Sincerely Cozy</th><th class="customer-col">Colonoscopy KC</th><th class="customer-col">Maritime DJP</th><th class="customer-col">Sophia AI</th></tr></thead><tbody id="phase4"></tbody></table></div></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">✍️ Phase 5: Content Pipeline</span><span class="phase-count">Full Management only · 7 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th></tr></thead><tbody id="phase5"></tbody></table></div></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">🤖 Phase 6: Build-Work Agents</span><span class="phase-count">Full Management only · 14 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">OTWM<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sincerely Cozy<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Colonoscopy KC<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Maritime DJP<br><span class="plan-badge plan-full">Full</span></th><th class="customer-col">Sophia AI<br><span class="plan-badge plan-full">Full</span></th></tr></thead><tbody id="phase6"></tbody></table></div></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">📋 Phase 7: Business Listings</span><span class="phase-count">All plans · 5 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs</th><th class="customer-col">OTWM</th><th class="customer-col">Sincerely Cozy</th><th class="customer-col">Colonoscopy KC</th><th class="customer-col">Maritime DJP</th><th class="customer-col">Sophia AI</th></tr></thead><tbody id="phase7"></tbody></table></div></div>
+
+<div class="phase"><div class="phase-header" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="phase-name">📧 Phase 8: Reporting & Delivery</span><span class="phase-count">All plans · 6 items</span></div><div class="table-wrap"><table><thead><tr><th>Checklist Item</th><th class="customer-col">Rank Labs</th><th class="customer-col">OTWM</th><th class="customer-col">Sincerely Cozy</th><th class="customer-col">Colonoscopy KC</th><th class="customer-col">Maritime DJP</th><th class="customer-col">Sophia AI</th></tr></thead><tbody id="phase8"></tbody></table></div></div>
+
+<script>
+var phases = [
+  {
+    id: 'phase1', name: 'Site Provisioning', fullOnly: true,
+    items: [
+      ['Site source acquired','done','done','done','done','done','done'],
+      ['GitHub repo created','done','done','done','done','done','done'],
+      ['Site pushed to GitHub','done','done','done','done','done','done'],
+      ['Cloudflare Pages project','done','done','done','done','done','done'],
+      ['Auto-deploy workflow','done','done','done','done','done','done'],
+      ['Custom domain + DNS','done','done','done','done','done','done'],
+      ['DNS migration (if needed)','na','done','na','done','done','na'],
+      ['Keywords file created','done','done','done','done','done','done'],
+      ['Competitors configured','done','done','done','done','missing','done'],
+      ['Cron job scheduled','done','done','done','done','done','missing'],
+    ]
+  },
+  {
+    id: 'phase2', name: 'SEO Foundation', fullOnly: false,
+    items: [
+      ['Customer in customers.yaml','done','done','done','done','done','done'],
+      ['Initial multi-page crawl','done','done','done','done','done','done'],
+      ['Initial audit (all pages)','done','done','done','done','done','done'],
+      ['Title tags — all unique','done','done','done','done','missing','done'],
+      ['Meta descriptions — all unique','done','done','done','done','missing','done'],
+      ['H1 structure — one per page','done','done','done','done','missing','done'],
+      ['Canonical URLs','done','done','done','done','missing','done'],
+      ['Open Graph tags','done','done','done','done','missing','done'],
+      ['Twitter Card tags','done','done','done','done','missing','done'],
+      ['Schema markup (full stack)','done','done','done','done','missing','done'],
+      ['Sitemap','done','done','done','done','done','done'],
+      ['Image alt text','done','done','done','done','missing','missing'],
+      ['Page speed optimization','done','done','progress','done','missing','missing'],
+      ['Mobile responsive','done','done','done','done','done','done'],
+      ['Zero broken links','done','done','done','done','done','done'],
+      ['robots.txt optimized','done','done','done','done','missing','done'],
+      ['HTTPS enforced','done','done','done','done','done','done'],
+    ]
+  },
+  {
+    id: 'phase3', name: 'GEO Engine Visibility', fullOnly: false,
+    items: [
+      ['ChatGPT: Meta description optimized','done','done','done','done','missing','missing'],
+      ['ChatGPT: Schema markup deployed','done','done','done','done','missing','done'],
+      ['ChatGPT: Direct-answer content structured','done','done','done','progress','missing','missing'],
+      ['ChatGPT: GPTBot crawl access verified','done','done','done','done','missing','done'],
+      ['ChatGPT: OG tags + social signals','done','done','done','done','missing','done'],
+      ['→ ChatGPT score 100/100','done','done','done','done','missing','missing'],
+      ['Claude: Content depth 800+ words','done','done','progress','progress','missing','missing'],
+      ['Claude: Authoritative backlinks present','progress','progress','progress','progress','missing','missing'],
+      ['Claude: ClaudeBot crawl access verified','done','done','done','done','missing','done'],
+      ['Claude: OG tags deployed','done','done','done','done','missing','done'],
+      ['Claude: Citation consistency verified','progress','progress','progress','progress','missing','missing'],
+      ['→ Claude score 100/100','progress','progress','progress','progress','missing','missing'],
+      ['Gemini: Google Business Profile verified','done','done','done','missing','missing','na'],
+      ['Gemini: Schema markup deployed','done','done','done','done','missing','done'],
+      ['Gemini: Page speed optimized (<3s)','done','done','progress','done','missing','missing'],
+      ['Gemini: Title tags present + unique','done','done','done','done','missing','done'],
+      ['Gemini: Mobile-friendly verified','done','done','done','done','done','done'],
+      ['Gemini: Review & reputation monitoring','progress','progress','progress','missing','missing','na'],
+      ['→ Gemini score 65+/100','done','done','done','done','missing','missing'],
+      ['Perplexity: FAQ + direct-answer content','done','done','done','done','missing','missing'],
+      ['Perplexity: Schema markup for citations','done','done','done','done','missing','done'],
+      ['Perplexity: PerplexityBot crawl access','done','done','done','done','missing','done'],
+      ['Perplexity: Fresh content signals','done','done','done','done','missing','missing'],
+      ['Perplexity: Clean crawlable structure','done','done','done','done','missing','done'],
+      ['→ Perplexity score 100/100','done','done','done','done','missing','missing'],
+      ['GEO checklist on marketing site','done','na','na','na','na','na'],
+    ]
+  },
+  {
+    id: 'phase4', name: 'Data & Tracking', fullOnly: false,
+    items: [
+      ['Keyword position tracking','done','done','done','done','done','missing'],
+      ['Backlink monitoring','done','done','done','done','done','missing'],
+      ['Competitor gap analysis','progress','progress','progress','progress','missing','missing'],
+      ['Keyword volume data','missing','missing','missing','missing','missing','missing'],
+      ['GA4 connected','done','done','done','done','done','na'],
+      ['GA4 data flowing','missing','missing','missing','missing','missing','na'],
+      ['GSC verified','done','done','done','done','missing','na'],
+      ['Metrics snapshots','progress','done','done','done','missing','missing'],
+    ]
+  },
+  {
+    id: 'phase5', name: 'Content Pipeline', fullOnly: true,
+    items: [
+      ['Blog agent first run','done','done','done','done','missing','missing'],
+      ['Blog tracker initialized','done','done','done','done','missing','missing'],
+      ['First blog approval email sent','done','done','done','done','missing','missing'],
+      ['Blog approval handler active','done','done','done','done','missing','missing'],
+      ['Blog published to live site','done','done','done','done','missing','missing'],
+      ['Blog images inserted','done','done','progress','progress','missing','missing'],
+      ['Blog pipeline verified','done','done','done','done','missing','missing'],
+    ]
+  },
+  {
+    id: 'phase6', name: 'Build-Work Agents', fullOnly: true,
+    items: [
+      ['Local Schema','done','done','done','done','missing','missing'],
+      ['FAQ Schema','done','done','done','done','missing','missing'],
+      ['Link Architecture','done','done','done','done','missing','missing'],
+      ['Crawl Optimization','done','done','done','done','missing','missing'],
+      ['CTA Strategy','done','done','done','done','missing','missing'],
+      ['Long-Tail Keywords','done','done','done','done','missing','missing'],
+      ['Core Web Vitals','done','done','done','done','missing','missing'],
+      ['Conversion Content','done','done','done','done','missing','missing'],
+      ['Landing Refinement','done','done','done','done','missing','missing'],
+      ['Content Calendar','done','done','done','done','missing','missing'],
+      ['Service Pages','done','done','done','done','missing','missing'],
+      ['Keyword Mapping','done','done','done','done','missing','missing'],
+      ['Benchmarks','done','done','done','done','missing','missing'],
+      ['GBP Optimization','progress','progress','progress','progress','missing','missing'],
+    ]
+  },
+  {
+    id: 'phase7', name: 'Business Listings', fullOnly: false,
+    items: [
+      ['Google Business Profile verified','done','done','done','missing','missing','na'],
+      ['GBP optimization applied','progress','progress','progress','missing','missing','na'],
+      ['Facebook Page verified','done','done','done','missing','missing','na'],
+      ['Foursquare listing verified','missing','missing','missing','missing','missing','missing'],
+      ['Bing Places verified','done','done','done','missing','missing','na'],
+    ]
+  },
+  {
+    id: 'phase8', name: 'Reporting & Delivery', fullOnly: false,
+    items: [
+      ['Weekly report generates','done','done','done','done','done','missing'],
+      ['All 25 sections GREEN','progress','progress','progress','progress','progress','missing'],
+      ['Report email delivers','done','done','done','done','done','missing'],
+      ['Fix request pipeline','done','done','done','done','missing','missing'],
+      ['Monthly improvement report','done','done','done','done','missing','missing'],
+      ['Provisioning state → complete','done','done','done','done','missing','missing'],
+    ]
+  },
+];
+
+var statusLabels = { done: '✓', progress: '◐', missing: '✗', na: '—' };
+var statusClasses = { done: 'status-done', progress: 'status-progress', missing: 'status-missing', na: 'status-na' };
+
+phases.forEach(function(phase) {
+  var tbody = document.getElementById(phase.id);
+  if (!tbody) return;
+  phase.items.forEach(function(item) {
+    var label = item[0];
+    var statuses = item.slice(1);
+    var tr = document.createElement('tr');
+    var tdLabel = document.createElement('td');
+    tdLabel.textContent = label;
+    tr.appendChild(tdLabel);
+    statuses.forEach(function(s) {
+      var td = document.createElement('td');
+      var span = document.createElement('span');
+      span.className = statusClasses[s] || 'status-na';
+      span.textContent = statusLabels[s] || '—';
+      td.appendChild(span);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+});
+
+var customers = ['Rank Labs', 'One Take Wonder', 'Sincerely Cozy', 'Colonoscopy KC', 'Maritime DJP', 'Sophia AI'];
+var summaryDiv = document.getElementById('summary');
+
+customers.forEach(function(name, ci) {
+  var done = 0, progress = 0, missing = 0, total = 0;
+  phases.forEach(function(phase) {
+    phase.items.forEach(function(item) {
+      var s = item[ci + 1];
+      if (s === 'na') return;
+      total++;
+      if (s === 'done') done++;
+      else if (s === 'progress') progress++;
+      else if (s === 'missing') missing++;
+    });
+  });
+  var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  var color = pct >= 80 ? 'num-green' : pct >= 50 ? 'num-yellow' : 'num-red';
+  var stat = document.createElement('div');
+  stat.className = 'summary-stat';
+  stat.innerHTML = '<div class="num ' + color + '">' + pct + '%</div><div class="label">' + name + '<br><span style="font-size:11px">' + done + '/' + total + ' done</span></div>';
+  summaryDiv.appendChild(stat);
+});
+</script>
+</body>
+</html>
