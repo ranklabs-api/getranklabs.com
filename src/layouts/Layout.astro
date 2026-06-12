@@ -3,7 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
-const { title = 'Rank Labs — We Have the Secret Formula for SEO', description = 'AI-operated SEO platform. Weekly audits, automated blog content, and hands-free site management. The secret formula for search dominance.', image = '/og-image.png' } = Astro.props;
+const { title = 'Rank Labs — Get Found on ChatGPT, Claude, Gemini & Perplexity', description = 'Get your business found on every major AI assistant — ChatGPT, Claude, Gemini, and Perplexity. AI-first search optimization that builds stronger Google rankings as a side effect.', image = '/og-image.png' } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site).href;
@@ -39,7 +39,7 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       "name": "Rank Labs",
       "url": "https://getranklabs.com",
       "logo": "https://getranklabs.com/logo.svg",
-      "description": "AI-operated SEO platform. Weekly audits, automated blog content, and hands-free site management.",
+      "description": "Get your business found on ChatGPT, Claude, Gemini, and Perplexity. AI-first search optimization with stronger Google rankings as a side effect.",
       "sameAs": [
         "https://www.instagram.com/getranklabs/"
       ],
