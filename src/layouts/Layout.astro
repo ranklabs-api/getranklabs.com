@@ -3,7 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
-const { title = 'Rank Labs — Get Found on ChatGPT, Claude, Gemini & Perplexity', description = 'Get your business found on every major AI assistant — ChatGPT, Claude, Gemini, and Perplexity. AI-first search optimization that builds stronger Google rankings as a side effect.', image = '/og-image.png' } = Astro.props;
+const { title = 'Rank Labs — Get Found on ChatGPT, Claude, Gemini & Perplexity', description = 'Get your business found on ChatGPT, Claude, Gemini and Perplexity. AI-first search optimization that builds stronger Google rankings as a side effect.', image = '/og-image.png' } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site).href;
@@ -17,7 +17,7 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
     <meta name="description" content={description} />
     <title>{title}</title>
 
-    <link rel="canonical" href={canonicalUrl} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <!-- Open Graph -->
@@ -50,14 +50,19 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       }
     }`} />
 
-    <!-- SEO by Rank Labs -->
-
-
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
       <meta name="google-site-verification" content="lJONT2vSm_2eo-t6UPvChwHYHpwgpoLhC69BHnTAYyM" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D52285Z1C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4D52285Z1C');
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
