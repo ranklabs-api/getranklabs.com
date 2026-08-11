@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Blog — Rank Labs">
+<Layout title="Lab Notes — GEO, AI SEO & Search Strategy Blog" description="Lab Notes — Rank Labs blog. Deep dives on GEO, AI-powered SEO strategy, and how to get your business recommended by ChatGPT, Claude, Gemini, and Perplexity.">
 
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-3xl mx-auto">
@@ -12,6 +12,35 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="space-y-12">
       {[
+
+        {
+          slug: 'how-geo-optimization-works',
+          date: 'July 28, 2026',
+          title: 'How GEO Optimization Works: A Practical Guide for Business Owners',
+          excerpt: 'How GEO Optimization Works: A Practical Guide for Business Owners When someone asks ChatGPT "who\'s the best plumber near me" or tells Claude "recommen',
+          tag: 'Strategy Insights',
+        },
+        {
+          slug: 'ai-search-strategy-playbook',
+          date: 'July 20, 2026',
+          title: 'The AI Search Strategy Playbook: How to Get Your Business Found on ChatGPT, Claude, Gemini & Perplexity',
+          excerpt: 'The AI Search Strategy Playbook: How to Get Your Business Found on ChatGPT, Claude, Gemini & Perplexity The way people search is changing — fast. In 2',
+          tag: 'GEO Strategy',
+        },
+        {
+          slug: 'optimization',
+          date: 'July 13, 2026',
+          title: 'Top Questions About Optimization — Answered',
+          excerpt: 'Top Questions About Optimization — Answered If you run a business in 2026, you\'ve heard the word "optimization" more times than you can count. Your we',
+          tag: 'Strategy Insights',
+        },
+        {
+          slug: 'optimization-what-every-business-owner-should-know',
+          date: 'July 6, 2026',
+          title: 'Optimization: What Every Business Owner Should Know',
+          excerpt: 'Most business owners are still optimizing for search engines while ignoring the AI assistants millions now use daily. Here\'s what optimization means in the AI era.',
+          tag: 'Strategy Insights',
+        },
         {
           slug: 'geo-the-new-frontier',
           date: 'June 10, 2026',
@@ -40,6 +69,13 @@ import Layout from '../layouts/Layout.astro';
           excerpt: 'A behind-the-scenes look at our AI content pipeline — from keyword research to publish-ready drafts.',
           tag: 'Product',
         },
+        {
+          slug: 'traditional-seo-agencies-vs-ai',
+          date: 'July 15, 2026',
+          title: 'Why Traditional SEO Agencies Can\'t Keep Up — and What Replaces Them',
+          excerpt: 'The traditional SEO agency runs on people and overhead. AI platforms deliver better results at a fraction of the cost. Here\'s the math.',
+          tag: 'SEO Strategy',
+        },
       ].map((post) => (
         <article class="border-t border-white/5 pt-8 first:border-t-0 first:pt-0">
           <div class="flex items-center gap-3 mb-3">
@@ -53,6 +89,10 @@ import Layout from '../layouts/Layout.astro';
         </article>
       ))}
     </div>
+  </div>
+
+  <div class="text-center mt-12">
+    <a href="/services" class="btn-primary text-lg">View Plans & Pricing →</a>
   </div>
 </section>
 

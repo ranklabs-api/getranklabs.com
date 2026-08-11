@@ -10,8 +10,8 @@ import Layout from '../layouts/Layout.astro';
   <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl"></div>
 
   <div class="max-w-4xl mx-auto text-center relative">
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-sm text-cyan-300 mb-8">
-      <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+    <div class="inline-flex items-start sm:items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-sm text-cyan-300 mb-8 text-left">
+      <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse shrink-0 mt-[7px] sm:mt-0"></span>
       AI Search Optimization — For ChatGPT, Claude, Gemini & Perplexity
     </div>
 
@@ -118,7 +118,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
       <!-- ChatGPT -->
       <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-green-500/5 to-transparent">
-        <div class="flex items-center gap-3 mb-5">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-5">
           <div class="text-2xl font-bold">🤖 ChatGPT</div>
           <div class="text-xs text-green-400 font-mono">800M+ weekly · Bing + GPTBot</div>
         </div>
@@ -144,7 +144,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Claude -->
       <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-orange-500/5 to-transparent">
-        <div class="flex items-center gap-3 mb-5">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-5">
           <div class="text-2xl font-bold">🧠 Claude</div>
           <div class="text-xs text-orange-400 font-mono">Millions weekly · Brave + ClaudeBot</div>
         </div>
@@ -170,7 +170,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Gemini -->
       <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-blue-500/5 to-transparent">
-        <div class="flex items-center gap-3 mb-5">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-5">
           <div class="text-2xl font-bold">🔍 Gemini</div>
           <div class="text-xs text-blue-400 font-mono">Integrated in Google · Knowledge Graph</div>
         </div>
@@ -196,7 +196,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Perplexity -->
       <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-purple-500/5 to-transparent">
-        <div class="flex items-center gap-3 mb-5">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-5">
           <div class="text-2xl font-bold">⚡ Perplexity</div>
           <div class="text-xs text-purple-400 font-mono">Fastest growing · Proprietary + Google</div>
         </div>
