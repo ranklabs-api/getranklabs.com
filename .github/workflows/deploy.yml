@@ -19,7 +19,8 @@ jobs:
       - run: npm run build
       - name: Block indexing on non-production branches
         if: github.ref_name != 'main'
-        run: printf '/*\n  X-Robots-Tag: noindex\n' >> dist/_headers
+        run: |
+          printf '/*\n  X-Robots-Tag: noindex\n' >> dist/_headers
       - run: npx --yes wrangler pages deploy dist --project-name=ranklabs --branch=${{ github.ref_name }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
