@@ -10,7 +10,7 @@
     "blog_posts",
     "site_updates"
   ],
-  "cf_project": "getranklabs",
+  "cf_project": "ranklabs",
   "github_repo": "ranklabs-api/getranklabs.com",
   "type": "astro",
   "provisioning_state": "live",
