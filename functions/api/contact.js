@@ -1,4 +1,16 @@
 // Rank Labs Contact Form Handler — Cloudflare Pages Function
+function analyticsFormType(type) {
+  if (type === "contact") return "contact";
+  if (type === "existing-site") return "existing-site";
+  return "new-site";
+}
+
+function analyticsPagePath(value) {
+  if (typeof value !== "string" || !value.trim()) return "/contact";
+  const path = value.trim().split(/[?#]/, 1)[0];
+  return path.startsWith("/") ? path.slice(0, 2048) : "/contact";
+}
+
 export async function onRequestPost(context) {
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -97,6 +109,32 @@ export async function onRequestPost(context) {
         } catch (e) {
           console.error("Contact email failed:", e.message);
         }
+      }
+
+      // Telegram accepted the lead. Keep the authoritative D1 event non-PII
+      // and make analytics failures invisible to the lead submission response.
+      if (context.env.PERFORMANCE_DB && typeof context.waitUntil === "function") {
+        const receivedAt = new Date().toISOString();
+        const submittedAt = new Date(data.submittedAt);
+        const occurredAt = Number.isNaN(submittedAt.getTime()) ? receivedAt : submittedAt.toISOString();
+        const event = context.env.PERFORMANCE_DB.prepare(`
+          INSERT INTO performance_events
+            (id, customer_id, event_name, occurred_at, received_at, form_id, form_type, page_path, event_version)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          crypto.randomUUID(),
+          "getranklabs",
+          "generate_lead",
+          occurredAt,
+          receivedAt,
+          "contact",
+          analyticsFormType(data.type),
+          analyticsPagePath(data.page_path),
+          1,
+        ).run().catch((error) => {
+          console.error("Performance event logging failed:", error.message);
+        });
+        context.waitUntil(event);
       }
 
       return new Response(JSON.stringify({ success: true }), {

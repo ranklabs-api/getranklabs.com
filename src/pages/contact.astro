@@ -11,6 +11,7 @@ import Layout from '../layouts/Layout.astro';
     <p class="text-lg text-muted mb-12">
       Got a question? Want a free SEO audit? Just want to say hi? Drop us a message.
     </p>
+    <a href="tel:+19133758995" data-call-location="contact" class="inline-block mb-8 text-cyan-300 hover:text-white transition-colors">Call (913) 375-8995</a>
 
     <form id="contact-form" class="text-left space-y-5">
       <div>
@@ -84,6 +85,15 @@ import Layout from '../layouts/Layout.astro';
         status.className = 'mt-4 text-sm text-green-400';
         status.textContent = 'Message sent! We\'ll get back to you soon.';
         form.reset();
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', {
+            customer_id: 'getranklabs',
+            form_id: 'contact',
+            form_type: 'contact',
+            page_path: window.location.pathname,
+            event_version: 1,
+          });
+        }
       } else {
         const err = await resp.json().catch(() => ({}));
         status.className = 'mt-4 text-sm text-red-400';

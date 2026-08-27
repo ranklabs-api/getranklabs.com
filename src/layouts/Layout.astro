@@ -70,5 +70,22 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       <slot />
     </main>
     <Footer />
+    <script>
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        const link = target instanceof Element ? target.closest('a[href^="tel:"]') : null;
+        if (!link) return;
+
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'click_to_call', {
+            customer_id: 'getranklabs',
+            link_location: link.getAttribute('data-call-location') || 'unknown',
+            page_path: window.location.pathname,
+            event_version: 1,
+            transport_type: 'beacon',
+          });
+        }
+      });
+    </script>
   </body>
 </html>
