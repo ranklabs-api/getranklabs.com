@@ -57,9 +57,18 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       <meta name="google-site-verification" content="lJONT2vSm_2eo-t6UPvChwHYHpwgpoLhC69BHnTAYyM" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D52285Z1C"></script>
-    <script>
+    <!-- is:inline is REQUIRED. Without it Astro bundles this as
+         <script type="module"> and minifies the function name, so `gtag` is
+         module-scoped under a mangled name and `window.gtag` is undefined.
+         Every custom event guarded by `typeof window.gtag === 'function'`
+         (lead submissions, call-click tracking) then silently never fires,
+         while pageviews keep working because those come from gtag/js itself.
+         window.gtag is also assigned explicitly so the global survives any
+         future bundling change. -->
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
       gtag('js', new Date());
       gtag('config', 'G-4D52285Z1C');
     </script>
