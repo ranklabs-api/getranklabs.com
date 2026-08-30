@@ -1,0 +1,27 @@
+---
+// 404 page. Without this file Astro emits no dist/404.html, and Cloudflare
+// Pages falls back to serving index.html with HTTP 200 for every unknown URL
+// — a soft 404. Google then sees unlimited duplicate copies of the homepage,
+// which wastes crawl budget and creates duplicate-content signals.
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page Not Found — Rank Labs" description="That page could not be found. Browse our services, pricing, or blog.">
+  <section class="py-24 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="text-sm uppercase tracking-widest text-gray-500 mb-3">Error 404</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-5">We couldn't find that page</h1>
+      <p class="text-lg text-gray-600 mb-10">
+        The page you're looking for may have moved or no longer exists. Here's where most people go next:
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center">
+          <a href="/" class="inline-block px-5 py-2 rounded-lg border border-gray-300 hover:border-gray-500 transition-colors">Home</a>
+          <a href="/services" class="inline-block px-5 py-2 rounded-lg border border-gray-300 hover:border-gray-500 transition-colors">Services</a>
+          <a href="/about" class="inline-block px-5 py-2 rounded-lg border border-gray-300 hover:border-gray-500 transition-colors">About</a>
+          <a href="/blog" class="inline-block px-5 py-2 rounded-lg border border-gray-300 hover:border-gray-500 transition-colors">Blog</a>
+          <a href="/faq" class="inline-block px-5 py-2 rounded-lg border border-gray-300 hover:border-gray-500 transition-colors">FAQ</a>
+          <a href="/contact" class="inline-block px-5 py-2 rounded-lg border border-gray-300 hover:border-gray-500 transition-colors">Contact</a>
+      </div>
+    </div>
+  </section>
+</Layout>
