@@ -1,3 +1,4 @@
+import { readAttribution, ATTRIBUTION_COLUMNS } from "./_shared/attribution.js";
 // Rank Labs Contact Form Handler — Cloudflare Pages Function
 function analyticsFormType(type) {
   if (type === "contact") return "contact";
@@ -117,10 +118,17 @@ export async function onRequestPost(context) {
         const receivedAt = new Date().toISOString();
         const submittedAt = new Date(data.submittedAt);
         const occurredAt = Number.isNaN(submittedAt.getTime()) ? receivedAt : submittedAt.toISOString();
+        // First-touch attribution captured by the page (see Layout.astro). Works
+        // for visitors GA4 never sees because a blocker stopped its script.
+        // This endpoint posts JSON, so `data` carries flat attr_* keys —
+        // readAttribution() accepts either that or a FormData.
+        const _attr = readAttribution(data);
         const event = context.env.PERFORMANCE_DB.prepare(`
           INSERT INTO performance_events
-            (id, customer_id, event_name, occurred_at, received_at, form_id, form_type, page_path, event_version)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (id, customer_id, event_name, occurred_at, received_at, form_id, form_type, page_path, event_version,
+            referrer_url, referrer_host, landing_page, utm_source, utm_medium, utm_campaign, gclid,
+            ga_client_id, attributed_channel)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `).bind(
           crypto.randomUUID(),
           "getranklabs",
@@ -131,6 +139,7 @@ export async function onRequestPost(context) {
           analyticsFormType(data.type),
           analyticsPagePath(data.page_path),
           1,
+        ...ATTRIBUTION_COLUMNS.map((c) => _attr[c]),
         ).run().catch((error) => {
           console.error("Performance event logging failed:", error.message);
         });

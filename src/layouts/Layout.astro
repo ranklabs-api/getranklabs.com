@@ -72,6 +72,45 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       gtag('js', new Date());
       gtag('config', 'G-4D52285Z1C');
     </script>
+    <!-- First-touch attribution capture.
+         Deliberately uses ONLY document.referrer / location / sessionStorage —
+         no gtag, no third-party request. A blocked visitor still gets captured,
+         which is the entire point: on 2026-09-03 a real lead arrived from
+         someone GA4 never saw (no session, no pageview, no event), so its source
+         was unrecoverable. The form POSTs this to our own function.
+         is:inline for the same reason as the block above — bundling would scope
+         it to a module and it must run before any navigation.
+         Written once per tab and never overwritten, so browsing / -> /contact
+         still reports the ORIGINAL source rather than an internal referrer. -->
+    <script is:inline>
+      (function () {
+        try {
+          var KEY = 'rl_attr';
+          if (sessionStorage.getItem(KEY)) return;
+          var host = location.hostname.replace(/^www\./, '');
+          var ref = document.referrer || '';
+          var refHost = '', refClean = '';
+          if (ref) {
+            try {
+              var u = new URL(ref);
+              refHost = u.hostname.replace(/^www\./, '');
+              refClean = u.origin + u.pathname;
+            } catch (e) {}
+          }
+          if (refHost === host) { refHost = ''; refClean = ''; }
+          var p = new URLSearchParams(location.search);
+          sessionStorage.setItem(KEY, JSON.stringify({
+            referrer: refClean,
+            referrer_host: refHost,
+            landing_page: location.pathname,
+            utm_source: p.get('utm_source') || '',
+            utm_medium: p.get('utm_medium') || '',
+            utm_campaign: p.get('utm_campaign') || '',
+            gclid: p.get('gclid') || ''
+          }));
+        } catch (e) { /* private mode / storage disabled — form still submits */ }
+      })();
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />

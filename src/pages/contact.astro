@@ -75,6 +75,17 @@ import Layout from '../layouts/Layout.astro';
     }
 
     try {
+      // First-touch attribution (see Layout.astro). This endpoint posts JSON
+      // rather than FormData, so the same flat attr_* keys are merged into the
+      // body — readAttribution() accepts either shape.
+      try {
+        const _attr = JSON.parse(sessionStorage.getItem('rl_attr') || '{}');
+        for (const k of ['referrer','referrer_host','landing_page','utm_source','utm_medium','utm_campaign','gclid']) {
+          if (_attr[k]) data['attr_' + k] = _attr[k];
+        }
+        const _ga = document.cookie.match(/(?:^|;\s*)_ga=GA\d\.\d\.(\d+\.\d+)/);
+        if (_ga) data.attr_ga_client_id = _ga[1];
+      } catch (e) { /* best-effort */ }
       const resp = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
