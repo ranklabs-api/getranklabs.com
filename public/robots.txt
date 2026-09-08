@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://getranklabs.com/sitemap.xml
+Sitemap: https://getranklabs.com/sitemap-index.xml
 
 User-agent: GPTBot
 Allow: /

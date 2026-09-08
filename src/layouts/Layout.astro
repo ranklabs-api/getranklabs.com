@@ -35,19 +35,135 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
     <!-- Organization Schema -->
     <script type="application/ld+json" set:html={`{
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Rank Labs",
-      "url": "https://getranklabs.com",
-      "logo": "https://getranklabs.com/logo.svg",
-      "description": "Get your business found on ChatGPT, Claude, Gemini, and Perplexity. AI-first search optimization with stronger Google rankings as a side effect.",
-      "sameAs": [
-        "https://www.instagram.com/getranklabs/"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "email": "hello@getranklabs.com"
-      }
+      "@graph": [
+        {
+          "@type": ["Organization", "ProfessionalService"],
+          "@id": "https://getranklabs.com/#organization",
+          "name": "Rank Labs",
+          "legalName": "Rank Labs, LLC",
+          "url": "https://getranklabs.com",
+          "logo": "https://getranklabs.com/logo.svg",
+          "image": "https://getranklabs.com/og-image.png",
+          "description": "Get your business found on ChatGPT, Claude, Gemini, and Perplexity. AI-first search optimization with stronger Google rankings as a side effect.",
+          "telephone": "+19133758995",
+          "email": "hello@getranklabs.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "11454 Chateaubriand Ave",
+            "addressLocality": "Orlando",
+            "addressRegion": "FL",
+            "postalCode": "32836",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 28.4308339,
+            "longitude": -81.5555657
+          },
+          "areaServed": { "@type": "Country", "name": "United States" },
+          "priceRange": "$1,500–$2,500",
+          "paymentAccepted": "Credit Card",
+          "currenciesAccepted": "USD",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "17:00"
+          },
+          "sameAs": [
+            "https://www.instagram.com/getranklabs/",
+            "https://www.facebook.com/1087723997765715",
+            "https://business.foursquare.com/places/6a8346855105fe595ede6784",
+            "https://maps.google.com/?cid=12023381141749028916"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "telephone": "+19133758995",
+              "email": "hello@getranklabs.com",
+              "availableLanguage": "en",
+              "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "telephone": "+19133758995",
+              "email": "hello@getranklabs.com",
+              "availableLanguage": "en"
+            }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Marketing Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "name": "GEO + SEO",
+                "price": "1500",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://getranklabs.com/services",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "GEO + SEO",
+                  "description": "Weekly audits, rankings, and strategy delivered to your inbox. You keep your existing team and site — we provide the intelligence."
+                }
+              },
+              {
+                "@type": "Offer",
+                "name": "Full Management",
+                "price": "2500",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": "https://getranklabs.com/services",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Full Management",
+                  "description": "Everything in GEO + SEO, plus we build, host, and maintain your site. You focus on your business."
+                }
+              }
+            ]
+          },
+          "potentialAction": [
+            {
+              "@type": "ReserveAction",
+              "name": "Start a plan",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://getranklabs.com/signup?plan={plan}",
+                "actionPlatform": "https://schema.org/DesktopWebPlatform",
+                "httpMethod": "GET",
+                "contentType": "text/html"
+              },
+              "result": { "@type": "Reservation", "name": "Service subscription" }
+            },
+            {
+              "@type": "ContactAction",
+              "name": "Contact Rank Labs",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://getranklabs.com/contact",
+                "actionPlatform": "https://schema.org/DesktopWebPlatform",
+                "httpMethod": "GET",
+                "contentType": "text/html"
+              }
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://getranklabs.com/#website",
+          "url": "https://getranklabs.com",
+          "name": "Rank Labs",
+          "publisher": { "@id": "https://getranklabs.com/#organization" }
+        }
+      ]
     }`} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
