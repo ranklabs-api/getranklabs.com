@@ -12,6 +12,107 @@ import Layout from '../layouts/Layout.astro';
       Two tiers, one mission: make your business the answer when people ask AI. Every plan is month-to-month — no contracts, no surprises.
     </p>
 
+    <!-- GEO vs ASO -->
+    <div class="border-t border-white/5 pt-12 mb-16">
+      <div class="text-xs text-cyan-300 font-mono mb-2">GEO VS. ASO (AGENTIC SEARCH OPTIMIZATION)</div>
+      <h2 class="text-2xl font-bold mb-2">Two jobs, <span class="gradient-text">one platform</span></h2>
+      <p class="text-muted mb-4 max-w-xl">One site does two different jobs. GEO makes you the answer. ASO makes you the choice.</p>
+      <p class="text-sm text-muted mb-8 max-w-3xl">
+        ASO stands for Agentic Search Optimization. We also call it being "agent-ready." GEO (Generative Engine Optimization)
+        gets you cited — your business shows up in the answer when someone asks ChatGPT, Claude, Gemini or Perplexity a question.
+        ASO gets you chosen: when that same person stops asking questions and asks the AI to do something — "find me a clinic
+        near me that's open Thursday and start a booking" — the AI picks the business whose hours, prices, location, service
+        list and booking link it can read as data, not the one whose website merely reads well to a human. (Heads up on the
+        acronym: in the app world, "ASO" usually means App Store Optimization. That's a completely different thing — we mean
+        Agentic Search Optimization.)
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="border border-white/10 rounded-xl p-6">
+          <h3 class="font-semibold text-sm text-cyan-300 mb-1">GEO — Generative Engine Optimization</h3>
+          <div class="text-xs text-muted mb-4">get cited in AI answers</div>
+          <ul class="space-y-2">
+            {[
+              { label: 'Structured data / schema markup — so AI knows exactly who you are', shared: true },
+              { label: 'Accurate name, address, phone everywhere', shared: true },
+              { label: 'AI crawlers allowed to read your site', shared: true },
+              { label: 'Clear answers to real customer questions', shared: false },
+              { label: 'FAQ content marked up properly', shared: false },
+              { label: 'Quotable facts and specifics — prices, timelines, numbers AI can repeat', shared: false },
+              { label: 'Reviews and ratings shown on your site, marked up', shared: false },
+              { label: 'Author and credential signals', shared: false },
+              { label: 'Consistent facts across your whole site', shared: false },
+              { label: 'Mentions on sites AI already trusts', shared: false },
+              { label: "Topic depth — enough coverage that you're the obvious source", shared: false },
+              { label: 'Content freshness and clear publish dates', shared: false },
+              { label: 'Plain-language summaries near the top of each page', shared: false },
+              { label: 'Local and service-area context', shared: false },
+            ].map(b => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                {b.shared
+                  ? <span class="text-cyan-300 font-mono text-xs shrink-0 mt-0.5">&#8596;</span>
+                  : <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0 mt-2"></span>}
+                {b.label}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="border border-white/10 rounded-xl p-6">
+          <h3 class="font-semibold text-sm text-purple-300 mb-1">ASO / Agent-Ready — Agentic Search Optimization</h3>
+          <div class="text-xs text-muted mb-4">get selected by AI agents</div>
+          <ul class="space-y-2">
+            {[
+              { label: 'Structured data / schema markup — extended to actions', shared: true },
+              { label: 'Accurate name, address, phone everywhere', shared: true },
+              { label: 'Agents allowed through to your booking page — no bot blocks on the path that matters', shared: true },
+              { label: 'Machine-readable service menu — every service its own item', shared: false },
+              { label: 'Hours of operation in a format machines read', shared: false },
+              { label: 'Exact prices, not ranges — "$1,275" beats "affordable"', shared: false },
+              { label: 'Appointment availability — can a machine tell you have openings?', shared: false },
+              { label: 'A bookable link a machine can open — deep-linkable, works without JavaScript', shared: false },
+              { label: 'One unambiguous service location', shared: false },
+              { label: 'Verified profiles connected to your site', shared: false },
+              { label: 'Booking or enquiry endpoint', shared: false },
+              { label: 'Wait time / next-available signal', shared: false },
+              { label: 'Confirmation and cancellation terms stated up front', shared: false },
+              { label: 'Full transaction capability (advanced — only where a real scheduling system exists)', shared: false },
+            ].map(b => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                {b.shared
+                  ? <span class="text-cyan-300 font-mono text-xs shrink-0 mt-0.5">&#8596;</span>
+                  : <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0 mt-2"></span>}
+                {b.label}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <p class="text-xs text-muted mt-4"><span class="text-cyan-300 font-mono">&#8596;</span> marks work that serves both jobs.</p>
+    </div>
+
+    <!-- Agent-readiness ladder -->
+    <div class="border-t border-white/5 pt-12 mb-16">
+      <div class="text-xs text-purple-300 font-mono mb-2">AGENT-READINESS LADDER</div>
+      <h2 class="text-2xl font-bold mb-2">Where you sit on the <span class="gradient-text">agent-readiness ladder</span></h2>
+      <p class="text-muted mb-8 max-w-xl">Being agent-ready isn't one switch — it's a ladder, and most businesses are on the bottom rung without knowing it.</p>
+      <ul class="space-y-2 mb-6">
+        {[
+          { level: 'Level 0 — Invisible.', desc: 'No structured data; an AI has to guess your name, address and phone.' },
+          { level: 'Level 1 — Identified.', desc: 'A machine can tell who you are and where you are.' },
+          { level: 'Level 2 — Screenable.', desc: 'It can answer the routine questions — open hours, prices, quality, service area. This is where you become reliably citable.' },
+          { level: 'Level 3 — Reachable.', desc: 'A stable, machine-usable front door to starting a booking or enquiry. The most-skipped rung, and the best value after Level 2.' },
+          { level: 'Level 4 — Verifiable.', desc: 'A machine can tell whether you actually have openings. This is where selection is won.' },
+          { level: 'Level 5 — Transactable.', desc: 'The agent completes the booking end to end — only worth building on top of a real scheduling system.' },
+        ].map(b => (
+          <li class="flex items-start gap-3 text-sm text-muted">
+            <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0 mt-2"></span>
+            <span><span class="text-white font-semibold">{b.level}</span> {b.desc}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="text-sm text-muted max-w-xl">For almost every business we work with, the highest-return work sits at Levels 3 and 4. We won't sell you Level 5 before you've cleared Level 2.</p>
+    </div>
+
     <!-- SEO Management -->
     <div class="border-t border-white/5 pt-12 mb-16">
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
@@ -22,7 +123,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div>
           <h3 class="font-semibold text-sm text-cyan-300 mb-3">Audits & Monitoring</h3>
           <ul class="space-y-2">
@@ -47,6 +148,14 @@ import Layout from '../layouts/Layout.astro';
             ))}
           </ul>
         </div>
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Agent-Ready (ASO)</h3>
+          <ul class="space-y-2">
+            {['Agent-readiness score in every weekly report', 'Hours, location and service menu checked as machine-readable data', 'Exact-price and offer markup audit', 'Reviews and ratings marked up for AI', 'Booking-path reachability check (no bot blocks)', 'Agent-readiness level scored 0–5'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -62,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
         <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold shrink-0 h-fit">MOST POPULAR</span>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div>
           <h3 class="font-semibold text-sm text-cyan-300 mb-3">Site Hosting & Management</h3>
           <ul class="space-y-2">
@@ -83,6 +192,14 @@ import Layout from '../layouts/Layout.astro';
           <h3 class="font-semibold text-sm text-cyan-300 mb-3">Local SEO & Listings</h3>
           <ul class="space-y-2">
             {['Google Business Profile optimization', 'Business listing management', 'Local schema markup', 'Service-area page strategy', 'City + service keyword targeting', 'Review monitoring & response'].map(b => (
+              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Agent-Ready (ASO) — we implement it</h3>
+          <ul class="space-y-2">
+            {['Machine-readable hours, geo coordinates and service menu deployed', 'Exact-price Offer markup deployed', 'Booking entry point published for agents (deep-linkable, pre-fillable)', 'Availability / next-available signal published and maintained', 'Verified profiles connected to your data', 'Reviews and ratings marked up'].map(b => (
               <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
             ))}
           </ul>
