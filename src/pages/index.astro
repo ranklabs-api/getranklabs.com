@@ -59,7 +59,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="text-center mb-16">
       <div class="text-sm text-cyan-300 font-mono mb-4">WHAT WE DO</div>
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Be the Answer When AI Gets Asked</h2>
-      <p class="text-muted max-w-xl mx-auto">Four pillars. Every AI engine. One platform.</p>
+      <p class="text-muted max-w-xl mx-auto">Four pillars. Every AI engine — plus the agent-ready (ASO) layer that gets you chosen, not just cited.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -67,7 +67,7 @@ import Layout from '../layouts/Layout.astro';
         {
           icon: '🔍',
           title: 'AI Visibility Audit',
-          desc: 'We ask ChatGPT, Claude, Gemini, and Perplexity about your industry — and show you exactly where your business is missing, misrepresented, or invisible. One report, four engines, zero jargon.',
+          desc: 'We ask ChatGPT, Claude, Gemini, and Perplexity about your industry — and show you exactly where your business is missing, misrepresented, or invisible, plus how "agent-ready" you are to be selected for the next step. One report, four engines, zero jargon.',
         },
         {
           icon: '⚡',
@@ -112,6 +112,7 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-muted max-w-2xl mx-auto">
         More people are asking ChatGPT, Claude, Gemini, and Perplexity for recommendations than ever before — 
         and each engine looks for different signals. Here's exactly how we make you visible on each one.
+        Beyond the four engines there's one more layer — being agent-ready (ASO): publishing your hours, prices, location, reviews and booking link as data, so an AI agent can actually choose you.
       </p>
     </div>
 
@@ -220,6 +221,33 @@ import Layout from '../layouts/Layout.astro';
           ))}
         </ol>
       </div>
+
+      <!-- Agent-Ready (ASO) -->
+      <div class="gradient-border rounded-2xl p-6 md:p-8 bg-gradient-to-b from-cyan-500/5 to-transparent md:col-span-2">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-5">
+          <div class="text-2xl font-bold">🎯 Agent-Ready (ASO)</div>
+          <div class="text-xs text-cyan-400 font-mono">Agentic Search Optimization · get selected, not just cited</div>
+        </div>
+        <p class="text-xs text-muted mb-4">The four engines above get you cited. Being agent-ready gets you chosen — when an AI is asked to actually pick a business and start a booking, it needs your hours, prices, location, reviews and booking link as machine-readable data.</p>
+        <ol class="space-y-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+          {[
+            { step: '01', label: 'Machine-Readable Hours & Location', desc: 'Your hours, address and coordinates as structured data — so an agent can tell if you\'re open and where to send a customer.' },
+            { step: '02', label: 'Exact-Price Service Menu', desc: 'Every service listed with a real price, not a range — "$1,275" beats "affordable."' },
+            { step: '03', label: 'Reviews & Ratings Marked Up', desc: 'Your 5.0 rating and reviews as data an AI can read and attribute to you.' },
+            { step: '04', label: 'Verified Profile Connections', desc: 'Your Google, Instagram and directory profiles linked to your site, so AI cross-references your identity.' },
+            { step: '05', label: 'Machine-Reachable Booking Entry Point', desc: 'A stable, deep-linkable booking or enquiry page an agent can open for its user.' },
+            { step: '06', label: 'Availability / Next-Available Signal', desc: 'A machine-readable "next available" signal, so an agent picks you when it can verify you have openings.' },
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="text-cyan-400 font-mono text-xs shrink-0 mt-0.5">{item.step}</span>
+              <div>
+                <div class="font-medium text-white text-sm">{item.label}</div>
+                <div class="text-muted text-xs mt-0.5">{item.desc}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
 
     <!-- Why Businesses Are Moving Now -->
@@ -313,6 +341,7 @@ import Layout from '../layouts/Layout.astro';
         <ul class="space-y-3 mb-8">
           {[
             'AI visibility monitoring (4 engines)',
+            'Agent-readiness score & level in every report',
             'Weekly SEO audits (100+ checks)',
             'Keyword & competitor tracking',
             'Backlink profile monitoring',
@@ -346,6 +375,7 @@ import Layout from '../layouts/Layout.astro';
             'Everything in GEO + SEO',
             'Full AI optimization — ChatGPT, Claude, Gemini, Perplexity',
             'Citation & mention building',
+            'Agent-Ready (ASO) implementation — hours, offers, booking path',
             'Weekly blog content (researched & written)',
             'Full site hosting on global edge network',
             'Unlimited site edits & updates',
