@@ -20,6 +20,7 @@ export function getStaticPaths() {
     { params: { slug: 'local-seo-in-the-ai-era' } },
     { params: { slug: 'how-online-reviews-shape-ai-recommendations' } },
     { params: { slug: 'backlinks-authority-ai-search' } },
+    { params: { slug: 'technical-seo-ai-search' } },
   ];
 }
 
@@ -1133,6 +1134,81 @@ You don't need to reverse-engineer an AI algorithm to make progress. Start with 
 AI search didn't remove the need for backlinks and authority — it raised the bar. The businesses that win are the ones an AI engine can confidently verify, not the ones with the biggest link count.
 
 That's exactly the kind of work Rank Labs does. Our GEO + SEO plans include backlink profile monitoring, competitor gap analysis, and the ongoing consistency work that turns your business into an answer AI engines are willing to give. If you'd like to know where your authority stands today, reach out — we'll show you exactly what an AI sees when it looks for you.
+    `.trim(),
+  },
+  'technical-seo-ai-search': {
+    title: 'Technical SEO in the AI Era: Why Page Speed, Crawlability & Core Web Vitals Decide What AI Recommends',
+    date: 'September 14, 2026',
+    tag: 'Technical SEO',
+    body: `
+# Technical SEO in the AI Era: Why Page Speed, Crawlability & Core Web Vitals Decide What AI Recommends
+
+Most business owners think "getting found by AI" is a content problem. Write better copy, answer more questions, and ChatGPT or Gemini will start mentioning you. It's a comforting story — and it's only half true.
+
+The other half is invisible. Before an AI engine ever decides whether your content is worth citing, it has to actually read your site. And if your site is slow, poorly structured, or hard to crawl, the AI doesn't flag it as "bad." It simply moves on to the next business whose site loaded cleanly, parsed instantly, and handed over structured, crawlable data without a fight.
+
+That's technical SEO — the plumbing. And in the age of AI search, the plumbing is doing more of the deciding than ever.
+
+## Technical SEO Was Always the Foundation. AI Made It the Filter.
+
+For years, technical SEO meant satisfying Google's crawler: fast pages, clean code, no broken links, a logical site structure. It was the table stakes for ranking. Get it right and you had a shot at page one. Get it wrong and no amount of good writing could save you.
+
+AI search hasn't replaced that foundation — it's standing on top of it, and adding a new layer of consequence.
+
+When someone asks ChatGPT "who's the best SEO agency for small business," the model isn't just retrieving pages and counting links. It's pulling from multiple sources, weighing credibility, and synthesizing an answer. But the first thing it has to do is the same thing Google does: fetch your pages, parse your HTML, and make sense of your site. If that fetch is slow, blocked, or returns a mess of unlabeled content, the model has less to work with — and less reason to cite you.
+
+Here's the difference that matters: **Google ranks you lower. AI just doesn't mention you at all.**
+
+A slow page might knock you from position 4 to position 8 on Google — annoying, but you're still visible. An AI engine, by contrast, is picking one or two names to put in an answer. If your site's technical foundation is weak, you're not competing for a lower slot. You're dropping out of the answer entirely.
+
+## The Three Technical Signals AI Engines Care About Most
+
+### 1. Page Speed and Core Web Vitals
+
+Speed has always been a ranking factor. What's changed is who's timing the page.
+
+AI crawlers are essentially automated users. They request a page, wait for it to load, and extract what they find. If your page takes four seconds to become readable — or worse, renders critical content only after JavaScript executes — the crawler gets less, and gets it slower. Multiply that across every page on your site and the model's overall picture of your business is thinner and less confident.
+
+Core Web Vitals — Largest Contentful Paint, First Input Delay, Cumulative Layout Shift — are the specific metrics that measure this. A site that scores well on these is a site an AI crawler can consume quickly and completely. A site that scores poorly is a site that's leaving information on the table.
+
+The fix isn't glamorous, but it's mechanical and reliable: compress images, eliminate render-blocking scripts, use a CDN, and strip the plugins and trackers that quietly add seconds to every load.
+
+### 2. Crawlability and Indexation
+
+AI engines can only cite what they can reach. And "reach" isn't automatic.
+
+Your \`robots.txt\` file controls which crawlers are allowed in — and a surprising number of sites unintentionally block the very bots that could make them visible. GPTBot, ClaudeBot, PerplexityBot, and Google-Extended all respect \`robots.txt\`. If your file is a stale template that blocks everything except Googlebot, you've handed your competitors the entire AI channel without realizing it.
+
+An XML sitemap matters for the same reason. It's a machine-readable map of every page you want discovered. Without one — or with a stale, incomplete one — you're asking AI crawlers to find your best content by guessing. Sitemaps remove the guesswork.
+
+### 3. Clean, Correctly-Labeled Structure
+
+A crawler doesn't see your beautiful homepage. It sees HTML. Whether that HTML is meaningful to an AI depends on two things: semantic structure and metadata.
+
+Semantic structure means your headings nest correctly, your navigation is machine-readable, and your pages declare what they are. Metadata means your title tags and meta descriptions accurately describe each page. When these are clean and consistent, an AI model can confidently summarize what your business does, where you're located, and what you offer — the exact raw material it needs to cite you in an answer.
+
+## Why This Is Harder to DIY Than It Looks
+
+Here's the uncomfortable truth most business owners discover: technical SEO doesn't announce when it's failing. There's no error message on your homepage saying "your Core Web Vitals are below threshold" or "you're blocking GPTBot." The site loads fine on your phone. It looks great. Nothing seems wrong.
+
+The failures are quiet, compounding, and only visible when you actually measure them. A page that's three seconds too slow. A sitemap that's missing a dozen new posts. A \`robots.txt\` line blocking an AI crawler. None of these break your site. Together, they quietly remove you from the AI answers your competitors are winning.
+
+That's also why the fix isn't a one-time project. Sites drift. New plugins slow things down. Content gets added without being added to the sitemap. Hosting changes affect load times. The only way to stay visible is to check these signals continuously — which is exactly what a weekly technical audit does.
+
+## How Rank Labs Keeps Your Technical Foundation AI-Ready
+
+Every site Rank Labs manages gets the same technical baseline, checked weekly rather than once a quarter:
+
+- **Weekly technical audits** run 100+ automated checks against your site — broken links, missing meta tags, crawl errors, and structure issues surfaced within days, not months.
+- **Page speed and Core Web Vitals monitoring** catch performance regressions before they cost you AI visibility.
+- **Sitemap and canonical strategy** ensure every page you want discovered is discoverable, and no duplicate content confuses the crawlers.
+- **Crawler access verification** confirms GPTBot, ClaudeBot, PerplexityBot, and BingBot can all read your site cleanly.
+
+The goal is simple: make your site as easy for an AI engine to read as it is for a customer. Because in the AI era, the businesses that get recommended aren't always the ones with the best pitch — they're the ones whose sites made it effortless for the machine to say "yes."
+
+---
+
+**Want to know if your technical foundation is holding you back?** [Get a free AI visibility report →](https://getranklabs.com) and see exactly how ChatGPT, Claude, Gemini, and Perplexity experience your site.
     `.trim(),
   },
 };
