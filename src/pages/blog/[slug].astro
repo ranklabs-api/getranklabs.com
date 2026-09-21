@@ -21,6 +21,7 @@ export function getStaticPaths() {
     { params: { slug: 'how-online-reviews-shape-ai-recommendations' } },
     { params: { slug: 'backlinks-authority-ai-search' } },
     { params: { slug: 'technical-seo-ai-search' } },
+    { params: { slug: 'website-migration-without-losing-rankings' } },
   ];
 }
 
@@ -1209,6 +1210,60 @@ The goal is simple: make your site as easy for an AI engine to read as it is for
 ---
 
 **Want to know if your technical foundation is holding you back?** [Get a free AI visibility report →](https://getranklabs.com) and see exactly how ChatGPT, Claude, Gemini, and Perplexity experience your site.
+    `.trim(),
+  },
+  'website-migration-without-losing-rankings': {
+    title: 'How to Migrate Your Website Without Losing Rankings (or AI Visibility)',
+    date: 'September 21, 2026',
+    tag: 'Site Migration',
+    body: `
+# How to Migrate Your Website Without Losing Rankings (or AI Visibility)
+
+A website migration should feel like a fresh start. You've got a new design, faster pages, and a cleaner structure. But for too many businesses, it becomes the opposite: a sudden, silent drop in traffic that takes months to undo. If you're planning a redesign or moving platforms, here's how to do it without losing the rankings — or the AI visibility — you've already earned.
+
+## Why Website Migrations Go Wrong
+
+Here's the part nobody says out loud: the migration itself rarely causes the damage. It's the details you forget along the way. A redirect you didn't map. A URL that changed. Structured data that got left behind in the rebuild. Individually, each one looks minor. Together, they tell Google — and ChatGPT, Claude, and Gemini — that your site is suddenly harder to trust.
+
+When you move a site, you're not just moving files. You're asking search engines and AI assistants to re-learn who you are, what you sell, and where to find your content. If you don't hand them a clean map, they'll drop the pages they used to rank — and the citations they used to make.
+
+## The Classic Migration Checklist (Google)
+
+If you do nothing else, do these. They're the table stakes for surviving a migration:
+
+- **Map every old URL to a new one with 301 redirects.** A 301 tells Google "this page moved permanently," and it carries most of the ranking weight with it. Skip this and every old link becomes a dead end.
+- **Preserve your on-page signals.** Keep title tags, meta descriptions, and heading structure intact wherever possible. These are the labels that tell a crawler what each page is about.
+- **Submit a fresh XML sitemap** and keep your \`robots.txt\` clean. Make it easy for crawlers to find the new structure.
+- **Update internal links.** Every link on your own site should point to the new URLs, not bounce through a redirect chain.
+- **Watch Search Console like a hawk** for the first few weeks. New 404s and crawl errors are your early warning that something broke.
+
+## The AI-Era Checklist Most Businesses Miss
+
+Google is only half the picture now. When someone asks ChatGPT or Gemini for a recommendation, the AI draws on structured data, crawlable content, and consistent business facts. A migration that breaks any of those doesn't just cost you a Google ranking — it can quietly remove you from the AI's answers entirely. And unlike a drop on Google, you may never even see it happen.
+
+Protect these signals specifically during your migration:
+
+- **Re-verify your schema markup.** Structured data is how AI engines know you're a LocalBusiness, what services you offer, and how to reach you. If the rebuild strips it, the AI has to guess — and guessing usually means you don't get cited.
+- **Keep your NAP consistent.** Name, address, and phone need to match across your site, your Google Business Profile, and everywhere else you appear. One wrong digit after a migration is enough to make an AI question whether it's recommending the right business.
+- **Leave the door open for AI crawlers.** Don't block GPTBot, ClaudeBot, or Google-Extended in your new \`robots.txt\`. A common migration mistake is copying over old bot-block rules that cut AI engines off from your content.
+- **Preserve your reviews and ratings markup.** If your testimonials and star ratings survive the move, the social proof that AI engines lean on survives with them.
+- **Keep publish dates and content freshness intact.** AI favors sources it can tell are current. Stripping dates off your articles during a rebuild makes everything look stale.
+
+## Zero-Downtime Migration: How We Do It
+
+This is where the checklist stops being theory. A clean migration is an execution problem — and it's the kind of problem where getting one detail wrong has a measurable cost.
+
+Rank Labs handles the whole move with zero downtime: DNS, content, redirects, and the structured data that keeps you visible to both Google and AI engines. Every redirect is mapped one-to-one, every schema block is re-verified, and the AI crawlers that matter stay allowed through. You keep your rankings, your citations, and your traffic — you just get a better site underneath them.
+
+We offer site migration as a one-time service, or bundled into Full Management for businesses that want the build, the hosting, and the ongoing optimization handled under one roof.
+
+## What Happens If You Skip This
+
+The businesses that skip this lose more than rankings. They lose the AI recommendations that were quietly sending them customers. A prospect asks ChatGPT who to hire, and suddenly the answer points somewhere else — not because a competitor got better, but because your migration broke the signals the AI trusted.
+
+The good news is that this is all preventable. Whether you're moving from Wix, Squarespace, or WordPress, a migration done right is invisible to your customers and your rankings. The key is treating every URL, every redirect, and every piece of structured data as an asset you're carrying over — not a detail you can rebuild later.
+
+Because "later" is when the traffic is already gone.
     `.trim(),
   },
 };
