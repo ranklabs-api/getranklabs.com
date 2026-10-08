@@ -115,21 +115,31 @@ async function handleCheckoutCompleted(session, env) {
 
   const customerName = session.metadata?.customer_name || session.customer_details?.name || "New Customer";
   const customerEmail = session.customer_details?.email || session.metadata?.customer_email || "";
-  const plan = session.metadata?.plan || "seo_management";
-  const planLabel = plan === "full_management" ? "Full Management ($999/mo)" : "SEO Management ($599/mo)";
+  // Read the plan from what was actually bought. Only our own signup form sets
+  // metadata.plan; Stripe Payment Links don't, so trusting it alone labelled a
+  // Full Management payment-link signup as the old $599 SEO plan.
+  const plan = (await planFromLineItems(session, env)) || session.metadata?.plan || "seo_management";
+  const planInfo = PLANS[plan] || PLANS.seo_management;
+  const planLabel = planInfo.name;
+  // A discounted subscription (e.g. a partner rate) shows its real monthly rate
+  // next to the list price, so the email matches what the customer is charged.
+  const discounted = (session.total_details?.amount_discount || 0) > 0 && Number.isFinite(session.amount_total);
+  const priceLine = discounted
+    ? `${formatUsd(session.amount_total)}/mo (normally ${planInfo.price}/mo)`
+    : `${planInfo.price}/mo`;
   const website = session.metadata?.website || "";
   const businessName = session.metadata?.business_name || "";
 
-  console.log(`✅ New ${planLabel} signup: ${customerName} <${customerEmail}>`);
+  console.log(`✅ New ${planLabel} signup (${priceLine}): ${customerName} <${customerEmail}>`);
 
   // 1. Telegram notification to Josiah
-  await notifyTelegram(env, { customerName, customerEmail, planLabel, website, businessName });
+  await notifyTelegram(env, { customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName });
 
   // 2. Internal email to Josiah
   await sendEmail(env, {
     to: "josiahearl@gmail.com",
     subject: `🚀 New Signup: ${customerName} — ${planLabel}`,
-    html: buildInternalEmail({ customerName, customerEmail, planLabel, website, businessName }),
+    html: buildInternalEmail({ customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName }),
   });
 
   // 3. Branded confirmation to customer
@@ -138,7 +148,7 @@ async function handleCheckoutCompleted(session, env) {
       to: customerEmail,
       cc: "seo-admin@getranklabs.com",
       subject: `Welcome to Rank Labs! Your ${planLabel} Plan is Active`,
-      html: buildConfirmationEmail({ customerName, plan, planLabel }),
+      html: buildConfirmationEmail({ customerName, plan, planLabel, priceLine }),
     });
 
     // 4. Branded onboarding to customer
@@ -146,11 +156,39 @@ async function handleCheckoutCompleted(session, env) {
       to: customerEmail,
       cc: "seo-admin@getranklabs.com",
       subject: `Your Rank Labs Onboarding — ${planLabel}`,
-      html: buildOnboardingEmail({ customerName, plan, planLabel, website, businessName }),
+      html: buildOnboardingEmail({ customerName, plan, planLabel, priceLine, website, businessName }),
     });
   }
 
   console.log(`Notifications complete for ${customerEmail}`);
+}
+
+// ── Plans ───────────────────────────────────────────────────────────────
+// Keep in step with the pricing section of src/pages/index.astro.
+
+const PLANS = {
+  seo_management: { name: "GEO + SEO Management", price: "$1,500" },
+  full_management: { name: "Full Management", price: "$2,500" },
+};
+
+async function planFromLineItems(session, env) {
+  if (!env.STRIPE_SECRET_KEY || !session.id) return null;
+  try {
+    const resp = await fetch(`https://api.stripe.com/v1/checkout/sessions/${session.id}/line_items?expand[]=data.price.product`, {
+      headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
+    });
+    if (!resp.ok) return null;
+    const names = ((await resp.json()).data || []).map((item) => item.price?.product?.name || item.description || "");
+    if (names.some((name) => /full management/i.test(name))) return "full_management";
+    if (names.some((name) => /seo management/i.test(name))) return "seo_management";
+  } catch (e) {
+    console.error("Line item lookup failed:", e.message);
+  }
+  return null;
+}
+
+function formatUsd(cents) {
+  return `$${(cents / 100).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
 }
 
 // ── Telegram ─────────────────────────────────────────────────────────────
@@ -240,7 +278,7 @@ function buildInternalEmail({ customerName, customerEmail, planLabel, website, b
 </div></body></html>`;
 }
 
-function buildConfirmationEmail({ customerName, plan, planLabel }) {
+function buildConfirmationEmail({ customerName, plan, planLabel, priceLine }) {
   const steps = plan === "full_management"
     ? ["We'll review your site (or start building if you're new)","Your first weekly audit arrives within 24 hours","Content drafts start flowing next week","We'll reach out if we need anything from you"]
     : ["Your first weekly audit arrives within 24 hours","Reports land in your inbox every Monday","We'll reach out if we need anything"];
@@ -254,7 +292,7 @@ function buildConfirmationEmail({ customerName, plan, planLabel }) {
   </div>
   <div style="background:#161b22;padding:32px;border-radius:0 0 12px 12px">
     <p style="font-size:16px">Hi ${customerName},</p>
-    <p>Your <strong>${planLabel}</strong> plan is now active. We're thrilled to have you.</p>
+    <p>Your <strong>${planLabel}</strong> plan is now active at ${priceLine}. We're thrilled to have you.</p>
     <p style="margin-top:20px"><strong>What happens next:</strong></p>
     <ul style="padding-left:20px">
       ${steps.map(s => `<li style="margin-bottom:6px">${s}</li>`).join("")}
@@ -265,14 +303,18 @@ function buildConfirmationEmail({ customerName, plan, planLabel }) {
 </div></body></html>`;
 }
 
-function buildOnboardingEmail({ customerName, plan, planLabel, website, businessName }) {
+function buildOnboardingEmail({ customerName, plan, planLabel, priceLine, website, businessName }) {
+  // Same lists as the pricing cards in src/pages/index.astro.
   const seoFeatures = [
-    "Weekly SEO audits (100+ checks)","Keyword & competitor tracking","Long-tail & seasonal keyword research",
-    "Backlink profile monitoring","Monthly ranking reports","Content strategy & calendar",
-    "Technical SEO & schema markup","Internal link optimization","Conversion-focused recommendations",
-    "3/6/12 month performance benchmarks","Core Web Vitals monitoring",
+    "AI visibility monitoring (4 engines)","Agent-readiness score & level in every report",
+    "Weekly SEO audits (100+ checks)","Keyword & competitor tracking","Backlink profile monitoring",
+    "Content strategy & calendar","Technical SEO & schema markup","Internal link optimization",
+    "Conversion-focused recommendations","Core Web Vitals monitoring",
+    "Monthly AI & search ranking reports","Priority email support",
   ];
   const fullExtras = [
+    "Full AI optimization — ChatGPT, Claude, Gemini, Perplexity","Citation & mention building",
+    "Agent-Ready (ASO) implementation — hours, offers, booking path",
     "Weekly blog content (researched & written)","Full site hosting on global edge network",
     "Unlimited site edits & updates","Easy content approval workflow",
     "Google Business Profile optimization","Business listing management",
@@ -295,7 +337,7 @@ function buildOnboardingEmail({ customerName, plan, planLabel, website, business
   </div>
   <div style="background:#161b22;padding:32px;border-radius:0 0 12px 12px">
     <p style="font-size:16px">Hi ${customerName},</p>
-    <p>Here's everything you need to know about your <strong>${planLabel}</strong> plan.</p>
+    <p>Here's everything you need to know about your <strong>${planLabel}</strong> plan, at ${priceLine}.</p>
     <h3 style="color:#7c3aed;margin-top:24px">Your Plan Includes:</h3>
     <ul style="padding-left:20px;columns:${features.length > 10 ? "2" : "1"};column-gap:24px">
       ${features.map(f => `<li style="margin-bottom:6px;font-size:14px">${f}</li>`).join("")}
