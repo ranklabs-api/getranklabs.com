@@ -142,24 +142,9 @@ async function handleCheckoutCompleted(session, env) {
     html: buildInternalEmail({ customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName }),
   });
 
-  // 3. Branded confirmation to customer
-  if (customerEmail) {
-    await sendEmail(env, {
-      to: customerEmail,
-      cc: "seo-admin@getranklabs.com",
-      subject: `Welcome to Rank Labs! Your ${planLabel} Plan is Active`,
-      html: buildConfirmationEmail({ customerName, plan, planLabel, priceLine }),
-    });
-
-    // 4. Branded onboarding to customer
-    await sendEmail(env, {
-      to: customerEmail,
-      cc: "seo-admin@getranklabs.com",
-      subject: `Your Rank Labs Onboarding — ${planLabel}`,
-      html: buildOnboardingEmail({ customerName, plan, planLabel, priceLine, website, businessName }),
-    });
-  }
-
+  // Notification only. A signup does not email the customer or start onboarding:
+  // existing customers (e.g. a partner rate sent as a payment link) are already
+  // onboarded, and Josiah onboards new ones himself.
   console.log(`Notifications complete for ${customerEmail}`);
 }
 
@@ -208,7 +193,6 @@ async function notifyTelegram(env, { customerName, customerEmail, planLabel, web
   text += `<b>Email:</b> ${customerEmail}\n`;
   if (website) text += `<b>Website:</b> ${website}\n`;
   if (businessName) text += `<b>Business:</b> ${businessName}\n`;
-  text += `\n<i>Reply to trigger onboarding.</i>`;
 
   try {
     await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -274,79 +258,7 @@ function buildInternalEmail({ customerName, customerEmail, planLabel, website, b
     ${website ? `<tr><td style="padding:6px 0;color:#8b949e;font-size:13px">Website</td><td style="padding:6px 0">${website}</td></tr>` : ""}
     ${businessName ? `<tr><td style="padding:6px 0;color:#8b949e;font-size:13px">Business</td><td style="padding:6px 0">${businessName}</td></tr>` : ""}
   </table>
-  <p style="color:#8b949e;font-size:12px;margin-top:16px">Confirmation and onboarding emails auto-sent to customer.</p>
-</div></body></html>`;
-}
-
-function buildConfirmationEmail({ customerName, plan, planLabel, priceLine }) {
-  const steps = plan === "full_management"
-    ? ["We'll review your site (or start building if you're new)","Your first weekly audit arrives within 24 hours","Content drafts start flowing next week","We'll reach out if we need anything from you"]
-    : ["Your first weekly audit arrives within 24 hours","Reports land in your inbox every Monday","We'll reach out if we need anything"];
-
-  return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"></head>
-<body style="font-family:-apple-system,sans-serif;background:#0f1117;color:#e1e4e8;padding:40px">
-<div style="max-width:600px;margin:0 auto">
-  <div style="background:linear-gradient(135deg,#7c3aed,#3b82f6);padding:32px;border-radius:12px 12px 0 0;text-align:center">
-    <h1 style="color:#fff;margin:0;font-size:24px">Welcome to Rank Labs! 🎉</h1>
-  </div>
-  <div style="background:#161b22;padding:32px;border-radius:0 0 12px 12px">
-    <p style="font-size:16px">Hi ${customerName},</p>
-    <p>Your <strong>${planLabel}</strong> plan is now active at ${priceLine}. We're thrilled to have you.</p>
-    <p style="margin-top:20px"><strong>What happens next:</strong></p>
-    <ul style="padding-left:20px">
-      ${steps.map(s => `<li style="margin-bottom:6px">${s}</li>`).join("")}
-    </ul>
-    <p style="margin-top:20px">You'll receive a separate onboarding email with all the details shortly.</p>
-    <p style="color:#8b949e;font-size:13px;margin-top:24px">— The Rank Labs Team</p>
-  </div>
-</div></body></html>`;
-}
-
-function buildOnboardingEmail({ customerName, plan, planLabel, priceLine, website, businessName }) {
-  // Same lists as the pricing cards in src/pages/index.astro.
-  const seoFeatures = [
-    "AI visibility monitoring (4 engines)","Agent-readiness score & level in every report",
-    "Weekly SEO audits (100+ checks)","Keyword & competitor tracking","Backlink profile monitoring",
-    "Content strategy & calendar","Technical SEO & schema markup","Internal link optimization",
-    "Conversion-focused recommendations","Core Web Vitals monitoring",
-    "Monthly AI & search ranking reports","Priority email support",
-  ];
-  const fullExtras = [
-    "Full AI optimization — ChatGPT, Claude, Gemini, Perplexity","Citation & mention building",
-    "Agent-Ready (ASO) implementation — hours, offers, booking path",
-    "Weekly blog content (researched & written)","Full site hosting on global edge network",
-    "Unlimited site edits & updates","Easy content approval workflow",
-    "Google Business Profile optimization","Business listing management",
-    "Service-area landing pages","Local SEO & citation strategy","Dedicated support",
-  ];
-
-  const isFull = plan === "full_management";
-  const features = isFull ? [...seoFeatures, ...fullExtras] : seoFeatures;
-
-  const extra = isFull
-    ? `<p style="background:#1a2e3a;padding:12px;border-radius:8px;border-left:4px solid #7c3aed;margin-top:20px"><strong>📋 Site Build or Migration:</strong> If you're migrating an existing site or need a new build, we'll follow up separately to get your requirements and timeline.</p>`
-    : `<p style="background:#1a2e3a;padding:12px;border-radius:8px;border-left:4px solid #7c3aed;margin-top:20px"><strong>🔑 Site Access:</strong> To start your weekly audits, we may need access to your website. We'll reach out if we need anything.</p>`;
-
-  return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"></head>
-<body style="font-family:-apple-system,sans-serif;background:#0f1117;color:#e1e4e8;padding:40px">
-<div style="max-width:600px;margin:0 auto">
-  <div style="background:linear-gradient(135deg,#7c3aed,#3b82f6);padding:32px;border-radius:12px 12px 0 0;text-align:center">
-    <h1 style="color:#fff;margin:0;font-size:24px">Let's Get Started</h1>
-  </div>
-  <div style="background:#161b22;padding:32px;border-radius:0 0 12px 12px">
-    <p style="font-size:16px">Hi ${customerName},</p>
-    <p>Here's everything you need to know about your <strong>${planLabel}</strong> plan, at ${priceLine}.</p>
-    <h3 style="color:#7c3aed;margin-top:24px">Your Plan Includes:</h3>
-    <ul style="padding-left:20px;columns:${features.length > 10 ? "2" : "1"};column-gap:24px">
-      ${features.map(f => `<li style="margin-bottom:6px;font-size:14px">${f}</li>`).join("")}
-    </ul>
-    ${extra}
-    <p style="margin-top:24px"><strong>Your first weekly audit</strong> will arrive within 24 hours.</p>
-    <p>Questions? Just reply to this email or reach us at <a href="mailto:hello@getranklabs.com" style="color:#06b6d4">hello@getranklabs.com</a>.</p>
-    <p style="color:#8b949e;font-size:13px;margin-top:24px">— The Rank Labs Team</p>
-  </div>
+  <p style="color:#8b949e;font-size:12px;margin-top:16px">No email was sent to the customer and no onboarding was started.</p>
 </div></body></html>`;
 }
 
