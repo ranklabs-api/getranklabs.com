@@ -87,23 +87,6 @@ import Layout from '../layouts/Layout.astro';
         You make the calls. That's the formula. <a href="/faq" class="text-cyan-400 hover:underline">Read our FAQ →</a>
       </p>
 
-      <h2 class="text-2xl font-bold mb-4">The Tech Stack</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        {[
-          { label: 'Hosting', value: 'Cloudflare Pages (Global Edge)' },
-          { label: 'Crawler', value: 'Custom Crawler Engine' },
-          { label: 'Content', value: 'Research & Content Engine' },
-          { label: 'Monitoring', value: 'Prometheus + Grafana' },
-          { label: 'Deployment', value: 'GitOps with Argo CD' },
-          { label: 'Infrastructure', value: 'Kubernetes (k3s)' },
-        ].map((item) => (
-          <div class="bg-surface rounded-lg p-4">
-            <div class="text-xs text-cyan-400 mb-1">{item.label}</div>
-            <div class="text-sm">{item.value}</div>
-          </div>
-        ))}
-      </div>
-
       <h2 class="text-2xl font-bold mb-4">Based in Florida</h2>
       <p class="text-muted">
         Proudly operating from the Sunshine State. We serve businesses across the US —
