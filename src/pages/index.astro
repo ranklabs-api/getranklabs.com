@@ -5,54 +5,50 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
 
 <!-- Hero -->
-<section class="relative pt-32 pb-20 px-6 overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-purple-500/5 to-transparent"></div>
-  <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl"></div>
+<section class="relative pt-28 sm:pt-32 pb-14 sm:pb-20 px-6 overflow-hidden" aria-labelledby="hero-title">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_15%,rgba(99,102,241,0.14),transparent_65%)]"></div>
 
   <div class="max-w-4xl mx-auto text-center relative">
-    <div class="inline-flex items-start sm:items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-sm text-cyan-300 mb-8 text-left">
-      <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse shrink-0 mt-[7px] sm:mt-0"></span>
-      AI Search Optimization — For ChatGPT, Claude, Gemini & Perplexity
-    </div>
-
-    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95] mb-6">
-      <span class="block text-white">Get Found.</span>
-      <span class="block text-purple-500">Get Cited.</span>
-      <span class="block text-blue-500">Get Chosen.</span>
-    </h1>
-
-    <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10">
-      <span class="gradient-text font-bold">Ranked by Google. Cited by AI. Chosen by both.</span>
-      Rank Labs runs search, AI citations and agent-readiness from one playbook — so your business
-      shows up on ChatGPT, Claude, Gemini &amp; Perplexity, and gets picked when an AI is asked to
-      actually choose a business.
+    <!-- Open typography gives the message room to wrap without a badge enclosure. -->
+    <p class="mb-7 sm:mb-8 text-xs sm:text-sm leading-relaxed">
+      <span aria-hidden="true" class="block w-8 h-px bg-purple-500 mx-auto mb-4"></span>
+      <span class="block sm:inline font-semibold tracking-wide text-[#22D3EE]">AI Search Optimization</span>
+      <span class="hidden sm:inline text-muted"> — </span>
+      <span class="block sm:inline mt-1 sm:mt-0 text-muted">For ChatGPT, Claude, Gemini &amp; Perplexity</span>
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/contact" class="btn-primary text-lg">Get Your Free AI Visibility Report →</a>
-      <a href="/#how-it-works" class="btn-secondary text-lg">See How It Works</a>
-    </div>
-    <a href="tel:+14077438964" data-call-location="hero" class="btn-primary mt-5">Call (407) 743-8964</a>
+    <h1 id="hero-title" class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] mb-7 sm:mb-8">
+      <span class="block text-white">Get Found.</span>
+      <span class="block text-[#A855F7]">Get Cited.</span>
+      <span class="block text-[#3B82F6]">Get Chosen.</span>
+    </h1>
 
-    <!-- Stats -->
-    <div class="grid grid-cols-1 sm:grid-cols-4 gap-8 mt-20 pt-12 border-t border-white/5">
-      <div>
-        <div class="text-3xl font-bold gradient-text">4</div>
-        <div class="text-sm text-muted mt-1">AI Engines Covered</div>
-      </div>
-      <div>
-        <div class="text-3xl font-bold gradient-text">69%</div>
-        <div class="text-sm text-muted mt-1">Changed Vendors Via AI</div>
-      </div>
-      <div>
-        <div class="text-3xl font-bold gradient-text">51%</div>
-        <div class="text-sm text-muted mt-1">Buyers Start On AI First</div>
-      </div>
-      <div>
-        <div class="text-3xl font-bold gradient-text">From $1,500</div>
-        <div class="text-sm text-muted mt-1">Per Month</div>
-      </div>
+    <p class="text-xl sm:text-2xl font-semibold leading-snug tracking-tight text-white max-w-2xl mx-auto">
+      Get Found on <span class="inline-block">ChatGPT, Claude,</span>
+      <span class="inline-block">Gemini &amp; Perplexity.</span>
+    </p>
+    <p class="text-base sm:text-lg text-muted leading-relaxed max-w-xl mx-auto mt-4 mb-8">
+      We optimize your website so AI can find, cite, and recommend your business
+      when someone asks who to choose in your industry.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/contact" class="btn-primary hero-primary text-base">Get Your Free AI Visibility Report <span aria-hidden="true">→</span></a>
+      <a href="/#how-it-works" class="btn-secondary text-base">See How It Works</a>
     </div>
+    <a href="tel:+14077438964" data-call-location="hero" class="inline-flex items-center min-h-11 mt-3 px-2 text-sm text-muted hover:text-white underline underline-offset-4 decoration-white/30 transition-colors">Call (407) 743-8964</a>
+
+    <!-- Service scope and published pricing, not customer results. -->
+    <dl class="grid grid-cols-2 gap-6 max-w-lg mx-auto mt-9 sm:mt-12 pt-6 border-t border-white/10">
+      <div>
+        <dt class="text-xs sm:text-sm text-muted">AI Engines Covered</dt>
+        <dd class="text-lg sm:text-xl font-semibold text-white mt-1">4</dd>
+      </div>
+      <div>
+        <dt class="text-xs sm:text-sm text-muted">Per Month</dt>
+        <dd class="text-lg sm:text-xl font-semibold text-white mt-1">From $1,500</dd>
+      </div>
+    </dl>
   </div>
 </section>
 
@@ -367,7 +363,6 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Full Management -->
       <div class="gradient-border rounded-2xl p-8 md:p-10 text-left relative bg-purple-500/[0.03]">
-        <div class="absolute -top-3 right-6 text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold">MOST POPULAR</div>
         <div class="text-sm text-cyan-300 font-semibold mb-2">FULL MANAGEMENT</div>
         <div class="text-5xl font-bold mb-1">$2,500<span class="text-lg text-muted font-normal">/mo</span></div>
         <p class="text-muted text-sm mb-4">Everything in GEO + SEO, plus we build, host, and maintain your site. Hands-free — get found on every platform without lifting a finger.</p>
@@ -439,3 +434,23 @@ import Layout from '../layouts/Layout.astro';
 </section>
 
 </Layout>
+
+<style>
+  /* Homepage-only brand ground; shared pages retain their existing styling. */
+  :global(body) {
+    background-color: #0A0F17;
+    color: #FFFFFF;
+  }
+
+  .hero-primary {
+    background-image: linear-gradient(135deg, #A855F7, #3B82F6);
+  }
+
+  .hero-primary:hover {
+    background-image: linear-gradient(135deg, #8B5CF6, #3B82F6);
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+</style>
