@@ -1516,19 +1516,100 @@ function renderMarkdown(md) {
   return html.join('\n');
 }
 
-const postHtml = renderMarkdown(post.body);
+// Post bodies open with "# <title>", which renderMarkdown turns into a second
+// <h1> next to the template's own — 14 of 29 pages failed "exactly one H1" on
+// that alone. Strip a leading H1 here rather than editing every post body, so a
+// new post cannot reintroduce it.
+const bodyWithoutDuplicateH1 = post.body.replace(/^\s*#\s+.*(?:\r?\n|$)/, '');
+const postHtml = renderMarkdown(bodyWithoutDuplicateH1);
 
 // Derive meta description from post body (first ~155 chars)
-const metaDesc = post.body
+// Slicing to 155 measured SOURCE characters, but each " becomes &quot; in the
+// rendered attribute (+5 chars each), which pushed three posts past the 160-char
+// limit. Drop quotes and leave headroom so the RENDERED length is what is capped.
+const metaDesc = bodyWithoutDuplicateH1
   .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')  // strip markdown links
   .replace(/[*#_>`]/g, '')                     // strip markdown syntax
+  .replace(/["“”]/g, '')                       // quotes inflate to &quot; when rendered
   .replace(/\s+/g, ' ')
   .trim()
-  .slice(0, 155)
+  .slice(0, 150)
   .replace(/\s\S*$/, ''); // don't cut mid-word
+
+// Engines had no readable date: post.date rendered as plain text and no schema
+// carried datePublished. Normalise to ISO for <time datetime> and BlogPosting.
+const parsedDate = new Date(post.date);
+const isoDate = Number.isFinite(parsedDate.getTime())
+  ? parsedDate.toISOString().slice(0, 10)
+  : null;
+
+// FAQ Coverage (ASO, weight 8): posts whose body is genuinely structured as
+// questions carry no FAQPage markup, so an agent cannot read the Q&A. Emit it
+// only when the post really is a Q&A set — 3+ question headings, each with an
+// answer — rather than labelling any post with one question as an FAQ.
+function extractFaq(markdown) {
+  const out = [];
+  const lines = markdown.split(/\r?\n/);
+  let current = null;
+  for (const line of lines) {
+    const heading = line.match(/^#{2,4}\s+(.*\?)\s*$/);
+    if (heading) {
+      if (current && current.answer.trim()) out.push(current);
+      current = { question: heading[1].trim(), answer: '' };
+      continue;
+    }
+    if (!current) continue;
+    if (/^#{1,4}\s+/.test(line)) {                       // a non-question heading ends the answer
+      if (current.answer.trim()) out.push(current);
+      current = null;
+      continue;
+    }
+    current.answer += line + ' ';
+  }
+  if (current && current.answer.trim()) out.push(current);
+  return out
+    .map((f) => ({
+      question: f.question,
+      answer: f.answer
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/[*_`>]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    }))
+    .filter((f) => f.answer.length >= 40);
+}
+
+const faqEntries = extractFaq(bodyWithoutDuplicateH1);
+const faqSchema = faqEntries.length >= 3
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      '@id': `https://getranklabs.com/blog/${slug}#faq`,
+      mainEntity: faqEntries.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    }
+  : null;
+
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: metaDesc,
+  url: `https://getranklabs.com/blog/${slug}`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://getranklabs.com/blog/${slug}` },
+  ...(isoDate ? { datePublished: isoDate, dateModified: isoDate } : {}),
+  author: { '@type': 'Organization', name: 'Rank Labs', url: 'https://getranklabs.com' },
+  publisher: { '@type': 'Organization', name: 'Rank Labs', url: 'https://getranklabs.com' },
+};
 ---
 
 <Layout title={`${post.title} — Rank Labs`} description={metaDesc}>
+
+<script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)}></script>
+{faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>}
 
 <article class="pt-32 pb-20 px-6">
   <div class="max-w-2xl mx-auto">
@@ -1536,7 +1617,7 @@ const metaDesc = post.body
 
     <div class="flex items-center gap-3 mb-6">
       <span class="text-xs text-cyan-400 font-medium">{post.tag}</span>
-      <span class="text-xs text-muted">{post.date}</span>
+      <time class="text-xs text-muted" datetime={isoDate}>{post.date}</time>
     </div>
 
     <h1 class="text-3xl md:text-4xl font-bold mb-8">{post.title}</h1>
