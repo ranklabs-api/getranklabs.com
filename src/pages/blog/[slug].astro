@@ -26,6 +26,7 @@ export function getStaticPaths() {
     { params: { slug: 'agentic-search-optimization-agent-ready' } },
     { params: { slug: 'competitor-gap-analysis-ai-search' } },
     { params: { slug: 'citation-mention-building-ai-search' } },
+    { params: { slug: 'content-freshness-ai-search' } },
   ];
 }
 
@@ -1530,6 +1531,81 @@ It works best alongside a solid content foundation. If you haven't yet, read abo
 Brand mentions for AI search come down to one idea: be talked about, accurately and consistently, in the places AI engines already trust. Start with the sources your competitors own, keep your description consistent, and measure what changes.
 
 Want to see where you stand today? **Get your free AI Visibility Report** at Rank Labs, or call us at **(407) 743-8964** and we'll show you which sources are shaping what AI says about your business.
+    `.trim(),
+  },
+  'content-freshness-ai-search': {
+    title: 'Content Freshness in the AI Era: Why Stale Pages Stop Getting Cited (and How to Refresh Them)',
+    date: 'October 23, 2026',
+    tag: 'AI Search Strategy',
+    body: `
+Think about the time you asked your favorite AI platform for a recommendation. You probably didn't want an answer built on information from three years ago. AI engines don't want that either. That's why **content freshness in AI search** matters more than most business owners realize. A page that was great in 2023 can quietly stop showing up in AI answers, and nobody tells you when it happens. The good news is that you can fix it, and you usually don't have to start over.
+
+## Why AI Engines Care How Recent Your Content Is
+
+AI assistants try to give answers people can act on today. When ChatGPT, Gemini, Claude, or Perplexity pulls from the web, it has to decide which sources to trust. Recency is one of the ways it judges whether a source is still reliable, especially for topics where prices, rules, tools, or best practices change.
+
+That doesn't mean every page needs to be brand new. A clear explanation of a timeless idea can keep earning citations for years. But if your page mentions old pricing, discontinued services, or "the latest trends" from several years back, AI engines have good reason to pick a competitor's page instead. If you've already read our [AI Search Strategy Playbook](https://getranklabs.com/blog/ai-search-strategy-playbook), freshness is one of the quieter factors behind everything in it.
+
+## The Signals That Tell AI a Page Is Current: Dates, Facts, Prices, and Sitemaps
+
+Search and AI systems look at several clues together:
+
+- **Visible dates.** A clear "last updated" date tells readers and crawlers the page has been maintained.
+- **Structured data.** \`datePublished\` and \`dateModified\` in your schema make those dates machine-readable. Our [Schema Markup Playbook](https://getranklabs.com/blog/schema-markup-ai-citations) covers how to set this up.
+- **Current facts and prices.** Out-of-date numbers are among the strongest staleness signals, because they directly contradict newer sources.
+- **Sitemap \`lastmod\` values.** An accurate sitemap helps crawlers see which pages changed and come back sooner.
+- **Fresh internal links.** Linking from new posts to older pages tells crawlers those pages still matter.
+
+One warning: changing a date without changing the content doesn't count as a refresh. Engines compare what's actually on the page, and fake updates can hurt your credibility.
+
+## How Stale Content Quietly Costs You Citations (and Trust)
+
+Stale content almost never fails all at once. It slips. Rankings drop a few spots, AI answers start citing someone else, and traffic slowly fades. Because nothing breaks, it's easy to miss.
+
+There's a trust cost too. When a prospect lands on your page and sees an old price or a service you no longer offer, they start wondering what else is out of date. AI engines weigh trust signals in a similar way, which we cover in [How AI Engines Decide Who to Trust](https://getranklabs.com/blog/backlinks-authority-ai-search).
+
+## Refresh vs. Rewrite vs. Retire: Deciding What to Do With Old Pages
+
+Not every old page needs the same fix:
+
+- **Refresh** when the page still targets the right topic and performs reasonably well, but has outdated details. Update the facts, add a new section, and tighten the intro.
+- **Rewrite** when the topic still matters but the page no longer answers the question well. Keep the URL and rebuild the content.
+- **Retire** when the topic no longer fits your business. Redirect it to the closest relevant page, or merge it into a stronger one.
+
+Looking at your content as a group helps here. Our guide to [topical authority and topic clusters](https://getranklabs.com/blog/topical-authority-topic-clusters-ai-search) shows how pages support each other.
+
+## How to Update a Page Without Losing Its Rankings or URL Equity
+
+The most important rule is simple: **keep the URL.** Links and authority built up over time are tied to that address. A few other habits keep a refresh safe:
+
+- Keep the main topic and target keyword the same unless you have a strong reason to change them.
+- Keep the sections that already perform well and improve the ones around them.
+- Update \`dateModified\` and your sitemap only after you've made real changes.
+- If you do have to change a URL, use a 301 redirect. Our post on [migrating without losing rankings](https://getranklabs.com/blog/website-migration-without-losing-rankings) explains how.
+
+## Building a Maintenance Cadence: What to Review Weekly, Monthly, and Quarterly
+
+Freshness works best as a habit, not a one-time cleanup:
+
+- **Weekly:** Check for ranking drops, crawl errors, and pages that have lost visibility. Small problems are much easier to fix when you catch them early, which is the idea behind [the weekly audit advantage](https://getranklabs.com/blog/weekly-audit-advantage).
+- **Monthly:** Review prices, service details, and contact information across key pages. Refresh one or two posts that are slipping.
+- **Quarterly:** Audit your full content library. Decide what to refresh, rewrite, or retire, and look for gaps competitors are filling.
+
+## How to Tell If a Refresh Worked in Google and AI Answers
+
+Give a refreshed page a few weeks, then check:
+
+- **Google Search Console:** Look for higher impressions, clicks, and average position on the updated page.
+- **AI answers:** Ask ChatGPT, Gemini, Claude, and Perplexity the questions your page answers, and see whether you're cited. Our guide on [how to know if AI search engines are recommending your business](https://getranklabs.com/blog/how-to-know-if-ai-search-engines-recommend-your-business) walks through it.
+- **Engagement:** Watch time on page and conversions. A good refresh should help visitors, not just crawlers.
+
+## Let Rank Labs Keep Your Site Current
+
+Content freshness in AI search isn't a one-time project. Your content needs regular care, and most business owners don't have time to watch every page. That's where we come in.
+
+With our **GEO + SEO** plan ($1,500/month), you get weekly audits, rankings, and strategy sent to your inbox, so you know which pages need attention before they start losing citations. If you'd like us to handle the work too, **Full Management** ($2,500/month) includes everything in GEO + SEO, and we also build, host, and maintain your site.
+
+Ready to find out which pages are holding you back? **Get your free AI Visibility Report** or call us at **(407) 743-8964**. We'd love to help you stay current and keep getting cited.
     `.trim(),
   },
 };
