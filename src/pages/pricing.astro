@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Pricing from '../components/Pricing.astro';
+import ReportFeatures from '../components/ReportFeatures.astro';
+---
+
+<Layout title="Pricing — Rank Labs Visibility Report & Full Management — Rank Labs" description="Rank Labs pricing: Rank Labs Visibility Report ($499/mo, month-to-month, SEO + AI visibility, report only — you handle all fixes) or Full Management ($2,500/mo, we do the work).">
+  <div class="pt-16">
+    <Pricing headingLevel="h1">
+      <div id="visibility-report-scope" class="mt-16 max-w-4xl mx-auto gradient-border rounded-2xl p-6 sm:p-8 text-left scroll-mt-20">
+        <div class="text-sm text-purple-300 font-mono mb-2">$499/MO · MONTH-TO-MONTH · REPORT ONLY</div>
+        <h2 class="text-2xl font-bold mb-2 break-words">Everything in the Rank Labs Visibility Report</h2>
+        <p class="text-sm text-muted mb-8 break-words">SEO + AI visibility in one report. You handle all fixes — Rank Labs makes no changes to your site.</p>
+        <ReportFeatures />
+      </div>
+
+      <p class="mt-12 text-sm text-muted">
+        <a href="/services" class="text-cyan-400 hover:underline">See the full service breakdown →</a>
+        &nbsp;·&nbsp;
+        <a href="/faq" class="text-cyan-400 hover:underline">Read our FAQ →</a>
+      </p>
+    </Pricing>
+  </div>
+</Layout>

@@ -1,0 +1,20 @@
+---
+// Full, grouped scope of the Rank Labs Visibility Report (/pricing and /services).
+import { reportFeatureGroups } from '../data/visibilityReport';
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+  {reportFeatureGroups.map((group) => (
+    <div class="min-w-0">
+      <h3 class="font-semibold text-sm text-purple-300 mb-3">{group.title}</h3>
+      <ul class="space-y-2">
+        {group.items.map((item) => (
+          <li class="flex items-start gap-3 text-sm text-muted min-w-0">
+            <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0 mt-2"></span>
+            <span class="min-w-0 break-words">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

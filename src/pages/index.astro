@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Pricing from '../components/Pricing.astro';
 ---
 
 <Layout>
@@ -33,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
     </p>
 
     <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center items-stretch sm:items-center">
-      <a href="/contact" class="btn-primary hero-primary text-base">Get Your Free AI Visibility Report <span aria-hidden="true">→</span></a>
+      <a href="/contact?intent=free-audit" class="btn-primary hero-primary text-base">Get Your Free AI Visibility Audit <span aria-hidden="true">→</span></a>
       <a href="/#how-it-works" class="btn-secondary text-base">See How It Works</a>
       <a href="tel:+14077438964" data-call-location="hero" class="btn-ghost-call text-sm self-center"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call (407) 743-8964</span></a>
     </div>
@@ -46,9 +47,43 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div>
         <dt class="text-xs sm:text-sm text-muted">Per Month</dt>
-        <dd class="text-lg sm:text-xl font-semibold text-white mt-1">From $1,500</dd>
+        <dd class="text-lg sm:text-xl font-semibold text-white mt-1">From $499</dd>
       </div>
     </dl>
+  </div>
+</section>
+
+<!-- AI Check — free audit hook -->
+<section id="ai-check" class="py-20 sm:py-24 px-6 bg-surface/30 relative overflow-hidden" aria-labelledby="ai-check-title">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-purple-500/5 to-cyan-500/5"></div>
+  <div class="max-w-4xl mx-auto text-center relative min-w-0">
+    <div class="text-sm text-cyan-300 font-mono mb-4">QUICK QUESTION</div>
+    <h2 id="ai-check-title" class="text-3xl md:text-4xl font-bold mb-4 break-words">
+      Do you know how your business shows up in
+      <span class="gradient-text">ChatGPT, Gemini, Claude and Perplexity?</span>
+    </h2>
+    <p class="text-muted max-w-xl mx-auto mb-10 break-words">
+      Your customers are asking AI who to hire. Maybe it names you. Maybe it names the shop down the street.
+      Maybe it gets your hours wrong. Let's find out — free.
+    </p>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10" aria-label="AI engines we check">
+      {[
+        { icon: '🤖', name: 'ChatGPT', q: 'Does it mention you?', color: 'text-green-400' },
+        { icon: '🔍', name: 'Gemini', q: 'Does it recommend you?', color: 'text-blue-400' },
+        { icon: '🧠', name: 'Claude', q: 'Does it describe you right?', color: 'text-orange-400' },
+        { icon: '⚡', name: 'Perplexity', q: 'Does it cite you?', color: 'text-purple-400' },
+      ].map((engine) => (
+        <li class="gradient-border rounded-xl p-4 sm:p-5 min-w-0">
+          <div class="text-2xl mb-2" aria-hidden="true">{engine.icon}</div>
+          <div class={`font-semibold text-sm sm:text-base ${engine.color}`}>{engine.name}</div>
+          <div class="text-xs text-muted mt-1 break-words">{engine.q}</div>
+        </li>
+      ))}
+    </ul>
+
+    <a href="/contact?intent=free-audit" class="btn-primary hero-primary text-base">Get Your Free AI Visibility Audit <span aria-hidden="true">→</span></a>
+    <p class="text-xs text-muted mt-4 break-words">See exactly what the four big AI engines say about your business. No cost, no obligation.</p>
   </div>
 </section>
 
@@ -309,7 +344,7 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {[
-        { value: '24h', label: 'First AI Visibility Report' },
+        { value: '24h', label: 'Free AI Visibility Audit' },
         { value: '4', label: 'AI Engines Monitored' },
         { value: 'Weekly', label: 'Updates & Optimizations' },
         { value: '99.9%', label: 'Uptime Guaranteed' },
@@ -324,76 +359,7 @@ import Layout from '../layouts/Layout.astro';
 </section>
 
 <!-- Pricing -->
-<section id="pricing" class="py-24 px-6 bg-surface/30">
-  <div class="max-w-6xl mx-auto text-center">
-    <div class="text-sm text-cyan-300 font-mono mb-4">PRICING</div>
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Get Found on AI — At a Price That Makes Sense.</h2>
-    <p class="text-muted mb-16">Pick the plan that matches how fast you want to grow. Every plan month-to-month, cancel anytime.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <!-- GEO/SEO Management -->
-      <div class="gradient-border rounded-2xl p-8 md:p-10 text-left flex flex-col">
-        <div class="text-sm text-purple-300 font-semibold mb-2">GEO + SEO</div>
-        <div class="text-5xl font-bold mb-1">$1,500<span class="text-lg text-muted font-normal">/mo</span></div>
-        <p class="text-muted text-sm mb-8">Ongoing GEO + SEO optimization for your existing site — weekly audits, keyword & competitor tracking, and AI visibility monitoring across ChatGPT, Claude, Gemini, and Perplexity. You keep your current site and hosting.</p>
-
-        <ul class="space-y-3 mb-8">
-          {[
-            'AI visibility monitoring (4 engines)',
-            'Agent-readiness score & level in every report',
-            'Weekly SEO audits (100+ checks)',
-            'Keyword & competitor tracking',
-            'Backlink profile monitoring',
-            'Content strategy & calendar',
-            'Technical SEO & schema markup',
-            'Internal link optimization',
-            'Conversion-focused recommendations',
-            'Core Web Vitals monitoring',
-            'Monthly AI & search ranking reports',
-            'Priority email support',
-          ].map((feature) => (
-            <li class="flex items-center gap-3 text-sm">
-              <span class="text-green-400 shrink-0">✓</span> {feature}
-            </li>
-          ))}
-        </ul>
-
-        <a href="/signup?plan=seo_management" class="btn-primary block text-center w-full mt-auto">Get Started</a>
-      </div>
-
-      <!-- Full Management -->
-      <div class="gradient-border rounded-2xl p-8 md:p-10 text-left relative bg-purple-500/[0.03] flex flex-col">
-        <div class="text-sm text-cyan-300 font-semibold mb-2">FULL MANAGEMENT</div>
-        <div class="text-5xl font-bold mb-1">$2,500<span class="text-lg text-muted font-normal">/mo</span></div>
-        <p class="text-muted text-sm mb-4">Everything in GEO + SEO, plus we build, host, and maintain your site. Hands-free — get found on every platform without lifting a finger.</p>
-        <p class="text-xs text-muted mb-8 pb-6 border-b border-white/5">+ one-time site build or <span class="text-white font-medium">$1,000 migration</span> for existing sites</p>
-
-        <ul class="space-y-3 mb-8">
-          {[
-            'Everything in GEO + SEO',
-            'Full AI optimization — ChatGPT, Claude, Gemini, Perplexity',
-            'Citation & mention building',
-            'Agent-Ready (ASO) implementation — hours, offers, booking path',
-            'Weekly blog content (researched & written)',
-            'Full site hosting on global edge network',
-            'Unlimited site edits & updates',
-            'Easy content approval workflow',
-            'Google Business Profile optimization',
-            'Business listing management',
-            'Service-area landing pages',
-            'Local SEO & citation strategy',
-            'Dedicated support',
-          ].map((feature) => (
-            <li class="flex items-center gap-3 text-sm">
-              <span class="text-green-400 shrink-0">✓</span> {feature}
-            </li>
-          ))}
-        </ul>
-
-        <a href="/signup?plan=full_management" class="btn-primary block text-center w-full mt-auto">Get Full Management</a>
-      </div>
-    </div>
-
+<Pricing>
     <!-- Site Builds -->
     <div class="mt-16 max-w-lg mx-auto">
       <div class="text-sm text-cyan-300 font-mono mb-2">ONE-TIME</div>
@@ -406,19 +372,18 @@ import Layout from '../layouts/Layout.astro';
           { pages: 'Site Migration', price: '$1,000', desc: 'Moving from Wix, Squarespace, WordPress? We handle DNS, content, and redirects without downtime.' },
           { pages: '6+ Pages', price: 'Custom', desc: 'Complex sites, e-commerce, dashboards. Let\'s talk.' },
         ].map((tier) => (
-          <div class="flex items-center justify-between gradient-border rounded-xl p-4">
-            <div>
+          <div class="flex items-center justify-between gap-4 gradient-border rounded-xl p-4 min-w-0">
+            <div class="min-w-0">
               <div class="font-semibold text-sm">{tier.pages}</div>
-              <div class="text-xs text-muted">{tier.desc}</div>
+              <div class="text-xs text-muted break-words">{tier.desc}</div>
             </div>
-            <div class="text-lg font-bold gradient-text shrink-0 ml-4">{tier.price}</div>
+            <div class="text-lg font-bold gradient-text shrink-0">{tier.price}</div>
           </div>
         ))}
       </div>
       <a href="/contact" class="btn-secondary inline-block mt-8">Tell Us What You Need →</a>
     </div>
-  </div>
-</section>
+</Pricing>
 
 <!-- CTA -->
 <section class="py-24 px-6">
@@ -428,7 +393,7 @@ import Layout from '../layouts/Layout.astro';
       Get a free report on how your business currently appears across ChatGPT, Claude, Perplexity, 
       and Gemini — and what it'll take to get you cited, recommended, and visible in every AI answer.
     </p>
-    <a href="/contact" class="btn-primary text-lg">Get My Free AI Visibility Report →</a>
+    <a href="/contact?intent=free-audit" class="btn-primary text-lg">Get My Free AI Visibility Audit →</a>
     <a href="tel:+14077438964" data-call-location="cta" class="btn-primary block mt-5">Call (407) 743-8964</a>
   </div>
 </section>

@@ -2,16 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contact Rank Labs — Get Your Free AI Visibility Report" description="Get a free AI visibility audit from Rank Labs. See how ChatGPT, Claude, Gemini, and Perplexity see your business — and what it takes to get cited and recommended.">
+<Layout title="Contact Rank Labs — Get Your Free AI Visibility Audit" description="Get a free AI visibility audit from Rank Labs. See how ChatGPT, Claude, Gemini, and Perplexity see your business — and what it takes to get cited and recommended.">
 
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-xl mx-auto text-center">
     <div class="text-sm text-cyan-300 font-mono mb-4">GET IN TOUCH</div>
     <h1 class="text-4xl md:text-5xl font-bold mb-4">Let's <span class="gradient-text">Talk</span></h1>
     <p class="text-lg text-muted mb-12">
-      Got a question? Want a free SEO audit? Just want to say hi? Drop us a message.
+      Got a question? Want a free AI visibility audit — how ChatGPT, Gemini, Claude, and Perplexity see your business? Just want to say hi? Drop us a message.
     </p>
     <a href="tel:+14077438964" data-call-location="contact" class="btn-primary mb-8">Call (407) 743-8964</a>
+
+    <div id="plan-banner" class="hidden mb-6 rounded-xl border border-purple-500/40 bg-purple-500/10 p-4 text-left" role="status">
+      <p id="plan-label" class="text-sm font-semibold text-white break-words"></p>
+      <p class="text-xs text-muted mt-1 break-words">Covers SEO + AI visibility. You handle all fixes — Rank Labs makes no changes to your site.</p>
+    </div>
 
     <form id="contact-form" class="text-left space-y-5">
       <div>
@@ -49,6 +54,28 @@ import Layout from '../layouts/Layout.astro';
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
 
+  // Plan pre-selection from ?plan= ('ai-visibility-report' is the legacy slug).
+  const PLANS = {
+    'rank-labs-visibility-report': 'Rank Labs Visibility Report ($499/mo, report-only, month-to-month)',
+  };
+  const PLAN_ALIASES = { 'ai-visibility-report': 'rank-labs-visibility-report' };
+  const rawPlan = new URLSearchParams(window.location.search).get('plan') || '';
+  const plan = PLANS[rawPlan] ? rawPlan : (PLAN_ALIASES[rawPlan] || '');
+  const planLabel = plan ? PLANS[plan] : '';
+
+  // Free-audit CTAs link here with ?intent=free-audit so the request is routed
+  // to the approval email. Only known values are accepted.
+  const INTENTS = ['free-audit'];
+  const rawIntent = (new URLSearchParams(window.location.search).get('intent') || '').toLowerCase();
+  const intent = INTENTS.includes(rawIntent) ? rawIntent : '';
+
+  if (planLabel) {
+    document.getElementById('plan-label').textContent = 'Plan: ' + planLabel;
+    document.getElementById('plan-banner').classList.remove('hidden');
+    const msg = document.getElementById('message');
+    if (!msg.value) msg.value = "I'm interested in the " + planLabel + '.';
+  }
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -62,8 +89,15 @@ import Layout from '../layouts/Layout.astro';
       url: document.getElementById('url').value.trim(),
       notes: document.getElementById('message').value.trim(),
       type: 'contact',
+      plan: plan || undefined,
+      intent: intent || undefined,
+      page_path: window.location.pathname,
       submittedAt: new Date().toISOString(),
     };
+
+    if (planLabel && !data.notes.includes('Plan: ' + planLabel)) {
+      data.notes = ('Plan: ' + planLabel + '\n\n' + data.notes).trim();
+    }
 
     if (!data.name || !data.email) {
       status.className = 'mt-4 text-sm text-red-400';

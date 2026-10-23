@@ -59,8 +59,8 @@ You can't manage what you don't measure. Ongoing monitoring of how your brand ap
 
 ## Getting Started with Optimization
 
-The first step is the simplest: find out where you stand. A free AI visibility report from Rank Labs shows you exactly how your business appears across ChatGPT, Claude, Gemini, and Perplexity — in a single, plain-English report with no jargon and no obligation.
+The first step is the simplest: find out where you stand. A Free AI Visibility Audit from Rank Labs shows you exactly how your business appears across ChatGPT, Claude, Gemini, and Perplexity — in a single, plain-English report with no jargon and no obligation.
 
 Optimization isn't a one-time project. It's an ongoing strategy that gets stronger the longer you commit to it. But the businesses that start now — while the AI search landscape is still being defined — are the ones that will own their categories tomorrow.
 
-[Get your free AI visibility report today →](https://getranklabs.com)
+[Get your Free AI Visibility Audit today →](https://getranklabs.com)
