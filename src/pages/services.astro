@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ReportFeatures from '../components/ReportFeatures.astro';
 ---
 
-<Layout title="Services — Get Found on ChatGPT, Claude & AI — Rank Labs" description="AI Visibility Report ($499/mo, report only — you implement the fixes) and Full Management ($2,500/mo). GEO scores, AI visibility tracking, blog content, and full site hosting.">
+<Layout title="Services — Get Found on ChatGPT, Claude & AI — Rank Labs" description="Rank Labs Visibility Report ($499/mo, month-to-month: SEO + AI visibility, report only — you handle all fixes) and Full Management ($2,500/mo: we do the work, plus blog content and full site hosting).">
 
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-4xl mx-auto">
@@ -113,30 +114,28 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-sm text-muted max-w-xl">For almost every business we work with, the highest-return work sits at Levels 3 and 4. We won't sell you Level 5 before you've cleared Level 2.</p>
     </div>
 
-    <!-- AI Visibility Report -->
+    <!-- Rank Labs Visibility Report -->
     <div class="border-t border-white/5 pt-12 mb-16">
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
         <div class="min-w-0">
           <div class="text-xs text-purple-300 font-mono mb-2">$499/MO</div>
-          <h2 class="text-2xl font-bold">AI Visibility Report</h2>
-          <p class="text-muted mt-2 max-w-xl break-words">Know where you stand on ChatGPT, Claude, Gemini, and Perplexity — delivered as a monthly report.</p>
+          <h2 class="text-2xl font-bold">Rank Labs Visibility Report</h2>
+          <p class="text-muted mt-2 max-w-xl break-words">Know where you stand in Google search and on ChatGPT, Gemini, Claude, and Perplexity — SEO + AI visibility in one report.</p>
           <p class="text-xs text-muted mt-2"><span class="text-white font-medium">Month-to-month</span>; no long-term contract.</p>
         </div>
       </div>
 
       <div class="rounded-xl border border-amber-400/40 bg-amber-400/10 p-4 mb-6 max-w-2xl" role="note">
         <div class="text-xs font-mono font-semibold text-amber-300 mb-1">REPORT ONLY</div>
-        <p class="text-sm text-white break-words">Rank Labs makes <strong>no changes</strong> to your site. You are responsible for implementing all fixes.</p>
+        <p class="text-sm text-white break-words">You handle all fixes. Rank Labs makes <strong>no changes</strong> to your site.</p>
       </div>
 
-      <ul class="space-y-2 mb-6">
-        {['GEO score', 'AI-engine visibility tracking (ChatGPT, Claude, Gemini, Perplexity)', 'Monthly report'].map(b => (
-          <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-        ))}
-      </ul>
+      <div class="mb-8">
+        <ReportFeatures />
+      </div>
 
       <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
-        <a href="/contact?plan=ai-visibility-report" class="btn-primary">Get the Report</a>
+        <a href="/contact?plan=rank-labs-visibility-report" class="btn-primary">Get the Report</a>
         <a href="/signup?plan=full_management" class="text-sm text-cyan-300 hover:text-cyan-200 font-semibold">Rather have us make the fixes? Upgrade to Full Management →</a>
       </div>
     </div>

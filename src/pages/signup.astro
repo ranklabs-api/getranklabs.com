@@ -96,9 +96,10 @@ import Layout from '../layouts/Layout.astro';
   const params = new URLSearchParams(window.location.search);
   const requestedPlan = params.get('plan');
 
-  // The AI Visibility Report has no self-serve checkout; send it to contact.
-  if (requestedPlan === 'ai-visibility-report') {
-    window.location.replace('/contact?plan=ai-visibility-report');
+  // The Rank Labs Visibility Report has no self-serve checkout; send it to contact.
+  // 'ai-visibility-report' is the legacy slug, kept for old links.
+  if (requestedPlan === 'rank-labs-visibility-report' || requestedPlan === 'ai-visibility-report') {
+    window.location.replace('/contact?plan=rank-labs-visibility-report');
   }
 
   const plans = {

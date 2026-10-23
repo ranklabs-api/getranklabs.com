@@ -1,5 +1,6 @@
 ---
 // Shared plan cards: used on the home page and /pricing.
+import { reportCardBullets } from '../data/visibilityReport';
 const { headingLevel = 'h2' } = Astro.props;
 const Heading = headingLevel;
 ---
@@ -11,24 +12,20 @@ const Heading = headingLevel;
     <p class="text-muted mb-16 max-w-xl mx-auto">Want the data and to make the fixes yourself? Start with the report. Want it done for you? Go Full Management.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <!-- AI Visibility Report (report only) -->
+      <!-- Rank Labs Visibility Report (report only) -->
       <div class="gradient-border rounded-2xl p-6 sm:p-8 md:p-10 text-left flex flex-col min-w-0">
-        <div class="text-sm text-purple-300 font-semibold mb-2">AI VISIBILITY REPORT</div>
+        <div class="text-sm text-purple-300 font-semibold mb-2">RANK LABS VISIBILITY REPORT</div>
         <div class="text-5xl font-bold mb-1">$499<span class="text-lg text-muted font-normal">/mo</span></div>
-        <p class="text-muted text-sm mb-4 break-words">Know exactly where you stand on ChatGPT, Claude, Gemini, and Perplexity — delivered as a monthly report.</p>
+        <p class="text-muted text-sm mb-4 break-words">Know exactly where you stand in Google search and on ChatGPT, Gemini, Claude, and Perplexity — SEO + AI visibility in one report.</p>
         <p class="text-xs text-muted mb-6 break-words"><span class="text-white font-medium">Month-to-month</span>; no long-term contract.</p>
 
         <div class="rounded-xl border border-amber-400/40 bg-amber-400/10 p-4 mb-8" role="note">
           <div class="text-xs font-mono font-semibold text-amber-300 mb-1">REPORT ONLY</div>
-          <p class="text-sm text-white break-words">Rank Labs makes <strong>no changes</strong> to your site. You are responsible for implementing all fixes.</p>
+          <p class="text-sm text-white break-words">You handle all fixes. Rank Labs makes <strong>no changes</strong> to your site.</p>
         </div>
 
         <ul class="space-y-3 mb-8">
-          {[
-            'GEO score',
-            'AI-engine visibility tracking (ChatGPT, Claude, Gemini, Perplexity)',
-            'Monthly report',
-          ].map((feature) => (
+          {reportCardBullets.map((feature) => (
             <li class="flex items-start gap-3 text-sm min-w-0">
               <span class="text-green-400 shrink-0">✓</span> <span class="min-w-0 break-words">{feature}</span>
             </li>
@@ -36,7 +33,7 @@ const Heading = headingLevel;
         </ul>
 
         <div class="mt-auto space-y-4">
-          <a href="/contact?plan=ai-visibility-report" class="btn-primary block text-center w-full">Get the Report</a>
+          <a href="/contact?plan=rank-labs-visibility-report" class="btn-primary block text-center w-full">Get the Report</a>
           <div class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm">
             <p class="text-muted mb-2 break-words">Rather have us make the fixes for you?</p>
             <a href="/signup?plan=full_management" class="text-cyan-300 hover:text-cyan-200 font-semibold">Upgrade to Full Management <span aria-hidden="true">→</span></a>
@@ -81,7 +78,7 @@ const Heading = headingLevel;
     </div>
 
     <p class="mt-8 max-w-2xl mx-auto text-xs text-muted break-words">
-      AI Visibility Report is report-only: Rank Labs makes no changes to your site, and you are responsible for implementing all fixes.
+      Rank Labs Visibility Report ($499/mo, month-to-month) is report-only: you handle all fixes, and Rank Labs makes no changes to your site.
     </p>
 
     <slot />

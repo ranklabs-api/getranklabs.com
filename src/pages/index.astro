@@ -53,6 +53,40 @@ import Pricing from '../components/Pricing.astro';
   </div>
 </section>
 
+<!-- AI Check — free audit hook -->
+<section id="ai-check" class="py-20 sm:py-24 px-6 bg-surface/30 relative overflow-hidden" aria-labelledby="ai-check-title">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-purple-500/5 to-cyan-500/5"></div>
+  <div class="max-w-4xl mx-auto text-center relative min-w-0">
+    <div class="text-sm text-cyan-300 font-mono mb-4">QUICK QUESTION</div>
+    <h2 id="ai-check-title" class="text-3xl md:text-4xl font-bold mb-4 break-words">
+      Do you know how your business shows up in
+      <span class="gradient-text">ChatGPT, Gemini, Claude and Perplexity?</span>
+    </h2>
+    <p class="text-muted max-w-xl mx-auto mb-10 break-words">
+      Your customers are asking AI who to hire. Maybe it names you. Maybe it names the shop down the street.
+      Maybe it gets your hours wrong. Let's find out — free.
+    </p>
+
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10" aria-label="AI engines we check">
+      {[
+        { icon: '🤖', name: 'ChatGPT', q: 'Does it mention you?', color: 'text-green-400' },
+        { icon: '🔍', name: 'Gemini', q: 'Does it recommend you?', color: 'text-blue-400' },
+        { icon: '🧠', name: 'Claude', q: 'Does it describe you right?', color: 'text-orange-400' },
+        { icon: '⚡', name: 'Perplexity', q: 'Does it cite you?', color: 'text-purple-400' },
+      ].map((engine) => (
+        <li class="gradient-border rounded-xl p-4 sm:p-5 min-w-0">
+          <div class="text-2xl mb-2" aria-hidden="true">{engine.icon}</div>
+          <div class={`font-semibold text-sm sm:text-base ${engine.color}`}>{engine.name}</div>
+          <div class="text-xs text-muted mt-1 break-words">{engine.q}</div>
+        </li>
+      ))}
+    </ul>
+
+    <a href="/contact" class="btn-primary hero-primary text-base">Get Your Free AI Visibility Audit <span aria-hidden="true">→</span></a>
+    <p class="text-xs text-muted mt-4 break-words">See exactly what the four big AI engines say about your business. No cost, no obligation.</p>
+  </div>
+</section>
+
 <!-- What We Do — AI-First Services -->
 <section id="services" class="py-24 px-6">
   <div class="max-w-6xl mx-auto">
