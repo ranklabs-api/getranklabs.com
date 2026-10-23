@@ -4,6 +4,7 @@ export const REPORT_SLUG = 'rank-labs-visibility-report';
 
 // Concise card bullets (summary of the full scope below).
 export const reportCardBullets = [
+  'Delivered as one clear report each month, with a prioritized fix list',
   'Google organic + Maps (local pack) rankings for 25 keywords',
   'Ranking keywords & backlink summary',
   'Full technical crawl + Core Web Vitals, schema, sitemap/robots, SSL & email-domain (DNS) checks',
