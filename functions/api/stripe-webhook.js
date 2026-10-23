@@ -132,12 +132,17 @@ async function handleCheckoutCompleted(session, env) {
 
   console.log(`✅ New ${planLabel} signup (${priceLine}): ${customerName} <${customerEmail}>`);
 
-  // Internal email to Josiah
-  await sendEmail(env, {
-    to: "josiahearl@gmail.com",
-    subject: `🚀 New Signup: ${customerName} — ${planLabel}`,
-    html: buildInternalEmail({ customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName }),
-  });
+  // New-subscription notice to Josiah (email only, same Resend sender as
+  // contact). Best-effort: a failed notice never fails the webhook response.
+  try {
+    await sendEmail(env, {
+      to: "josiah@getranklabs.com",
+      subject: `🚀 New Signup: ${customerName} — ${planLabel}`,
+      html: buildInternalEmail({ customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName }),
+    });
+  } catch (e) {
+    console.error("Signup notice email failed:", e.message);
+  }
 
   // Notification only. A signup does not email the customer or start onboarding:
   // existing customers (e.g. a partner rate sent as a payment link) are already
