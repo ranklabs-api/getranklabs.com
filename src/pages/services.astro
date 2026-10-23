@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Services — Get Found on ChatGPT, Claude & AI — Rank Labs" description="GEO + SEO ($1,500/mo) and Full Management ($2,500/mo). Weekly audits, blog content, keyword tracking, and full site hosting with weekly reports.">
+<Layout title="Services — Get Found on ChatGPT, Claude & AI — Rank Labs" description="AI Visibility Report ($499/mo, report only — you implement the fixes) and Full Management ($2,500/mo). GEO scores, AI visibility tracking, blog content, and full site hosting.">
 
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-4xl mx-auto">
     <div class="text-sm text-cyan-300 font-mono mb-4">WHAT WE DO</div>
     <h1 class="text-4xl md:text-5xl font-bold mb-6">Get Found on <span class="gradient-text">Every AI Engine</span></h1>
     <p class="text-lg text-muted mb-16 max-w-2xl">
-      Two tiers, one mission: make your business the answer when people ask AI. Every plan is month-to-month — no contracts, no surprises.
+      Two tiers, one mission: make your business the answer when people ask AI. Get the report and make the fixes yourself, or let us do all of it. <a href="/pricing" class="text-cyan-400 hover:underline">Compare pricing →</a>
     </p>
 
     <!-- GEO vs ASO -->
@@ -113,49 +113,30 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-sm text-muted max-w-xl">For almost every business we work with, the highest-return work sits at Levels 3 and 4. We won't sell you Level 5 before you've cleared Level 2.</p>
     </div>
 
-    <!-- SEO Management -->
+    <!-- AI Visibility Report -->
     <div class="border-t border-white/5 pt-12 mb-16">
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-        <div>
-          <div class="text-xs text-purple-300 font-mono mb-2">$1,500/MO</div>
-          <h2 class="text-2xl font-bold">GEO + SEO</h2>
-          <p class="text-muted mt-2 max-w-xl">Weekly audits, rankings, and strategy delivered to your inbox. You keep your existing team and site — we provide the intelligence.</p>
+        <div class="min-w-0">
+          <div class="text-xs text-purple-300 font-mono mb-2">$499/MO</div>
+          <h2 class="text-2xl font-bold">AI Visibility Report</h2>
+          <p class="text-muted mt-2 max-w-xl break-words">Know where you stand on ChatGPT, Claude, Gemini, and Perplexity — delivered as a monthly report.</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Audits & Monitoring</h3>
-          <ul class="space-y-2">
-            {['Weekly SEO audits (100+ checks)', 'Broken link detection & repair', 'Missing meta tags & descriptions', 'Page speed & Core Web Vitals', 'Mobile responsiveness check', 'Structured data verification', 'Sitemap & canonical strategy'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Rankings & Strategy</h3>
-          <ul class="space-y-2">
-            {['Keyword position tracking', 'Long-tail & seasonal keyword research', 'Competitor gap analysis', 'Backlink profile monitoring', 'Monthly ranking reports', 'Content strategy recommendations', 'Technical SEO issue detection'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Content & Conversion</h3>
-          <ul class="space-y-2">
-            {['Content gap analysis', 'Topic cluster planning', 'Seasonal content calendar', 'Internal link optimization', 'Conversion-focused content strategy', 'A/B test recommendations for landing pages', '3/6/12 month performance benchmarks'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Agent-Ready (ASO)</h3>
-          <ul class="space-y-2">
-            {['Agent-readiness score in every weekly report', 'Hours, location and service menu checked as machine-readable data', 'Exact-price and offer markup audit', 'Reviews and ratings marked up for AI', 'Booking-path reachability check (no bot blocks)', 'Agent-readiness level scored 0–5'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
+      <div class="rounded-xl border border-amber-400/40 bg-amber-400/10 p-4 mb-6 max-w-2xl" role="note">
+        <div class="text-xs font-mono font-semibold text-amber-300 mb-1">REPORT ONLY</div>
+        <p class="text-sm text-white break-words">Rank Labs makes <strong>no changes</strong> to your site. You are responsible for implementing all fixes.</p>
+      </div>
+
+      <ul class="space-y-2 mb-6">
+        {['GEO score', 'AI-engine visibility tracking (ChatGPT, Claude, Gemini, Perplexity)', 'Monthly report'].map(b => (
+          <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
+        ))}
+      </ul>
+
+      <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+        <a href="/contact?plan=ai-visibility-report" class="btn-primary">Get the Report</a>
+        <a href="/signup?plan=full_management" class="text-sm text-cyan-300 hover:text-cyan-200 font-semibold">Rather have us make the fixes? Upgrade to Full Management →</a>
       </div>
     </div>
 
@@ -165,8 +146,8 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <div class="text-xs text-cyan-300 font-mono mb-2">$2,500/MO</div>
           <h2 class="text-2xl font-bold">Full Management</h2>
-          <p class="text-muted mt-2 max-w-xl">Everything in GEO + SEO, plus we build, host, and maintain your site. You focus on your business — we handle the rest.</p>
-          <p class="text-xs text-muted mt-2"><span class="text-white font-medium">+ one-time site build or $1,000 migration</span> for new or existing sites</p>
+          <p class="text-muted mt-2 max-w-xl">Weekly SEO audits, keyword & competitor tracking, AI visibility monitoring, and monthly reports — and we implement the fixes. Plus we build, host, and maintain your site. You focus on your business — we handle the rest.</p>
+          <p class="text-xs text-muted mt-2"><span class="text-white font-medium">$1,000 migration fee waived with a 6-month contract</span>; otherwise month-to-month plus a $1,000 migration fee.</p>
         </div>
         <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold shrink-0 h-fit">MOST POPULAR</span>
       </div>

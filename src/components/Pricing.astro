@@ -1,0 +1,88 @@
+---
+// Shared plan cards: used on the home page and /pricing.
+const { headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<section id="pricing" class="py-24 px-6 bg-surface/30 scroll-mt-20">
+  <div class="max-w-6xl mx-auto text-center">
+    <div class="text-sm text-cyan-300 font-mono mb-4">PRICING</div>
+    <Heading class="text-3xl md:text-4xl font-bold mb-4 break-words">Get Found on AI — At a Price That Makes Sense.</Heading>
+    <p class="text-muted mb-16 max-w-xl mx-auto">Want the data and to make the fixes yourself? Start with the report. Want it done for you? Go Full Management.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- AI Visibility Report (report only) -->
+      <div class="gradient-border rounded-2xl p-6 sm:p-8 md:p-10 text-left flex flex-col min-w-0">
+        <div class="text-sm text-purple-300 font-semibold mb-2">AI VISIBILITY REPORT</div>
+        <div class="text-5xl font-bold mb-1">$499<span class="text-lg text-muted font-normal">/mo</span></div>
+        <p class="text-muted text-sm mb-6 break-words">Know exactly where you stand on ChatGPT, Claude, Gemini, and Perplexity — delivered as a monthly report.</p>
+
+        <div class="rounded-xl border border-amber-400/40 bg-amber-400/10 p-4 mb-8" role="note">
+          <div class="text-xs font-mono font-semibold text-amber-300 mb-1">REPORT ONLY</div>
+          <p class="text-sm text-white break-words">Rank Labs makes <strong>no changes</strong> to your site. You are responsible for implementing all fixes.</p>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          {[
+            'GEO score',
+            'AI-engine visibility tracking (ChatGPT, Claude, Gemini, Perplexity)',
+            'Monthly report',
+          ].map((feature) => (
+            <li class="flex items-start gap-3 text-sm min-w-0">
+              <span class="text-green-400 shrink-0">✓</span> <span class="min-w-0 break-words">{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-auto space-y-4">
+          <a href="/contact?plan=ai-visibility-report" class="btn-primary block text-center w-full">Get the Report</a>
+          <div class="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm">
+            <p class="text-muted mb-2 break-words">Rather have us make the fixes for you?</p>
+            <a href="/signup?plan=full_management" class="text-cyan-300 hover:text-cyan-200 font-semibold">Upgrade to Full Management <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Management -->
+      <div class="gradient-border rounded-2xl p-6 sm:p-8 md:p-10 text-left relative bg-purple-500/[0.03] flex flex-col min-w-0">
+        <div class="text-sm text-cyan-300 font-semibold mb-2">FULL MANAGEMENT</div>
+        <div class="text-5xl font-bold mb-1">$2,500<span class="text-lg text-muted font-normal">/mo</span></div>
+        <p class="text-muted text-sm mb-4 break-words">We do the work: we track your AI visibility, make the fixes, and build, host, and maintain your site. Hands-free — get found on every platform without lifting a finger.</p>
+        <p class="text-xs text-muted mb-8 pb-6 border-b border-white/5 break-words"><span class="text-white font-medium">$1,000 migration fee waived with a 6-month contract</span>; otherwise month-to-month plus a $1,000 migration fee.</p>
+
+        <ul class="space-y-3 mb-8">
+          {[
+            'AI visibility monitoring (4 engines)',
+            'Weekly SEO audits (100+ checks)',
+            'Keyword & competitor tracking',
+            'Monthly AI & search ranking reports',
+            'Full AI optimization — ChatGPT, Claude, Gemini, Perplexity',
+            'Citation & mention building',
+            'Agent-Ready (ASO) implementation — hours, offers, booking path',
+            'Weekly blog content (researched & written)',
+            'Full site hosting on global edge network',
+            'Unlimited site edits & updates',
+            'Easy content approval workflow',
+            'Google Business Profile optimization',
+            'Business listing management',
+            'Service-area landing pages',
+            'Local SEO & citation strategy',
+            'Dedicated support',
+          ].map((feature) => (
+            <li class="flex items-start gap-3 text-sm min-w-0">
+              <span class="text-green-400 shrink-0">✓</span> <span class="min-w-0 break-words">{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a href="/signup?plan=full_management" class="btn-primary block text-center w-full mt-auto">Get Full Management</a>
+      </div>
+    </div>
+
+    <p class="mt-8 max-w-2xl mx-auto text-xs text-muted break-words">
+      AI Visibility Report is report-only: Rank Labs makes no changes to your site, and you are responsible for implementing all fixes.
+    </p>
+
+    <slot />
+  </div>
+</section>
