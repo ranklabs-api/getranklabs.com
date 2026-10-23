@@ -63,6 +63,12 @@ import Layout from '../layouts/Layout.astro';
   const plan = PLANS[rawPlan] ? rawPlan : (PLAN_ALIASES[rawPlan] || '');
   const planLabel = plan ? PLANS[plan] : '';
 
+  // Free-audit CTAs link here with ?intent=free-audit so the request is routed
+  // to the approval email. Only known values are accepted.
+  const INTENTS = ['free-audit'];
+  const rawIntent = (new URLSearchParams(window.location.search).get('intent') || '').toLowerCase();
+  const intent = INTENTS.includes(rawIntent) ? rawIntent : '';
+
   if (planLabel) {
     document.getElementById('plan-label').textContent = 'Plan: ' + planLabel;
     document.getElementById('plan-banner').classList.remove('hidden');
@@ -84,6 +90,8 @@ import Layout from '../layouts/Layout.astro';
       notes: document.getElementById('message').value.trim(),
       type: 'contact',
       plan: plan || undefined,
+      intent: intent || undefined,
+      page_path: window.location.pathname,
       submittedAt: new Date().toISOString(),
     };
 

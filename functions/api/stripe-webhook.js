@@ -132,10 +132,7 @@ async function handleCheckoutCompleted(session, env) {
 
   console.log(`✅ New ${planLabel} signup (${priceLine}): ${customerName} <${customerEmail}>`);
 
-  // 1. Telegram notification to Josiah
-  await notifyTelegram(env, { customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName });
-
-  // 2. Internal email to Josiah
+  // Internal email to Josiah
   await sendEmail(env, {
     to: "josiahearl@gmail.com",
     subject: `🚀 New Signup: ${customerName} — ${planLabel}`,
@@ -174,36 +171,6 @@ async function planFromLineItems(session, env) {
 
 function formatUsd(cents) {
   return `$${(cents / 100).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
-}
-
-// ── Telegram ─────────────────────────────────────────────────────────────
-
-async function notifyTelegram(env, { customerName, customerEmail, planLabel, website, businessName }) {
-  const token = env.TELEGRAM_BOT_TOKEN;
-  const chatId = env.TELEGRAM_CHAT_ID || "5016070713";
-
-  if (!token) {
-    console.log("Telegram token not configured");
-    return;
-  }
-
-  let text = `<b>🚀 New Signup!</b>\n\n`;
-  text += `<b>Plan:</b> ${planLabel}\n`;
-  text += `<b>Name:</b> ${customerName}\n`;
-  text += `<b>Email:</b> ${customerEmail}\n`;
-  if (website) text += `<b>Website:</b> ${website}\n`;
-  if (businessName) text += `<b>Business:</b> ${businessName}\n`;
-
-  try {
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML" }),
-    });
-    console.log("Telegram sent");
-  } catch (e) {
-    console.error("Telegram failed:", e.message);
-  }
 }
 
 // ── Email (via Resend — free tier: 100/day) ──────────────────────────────
