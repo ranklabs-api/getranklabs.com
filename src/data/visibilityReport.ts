@@ -4,7 +4,8 @@ export const REPORT_SLUG = 'rank-labs-visibility-report';
 
 // Concise card bullets (summary of the full scope below).
 export const reportCardBullets = [
-  'Delivered as one clear report each month, with a prioritized fix list',
+  'Weekly SEO audit report email (100+ checks), with a prioritized fix list',
+  'Monthly email report (first week of each month): your Google search, Business Profile, traffic, leads & AI visibility vs. last month',
   'Google organic + Maps (local pack) rankings for 25 keywords',
   'Ranking keywords & backlink summary',
   'Full technical crawl + Core Web Vitals, schema, sitemap/robots, SSL & email-domain (DNS) checks',
@@ -17,6 +18,13 @@ export const reportCardBullets = [
 
 // Full scope, grouped (used on /pricing and /services).
 export const reportFeatureGroups = [
+  {
+    title: 'Reports',
+    items: [
+      'Weekly SEO audit report email (100+ checks) with a prioritized fix list',
+      'Monthly email report (first week of each month) comparing your results vs. last month',
+    ],
+  },
   {
     title: 'SEO',
     items: [
@@ -62,4 +70,4 @@ export const reportFeatureGroups = [
 
 // Plain-text summary for meta / JSON-LD / FAQ.
 export const reportSummaryText =
-  'Report-only, month-to-month report covering SEO + AI visibility: Google organic and Maps (local pack) rankings for 25 keywords, ranking keywords, backlink summary, full technical crawl, Core Web Vitals, schema, sitemap/robots, SSL and email-domain (DNS) setup checks, AI readiness score plus real answer checks across ChatGPT, Gemini, Claude and Perplexity, Google AI Overview citations, NAP checks on Google, Bing, Apple Maps, Facebook, Yelp, BBB, Yellow Pages, Foursquare, MapQuest, and Angi or one industry directory, reviews on Google plus one other site, and a 3-competitor comparison. Optional with client access: GA4, Google Search Console, and Google Business Profile stats.';
+  'Report-only, month-to-month report covering SEO + AI visibility: Google organic and Maps (local pack) rankings for 25 keywords, ranking keywords, backlink summary, full technical crawl, Core Web Vitals, schema, sitemap/robots, SSL and email-domain (DNS) setup checks, AI readiness score plus real answer checks across ChatGPT, Gemini, Claude and Perplexity, Google AI Overview citations, NAP checks on Google, Bing, Apple Maps, Facebook, Yelp, BBB, Yellow Pages, Foursquare, MapQuest, and Angi or one industry directory, reviews on Google plus one other site, and a 3-competitor comparison. Optional with client access: GA4, Google Search Console, and Google Business Profile stats. Delivered as a weekly SEO audit report email plus a separate monthly email report (first week of each month).';
