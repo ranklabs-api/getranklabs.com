@@ -29,8 +29,9 @@ import Pricing from '../components/Pricing.astro';
       <span class="inline-block">Gemini &amp; Perplexity.</span>
     </p>
     <p class="text-base sm:text-lg text-muted leading-relaxed max-w-xl mx-auto mt-4 mb-8">
-      We optimize your website so Google and AI can find, cite, and recommend your business
-      when someone asks who to choose in your industry.
+      Rank Labs is an SEO and AI-visibility platform in Orlando, Florida. We get local service
+      businesses across the United States found, cited and recommended on Google, ChatGPT,
+      Claude, Gemini and Perplexity &mdash; when someone asks who to choose.
     </p>
 
     <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center items-stretch sm:items-center">
@@ -353,6 +354,58 @@ import Pricing from '../components/Pricing.astro';
           <div class="text-3xl font-bold gradient-text mb-1">{stat.value}</div>
           <div class="text-sm text-muted">{stat.label}</div>
         </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<!--
+  Real Google reviews, shown as visible text with attribution and a link to the
+  source. Deliberately NO aggregateRating / Review JSON-LD: these are reviews
+  about Rank Labs on Rank Labs' own site, which is the self-serving case Google
+  excludes from review rich results — marking them up would earn no stars and
+  would be the thing we flag in a client audit.
+
+  Visible text is what the AI engines read anyway, which is the point here.
+
+  Both quotes are the reviews in full. Google's UI truncates Jeff Earl's with a
+  "More" link; the complete text was supplied by Josiah on 2026-10-28. Quote
+  these verbatim — do not trim, paraphrase or embellish a customer's words.
+-->
+<section id="reviews" class="py-24 px-6 bg-surface/30" aria-labelledby="reviews-title">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="text-sm text-cyan-300 font-mono mb-4">WHAT CLIENTS SAY</div>
+      <h2 id="reviews-title" class="text-3xl md:text-4xl font-bold mb-4">Reviewed on Google</h2>
+      <p class="text-muted">
+        <span class="text-yellow-400" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="text-white font-semibold">5.0</span> from 2 reviews on
+        <a href="https://maps.google.com/?cid=5154801530457218648" rel="noopener" class="text-cyan-400 hover:text-cyan-300">Google</a>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {[
+        {
+          quote: 'Rank Labs got our dealership showing up when people asked Google or ChatGPT who to buy from! More serious buyers, less wasted ad spend, it was well worth it!',
+          author: 'DFF Motors Group LLC',
+        },
+        {
+          quote: "At ColonoscopyKC.com, Rank Labs has made a real difference for our business. We only started working with them a little over a month ago, and we’re already seeing results. After working with them on our online and AI search visibility, we received 5 colonoscopy consultation requests in about a week, plus another inquiry directly through our website. It’s exciting to see the work translate into actual new patient opportunities. Josiah has been incredibly dedicated to helping us grow, and we highly recommend Rank Labs.",
+          author: 'Jeff Earl, ColonoscopyKC.com',
+        },
+      ].map((r) => (
+        <figure class="bg-surface/60 border border-white/10 rounded-xl p-6 text-left">
+          <div class="text-yellow-400 text-sm mb-3" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote class="text-muted leading-relaxed mb-4">
+            &ldquo;{r.quote}&rdquo;
+          </blockquote>
+          <figcaption class="text-sm">
+            <span class="text-white font-semibold">{r.author}</span>
+            <span class="text-muted"> &middot; Google review</span>
+          </figcaption>
+        </figure>
       ))}
     </div>
   </div>

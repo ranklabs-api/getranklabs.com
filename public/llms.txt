@@ -1,0 +1,28 @@
+# Rank Labs
+
+> Rank Labs is a GEO, ASO and SEO service that helps businesses get found, cited and chosen on Google and on AI assistants (ChatGPT, Claude, Gemini and Perplexity). It was founded by Josiah and Palloma and is based in Orlando, Florida. It serves businesses across the United States, from local shops to national brands.
+
+GEO (Generative Engine Optimization) is about being cited in AI answers. ASO here means Agentic Search Optimization, not App Store Optimization: publishing hours, prices, location, services and booking path as machine-readable data so AI agents can choose your business.
+
+## Plans
+
+- Rank Labs Visibility Report: $499/month, month-to-month, no long-term contract. Report only: you make all fixes and Rank Labs makes no changes to your site. Includes a weekly SEO audit report email (100+ checks) with a prioritized fix list, a monthly email report, Google organic and Maps rankings for 25 keywords, ranking keywords and backlink summary, a full technical crawl (Core Web Vitals, schema, sitemap/robots, SSL and DNS checks), an AI readiness score with real answer checks across ChatGPT, Gemini, Claude and Perplexity, Google AI Overview citations, NAP and review checks, and a 3-competitor comparison.
+- Full Management: $2,500/month. Rank Labs does the work: AI visibility monitoring, weekly audits, keyword and competitor tracking, AI optimization, citation and mention building, agent-ready (ASO) implementation, weekly blog content, site hosting, site edits, Google Business Profile optimization, business listing management and local SEO. The $1,000 migration fee is waived with a 6-month contract; otherwise it is month-to-month plus a $1,000 migration fee.
+
+## Key pages
+
+- [Home](https://getranklabs.com/)
+- [Services](https://getranklabs.com/services): what each plan covers
+- [Pricing](https://getranklabs.com/pricing): plan details and scope
+- [FAQ](https://getranklabs.com/faq)
+- [About](https://getranklabs.com/about): the founders and how the platform works
+- [Blog](https://getranklabs.com/blog): articles on GEO, AI search and local SEO
+- [Contact](https://getranklabs.com/contact)
+
+## Contact
+
+- Phone: (407) 743-8964
+- Email: hello@getranklabs.com
+- Address: 11454 Chateaubriand Ave, Orlando, FL 32836
+- Hours: Monday to Friday, 9:00 to 17:00
+- Instagram: https://www.instagram.com/getranklabs/

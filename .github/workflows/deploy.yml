@@ -12,6 +12,13 @@ jobs:
       deployments: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Sitemap lastmod for non-blog pages comes from the last git commit
+          # that touched each page's source (astro.config.mjs, lastmodFor).
+          # checkout defaults to a depth-1 shallow clone, where every file's
+          # last commit is the deploy commit — every static page would then
+          # claim it changed on deploy day. Full history keeps the dates real.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
