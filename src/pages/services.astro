@@ -8,27 +8,60 @@ import ReportFeatures from '../components/ReportFeatures.astro';
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-4xl mx-auto">
     <div class="text-sm text-cyan-300 font-mono mb-4">WHAT WE DO</div>
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">Get Found on <span class="gradient-text">Every AI Engine</span></h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Get Found on Google and <span class="gradient-text">Every AI Engine</span></h1>
     <p class="text-lg text-muted mb-16 max-w-2xl">
-      Two tiers, one mission: make your business the answer when people ask AI. Get the report and make the fixes yourself, or let us do all of it. <a href="/pricing" class="text-cyan-400 hover:underline">Compare pricing →</a>
+      Two tiers, one mission: make your business the answer when people search Google or ask AI. Get the report and make the fixes yourself, or let us do all of it. <a href="/pricing" class="text-cyan-400 hover:underline">Compare pricing →</a>
     </p>
 
-    <!-- GEO vs ASO -->
+    <!-- SEO vs GEO vs ASO -->
     <div class="border-t border-white/5 pt-12 mb-16">
-      <div class="text-xs text-cyan-300 font-mono mb-2">GEO VS. ASO (AGENTIC SEARCH OPTIMIZATION)</div>
-      <h2 class="text-2xl font-bold mb-2">Two jobs, <span class="gradient-text">one platform</span></h2>
-      <p class="text-muted mb-4 max-w-xl">One site does two different jobs. GEO makes you the answer. ASO makes you the choice.</p>
+      <div class="text-xs text-cyan-300 font-mono mb-2">SEO VS. GEO VS. ASO (AGENTIC SEARCH OPTIMIZATION)</div>
+      <h2 class="text-2xl font-bold mb-2">Three pillars, <span class="gradient-text">one platform</span></h2>
+      <p class="text-muted mb-4 max-w-xl">One site does three different jobs. SEO makes you rank. GEO makes you the answer. ASO makes you the choice.</p>
       <p class="text-sm text-muted mb-8 max-w-3xl">
-        ASO stands for Agentic Search Optimization. We also call it being "agent-ready." GEO (Generative Engine Optimization)
+        SEO (Search Engine Optimization) gets you found: your business ranks on Google, in the Maps local pack and in
+        the listings and directories people check, on a site that is technically sound enough for search engines to crawl and
+        trust. GEO (Generative Engine Optimization)
         gets you cited — your business shows up in the answer when someone asks ChatGPT, Claude, Gemini or Perplexity a question.
-        ASO gets you chosen: when that same person stops asking questions and asks the AI to do something — "find me a clinic
+        ASO (Agentic Search Optimization, which we also call being "agent-ready") gets you chosen: when that same person stops asking questions and asks the AI to do something — "find me a clinic
         near me that's open Thursday and start a booking" — the AI picks the business whose hours, prices, location, service
         list and booking link it can read as data, not the one whose website merely reads well to a human. (Heads up on the
         acronym: in the app world, "ASO" usually means App Store Optimization. That's a completely different thing — we mean
-        Agentic Search Optimization.)
+        Agentic Search Optimization.) The pillars share a foundation, so the same schema and listing work often
+        serves more than one of them.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="border border-white/10 rounded-xl p-6">
+          <h3 class="font-semibold text-sm text-cyan-300 mb-1">SEO — Search Engine Optimization</h3>
+          <div class="text-xs text-muted mb-4">rank on Google and in local search</div>
+          <ul class="space-y-2">
+            {[
+              { label: 'Structured data / schema markup — checked on every page', shared: true },
+              { label: 'Accurate name, address, phone everywhere — checked across 10 listing sites', shared: true },
+              { label: 'A full technical crawl of your site, with 100+ checks run every week', shared: false },
+              { label: 'Title tags, meta descriptions, H1 structure and canonical URLs', shared: false },
+              { label: 'Open Graph tags, image alt text and broken-link checks', shared: false },
+              { label: 'Page speed, mobile friendliness and Core Web Vitals', shared: false },
+              { label: 'Sitemap and robots.txt checks', shared: false },
+              { label: 'SSL and email-domain (DNS) setup checks', shared: false },
+              { label: 'Google organic and Maps (local pack) rankings for 25 keywords', shared: false },
+              { label: 'The keywords you already rank for', shared: false },
+              { label: 'Backlink summary', shared: false },
+              { label: 'Google Business Profile optimization and listing management (Full Management)', shared: false },
+              { label: 'Reviews tracked on Google plus one other site', shared: false },
+              { label: 'A 3-competitor comparison', shared: false },
+              { label: 'A prioritized fix list in every weekly report', shared: false },
+            ].map(b => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                {b.shared
+                  ? <span class="text-cyan-300 font-mono text-xs shrink-0 mt-0.5">&#8596;</span>
+                  : <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0 mt-2"></span>}
+                {b.label}
+              </li>
+            ))}
+          </ul>
+        </div>
         <div class="border border-white/10 rounded-xl p-6">
           <h3 class="font-semibold text-sm text-cyan-300 mb-1">GEO — Generative Engine Optimization</h3>
           <div class="text-xs text-muted mb-4">get cited in AI answers</div>
@@ -88,14 +121,14 @@ import ReportFeatures from '../components/ReportFeatures.astro';
           </ul>
         </div>
       </div>
-      <p class="text-xs text-muted mt-4"><span class="text-cyan-300 font-mono">&#8596;</span> marks work that serves both jobs.</p>
+      <p class="text-xs text-muted mt-4"><span class="text-cyan-300 font-mono">&#8596;</span> marks work that serves more than one pillar.</p>
     </div>
 
     <!-- Agent-readiness ladder -->
     <div class="border-t border-white/5 pt-12 mb-16">
       <div class="text-xs text-purple-300 font-mono mb-2">AGENT-READINESS LADDER</div>
       <h2 class="text-2xl font-bold mb-2">Where you sit on the <span class="gradient-text">agent-readiness ladder</span></h2>
-      <p class="text-muted mb-8 max-w-xl">Being agent-ready isn't one switch — it's a ladder, and most businesses are on the bottom rung without knowing it.</p>
+      <p class="text-muted mb-8 max-w-xl">Being agent-ready (the ASO pillar) isn't one switch — it's a ladder, and most businesses are on the bottom rung without knowing it.</p>
       <ul class="space-y-2 mb-6">
         {[
           { level: 'Level 0 — Invisible.', desc: 'No structured data; an AI has to guess your name, address and phone.' },
