@@ -3,7 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
-const { title = 'Rank Labs — Get Found on Google, ChatGPT, Claude, Gemini & Perplexity', description = 'GEO and SEO platform from Josiah and Palloma: weekly audits, blog content, keyword tracking, and full-site management without agency overhead.', image = '/og-image.png' } = Astro.props;
+const { title = 'Get Found on Google, ChatGPT & AI Search — Rank Labs', description = 'GEO and SEO platform from Josiah and Palloma: weekly audits, blog content, keyword tracking, and full-site management without agency overhead.', image = '/og-image.png' } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site).href;
