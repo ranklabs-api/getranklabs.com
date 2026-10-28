@@ -1,8 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Every question below is also rendered visibly in the Q&A section of this page.
+const faqs = [
+  {
+    q: 'What does the free AI visibility audit cover?',
+    a: 'It is a plain-English look at how ready your site is to be found by ChatGPT, Gemini, Claude and Perplexity. That is the same kind of AI readiness score used in our reports, built from schema markup, direct-answer structure, AI-crawler access and freshness.',
+  },
+  {
+    q: 'Does the free audit run live searches in ChatGPT, Gemini, Claude or Perplexity?',
+    a: 'No. The audit scores how ready your site is for each engine. It does not query those engines or track whether they cite you.',
+  },
+  {
+    q: 'Will Rank Labs change my website after I submit the form?',
+    a: 'No. A form submission, and the free audit itself, make no changes to your site. Fixes are part of Full Management, which is a separate plan.',
+  },
+  {
+    q: 'Is there a long-term contract?',
+    a: 'The Rank Labs Visibility Report is $499/mo and month-to-month. Full Management is $2,500/mo, and its $1,000 migration fee is waived with a 6-month contract.',
+  },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
-<Layout title="Contact Rank Labs — Get Your Free AI Visibility Audit" description="Get a free AI visibility audit. See how ChatGPT, Claude, Gemini and Perplexity see your business — and what it takes to get cited and chosen.">
+<Layout title="Contact Rank Labs — Get Your Free AI Visibility Audit" description="Request a free AI visibility audit or ask a question. Call (407) 743-8964 or use the form. Rank Labs is based in Orlando, Florida and serves businesses across the US.">
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-xl mx-auto text-center">
@@ -10,6 +41,10 @@ import Layout from '../layouts/Layout.astro';
     <h1 class="text-4xl md:text-5xl font-bold mb-4">Let's <span class="gradient-text">Talk</span></h1>
     <p class="text-lg text-muted mb-12">
       Got a question? Want a free AI visibility audit — how ChatGPT, Gemini, Claude, and Perplexity see your business? Just want to say hi? Drop us a message.
+    </p>
+    <p class="text-sm text-muted mb-8">
+      Rank Labs is based in Orlando, Florida and works with businesses across the United States. You can also email
+      <a href="mailto:hello@getranklabs.com" class="text-cyan-400 hover:underline">hello@getranklabs.com</a>.
     </p>
     <a href="tel:+14077438964" data-call-location="contact" class="btn-primary mb-8">Call (407) 743-8964</a>
 
@@ -49,6 +84,80 @@ import Layout from '../layouts/Layout.astro';
       &nbsp;·&nbsp;
       <a href="https://www.instagram.com/getranklabs/" target="_blank" rel="noopener" aria-label="Rank Labs on Instagram" class="text-cyan-400 hover:underline inline-flex items-center gap-1 align-middle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
     </p>
+  </div>
+</section>
+
+<section class="pb-24 px-6">
+  <div class="max-w-3xl mx-auto space-y-12">
+
+    <div>
+      <h2 class="text-2xl font-bold mb-4">What happens after you submit</h2>
+      <p class="text-muted mb-4">
+        Your message goes to the Rank Labs team by email, and a person reads it. We reply to the email address you
+        gave us. We have not published a response time, so we will not promise one. If it is urgent, calling
+        <a href="tel:+14077438964" class="text-cyan-400 hover:underline">(407) 743-8964</a> is more direct.
+      </p>
+      <p class="text-muted">
+        If you asked for the free audit, the request is reviewed first and the audit is run manually, not by an
+        automated form. We then reply with the results.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-4">What the free AI visibility audit covers</h2>
+      <p class="text-muted mb-4">
+        The audit is built on the same AI readiness score that appears in our paid reports. It is scored for each of
+        four engines: ChatGPT, Gemini, Claude and Perplexity. It looks at four things:
+      </p>
+      <ul class="list-disc pl-6 space-y-2 text-muted mb-4">
+        <li><strong class="text-white">Schema:</strong> whether your site tells machines clearly who you are and what you offer.</li>
+        <li><strong class="text-white">Direct-answer structure:</strong> whether your pages answer real customer questions in a way an AI can quote.</li>
+        <li><strong class="text-white">AI-crawler access:</strong> whether crawlers such as GPTBot, ClaudeBot, PerplexityBot and Google-Extended are allowed to read your site.</li>
+        <li><strong class="text-white">Freshness:</strong> whether your content looks current and carries clear dates.</li>
+      </ul>
+      <h3 class="text-lg font-semibold mb-2 mt-6">What it does not cover</h3>
+      <p class="text-muted">
+        The audit does not ask ChatGPT, Gemini, Claude or Perplexity about your business, and it does not track
+        whether any of them cite you. It is a readiness assessment of your site, not a record of live AI answers.
+        It is not the full report either: the paid
+        <a href="/pricing" class="text-cyan-400 hover:underline">Rank Labs Visibility Report</a> adds a weekly 100+ check SEO audit,
+        rankings for 25 keywords and a 3-competitor comparison. The audit makes no changes to your website.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-4">What to have ready</h2>
+      <ul class="list-disc pl-6 space-y-2 text-muted">
+        <li>Your name and a working email address. Both are required.</li>
+        <li>Your website address, if you have one. It is optional, but the audit is about your actual site.</li>
+        <li>A sentence or two about your business and what you want from AI search. The message box is the place for it.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Where to find us</h2>
+      <p class="text-muted mb-4">
+        Rank Labs is based in Orlando, Florida, and serves businesses across the United States. Phone: <a href="tel:+14077438964" class="text-cyan-400 hover:underline">(407) 743-8964</a>.
+        Email: <a href="mailto:hello@getranklabs.com" class="text-cyan-400 hover:underline">hello@getranklabs.com</a>.
+      </p>
+      <p class="text-muted">
+        Before you reach out, you may want to read about our <a href="/services" class="text-cyan-400 hover:underline">three pillars of SEO, GEO and ASO</a>,
+        compare <a href="/pricing" class="text-cyan-400 hover:underline">pricing</a>, or browse the <a href="/faq" class="text-cyan-400 hover:underline">full FAQ</a>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Common questions</h2>
+      <div class="space-y-6">
+        {faqs.map((f) => (
+          <div>
+            <h3 class="text-lg font-semibold mb-1">{f.q}</h3>
+            <p class="text-muted">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
   </div>
 </section>
 
