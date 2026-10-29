@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 import '../styles/global.css';
 
 const { title = 'Get Found on Google, ChatGPT & AI Search — Rank Labs', description = 'GEO and SEO platform from Josiah and Palloma: weekly audits, blog content, keyword tracking, and full-site management without agency overhead.', image = '/og-image.png' } = Astro.props;
@@ -234,6 +235,7 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       <slot />
     </main>
     <Footer />
+    <ChatWidget />
     <script>
       document.addEventListener('click', (event) => {
         const target = event.target;
