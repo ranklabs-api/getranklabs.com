@@ -14,6 +14,7 @@ import {
   randomHex,
   relayVisitorMessage,
   sha256Hex,
+  sweepExpired,
 } from "../_shared/chat.js";
 
 function pagePath(value) {
@@ -125,6 +126,16 @@ export async function onRequestPost(context) {
 
   conversation.code = code;
   const stored = await relayVisitorMessage(env, db, conversation, body, { first: true });
+
+  // Close out abandoned conversations while we are here. Lazy expiry alone
+  // never reaches rows nobody touches again, so without this the table keeps
+  // rows that read as open purely because the visitor walked away. Deliberately
+  // after the relay and behind waitUntil: housekeeping must not add latency to
+  // a visitor waiting on their first message.
+  const sweep = sweepExpired(db, CUSTOMER_ID).catch((e) =>
+    console.error("chat: expiry sweep failed:", e.message)
+  );
+  if (typeof context.waitUntil === "function") context.waitUntil(sweep);
 
   return json({
     id: conversation.id,

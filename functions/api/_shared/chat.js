@@ -23,6 +23,14 @@ export const MAX_MESSAGES_PER_CONVERSATION = 100;
 export const MAX_CONVERSATIONS_PER_IP_PER_HOUR = 8;
 export const MIN_MS_BETWEEN_VISITOR_MESSAGES = 700;
 
+// A conversation with no message either way for this long is done. Status
+// 'expired' is kept DISTINCT from 'closed': 'closed' means the operator ended it
+// with /close, 'expired' means it timed out. They need different handling — a
+// late operator reply to a timed-out chat deserves "that one timed out, here is
+// their email" rather than being silently dropped as if it had been closed on
+// purpose — and keeping them apart means the table still shows which happened.
+export const IDLE_EXPIRY_MS = 30 * 60 * 1000;
+
 // Unambiguous alphabet — no 0/O/1/I. The code is read aloud off a phone screen
 // and typed back as `/r <code>`, so confusable glyphs are a real cost.
 const CODE_ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
@@ -122,6 +130,48 @@ export async function ensureTopic(env, conversation, headline) {
     console.error("chat: createForumTopic failed, falling back to DM threading:", e.message);
     return null;
   }
+}
+
+// ── idle expiry ────────────────────────────────────────────────────────────
+
+// Expiry is evaluated lazily, on whichever request next touches the row, and
+// opportunistically swept in sweepExpired(). There is deliberately no cron:
+// Pages Functions have no scheduled trigger, and routing this through the Mac
+// would make a core behaviour depend on that box being awake.
+export function isIdle(conversation, now = Date.now()) {
+  const last = Date.parse(conversation?.last_activity_at || "");
+  if (!Number.isFinite(last)) return false;
+  return now - last > IDLE_EXPIRY_MS;
+}
+
+// Returns the conversation as it should now be read. Only an open conversation
+// can expire; 'closed' is terminal and must not be rewritten.
+export async function expireIfIdle(db, conversation) {
+  if (!conversation || conversation.status !== "open" || !isIdle(conversation)) return conversation;
+  await db
+    .prepare("UPDATE chat_conversations SET status = 'expired' WHERE id = ?1 AND status = 'open'")
+    .bind(conversation.id)
+    .run();
+  return { ...conversation, status: "expired" };
+}
+
+// Closes conversations nobody will ever touch again, so the table reflects
+// reality instead of accumulating rows that are open only because they were
+// abandoned. Bounded by a subquery LIMIT: SQLite only honours LIMIT on UPDATE
+// when built with SQLITE_ENABLE_UPDATE_DELETE_LIMIT, which D1 is not.
+export async function sweepExpired(db, customerId) {
+  const cutoff = new Date(Date.now() - IDLE_EXPIRY_MS).toISOString();
+  return db
+    .prepare(
+      `UPDATE chat_conversations SET status = 'expired'
+        WHERE id IN (
+          SELECT id FROM chat_conversations
+           WHERE customer_id = ?1 AND status = 'open' AND last_activity_at < ?2
+           LIMIT 50
+        )`
+    )
+    .bind(customerId, cutoff)
+    .run();
 }
 
 // ── D1 ─────────────────────────────────────────────────────────────────────

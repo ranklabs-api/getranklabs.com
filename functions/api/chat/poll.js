@@ -4,7 +4,7 @@
 // site's traffic, the free-plan request budget is nowhere near binding, and a
 // plain indexed range scan is far easier to reason about than hibernation
 // semantics when something looks wrong at 7am.
-import { clean, json, loadConversation } from "../_shared/chat.js";
+import { clean, expireIfIdle, json, loadConversation } from "../_shared/chat.js";
 
 export async function onRequestGet(context) {
   const { env, request } = context;
@@ -12,12 +12,16 @@ export async function onRequestGet(context) {
   if (!db) return json({ error: "Chat is unavailable right now." }, 503);
 
   const url = new URL(request.url);
-  const conversation = await loadConversation(
+  const loaded = await loadConversation(
     db,
     clean(url.searchParams.get("id"), 64),
     clean(url.searchParams.get("token"), 128)
   );
-  if (!conversation) return json({ error: "Conversation not found" }, 404);
+  if (!loaded) return json({ error: "Conversation not found" }, 404);
+
+  // Evaluated on read, so a widget left open overnight is told to stop rather
+  // than polling a dead conversation until the tab closes.
+  const conversation = await expireIfIdle(db, loaded);
 
   const afterRaw = Number.parseInt(url.searchParams.get("after") || "0", 10);
   const after = Number.isFinite(afterRaw) && afterRaw > 0 ? afterRaw : 0;
