@@ -16,6 +16,7 @@ import {
   appendMessage,
   clean,
   escapeHtml,
+  expireIfIdle,
   json,
   notifyTarget,
   telegram,
@@ -154,6 +155,25 @@ export async function onRequestPost(context) {
   }
 
   if (!body) return json({ ok: true });
+
+  conversation = await expireIfIdle(db, conversation);
+
+  // A reply typed after the chat timed out cannot reach the visitor: their widget
+  // stopped polling at the same cutoff. Saying so — with the email if they left
+  // one — is the useful answer, because silence here is indistinguishable from a
+  // delivered reply and the answer would just be lost.
+  if (conversation.status === "expired") {
+    const followUp = conversation.visitor_email
+      ? `Reach them at ${escapeHtml(conversation.visitor_email)}.`
+      : "They left no email, so there is no way to follow up.";
+    await ack(
+      env,
+      chatId,
+      threadId,
+      `<code>${escapeHtml(conversation.code)}</code> timed out after 30 minutes of silence — <b>not delivered</b>. ${followUp}`
+    );
+    return json({ ok: true });
+  }
 
   if (conversation.status === "closed") {
     await ack(env, chatId, threadId, `<code>${escapeHtml(conversation.code)}</code> is closed — not delivered.`);
