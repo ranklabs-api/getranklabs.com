@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Is there a long-term contract?',
-    a: 'The Rank Labs Visibility Report is $499/mo and month-to-month. Full Management is $2,500/mo, and its $1,000 migration fee is waived with a 6-month contract.',
+    a: 'The Rank Labs Visibility Report is $499/mo and month-to-month. Full Management is $2,500/mo, and a 6-month contract gets the first month free and the $1,000 migration fee waived.',
   },
 ];
 const faqSchema = {
@@ -73,6 +73,7 @@ const faqSchema = {
 
       <button type="submit" class="btn-primary w-full">Send Message →</button>
       <p class="text-xs text-muted text-center">No spam. No sales calls. Just good conversation.</p>
+      <p class="text-xs text-muted mt-3 text-center">By sending this you agree to our <a href="/terms" class="text-cyan-400 hover:underline">Terms of Service</a> and <a href="/privacy" class="text-cyan-400 hover:underline">Privacy Policy</a>.</p>
     </form>
 
     <div id="form-status" class="mt-4 text-sm hidden"></div>
@@ -249,6 +250,11 @@ const faqSchema = {
             page_path: window.location.pathname,
             event_version: 1,
           });
+        }
+        // Meta pixel conversion, guarded like gtag above. The lead is already
+        // recorded server-side, so a blocked pixel loses reporting, not the lead.
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', { content_name: 'contact_form' });
         }
       } else {
         const err = await resp.json().catch(() => ({}));
