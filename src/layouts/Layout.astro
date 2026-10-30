@@ -126,7 +126,7 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Full Management",
-                  "description": "We track your AI visibility, make the fixes, and build, host, and maintain your site. $1,000 migration fee waived with a 6-month contract; otherwise month-to-month plus a $1,000 migration fee."
+                  "description": "We track your AI visibility, make the fixes, and build, host, and maintain your site. First month free and the $1,000 migration fee waived with a 6-month contract; otherwise month-to-month plus a $1,000 migration fee."
                 }
               }
             ]
@@ -189,6 +189,21 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       gtag('js', new Date());
       gtag('config', 'G-4D52285Z1C');
     </script>
+    <!-- Meta pixel. is:inline for the same reason as the gtag block above:
+         bundling would scope fbq to a module and `window.fbq` would be
+         undefined, so every conversion guarded by `typeof window.fbq ===
+         'function'` would silently never fire. -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1305122388373623');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" alt=""
+      src="https://www.facebook.com/tr?id=1305122388373623&ev=PageView&noscript=1" /></noscript>
     <!-- First-touch attribution capture.
          Deliberately uses ONLY document.referrer / location / sessionStorage —
          no gtag, no third-party request. A blocked visitor still gets captured,

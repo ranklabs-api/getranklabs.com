@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Is there a long-term contract?',
-    a: 'The Rank Labs Visibility Report is $499/mo and month-to-month. Full Management is $2,500/mo, and its $1,000 migration fee is waived with a 6-month contract.',
+    a: 'The Rank Labs Visibility Report is $499/mo and month-to-month. Full Management is $2,500/mo, and a 6-month contract gets the first month free and the $1,000 migration fee waived.',
   },
 ];
 const faqSchema = {
@@ -249,6 +249,11 @@ const faqSchema = {
             page_path: window.location.pathname,
             event_version: 1,
           });
+        }
+        // Meta pixel conversion, guarded like gtag above. The lead is already
+        // recorded server-side, so a blocked pixel loses reporting, not the lead.
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', { content_name: 'contact_form' });
         }
       } else {
         const err = await resp.json().catch(() => ({}));
