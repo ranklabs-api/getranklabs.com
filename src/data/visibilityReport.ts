@@ -16,11 +16,11 @@ export const REPORT_SLUG = 'rank-labs-visibility-report';
 // Concise card bullets (summary of the full scope below).
 export const reportCardBullets = [
   'Weekly SEO audit report email (100+ checks), with a prioritized fix list',
-  'Monthly email report (first week of each month): your Google search, Business Profile, traffic, leads & AI visibility vs. last month',
+  'Monthly email report (first week of each month): your Google search, Business Profile, traffic, leads & AI Readiness score vs. last month',
   'Google organic + Maps (local pack) rankings for 25 keywords',
   'Ranking keywords & backlink summary',
   'Full technical crawl + Core Web Vitals, schema, sitemap/robots, SSL & email-domain (DNS) checks',
-  'AI readiness score for ChatGPT, Gemini, Claude & Perplexity (schema, direct-answer structure, AI-crawler access & freshness)',
+  'AI Readiness (on-page) score, with sub-scores for ChatGPT, Gemini, Claude & Perplexity (schema, direct-answer structure, AI-crawler access & freshness). No live AI queries.',
   'NAP checks across 10 listing sites + reviews on Google and one other site',
   '3-competitor comparison',
   'Optional with your access: GA4, Search Console & Google Business Profile stats',
@@ -44,9 +44,9 @@ export const reportFeatureGroups = [
     ],
   },
   {
-    title: 'AI visibility',
+    title: 'AI Readiness (on-page)',
     items: [
-      'AI readiness score, scored per engine: ChatGPT, Gemini, Claude and Perplexity',
+      'AI Readiness (on-page) score, with a sub-score per assistant (ChatGPT, Gemini, Claude, Perplexity) from the same on-page checks',
       'AI-crawler access checks: GPTBot, ClaudeBot, PerplexityBot and Google-Extended',
       'Direct-answer content structure and schema coverage',
     ],
@@ -78,6 +78,11 @@ export const reportFeatureGroups = [
   },
 ];
 
+// Locked score explanation. Use verbatim wherever the AI Readiness score is
+// explained; never paraphrase it.
+export const aiReadinessHonestyLine =
+  'AI Readiness (on-page) scores how well your pages are structured for AI assistants to read. We do not query ChatGPT, Gemini, Claude, or Perplexity live.';
+
 // Plain-text summary for meta / JSON-LD / FAQ.
 export const reportSummaryText =
-  'Report-only, month-to-month report covering SEO + AI visibility: Google organic and Maps (local pack) rankings for 25 keywords, ranking keywords, backlink summary, full technical crawl, Core Web Vitals, schema, sitemap/robots, SSL and email-domain (DNS) setup checks, an AI readiness score for ChatGPT, Gemini, Claude and Perplexity covering schema, direct-answer structure and AI-crawler access, NAP checks on Google, Bing, Apple Maps, Facebook, Yelp, BBB, Yellow Pages, Foursquare, MapQuest, and Angi or one industry directory, reviews on Google plus one other site, and a 3-competitor comparison. Optional with client access: GA4, Google Search Console, and Google Business Profile stats. Delivered as a weekly SEO audit report email plus a separate monthly email report (first week of each month).';
+  'Report-only, month-to-month report covering SEO + AI Readiness (on-page):Google organic and Maps (local pack) rankings for 25 keywords, ranking keywords, backlink summary, full technical crawl, Core Web Vitals, schema, sitemap/robots, SSL and email-domain (DNS) setup checks, an AI Readiness (on-page) score with sub-scores for ChatGPT, Gemini, Claude and Perplexity covering schema, direct-answer structure and AI-crawler access (on-page signals; no live AI queries), NAP checks on Google, Bing, Apple Maps, Facebook, Yelp, BBB, Yellow Pages, Foursquare, MapQuest, and Angi or one industry directory, reviews on Google plus one other site, and a 3-competitor comparison. Optional with client access: GA4, Google Search Console, and Google Business Profile stats. Delivered as a weekly SEO audit report email plus a separate monthly email report (first week of each month).';

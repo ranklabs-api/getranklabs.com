@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { aiReadinessHonestyLine } from '../data/visibilityReport';
 ---
 
 <Layout title="About Rank Labs — GEO, ASO & SEO Platform" description="Rank Labs is an Orlando, Florida SEO, GEO and ASO platform built by Josiah and Palloma: weekly audits, AI readiness scores and full-site management.">
@@ -112,9 +113,9 @@ import Layout from '../layouts/Layout.astro';
         </li>
       </ol>
       <p class="text-muted mb-8">
-        Each report also includes an AI readiness score for ChatGPT, Gemini, Claude and Perplexity, built from schema,
-        direct-answer structure, AI-crawler access and freshness. It measures how ready your site is, not what those
-        engines say about you. Our <a href="/services" class="text-cyan-400 hover:underline">services page</a>
+        Each report also includes an AI Readiness (on-page) score, with sub-scores for ChatGPT, Gemini, Claude and
+        Perplexity. {aiReadinessHonestyLine} It's built from schema, direct-answer structure, AI-crawler access and
+        freshness. Our <a href="/services" class="text-cyan-400 hover:underline">services page</a>
         explains how SEO, GEO and ASO fit together.
       </p>
 
@@ -132,7 +133,7 @@ import Layout from '../layouts/Layout.astro';
 
       <h2 class="text-2xl font-bold mb-4">Who Rank Labs Is For</h2>
       <p class="text-muted mb-4">
-        Rank Labs is for business owners who want to be found on Google and in AI assistants' answers, and who are tired
+        Rank Labs is for business owners who want more calls and bookings from Google, Maps and AI assistants, and who are tired
         of paying for work they cannot see.
       </p>
       <ul class="list-disc pl-6 space-y-2 text-muted mb-8">
@@ -145,7 +146,7 @@ import Layout from '../layouts/Layout.astro';
           content and hosting, with your approval on what gets published.
         </li>
         <li>
-          <strong class="text-white">You are not sure where you stand.</strong> Request a free AI visibility audit
+          <strong class="text-white">You are not sure where you stand.</strong> Request a free AI Readiness audit
           through our <a href="/contact?intent=free-audit" class="text-cyan-400 hover:underline">contact page</a>.
         </li>
       </ul>

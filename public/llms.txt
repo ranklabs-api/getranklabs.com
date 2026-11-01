@@ -1,13 +1,13 @@
 # Rank Labs
 
-> Rank Labs is a GEO, ASO and SEO service that helps businesses get found, cited and chosen on Google and on AI assistants (ChatGPT, Claude, Gemini and Perplexity). It was founded by Josiah and Palloma and is based in Orlando, Florida. It serves businesses across the United States, from local shops to national brands.
+> Rank Labs is a GEO, ASO and SEO service that helps local service businesses get more calls and bookings by being found, chosen and booked on Google, Maps and AI assistants (ChatGPT, Claude, Gemini and Perplexity). It was founded by Josiah and Palloma and is based in Orlando, Florida. It serves businesses across the United States, from local shops to national brands.
 
 GEO (Generative Engine Optimization) is about being cited in AI answers. ASO here means Agentic Search Optimization, not App Store Optimization: publishing hours, prices, location, services and booking path as machine-readable data so AI agents can choose your business.
 
 ## Plans
 
-- Rank Labs Visibility Report: $499/month, month-to-month, no long-term contract. Report only: you make all fixes and Rank Labs makes no changes to your site. Includes a weekly SEO audit report email (100+ checks) with a prioritized fix list, a monthly email report, Google organic and Maps rankings for 25 keywords, ranking keywords and backlink summary, a full technical crawl (Core Web Vitals, schema, sitemap/robots, SSL and DNS checks), an AI readiness score for ChatGPT, Gemini, Claude and Perplexity (schema, direct-answer structure and AI-crawler access), NAP and review checks, and a 3-competitor comparison.
-- Full Management: $2,500/month. Rank Labs does the work: AI visibility monitoring, weekly audits, keyword and competitor tracking, AI optimization, citation and mention building, agent-ready (ASO) implementation, weekly blog content, site hosting, site edits, Google Business Profile optimization, business listing management and local SEO. The $1,000 migration fee is waived with a 6-month contract; otherwise it is month-to-month plus a $1,000 migration fee.
+- Rank Labs Visibility Report: $499/month, month-to-month, no long-term contract. Report only: you make all fixes and Rank Labs makes no changes to your site. Includes a weekly SEO audit report email (100+ checks) with a prioritized fix list, a monthly email report, Google organic and Maps rankings for 25 keywords, ranking keywords and backlink summary, a full technical crawl (Core Web Vitals, schema, sitemap/robots, SSL and DNS checks), an AI Readiness (on-page) score with sub-scores for ChatGPT, Gemini, Claude and Perplexity (on-page signals; no live AI queries) (schema, direct-answer structure and AI-crawler access), NAP and review checks, and a 3-competitor comparison.
+- Full Management: $2,500/month. Rank Labs does the work: weekly AI Readiness (on-page) scoring, weekly audits, keyword and competitor tracking, AI Readiness fixes, listing citations and backlink outreach, agent-ready (ASO) implementation, weekly blog content, site hosting, site edits, Google Business Profile optimization, business listing management and local SEO. First month free and the $1,000 migration fee waived with a 6-month contract; otherwise month-to-month plus a $1,000 migration fee.
 
 ## Key pages
 
