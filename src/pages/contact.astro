@@ -1,15 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { aiReadinessHonestyLine } from '../data/visibilityReport';
 
 // Every question below is also rendered visibly in the Q&A section of this page.
 const faqs = [
   {
-    q: 'What does the free AI visibility audit cover?',
-    a: 'It is a plain-English look at how ready your site is to be found by ChatGPT, Gemini, Claude and Perplexity. That is the same kind of AI readiness score used in our reports, built from schema markup, direct-answer structure, AI-crawler access and freshness.',
+    q: 'What does the free AI Readiness audit cover?',
+    a: "It's a plain-English review of how well your website gives search engines and AI assistants what they need to understand and recommend you. It's the same AI Readiness (on-page) score used in our reports, built from schema markup, direct-answer structure, AI-crawler access, and freshness.",
   },
   {
     q: 'Does the free audit run live searches in ChatGPT, Gemini, Claude or Perplexity?',
-    a: 'No. The audit scores how ready your site is for each engine. It does not query those engines or track whether they cite you.',
+    a: `No. ${aiReadinessHonestyLine} Every report shows the date your site was scanned.`,
   },
   {
     q: 'Will Rank Labs change my website after I submit the form?',
@@ -31,7 +32,7 @@ const faqSchema = {
 };
 ---
 
-<Layout title="Contact Rank Labs — Get Your Free AI Visibility Audit" description="Request a free AI visibility audit or ask a question. Call (407) 743-8964 or use the form. Based in Orlando, Florida; serving businesses across the US.">
+<Layout title="Contact Rank Labs — Free AI Readiness Audit" description="Request a free AI Readiness audit or ask a question. Call (407) 743-8964 or use the form. Based in Orlando, Florida; serving businesses across the US.">
 
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -40,7 +41,7 @@ const faqSchema = {
     <div class="text-sm text-cyan-300 font-mono mb-4">GET IN TOUCH</div>
     <h1 class="text-4xl md:text-5xl font-bold mb-4">Let's <span class="gradient-text">Talk</span></h1>
     <p class="text-lg text-muted mb-12">
-      Got a question? Want a free AI visibility audit — how ChatGPT, Gemini, Claude, and Perplexity see your business? Just want to say hi? Drop us a message.
+      Want more calls and bookings? Ask for a free AI Readiness audit of your site, or just ask us a question. Drop us a message.
     </p>
     <p class="text-sm text-muted mb-8">
       Rank Labs is based in Orlando, Florida and works with businesses across the United States. You can also email
@@ -50,7 +51,7 @@ const faqSchema = {
 
     <div id="plan-banner" class="hidden mb-6 rounded-xl border border-purple-500/40 bg-purple-500/10 p-4 text-left" role="status">
       <p id="plan-label" class="text-sm font-semibold text-white break-words"></p>
-      <p class="text-xs text-muted mt-1 break-words">Covers SEO + AI visibility. You handle all fixes — Rank Labs makes no changes to your site.</p>
+      <p class="text-xs text-muted mt-1 break-words">Covers SEO + AI Readiness (on-page). You handle all fixes — Rank Labs makes no changes to your site.</p>
     </div>
 
     <form id="contact-form" class="text-left space-y-5">
@@ -105,10 +106,10 @@ const faqSchema = {
     </div>
 
     <div>
-      <h2 class="text-2xl font-bold mb-4">What the free AI visibility audit covers</h2>
+      <h2 class="text-2xl font-bold mb-4">What the free AI Readiness audit covers</h2>
       <p class="text-muted mb-4">
-        The audit is built on the same AI readiness score that appears in our paid reports. It is scored for each of
-        four engines: ChatGPT, Gemini, Claude and Perplexity. It looks at four things:
+        The audit uses the same AI Readiness (on-page) score that appears in our paid reports, with a sub-score for
+        each of four assistants (ChatGPT, Gemini, Claude, Perplexity) built from the same on-page checks. It looks at four things:
       </p>
       <ul class="list-disc pl-6 space-y-2 text-muted mb-4">
         <li><strong class="text-white">Schema:</strong> whether your site tells machines clearly who you are and what you offer.</li>
@@ -131,7 +132,7 @@ const faqSchema = {
       <ul class="list-disc pl-6 space-y-2 text-muted">
         <li>Your name and a working email address. Both are required.</li>
         <li>Your website address, if you have one. It is optional, but the audit is about your actual site.</li>
-        <li>A sentence or two about your business and what you want from AI search. The message box is the place for it.</li>
+        <li>A sentence or two about your business and what you want more of: calls, bookings, or leads. The message box is the place for it.</li>
       </ul>
     </div>
 
