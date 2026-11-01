@@ -152,10 +152,11 @@ async function handleCheckoutCompleted(session, env) {
 
 // ── Plans ───────────────────────────────────────────────────────────────
 // Keep in step with the pricing section of src/pages/index.astro.
+// Names match the vault product names (e.g. "Full Management").
 
 const PLANS = {
   seo_management: { name: "GEO + SEO Management", price: "$1,500" },
-  full_management: { name: "Full Management SEO & AI Visibility", price: "$2,500" },
+  full_management: { name: "Full Management", price: "$2,500" },
 };
 
 async function planFromLineItems(session, env) {
