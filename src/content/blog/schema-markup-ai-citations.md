@@ -17,7 +17,7 @@ If your site doesn't have schema markup, you're invisible to the algorithms that
 
 Schema markup is code you add to your website that tells search engines exactly what your content means — not just what it says. It's the difference between an AI seeing "we help businesses grow" and an AI seeing "this is a LocalBusiness named Rank Labs, located in Florida, offering SEO and GEO services, rated 4.9 stars."
 
-Schema.org defines over 800 types. The ones that matter for AI visibility are:
+Schema.org defines hundreds of types. The ones that matter most for AI search are:
 
 - **LocalBusiness** — name, address, phone, hours, services, geo-coordinates
 - **Organization** — brand name, logo, social profiles, founding date
@@ -32,7 +32,7 @@ Without these, AI engines have to guess what your business is. With them, there'
 
 AI engines don't "browse" your site like a human. They parse it. They extract. They need signals they can trust.
 
-**51% of B2B buyers now start research in an AI chatbot.** When someone asks ChatGPT "best SEO agency for small business," the engine isn't running a keyword match — it's cross-referencing structured data signals across multiple sources. Businesses with complete LocalBusiness schema get cited. Businesses without it don't.
+When someone asks ChatGPT "best SEO agency for small business," the engine isn't running a keyword match — it's cross-referencing structured data signals across multiple sources. Businesses with complete LocalBusiness schema get cited. Businesses without it don't.
 
 Three reasons schema is the highest-ROI GEO move:
 
@@ -82,4 +82,4 @@ Schema markup isn't glamorous. It's lines of JSON-LD buried in your page source.
 
 At Rank Labs, schema markup is standard on every site we manage. LocalBusiness, FAQ, Article, and Organization schema go live on day one. AI bot access is verified. Structured data is monitored weekly.
 
-**Ready to get cited by AI?** See how Rank Labs builds GEO visibility with structured data at every layer. [Get started here](/contact).
+**Want more calls from people already searching?** [Get your free AI Readiness audit →](/contact?intent=free-audit). We'll check how clearly your site tells Google and AI assistants who you are, what you do, and how to book, and show you what to fix first. *AI Readiness (on-page) scores how well your pages are structured for AI assistants to read. We do not query ChatGPT, Gemini, Claude, or Perplexity live.*
