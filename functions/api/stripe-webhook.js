@@ -121,12 +121,7 @@ async function handleCheckoutCompleted(session, env) {
   const plan = (await planFromLineItems(session, env)) || session.metadata?.plan || "seo_management";
   const planInfo = PLANS[plan] || PLANS.seo_management;
   const planLabel = planInfo.name;
-  // A discounted subscription (e.g. a partner rate) shows its real monthly rate
-  // next to the list price, so the email matches what the customer is charged.
-  const discounted = (session.total_details?.amount_discount || 0) > 0 && Number.isFinite(session.amount_total);
-  const priceLine = discounted
-    ? `${formatUsd(session.amount_total)}/mo (normally ${planInfo.price}/mo)`
-    : `${planInfo.price}/mo`;
+  const priceLine = buildSignupPriceLine(planInfo, session);
   const website = session.metadata?.website || "";
   const businessName = session.metadata?.business_name || "";
 
@@ -154,10 +149,19 @@ async function handleCheckoutCompleted(session, env) {
 // Keep in step with the pricing section of src/pages/index.astro.
 // Names match the vault product names (e.g. "Full Management").
 
-const PLANS = {
+export const PLANS = {
   seo_management: { name: "GEO + SEO Management", price: "$1,500" },
-  full_management: { name: "Full Management", price: "$2,500" },
+  full_management: { name: "Full Management", price: "$1,249" },
 };
+
+// A discounted subscription (e.g. a partner rate) shows its real monthly rate
+// next to the list price, so the email matches what the customer is charged.
+export function buildSignupPriceLine(planInfo, session) {
+  const discounted = (session.total_details?.amount_discount || 0) > 0 && Number.isFinite(session.amount_total);
+  return discounted
+    ? `${formatUsd(session.amount_total)}/mo (normally ${planInfo.price}/mo)`
+    : `${planInfo.price}/mo`;
+}
 
 async function planFromLineItems(session, env) {
   if (!env.STRIPE_SECRET_KEY || !session.id) return null;
