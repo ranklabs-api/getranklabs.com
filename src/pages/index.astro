@@ -53,37 +53,71 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
   </div>
 </section>
 
-<!-- AI Check — free audit hook -->
-<section id="ai-check" class="py-20 sm:py-24 px-6 bg-surface/30 relative overflow-hidden" aria-labelledby="ai-check-title">
+<!-- Second fold — Palloma copy (local preview for PR #26) -->
+<section id="why-found" class="py-20 sm:py-24 px-6 bg-surface/30 relative overflow-hidden" aria-labelledby="why-found-title">
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-purple-500/5 to-cyan-500/5"></div>
-  <div class="max-w-4xl mx-auto text-center relative min-w-0">
-    <div class="text-sm text-cyan-300 font-mono mb-4">FREE GET FOUND IN AI AUDIT</div>
-    <h2 id="ai-check-title" class="text-3xl md:text-4xl font-bold mb-4 break-words">
-      Is your business getting
-      <span class="gradient-text">found on AI?</span>
+  <div class="max-w-3xl mx-auto relative min-w-0">
+    <h2 id="why-found-title" class="text-3xl md:text-4xl font-bold mb-4 break-words text-center">
+      Your website exists. That doesn't mean anyone finds it.
     </h2>
-    <p class="text-muted max-w-xl mx-auto mb-10 break-words">
-      Your next customer might search Google, check Maps, or ask an AI assistant — and each one pulls from a different mix of sources: your site, your Google Business Profile, Apple Maps, Bing, Yelp and industry directories.
-      When those sources disagree, assistants hedge, pick a competitor, or leave you out. Our free audit reads your actual pages the way machines do, flags where your signals conflict or go missing, and ranks what to fix first.
+    <p class="text-muted text-base sm:text-lg leading-relaxed mb-6 text-center">
+      Full complex SEO/AIO strategy to be found is usually priced for big companies. We built Rank Labs so local businesses can afford it.
+    </p>
+    <p class="text-muted text-base sm:text-lg leading-relaxed mb-8">
+      Having a site won't put you on Google's first page or in ChatGPT's answers.
+      <span class="text-white font-medium">91%<a href="#why-found-sources" id="ref-stat-1" class="text-cyan-300 no-underline align-super text-[0.65em] font-semibold ml-0.5 hover:text-cyan-200" aria-describedby="source-1">[1]</a></span>
+      of searches happen on Google, and only
+      <span class="text-white font-medium">0.63%<a href="#why-found-sources" id="ref-stat-2" class="text-cyan-300 no-underline align-super text-[0.65em] font-semibold ml-0.5 hover:text-cyan-200" aria-describedby="source-2">[2]</a></span>
+      of searchers ever click anything on page 2. When Google shows an AI summary, only
+      <span class="text-white font-medium">8%<a href="#why-found-sources" id="ref-stat-3" class="text-cyan-300 no-underline align-super text-[0.65em] font-semibold ml-0.5 hover:text-cyan-200" aria-describedby="source-3">[3]</a></span>
+      of visits click a regular result. Most people only read the AI summary.
     </p>
 
-    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10" aria-label="What the free audit checks">
-      {[
-        { icon: '🧩', name: 'Schema', q: 'Can machines verify who you are — and match it to your listings?', color: 'text-green-400' },
-        { icon: '💬', name: 'Direct answers', q: 'Do your pages answer real customer questions?', color: 'text-blue-400' },
-        { icon: '🤖', name: 'AI-crawler access', q: 'Can AI crawlers read your site?', color: 'text-orange-400' },
-        { icon: '🗓️', name: 'Freshness', q: 'Does your content look current, with clear dates?', color: 'text-purple-400' },
-      ].map((check) => (
-        <li class="gradient-border rounded-xl p-4 sm:p-5 min-w-0">
-          <div class="text-2xl mb-2" aria-hidden="true">{check.icon}</div>
-          <div class={`font-semibold text-sm sm:text-base ${check.color}`}>{check.name}</div>
-          <div class="text-xs text-muted mt-1 break-words">{check.q}</div>
-        </li>
-      ))}
+    <p class="text-white text-base sm:text-lg leading-relaxed mb-4">
+      It's not just a pretty website with what you do, your hours, phone number, address, and directory listings. It's much more than that:
+    </p>
+    <ul class="list-disc pl-6 space-y-2 text-muted text-base sm:text-lg leading-relaxed mb-6">
+      <li>Schema markup and structured data</li>
+      <li>Site speed, Core Web Vitals, crawlability, indexing and internal linking</li>
+      <li>Comprehensive keyword strategy</li>
+      <li>Cost-based and buyer-intent keywords</li>
+      <li>Content strategy, blogs and pages that answer customers' questions</li>
+      <li>Service and location landing pages</li>
+      <li>Google Business Profile and consistent listings across directories</li>
+      <li>Backlinks from trusted sites</li>
+      <li>AI readiness for ChatGPT, Gemini, Perplexity and Google's AI answers</li>
+      <li>Lead tracking and calls to action that turn visits into calls</li>
+      <li>Monthly ranking and traffic reports</li>
+      <li>Website maintenance, security and backups</li>
     </ul>
+    <p class="text-muted text-base sm:text-lg leading-relaxed mb-6">
+      None of it is one-and-done. Rankings shift every week, so we check 100+ items every week.
+    </p>
+    <p class="text-muted text-base sm:text-lg leading-relaxed mb-8 text-center">
+      Full SEO is usually priced for big companies. We built Rank Labs so local businesses can afford it.
+    </p>
 
-    <a href="/contact?intent=free-audit" class="btn-primary hero-primary text-base">See If You’re Getting Found on AI <span aria-hidden="true">→</span></a>
-    <p class="text-xs text-muted mt-4 break-words">{aiReadinessHonestyLine} Free, no obligation, and we make no changes to your site.</p>
+    <div class="text-center mb-10">
+      <a href="/contact?intent=free-audit" class="btn-primary hero-primary text-base">See what's under your site. Get your free AI Readiness Audit <span aria-hidden="true">→</span></a>
+    </div>
+
+    <aside id="why-found-sources" class="border-t border-white/10 pt-6" aria-label="Sources">
+      <h3 class="text-xs font-mono uppercase tracking-wide text-cyan-300 mb-3">Sources</h3>
+      <ol class="space-y-2 text-xs text-muted leading-relaxed list-none pl-0">
+        <li id="source-1">
+          <a href="#ref-stat-1" class="text-cyan-300 no-underline font-semibold mr-1">[1]</a>
+          <a href="https://gs.statcounter.com/search-engine-market-share" target="_blank" rel="noopener" class="text-muted hover:text-white underline underline-offset-2">Google 91% of searches (91.05% worldwide) – StatCounter, October 2026</a>
+        </li>
+        <li id="source-2">
+          <a href="#ref-stat-2" class="text-cyan-300 no-underline font-semibold mr-1">[2]</a>
+          <a href="https://backlinko.com/google-ctr-stats" target="_blank" rel="noopener" class="text-muted hover:text-white underline underline-offset-2">0.63% of searchers click page 2 – Backlinko Google CTR study, 2025</a>
+        </li>
+        <li id="source-3">
+          <a href="#ref-stat-3" class="text-cyan-300 no-underline font-semibold mr-1">[3]</a>
+          <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener" class="text-muted hover:text-white underline underline-offset-2">8% click rate when an AI summary appears – Pew Research Center, July 2025</a>
+        </li>
+      </ol>
+    </aside>
   </div>
 </section>
 
