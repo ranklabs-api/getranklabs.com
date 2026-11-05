@@ -150,7 +150,7 @@ async function handleCheckoutCompleted(session, env) {
 // Names match the vault product names (e.g. "Full Management").
 
 export const PLANS = {
-  seo_management: { name: "GEO + SEO Management", price: "$1,500" },
+  seo_management: { name: "Rank Labs Visibility Report", price: "$399" },
   full_management: { name: "Full Management", price: "$1,249" },
 };
 
@@ -172,7 +172,7 @@ async function planFromLineItems(session, env) {
     if (!resp.ok) return null;
     const names = ((await resp.json()).data || []).map((item) => item.price?.product?.name || item.description || "");
     if (names.some((name) => /full management/i.test(name))) return "full_management";
-    if (names.some((name) => /seo management/i.test(name))) return "seo_management";
+    if (names.some((name) => /seo management|visibility report/i.test(name))) return "seo_management";
   } catch (e) {
     console.error("Line item lookup failed:", e.message);
   }

@@ -42,3 +42,29 @@ test("a discount with no finite amount_total falls back to the list price", () =
 
   assert.equal(line, "$1,249/mo");
 });
+
+test("Visibility Report keeps the seo_management key under its current name", () => {
+  assert.equal(PLANS.seo_management.name, "Rank Labs Visibility Report");
+});
+
+test("Visibility Report without a discount shows the $399 list price", () => {
+  const line = buildSignupPriceLine(PLANS.seo_management, {
+    amount_total: 39900,
+    total_details: { amount_discount: 0 },
+  });
+
+  assert.equal(line, "$399/mo");
+  assert.ok(!line.includes("$1,500"));
+  assert.ok(!line.includes("$499"));
+});
+
+test("Visibility Report with a discount shows the paid amount and the list price", () => {
+  const line = buildSignupPriceLine(PLANS.seo_management, {
+    amount_total: 29900,
+    total_details: { amount_discount: 10000 },
+  });
+
+  assert.equal(line, "$299/mo (normally $399/mo)");
+  assert.ok(!line.includes("$1,500"));
+  assert.ok(!line.includes("$499"));
+});
