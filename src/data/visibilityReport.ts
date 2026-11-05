@@ -5,7 +5,7 @@
 // Get Found in AI (on-page) comes from scoreEngines() in agents/report/index.js
 // (weighted on-page checklist). Live AI-answer checks, when present in a report,
 // are labeled separately from the on-page score.
-// Single source of truth for the $499/mo Rank Labs Visibility Report scope.
+// Single source of truth for the $399/mo Rank Labs Visibility Report scope.
 export const REPORT_NAME = 'Rank Labs Visibility Report';
 export const REPORT_SLUG = 'rank-labs-visibility-report';
 
