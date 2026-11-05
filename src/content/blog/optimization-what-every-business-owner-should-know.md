@@ -33,9 +33,9 @@ The businesses moving fastest on this are the ones that will own their categorie
 
 At Rank Labs, we break AI optimization — the combination of GEO and SEO — into four pillars that make your business the answer when AI gets asked:
 
-### 1. AI Readiness Audit
+### 1. Get Found in AI Audit
 
-Before you can fix anything, you need to know where you stand. An AI Readiness audit checks the parts of your site AI assistants rely on: structured data, direct answers, crawler access and freshness. You get one plain-English list of what to fix first.
+Before you can fix anything, you need to know where you stand. A Get Found in AI audit checks the parts of your site AI assistants rely on: structured data, direct answers, crawler access and freshness. You get one plain-English list of what to fix first.
 
 ### 2. AI Content Optimization
 
@@ -47,7 +47,7 @@ AI models pull information from across the web — not just from your site. Gett
 
 ### 4. Reporting You Can Read
 
-You can't manage what you don't measure. A weekly AI Readiness (on-page) score and a monthly report on your search, Business Profile, traffic and the leads we can track show where you stand and what changed.
+You can't manage what you don't measure. A weekly Get Found in AI on-page score and a monthly report on your search, Business Profile, traffic and the leads we can track show where you stand and what changed.
 
 ## Common Questions About Optimization
 
@@ -59,8 +59,8 @@ You can't manage what you don't measure. A weekly AI Readiness (on-page) score a
 
 ## Getting Started with Optimization
 
-The first step is the simplest: find out where you stand. A free AI Readiness audit from Rank Labs shows what your site tells Google and AI assistants today, in a single plain-English report with no jargon and no obligation.
+The first step is the simplest: find out where you stand. A free Get Found in AI audit from Rank Labs shows what your site tells Google and AI assistants today, in a single plain-English report with no jargon and no obligation.
 
 Optimization isn't a one-time project. It's an ongoing strategy that gets stronger the longer you commit to it. But the businesses that start now — while the AI search landscape is still being defined — are the ones that will own their categories tomorrow.
 
-**Want more calls from people already searching?** [Get your free AI Readiness audit →](/contact?intent=free-audit). We'll check how clearly your site tells Google and AI assistants who you are, what you do, and how to book, and show you what to fix first. *AI Readiness (on-page) scores how well your pages are structured for AI assistants to read. We do not query ChatGPT, Gemini, Claude, or Perplexity live.*
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *Get Found in AI (on-page) scores how well your pages are structured for AI assistants to read.*
