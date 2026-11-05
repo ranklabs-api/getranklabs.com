@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: 'Is there a long-term contract?',
-    a: 'The Rank Labs Visibility Report is $499/mo and month-to-month. Full Management is $1,249/mo, and a 6-month contract gets the first month free and the $1,000 migration fee waived.',
+    a: 'The Rank Labs Visibility Report is $399/mo and month-to-month. Full Management is $1,249/mo, and a 6-month contract gets the first month free and the $1,000 migration fee waived.',
   },
 ];
 const faqSchema = {
@@ -167,7 +167,7 @@ const faqSchema = {
 
   // Plan pre-selection from ?plan= ('ai-visibility-report' is the legacy slug).
   const PLANS = {
-    'rank-labs-visibility-report': 'Rank Labs Visibility Report ($499/mo, report-only, month-to-month)',
+    'rank-labs-visibility-report': 'Rank Labs Visibility Report ($399/mo, report-only, month-to-month)',
   };
   const PLAN_ALIASES = { 'ai-visibility-report': 'rank-labs-visibility-report' };
   const rawPlan = new URLSearchParams(window.location.search).get('plan') || '';
