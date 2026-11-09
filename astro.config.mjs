@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { copyFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 
 // @astrojs/sitemap has no per-page date source of its own, so `serialize`
@@ -41,6 +42,20 @@ function lastmodFor(url) {
   return gitDate(`src/pages${path}.astro`);
 }
 
+// Search Console does not follow a redirect on a submitted sitemap: it records
+// an error and stops reading, which is how /sitemap.xml -> /sitemap-index.xml
+// left Google without a readable sitemap. /sitemap.xml is the URL already
+// submitted there, so it has to answer 200 with the index itself.
+const sitemapAlias = () => ({
+  name: 'sitemap-xml-alias',
+  hooks: {
+    'astro:build:done': async ({ dir }) => {
+      const index = new URL('sitemap-index.xml', dir);
+      if (existsSync(index)) await copyFile(index, new URL('sitemap.xml', dir));
+    },
+  },
+});
+
 export default defineConfig({
   integrations: [tailwind(), sitemap({
     // Query-string variants (e.g. /signup?plan=...) are not distinct pages.
@@ -53,7 +68,10 @@ export default defineConfig({
       if (lm) item.lastmod = lm;
       return item;
     },
-  })],
+  }), sitemapAlias()],
   output: 'static',
+  // Pages serves directory URLs, so the slash is part of the real URL; saying
+  // so here keeps dev honest and stops links being written to the redirect.
+  trailingSlash: 'always',
   site: 'https://getranklabs.com',
 });

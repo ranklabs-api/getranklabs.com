@@ -82,4 +82,4 @@ Schema markup isn't glamorous. It's lines of JSON-LD buried in your page source.
 
 At Rank Labs, schema markup is standard on every site we manage. LocalBusiness, FAQ, Article, and Organization schema go live on day one. AI bot access is verified. Structured data is monitored weekly.
 
-**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
