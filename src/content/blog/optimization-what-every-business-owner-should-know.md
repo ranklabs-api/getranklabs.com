@@ -63,4 +63,4 @@ The first step is the simplest: find out where you stand. A free AI Optimization
 
 Optimization isn't a one-time project. It's an ongoing strategy that gets stronger the longer you commit to it. But the businesses that start now — while the AI search landscape is still being defined — are the ones that will own their categories tomorrow.
 
-**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
