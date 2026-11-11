@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { serviceAreas } from '../../data/serviceAreas';
+---
+<Layout title="Orlando Metro SEO & AI Optimization Service Areas — Rank Labs" description="Explore Rank Labs service areas across the Orlando metro. Local SEO, Generative Engine Optimization and Agentic Search Optimization from our Orlando base.">
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-sm text-cyan-300 font-mono mb-4">ORLANDO METRO SERVICE AREAS</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Local visibility, with <span class="gradient-text">your customers in mind</span></h1>
+      <p class="text-lg text-muted mb-6">Rank Labs is based in Orlando, FL. We serve businesses across the surrounding metro with SEO, Generative Engine Optimization (GEO) and Agentic Search Optimization (ASO). These communities are service areas, not separate offices.</p>
+      <p class="text-muted mb-8">Choose a city to explore practical customer questions and service-page priorities. Each page uses a different business context to show how search visibility, clear answers and a usable enquiry path fit together. Your actual plan starts with the services and coverage your business can support.</p>
+      <a href="/services/" class="btn-secondary mb-12">Explore our services</a>
+      <h2 class="text-2xl font-bold mb-6">Cities we serve</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+        {serviceAreas.map((city) => <li class="border border-white/10 rounded-xl p-6"><h3 class="text-xl font-semibold mb-3"><a href={`/service-areas/${city.slug}/`} class="text-cyan-300 hover:underline">{city.name}, FL <span aria-hidden="true">→</span></a></h3><p class="text-muted">{city.focus}</p></li>)}
+      </ul>
+      <section class="gradient-border rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-4">Start with your real service area</h2>
+        <p class="text-muted mb-6">Tell us where your customers are and which services you provide. The Visibility Report identifies issues for you to fix; Full Management includes implementation. See the current service scope and plans before choosing an approach.</p>
+        <div class="flex flex-wrap gap-4"><a href="/contact/" class="btn-primary">Talk to Rank Labs</a><a href="/pricing/" class="btn-secondary">Compare plans</a></div>
+      </section>
+    </div>
+  </section>
+</Layout>
