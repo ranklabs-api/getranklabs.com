@@ -12,14 +12,6 @@ const schema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'ProfessionalService',
-      '@id': 'https://getranklabs.com/#organization',
-      name: 'Rank Labs',
-      url: 'https://getranklabs.com/',
-      address: { '@type': 'PostalAddress', addressLocality: 'Orlando', addressRegion: 'FL', addressCountry: 'US' },
-      areaServed: { '@type': 'City', name: `${city.name}, FL` },
-    },
-    {
       '@type': 'Service', '@id': `${url}#service`,
       name: `SEO, GEO and Agentic Search Optimization for ${city.name} businesses`,
       url,
@@ -70,7 +62,7 @@ const schema = {
       <section class="gradient-border rounded-xl p-8 mb-12" aria-labelledby="engagement">
         <h2 id="engagement" class="text-2xl font-bold mb-4">Choose a report or help with implementation</h2>
         <p class="text-muted mb-4">The Rank Labs Visibility Report provides weekly SEO audits and AI Optimization on-page scoring. You handle the fixes; Rank Labs makes no site changes on the report-only plan. Full Management includes implementing fixes plus site building, hosting and maintenance.</p>
-        <p class="text-muted mb-6">AI scoring evaluates on-page readiness; we do not query assistants to measure mentions. Search rankings, AI citations and agent selection are not guaranteed. Booking capabilities depend on the scheduling tools your business actually uses.</p>
+        <p class="text-muted mb-6">Search rankings, AI citations and agent selection are not guaranteed. Booking capabilities depend on the scheduling tools your business actually uses.</p>
         <a href="/services/" class="text-cyan-300 underline underline-offset-4">Explore services and scope</a><span aria-hidden="true" class="mx-3">·</span><a href="/pricing/" class="text-cyan-300 underline underline-offset-4">Compare current plans</a>
       </section>
       <section aria-labelledby="nearby">
