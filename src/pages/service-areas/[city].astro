@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { serviceAreas } from '../../data/serviceAreas';
+
+export function getStaticPaths() {
+  return serviceAreas.map((city) => ({ params: { city: city.slug }, props: { city } }));
+}
+const { city } = Astro.props;
+const nearby = serviceAreas.filter((area) => city.nearby.includes(area.slug));
+const url = `https://getranklabs.com/service-areas/${city.slug}/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://getranklabs.com/#organization',
+      name: 'Rank Labs',
+      url: 'https://getranklabs.com/',
+      address: { '@type': 'PostalAddress', addressLocality: 'Orlando', addressRegion: 'FL', addressCountry: 'US' },
+      areaServed: { '@type': 'City', name: `${city.name}, FL` },
+    },
+    {
+      '@type': 'Service', '@id': `${url}#service`,
+      name: `SEO, GEO and Agentic Search Optimization for ${city.name} businesses`,
+      url,
+      serviceType: ['Search Engine Optimization', 'Generative Engine Optimization', 'Agentic Search Optimization'],
+      provider: { '@id': 'https://getranklabs.com/#organization' },
+      areaServed: { '@type': 'City', name: `${city.name}, FL` },
+      description: city.focus,
+    },
+  ],
+};
+---
+<Layout title={`SEO & AI Optimization in ${city.name}, FL — Rank Labs`} description={`SEO, GEO and Agentic Search Optimization for ${city.name} businesses. ${city.focus} Orlando-based Rank Labs.`}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <nav aria-label="Breadcrumb" class="text-sm text-cyan-300 mb-8"><a href="/services/" class="hover:underline">Services</a> / <a href="/service-areas/" class="hover:underline">Service areas</a> / <span class="text-muted">{city.name}</span></nav>
+      <p class="text-sm text-cyan-300 font-mono mb-4">SERVING {city.name.toUpperCase()}, FL</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">SEO &amp; AI Optimization for <span class="gradient-text">{city.name} businesses</span></h1>
+      <p class="text-xl mb-5">{city.focus}</p>
+      <p class="text-muted mb-8">Rank Labs is based in Orlando, FL and serves businesses in {city.name}. This is a service area, not a separate Rank Labs office.</p>
+      <a href="/contact/" class="btn-primary">Discuss your business</a>
+
+      <section class="border-t border-white/10 mt-12 pt-10" aria-labelledby="local-needs">
+        <h2 id="local-needs" class="text-2xl font-bold mb-4">A useful search experience in {city.name}</h2>
+        <p class="text-muted leading-relaxed mb-4">{city.context}</p>
+        <p class="text-muted leading-relaxed">{city.need}</p>
+        <p class="text-sm text-muted mt-4">The examples below illustrate how the work can apply to a local business; priorities depend on your services, customers and current site.</p>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
+        <section class="border border-white/10 rounded-xl p-6">
+          <h2 class="text-xl font-semibold text-cyan-300 mb-4">SEO: get found</h2>
+          <p class="text-muted leading-relaxed">{city.seo}</p>
+        </section>
+        <section class="border border-white/10 rounded-xl p-6">
+          <h2 class="text-xl font-semibold text-cyan-300 mb-4">GEO: make answers clear</h2>
+          <p class="text-muted mb-4">Generative Engine Optimization prepares content for AI assistants to read and quote. A useful question for this business context:</p>
+          <h3 class="font-semibold mb-3">{city.question}</h3>
+          <p class="text-muted leading-relaxed">{city.answer}</p>
+        </section>
+        <section class="border border-white/10 rounded-xl p-6">
+          <h2 class="text-xl font-semibold text-purple-300 mb-4">ASO: make the next step usable</h2>
+          <p class="text-muted mb-4">ASO means Agentic Search Optimization at Rank Labs: helping an assistant understand services and the path to an enquiry or booking.</p>
+          <p class="text-muted leading-relaxed">{city.aso}</p>
+        </section>
+      </div>
+
+      <section class="gradient-border rounded-xl p-8 mb-12" aria-labelledby="engagement">
+        <h2 id="engagement" class="text-2xl font-bold mb-4">Choose a report or help with implementation</h2>
+        <p class="text-muted mb-4">The Rank Labs Visibility Report provides weekly SEO audits and AI Optimization on-page scoring. You handle the fixes; Rank Labs makes no site changes on the report-only plan. Full Management includes implementing fixes plus site building, hosting and maintenance.</p>
+        <p class="text-muted mb-6">AI scoring evaluates on-page readiness; we do not query assistants to measure mentions. Search rankings, AI citations and agent selection are not guaranteed. Booking capabilities depend on the scheduling tools your business actually uses.</p>
+        <a href="/services/" class="text-cyan-300 underline underline-offset-4">Explore services and scope</a><span aria-hidden="true" class="mx-3">·</span><a href="/pricing/" class="text-cyan-300 underline underline-offset-4">Compare current plans</a>
+      </section>
+      <section aria-labelledby="nearby">
+        <h2 id="nearby" class="text-2xl font-bold mb-4">Nearby service areas</h2>
+        <ul class="flex flex-wrap gap-3 mb-6">{nearby.map((area) => <li><a href={`/service-areas/${area.slug}/`} class="btn-secondary">{area.name}</a></li>)}</ul>
+        <a href="/service-areas/" class="text-cyan-300 underline underline-offset-4">View all Orlando metro service areas</a>
+      </section>
+    </div>
+  </section>
+</Layout>
