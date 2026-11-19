@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const updated = 'October 30, 2026';
+---
+
+<Layout title="Privacy Policy — Rank Labs" description="How Rank Labs collects, uses and shares information from getranklabs.com visitors and customers, including analytics, advertising pixels and the site chat.">
+
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-sm text-cyan-300 font-mono mb-4">LEGAL</div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Privacy <span class="gradient-text">Policy</span></h1>
+    <p class="text-sm text-muted mb-10">Last updated: {updated}</p>
+
+    <div class="space-y-10 text-muted leading-relaxed">
+
+      <div>
+        <p>
+          This policy explains what Rank Labs, LLC collects when you use
+          <strong class="text-white">getranklabs.com</strong>, why we collect it, and who else
+          sees it. We have written it in plain terms rather than legal boilerplate, because a
+          policy you cannot read is not disclosure.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Who we are</h2>
+        <p>
+          Rank Labs, LLC is an SEO, GEO and ASO platform based in Orlando, Florida, United
+          States. For any privacy question, contact
+          <a href="mailto:hello@getranklabs.com" class="text-cyan-400 hover:underline">hello@getranklabs.com</a>
+          or call <a href="tel:+14077438964" class="text-cyan-400 hover:underline">(407) 743-8964</a>.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">What we collect</h2>
+
+        <h3 class="text-lg font-semibold text-white mt-6 mb-2">When you fill in a form</h3>
+        <p class="mb-4">
+          Our contact and signup forms collect the name, email address, business name, website
+          URL, plan interest and any notes you choose to enter. Submissions are emailed to us and
+          a record of the submission is stored so we can measure which pages produce enquiries.
+        </p>
+
+        <h3 class="text-lg font-semibold text-white mt-6 mb-2">When you use the site chat</h3>
+        <p class="mb-4">
+          Chat messages are stored so the conversation survives a page reload, and are relayed to
+          us through Telegram so we can answer in real time. Alongside the messages we store the
+          page you started from, your browser user-agent, a coarse location derived by our host
+          (city, region and country only, never a precise location), and a one-way salted hash of
+          your IP address used solely to rate-limit abuse. We do not store your IP address itself.
+          If you give us an email address so we can follow up, we store that too. Conversations
+          close automatically after 30 minutes of silence.
+        </p>
+
+        <h3 class="text-lg font-semibold text-white mt-6 mb-2">How you found us</h3>
+        <p class="mb-4">
+          When you arrive, your browser records in its own session storage the referring site, the
+          page you landed on, and any campaign parameters in the link such as utm_source or gclid.
+          This is sent with a form submission so we know which channel produced the enquiry. It is
+          cleared when you close the tab.
+        </p>
+
+        <h3 class="text-lg font-semibold text-white mt-6 mb-2">Automatically, as you browse</h3>
+        <p>
+          Like any website, our host records standard request logs. We also run the analytics and
+          advertising tools described below.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Analytics and advertising</h2>
+        <p class="mb-4">
+          <strong class="text-white">Google Analytics 4</strong> measures which pages are read and
+          which links are used. It assigns your browser a random identifier stored in a cookie. It
+          does not receive your name or email address from us.
+        </p>
+        <p class="mb-4">
+          <strong class="text-white">The Meta pixel</strong> reports page views and completed
+          contact-form submissions to Meta so we can measure whether our Facebook and Instagram
+          advertising works, and so we can show ads to people who have visited the site. It sets
+          cookies and can be matched by Meta to a Facebook or Instagram account you are signed
+          into. The form contents themselves are not sent to Meta — only the fact that a
+          submission happened, and the page it happened on.
+        </p>
+        <p class="mb-2">You can switch these off independently of us:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>
+            Google Analytics —
+            <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank" class="text-cyan-400 hover:underline">install Google's opt-out add-on</a>.
+          </li>
+          <li>
+            Meta —
+            <a href="https://www.facebook.com/adpreferences/ad_settings" rel="nofollow noopener" target="_blank" class="text-cyan-400 hover:underline">adjust your Meta ad settings</a>.
+          </li>
+          <li>Any browser — block third-party cookies, or use a content blocker. The site works normally with both blocked.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">How we use what we collect</h2>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>To answer your enquiry and deliver the services you asked for.</li>
+          <li>To measure which pages and which advertising campaigns produce enquiries.</li>
+          <li>To protect the site from spam and abuse.</li>
+          <li>To meet our legal and accounting obligations.</li>
+        </ul>
+        <p class="mt-4">
+          We do not sell your personal information, and we do not share it with anyone for their
+          own marketing.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Who else processes your data</h2>
+        <p class="mb-4">We use these providers to run the site and the business:</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-white/10 text-white text-left">
+                <th class="py-3 pr-4 font-semibold">Provider</th>
+                <th class="py-3 font-semibold">What it handles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-white/5"><td class="py-3 pr-4 text-white">Cloudflare</td><td class="py-3">Hosting, request logs, the database holding form and chat records</td></tr>
+              <tr class="border-b border-white/5"><td class="py-3 pr-4 text-white">Google</td><td class="py-3">Analytics</td></tr>
+              <tr class="border-b border-white/5"><td class="py-3 pr-4 text-white">Meta</td><td class="py-3">Advertising measurement and audiences</td></tr>
+              <tr class="border-b border-white/5"><td class="py-3 pr-4 text-white">Resend</td><td class="py-3">Delivering form submissions to us by email</td></tr>
+              <tr class="border-b border-white/5"><td class="py-3 pr-4 text-white">Telegram</td><td class="py-3">Relaying site-chat messages to us so we can reply</td></tr>
+              <tr><td class="py-3 pr-4 text-white">Stripe</td><td class="py-3">Payments. Card details go directly to Stripe; we never receive or store them</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4">
+          We may also disclose information where the law requires it, or to establish or defend a
+          legal claim.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">How long we keep it</h2>
+        <p>
+          Form submissions and the records behind our reporting are kept while we are doing
+          business together and afterwards for as long as we need them for tax, accounting and
+          legal purposes. Chat transcripts are kept as a record of the conversation. Ask us to
+          delete any of it and we will, except where we are required to keep it.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Your rights</h2>
+        <p class="mb-4">
+          Wherever you live, you can ask us what we hold about you, ask for a copy, ask us to
+          correct it, or ask us to delete it. Email
+          <a href="mailto:hello@getranklabs.com" class="text-cyan-400 hover:underline">hello@getranklabs.com</a>
+          and we will respond.
+        </p>
+        <p>
+          If you are a California resident, the CCPA as amended gives you the rights to know,
+          delete, correct, and to opt out of sale or sharing. We do not sell personal information.
+          Because the Meta pixel can be treated as "sharing" for cross-context behavioural
+          advertising, you can opt out by blocking it using any of the methods above, and we will
+          not discriminate against you for doing so.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Children</h2>
+        <p>
+          This is a business-to-business service. It is not directed at children under 13 and we
+          do not knowingly collect their information.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Changes</h2>
+        <p>
+          If we change this policy we will update the date at the top of the page. Material
+          changes will be announced to active customers by email.
+        </p>
+      </div>
+
+      <div class="gradient-border rounded-2xl p-8">
+        <h2 class="text-xl font-bold text-white mb-3">Questions</h2>
+        <p>
+          Rank Labs, LLC · Orlando, Florida, United States<br />
+          <a href="mailto:hello@getranklabs.com" class="text-cyan-400 hover:underline">hello@getranklabs.com</a>
+          · <a href="tel:+14077438964" class="text-cyan-400 hover:underline">(407) 743-8964</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</Layout>

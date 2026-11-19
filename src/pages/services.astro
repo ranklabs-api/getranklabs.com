@@ -1,36 +1,77 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ReportFeatures from '../components/ReportFeatures.astro';
+import { aiReadinessHonestyLine } from '../data/visibilityReport';
 ---
 
-<Layout title="Services — Get Found on ChatGPT, Claude & AI — Rank Labs" description="GEO + SEO ($1,500/mo) and Full Management ($2,500/mo). Weekly audits, blog content, keyword tracking, and full site hosting with weekly reports.">
+<Layout title="Services — SEO, GEO & ASO for AI Search — Rank Labs" description="Rank Labs Visibility Report $399/mo: SEO + AI Optimization, report only. Full Management $1,249/mo: we do the work, plus blog content and site hosting.">
 
 <section class="pt-32 pb-20 px-6">
   <div class="max-w-4xl mx-auto">
     <div class="text-sm text-cyan-300 font-mono mb-4">WHAT WE DO</div>
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">Get Found on <span class="gradient-text">Every AI Engine</span></h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Get Found, Get Chosen and Get Customers on <span class="gradient-text">Google, Maps and AI Assistants</span></h1>
     <p class="text-lg text-muted mb-16 max-w-2xl">
-      Two tiers, one mission: make your business the answer when people ask AI. Every plan is month-to-month — no contracts, no surprises.
+      Two tiers, one goal: turn people already searching into calls, bookings and leads. Get the report and make the fixes yourself, or let us do all of it. <a href="/pricing/" class="text-cyan-400 hover:underline">Compare pricing →</a>
     </p>
 
-    <!-- GEO vs ASO -->
+    <section class="border border-white/10 rounded-xl p-6 mb-12" aria-labelledby="service-areas">
+      <h2 id="service-areas" class="text-2xl font-bold mb-3">Serving the Orlando metro</h2>
+      <p class="text-muted mb-4">Based in Orlando, FL, Rank Labs serves local businesses across the surrounding communities. Explore customer questions and SEO, GEO and Agentic Search Optimization priorities for your area.</p>
+      <a href="/service-areas/" class="text-cyan-300 hover:underline">Explore our Orlando metro service areas →</a>
+    </section>
+
+    <!-- SEO vs GEO vs ASO -->
     <div class="border-t border-white/5 pt-12 mb-16">
-      <div class="text-xs text-cyan-300 font-mono mb-2">GEO VS. ASO (AGENTIC SEARCH OPTIMIZATION)</div>
-      <h2 class="text-2xl font-bold mb-2">Two jobs, <span class="gradient-text">one platform</span></h2>
-      <p class="text-muted mb-4 max-w-xl">One site does two different jobs. GEO makes you the answer. ASO makes you the choice.</p>
+      <div class="text-xs text-cyan-300 font-mono mb-2">SEO VS. GEO VS. ASO (AGENTIC SEARCH OPTIMIZATION)</div>
+      <h2 class="text-2xl font-bold mb-2">Three pillars, <span class="gradient-text">one platform</span></h2>
+      <p class="text-muted mb-4 max-w-xl">One site does three different jobs. SEO makes you rank. GEO makes you the answer. ASO makes you the choice.</p>
       <p class="text-sm text-muted mb-8 max-w-3xl">
-        ASO stands for Agentic Search Optimization. We also call it being "agent-ready." GEO (Generative Engine Optimization)
-        gets you cited — your business shows up in the answer when someone asks ChatGPT, Claude, Gemini or Perplexity a question.
-        ASO gets you chosen: when that same person stops asking questions and asks the AI to do something — "find me a clinic
+        SEO (Search Engine Optimization) gets you found: your business ranks on Google, in the Maps local pack and in
+        the listings and directories people check, on a site that is technically sound enough for search engines to crawl and
+        trust. GEO (Generative Engine Optimization)
+        gets your site ready to be cited: content AI assistants like ChatGPT, Claude, Gemini and Perplexity can read, trust and quote. We score the on-page side every week. We don't query the assistants.
+        ASO (Agentic Search Optimization, which we also call being "agent-ready") gets you chosen: when that same person stops asking questions and asks the AI to do something — "find me a clinic
         near me that's open Thursday and start a booking" — the AI picks the business whose hours, prices, location, service
         list and booking link it can read as data, not the one whose website merely reads well to a human. (Heads up on the
         acronym: in the app world, "ASO" usually means App Store Optimization. That's a completely different thing — we mean
-        Agentic Search Optimization.)
+        Agentic Search Optimization.) The pillars share a foundation, so the same schema and listing work often
+        serves more than one of them.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="border border-white/10 rounded-xl p-6">
+          <h3 class="font-semibold text-sm text-cyan-300 mb-1">SEO — Search Engine Optimization</h3>
+          <div class="text-xs text-muted mb-4">rank on Google and in local search</div>
+          <ul class="space-y-2">
+            {[
+              { label: 'Structured data / schema markup — checked on every page', shared: true },
+              { label: 'Accurate name, address, phone everywhere — checked across 10 listing sites', shared: true },
+              { label: 'A full technical crawl of your site, with 100+ checks run every week', shared: false },
+              { label: 'Title tags, meta descriptions, H1 structure and canonical URLs', shared: false },
+              { label: 'Open Graph tags, image alt text and broken-link checks', shared: false },
+              { label: 'Page speed, mobile friendliness and Core Web Vitals', shared: false },
+              { label: 'Sitemap and robots.txt checks', shared: false },
+              { label: 'SSL and email-domain (DNS) setup checks', shared: false },
+              { label: 'Google organic and Maps (local pack) rankings for 25 keywords', shared: false },
+              { label: 'The keywords you already rank for', shared: false },
+              { label: 'Backlink summary', shared: false },
+              { label: 'Google Business Profile optimization and listing management (Full Management)', shared: false },
+              { label: 'Reviews tracked on Google plus one other site', shared: false },
+              { label: 'A 3-competitor comparison', shared: false },
+              { label: 'A prioritized fix list in every weekly report', shared: false },
+            ].map(b => (
+              <li class="flex items-start gap-3 text-sm text-muted">
+                {b.shared
+                  ? <span class="text-cyan-300 font-mono text-xs shrink-0 mt-0.5">&#8596;</span>
+                  : <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0 mt-2"></span>}
+                {b.label}
+              </li>
+            ))}
+          </ul>
+        </div>
         <div class="border border-white/10 rounded-xl p-6">
           <h3 class="font-semibold text-sm text-cyan-300 mb-1">GEO — Generative Engine Optimization</h3>
-          <div class="text-xs text-muted mb-4">get cited in AI answers</div>
+          <div class="text-xs text-muted mb-4">be ready to be cited in AI answers</div>
           <ul class="space-y-2">
             {[
               { label: 'Structured data / schema markup — so AI knows exactly who you are', shared: true },
@@ -87,14 +128,14 @@ import Layout from '../layouts/Layout.astro';
           </ul>
         </div>
       </div>
-      <p class="text-xs text-muted mt-4"><span class="text-cyan-300 font-mono">&#8596;</span> marks work that serves both jobs.</p>
+      <p class="text-xs text-muted mt-4"><span class="text-cyan-300 font-mono">&#8596;</span> marks work that serves more than one pillar.</p>
     </div>
 
     <!-- Agent-readiness ladder -->
     <div class="border-t border-white/5 pt-12 mb-16">
       <div class="text-xs text-purple-300 font-mono mb-2">AGENT-READINESS LADDER</div>
       <h2 class="text-2xl font-bold mb-2">Where you sit on the <span class="gradient-text">agent-readiness ladder</span></h2>
-      <p class="text-muted mb-8 max-w-xl">Being agent-ready isn't one switch — it's a ladder, and most businesses are on the bottom rung without knowing it.</p>
+      <p class="text-muted mb-8 max-w-xl">Being agent-ready (the ASO pillar) isn't one switch — it's a ladder, and most businesses are on the bottom rung without knowing it.</p>
       <ul class="space-y-2 mb-6">
         {[
           { level: 'Level 0 — Invisible.', desc: 'No structured data; an AI has to guess your name, address and phone.' },
@@ -113,49 +154,30 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-sm text-muted max-w-xl">For almost every business we work with, the highest-return work sits at Levels 3 and 4. We won't sell you Level 5 before you've cleared Level 2.</p>
     </div>
 
-    <!-- SEO Management -->
+    <!-- Rank Labs Visibility Report -->
     <div class="border-t border-white/5 pt-12 mb-16">
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-        <div>
-          <div class="text-xs text-purple-300 font-mono mb-2">$1,500/MO</div>
-          <h2 class="text-2xl font-bold">GEO + SEO</h2>
-          <p class="text-muted mt-2 max-w-xl">Weekly audits, rankings, and strategy delivered to your inbox. You keep your existing team and site — we provide the intelligence.</p>
+        <div class="min-w-0">
+          <div class="text-xs text-purple-300 font-mono mb-2">$399/MO</div>
+          <h2 class="text-2xl font-bold">Rank Labs Visibility Report</h2>
+          <p class="text-muted mt-2 max-w-xl break-words">Know where you stand on Google, Maps and AI: SEO plus your AI Optimization on-page score, in one report.</p>
+          <p class="text-xs text-muted mt-2"><span class="text-white font-medium">Month-to-month</span>; no long-term contract.</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Audits & Monitoring</h3>
-          <ul class="space-y-2">
-            {['Weekly SEO audits (100+ checks)', 'Broken link detection & repair', 'Missing meta tags & descriptions', 'Page speed & Core Web Vitals', 'Mobile responsiveness check', 'Structured data verification', 'Sitemap & canonical strategy'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Rankings & Strategy</h3>
-          <ul class="space-y-2">
-            {['Keyword position tracking', 'Long-tail & seasonal keyword research', 'Competitor gap analysis', 'Backlink profile monitoring', 'Monthly ranking reports', 'Content strategy recommendations', 'Technical SEO issue detection'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Content & Conversion</h3>
-          <ul class="space-y-2">
-            {['Content gap analysis', 'Topic cluster planning', 'Seasonal content calendar', 'Internal link optimization', 'Conversion-focused content strategy', 'A/B test recommendations for landing pages', '3/6/12 month performance benchmarks'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-sm text-cyan-300 mb-3">Agent-Ready (ASO)</h3>
-          <ul class="space-y-2">
-            {['Agent-readiness score in every weekly report', 'Hours, location and service menu checked as machine-readable data', 'Exact-price and offer markup audit', 'Reviews and ratings marked up for AI', 'Booking-path reachability check (no bot blocks)', 'Agent-readiness level scored 0–5'].map(b => (
-              <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
-            ))}
-          </ul>
-        </div>
+      <div class="rounded-xl border border-amber-400/40 bg-amber-400/10 p-4 mb-6 max-w-2xl" role="note">
+        <div class="text-xs font-mono font-semibold text-amber-300 mb-1">REPORT ONLY</div>
+        <p class="text-sm text-white break-words">You handle all fixes. Rank Labs makes <strong>no changes</strong> to your site.</p>
+      </div>
+
+      <div class="mb-8">
+        <ReportFeatures />
+        <p class="text-xs text-muted mt-4">{aiReadinessHonestyLine}</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+        <a href="/contact/?plan=rank-labs-visibility-report" class="btn-primary">Get the Report</a>
+        <a href="/signup/?plan=full_management" class="text-sm text-cyan-300 hover:text-cyan-200 font-semibold">Rather have us make the fixes? Upgrade to Full Management →</a>
       </div>
     </div>
 
@@ -163,10 +185,11 @@ import Layout from '../layouts/Layout.astro';
     <div class="border-t border-white/5 pt-12 mb-16">
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
         <div>
-          <div class="text-xs text-cyan-300 font-mono mb-2">$2,500/MO</div>
+          <div class="text-xs text-cyan-300 font-mono mb-2">$1,249/MO</div>
           <h2 class="text-2xl font-bold">Full Management</h2>
-          <p class="text-muted mt-2 max-w-xl">Everything in GEO + SEO, plus we build, host, and maintain your site. You focus on your business — we handle the rest.</p>
-          <p class="text-xs text-muted mt-2"><span class="text-white font-medium">+ one-time site build or $1,000 migration</span> for new or existing sites</p>
+          <div class="inline-block w-fit text-xs px-3 py-1 mt-3 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold">FIRST MONTH FREE</div>
+          <p class="text-muted mt-2 max-w-xl">Weekly SEO audits, keyword & competitor tracking, weekly AI Optimization on-page scoring, and monthly reports — and we implement the fixes. Plus we build, host, and maintain your site. You focus on your business — we handle the rest.</p>
+          <p class="text-xs text-muted mt-2"><span class="text-white font-medium">First month free and the $999 migration fee waived with a 6-month contract</span>; otherwise month-to-month plus a $999 migration fee.</p>
         </div>
         <span class="text-xs px-3 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-300 font-semibold shrink-0 h-fit">MOST POPULAR</span>
       </div>
@@ -219,9 +242,9 @@ import Layout from '../layouts/Layout.astro';
       </ul>
       <div class="space-y-3">
         {[
-          { pages: 'Landing Page — $1,250', desc: 'Single-page site. Perfect for product launches, lead gen, or a simple web presence.' },
-          { pages: 'Up to 5 Pages — $2,500', desc: 'Home, About, Services, Blog, Contact. The full business stack.' },
-          { pages: 'Site Migration — $1,000', desc: 'Moving from Wix, Squarespace, WordPress? We handle DNS, content, and redirects with zero downtime.' },
+          { pages: 'Landing Page — $1,249', desc: 'Single-page site. Perfect for product launches, lead gen, or a simple web presence.' },
+          { pages: 'Up to 5 Pages — $2,499', desc: 'Home, About, Services, Blog, Contact. The full business stack.' },
+          { pages: 'Site Migration — $999', desc: 'Moving from Wix, Squarespace, WordPress? We handle DNS, content, and redirects with zero downtime.' },
           { pages: '6+ Pages — Custom Quote', desc: "Complex sites, e-commerce, dashboards, or anything custom. Let's talk." },
         ].map((tier) => (
           <div class="gradient-border rounded-xl p-4">
@@ -236,9 +259,9 @@ import Layout from '../layouts/Layout.astro';
 
 <div class="text-center pb-20 px-6">
   <p class="text-sm text-muted">
-    <a href="/faq" class="text-cyan-400 hover:underline">Have questions? Read our FAQ →</a>
+    <a href="/faq/" class="text-cyan-400 hover:underline">Have questions? Read our FAQ →</a>
     &nbsp;·&nbsp;
-    <a href="/about" class="text-cyan-400 hover:underline">Learn about the team behind Rank Labs →</a>
+    <a href="/about/" class="text-cyan-400 hover:underline">Learn about the team behind Rank Labs →</a>
   </p>
 </div>
 

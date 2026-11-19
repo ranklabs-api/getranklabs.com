@@ -1,9 +1,10 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 import '../styles/global.css';
 
-const { title = 'Rank Labs — Get Found on ChatGPT, Claude, Gemini & Perplexity', description = 'GEO and SEO platform from Josiah and Palloma: weekly audits, blog content, keyword tracking, and full-site management without agency overhead.', image = '/og-image.png' } = Astro.props;
+const { title = 'More Calls & Bookings from Google, Maps & AI — Rank Labs', description = 'GEO and SEO platform from Josiah and Palloma: weekly audits, blog content, keyword tracking, and full-site management without agency overhead.', image = '/og-image.png' } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site).href;
@@ -44,24 +45,17 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
           "url": "https://getranklabs.com",
           "logo": "https://getranklabs.com/logo.svg",
           "image": "https://getranklabs.com/og-image.png",
-          "description": "Get your business found on ChatGPT, Claude, Gemini, and Perplexity. AI-first search optimization with stronger Google rankings as a side effect.",
+          "description": "SEO, Google Maps and AI Optimization for local service businesses: get found, get chosen, get customers, and see the leads we can track.",
           "telephone": "+14077438964",
           "email": "hello@getranklabs.com",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "11454 Chateaubriand Ave",
             "addressLocality": "Orlando",
             "addressRegion": "FL",
-            "postalCode": "32836",
             "addressCountry": "US"
           },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 28.4308339,
-            "longitude": -81.5555657
-          },
           "areaServed": { "@type": "Country", "name": "United States" },
-          "priceRange": "$1,500–$2,500",
+          "priceRange": "$399–$1,249",
           "paymentAccepted": "Credit Card",
           "currenciesAccepted": "USD",
           "openingHoursSpecification": {
@@ -104,28 +98,28 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
             "itemListElement": [
               {
                 "@type": "Offer",
-                "name": "GEO + SEO",
-                "price": "1500",
+                "name": "Rank Labs Visibility Report",
+                "price": "399",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "url": "https://getranklabs.com/services",
+                "url": "https://getranklabs.com/pricing",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "GEO + SEO",
-                  "description": "Weekly audits, rankings, and strategy delivered to your inbox. You keep your existing team and site — we provide the intelligence."
+                  "name": "Rank Labs Visibility Report",
+                  "description": "Report-only, month-to-month report covering SEO + AI Optimization (on-page): Google organic and Maps (local pack) rankings for 25 keywords, ranking keywords, backlink summary, full technical crawl, Core Web Vitals, schema, sitemap/robots, SSL and email-domain (DNS) setup checks, an AI Optimization on-page score with sub-scores for ChatGPT, Gemini, Claude and Perplexity covering schema, direct-answer structure and AI-crawler access (on-page signals), Business-detail conflict checks across 10 listing sites (name, address, phone), reviews on Google plus one other site, and a 3-competitor comparison; optional GA4, Google Search Console and Google Business Profile stats with client access. Delivered as a weekly SEO audit report email plus a separate monthly email report (first week of each month). The client handles all fixes; Rank Labs makes no changes to the site."
                 }
               },
               {
                 "@type": "Offer",
                 "name": "Full Management",
-                "price": "2500",
+                "price": "1249",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "url": "https://getranklabs.com/services",
+                "url": "https://getranklabs.com/pricing",
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Full Management",
-                  "description": "Everything in GEO + SEO, plus we build, host, and maintain your site. You focus on your business."
+                  "description": "We do the AI Optimization work — resolve conflicting signals across your site and listings, make the fixes — and build, host, and maintain your site. First month free and the $999 migration fee waived with a 6-month contract; otherwise month-to-month plus a $999 migration fee."
                 }
               }
             ]
@@ -188,6 +182,21 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       gtag('js', new Date());
       gtag('config', 'G-4D52285Z1C');
     </script>
+    <!-- Meta pixel. is:inline for the same reason as the gtag block above:
+         bundling would scope fbq to a module and `window.fbq` would be
+         undefined, so every conversion guarded by `typeof window.fbq ===
+         'function'` would silently never fire. -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1305122388373623');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" alt=""
+      src="https://www.facebook.com/tr?id=1305122388373623&ev=PageView&noscript=1" /></noscript>
     <!-- First-touch attribution capture.
          Deliberately uses ONLY document.referrer / location / sessionStorage —
          no gtag, no third-party request. A blocked visitor still gets captured,
@@ -234,6 +243,7 @@ const ogImageUrl = image.startsWith('http') ? image : new URL(image, Astro.site)
       <slot />
     </main>
     <Footer />
+    <ChatWidget />
     <script>
       document.addEventListener('click', (event) => {
         const target = event.target;

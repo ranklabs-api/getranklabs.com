@@ -121,26 +121,23 @@ async function handleCheckoutCompleted(session, env) {
   const plan = (await planFromLineItems(session, env)) || session.metadata?.plan || "seo_management";
   const planInfo = PLANS[plan] || PLANS.seo_management;
   const planLabel = planInfo.name;
-  // A discounted subscription (e.g. a partner rate) shows its real monthly rate
-  // next to the list price, so the email matches what the customer is charged.
-  const discounted = (session.total_details?.amount_discount || 0) > 0 && Number.isFinite(session.amount_total);
-  const priceLine = discounted
-    ? `${formatUsd(session.amount_total)}/mo (normally ${planInfo.price}/mo)`
-    : `${planInfo.price}/mo`;
+  const priceLine = buildSignupPriceLine(planInfo, session);
   const website = session.metadata?.website || "";
   const businessName = session.metadata?.business_name || "";
 
   console.log(`✅ New ${planLabel} signup (${priceLine}): ${customerName} <${customerEmail}>`);
 
-  // 1. Telegram notification to Josiah
-  await notifyTelegram(env, { customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName });
-
-  // 2. Internal email to Josiah
-  await sendEmail(env, {
-    to: "josiahearl@gmail.com",
-    subject: `🚀 New Signup: ${customerName} — ${planLabel}`,
-    html: buildInternalEmail({ customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName }),
-  });
+  // New-subscription notice to Josiah (email only, same Resend sender as
+  // contact). Best-effort: a failed notice never fails the webhook response.
+  try {
+    await sendEmail(env, {
+      to: "josiah@getranklabs.com",
+      subject: `🚀 New Signup: ${customerName} — ${planLabel}`,
+      html: buildInternalEmail({ customerName, customerEmail, planLabel: `${planLabel} — ${priceLine}`, website, businessName }),
+    });
+  } catch (e) {
+    console.error("Signup notice email failed:", e.message);
+  }
 
   // Notification only. A signup does not email the customer or start onboarding:
   // existing customers (e.g. a partner rate sent as a payment link) are already
@@ -150,11 +147,21 @@ async function handleCheckoutCompleted(session, env) {
 
 // ── Plans ───────────────────────────────────────────────────────────────
 // Keep in step with the pricing section of src/pages/index.astro.
+// Names match the vault product names (e.g. "Full Management").
 
-const PLANS = {
-  seo_management: { name: "GEO + SEO Management", price: "$1,500" },
-  full_management: { name: "Full Management SEO & AI Visibility", price: "$2,500" },
+export const PLANS = {
+  seo_management: { name: "Rank Labs Visibility Report", price: "$399" },
+  full_management: { name: "Full Management", price: "$1,249" },
 };
+
+// A discounted subscription (e.g. a partner rate) shows its real monthly rate
+// next to the list price, so the email matches what the customer is charged.
+export function buildSignupPriceLine(planInfo, session) {
+  const discounted = (session.total_details?.amount_discount || 0) > 0 && Number.isFinite(session.amount_total);
+  return discounted
+    ? `${formatUsd(session.amount_total)}/mo (normally ${planInfo.price}/mo)`
+    : `${planInfo.price}/mo`;
+}
 
 async function planFromLineItems(session, env) {
   if (!env.STRIPE_SECRET_KEY || !session.id) return null;
@@ -165,7 +172,7 @@ async function planFromLineItems(session, env) {
     if (!resp.ok) return null;
     const names = ((await resp.json()).data || []).map((item) => item.price?.product?.name || item.description || "");
     if (names.some((name) => /full management/i.test(name))) return "full_management";
-    if (names.some((name) => /seo management/i.test(name))) return "seo_management";
+    if (names.some((name) => /seo management|visibility report/i.test(name))) return "seo_management";
   } catch (e) {
     console.error("Line item lookup failed:", e.message);
   }
@@ -174,36 +181,6 @@ async function planFromLineItems(session, env) {
 
 function formatUsd(cents) {
   return `$${(cents / 100).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
-}
-
-// ── Telegram ─────────────────────────────────────────────────────────────
-
-async function notifyTelegram(env, { customerName, customerEmail, planLabel, website, businessName }) {
-  const token = env.TELEGRAM_BOT_TOKEN;
-  const chatId = env.TELEGRAM_CHAT_ID || "5016070713";
-
-  if (!token) {
-    console.log("Telegram token not configured");
-    return;
-  }
-
-  let text = `<b>🚀 New Signup!</b>\n\n`;
-  text += `<b>Plan:</b> ${planLabel}\n`;
-  text += `<b>Name:</b> ${customerName}\n`;
-  text += `<b>Email:</b> ${customerEmail}\n`;
-  if (website) text += `<b>Website:</b> ${website}\n`;
-  if (businessName) text += `<b>Business:</b> ${businessName}\n`;
-
-  try {
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML" }),
-    });
-    console.log("Telegram sent");
-  } catch (e) {
-    console.error("Telegram failed:", e.message);
-  }
 }
 
 // ── Email (via Resend — free tier: 100/day) ──────────────────────────────

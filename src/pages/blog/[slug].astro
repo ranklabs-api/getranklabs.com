@@ -1,4 +1,15 @@
 ---
+import blogAssetb6f3926b6a1a7aeb29965d2538a4e750b6c248e4aedfb3e97ebc8b1c1a3f4dfb from '../../assets/blog/google-ai-overviews-local-business/b6f3926b6a1a7aeb29965d2538a4e750b6c248e4aedfb3e97ebc8b1c1a3f4dfb.webp?url';
+import blogAssetd3a0d16ef8d41c91ff4de6fd2a6a36128480a2f4a507ec47bd06b75c22859ddb from '../../assets/blog/google-ai-overviews-local-business/d3a0d16ef8d41c91ff4de6fd2a6a36128480a2f4a507ec47bd06b75c22859ddb.webp?url';
+import blogAsset305aa2689df9fb4f91b702ab2bfa6f23c882c297cfd79191f26b7798bca07046 from '../../assets/blog/google-ai-overviews-local-business/305aa2689df9fb4f91b702ab2bfa6f23c882c297cfd79191f26b7798bca07046.webp?url';
+import blogAsset9f0d777f2618a57ffe6e66c2a25392773066c946a61692c520f7797078c67eb7 from '../../assets/blog/fix-ai-wrong-information-about-your-business/9f0d777f2618a57ffe6e66c2a25392773066c946a61692c520f7797078c67eb7.webp?url';
+import blogAsset2e28e36da4482b92ea8cf8081c4c393d7aea26ae9e27107a8aa32c55ce18b671 from '../../assets/blog/answer-first-content-ai-assistants/2e28e36da4482b92ea8cf8081c4c393d7aea26ae9e27107a8aa32c55ce18b671.webp?url';
+import blogAssetd37de68f0c1fe36340926bc0f392e0ae44eb5d7b99aace411de2af3dc1b76389 from '../../assets/blog/answer-first-content-ai-assistants/d37de68f0c1fe36340926bc0f392e0ae44eb5d7b99aace411de2af3dc1b76389.webp?url';
+import blogAsset9330b8cb90cc1a7e3b6dce50a806b72ab4f10454ecade0f33494c7a51d8c22ff from '../../assets/blog/answer-first-content-ai-assistants/9330b8cb90cc1a7e3b6dce50a806b72ab4f10454ecade0f33494c7a51d8c22ff.webp?url';
+import blogAsset6f93e122d97e57cdad6570d45e7d3671bf112695d964c056cd14be73061166ff from '../../assets/blog/geo-the-new-frontier/6f93e122d97e57cdad6570d45e7d3671bf112695d964c056cd14be73061166ff.webp?url';
+import blogAssetcedb62ae99b107bbbf15d62fbd18ec0ab88074861ada0cfa343a9a73904e2ec9 from '../../assets/blog/geo-the-new-frontier/cedb62ae99b107bbbf15d62fbd18ec0ab88074861ada0cfa343a9a73904e2ec9.webp?url';
+import blogAsset492ae7d274f4712b67f0cfa86fc3911e796c4260ac3976d1238152a1f06d30fb from '../../assets/blog/geo-the-new-frontier/492ae7d274f4712b67f0cfa86fc3911e796c4260ac3976d1238152a1f06d30fb.webp?url';
+import blogAsset53e4825d4a50979461fea09fec2f0c5530f56c8021a8da3018a3b606997717df from '../../assets/blog/geo-the-new-frontier/53e4825d4a50979461fea09fec2f0c5530f56c8021a8da3018a3b606997717df.webp?url';
 import Layout from '../../layouts/Layout.astro';
 
 export function getStaticPaths() {
@@ -25,6 +36,11 @@ export function getStaticPaths() {
     { params: { slug: 'topical-authority-topic-clusters-ai-search' } },
     { params: { slug: 'agentic-search-optimization-agent-ready' } },
     { params: { slug: 'competitor-gap-analysis-ai-search' } },
+    { params: { slug: 'citation-mention-building-ai-search' } },
+    { params: { slug: 'content-freshness-ai-search' } },
+    { params: { slug: 'answer-first-content-ai-assistants' } },
+    { params: { slug: 'fix-ai-wrong-information-about-your-business' } },
+    { params: { slug: 'google-ai-overviews-local-business' } },
   ];
 }
 
@@ -48,11 +64,12 @@ At Rank Labs, AI handles the heavy lifting:
 
 The result? Agency-quality SEO without the agency overhead. Not because we cut corners — because we automated the work.
 
-[See our GEO + SEO and Full Management plans →](/services)
+[See the Rank Labs Visibility Report and Full Management plans →](/pricing/)
     `.trim(),
   },
   'weekly-audit-advantage': {
     title: 'The Weekly Audit Advantage: Why Cadence Matters More Than Depth',
+    metaTitle: 'Weekly SEO Audits: Why Cadence Beats Depth — Rank Labs',
     date: 'May 13, 2026',
     tag: 'Best Practices',
     body: `
@@ -72,11 +89,12 @@ Weekly audits change the game:
 
 Weekly auditing isn't about doing more work. It's about the right work, at the right time, consistently.
 
-[Learn how our weekly audit pipeline works →](/services)
+[Learn how our weekly audit pipeline works →](/services/)
     `.trim(),
   },
   'content-at-scale': {
     title: 'Content at Scale: How AI Drafts 800+ Word Posts in Minutes',
+    metaTitle: 'Content at Scale: AI-Drafted Posts in Minutes — Rank Labs',
     date: 'May 6, 2026',
     tag: 'Product',
     body: `
@@ -104,11 +122,12 @@ Approved posts go live on your site, properly formatted, with all meta tags in p
 
 The entire pipeline — from research to publish — takes minutes, not weeks. That's the formula.
 
-[Explore our GEO + SEO plan →](/services)
+[Compare the Rank Labs Visibility Report ($399/mo) and Full Management →](/pricing/)
     `.trim(),
   },
   'geo-the-new-frontier': {
     title: 'GEO: The New Frontier of Search — and Why It Matters More Than SEO',
+    metaTitle: 'GEO: The New Frontier of Search — Rank Labs',
     date: 'June 10, 2026',
     tag: 'GEO',
     body: `
@@ -116,18 +135,15 @@ If you're not optimizing for AI search engines yet, you're already losing custom
 
 ## What Is GEO?
 
+<figure class="blog-image"><img src="${blogAsset6f93e122d97e57cdad6570d45e7d3671bf112695d964c056cd14be73061166ff}" srcset="${blogAssetcedb62ae99b107bbbf15d62fbd18ec0ab88074861ada0cfa343a9a73904e2ec9} 800w, ${blogAsset6f93e122d97e57cdad6570d45e7d3671bf112695d964c056cd14be73061166ff} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character peering curiously through a magnifying glass, discovering what GEO is" width="1536" height="1024" style="max-width:100%;height:auto"></figure>
+
 GEO — Generative Engine Optimization — is the practice of making your business visible in AI-powered search engines like ChatGPT, Claude, Gemini, and Perplexity. It's SEO's big brother, and it's growing fast.
 
-A year ago, AI search engines handled less than 2% of English-language informational queries. As of Q1 2026, that number is an estimated 12–18%. That's not a trend — that's a takeover.
+A growing share of people now ask an AI assistant before (or instead of) searching Google. That shift is moving faster than most business owners expect.
 
-## The Numbers That Should Scare You
+## Why This Matters for Buyers
 
-The data on AI-driven purchase behavior is staggering:
-
-- **51% of B2B buyers** now start their research in an AI chatbot — more often than Google
-- **69% chose a different vendor** than they originally planned because of what an AI chatbot recommended
-- **33% have switched brands entirely** based on AI-generated suggestions
-- **99% of measurable AI referrals** come from just four engines: ChatGPT, Claude, Gemini, and Perplexity
+More buyers now start with an AI assistant, and what it recommends can shape who they call.
 
 Translation: if you're not showing up in AI answers, your competitors are — and they're taking your customers.
 
@@ -135,7 +151,7 @@ Translation: if you're not showing up in AI answers, your competitors are — an
 
 Not all AI search engines are created equal. Each one pulls from different sources:
 
-**ChatGPT** — Uses Microsoft Bing as its web search backbone (OpenAI and Microsoft are partners). It also crawls the web directly using GPTBot. ChatGPT now has roughly 800 million weekly active users. If Bing can find your site and GPTBot isn't blocked, you're in the game.
+**ChatGPT** — Uses Microsoft Bing as its web search backbone (OpenAI and Microsoft are partners). It also crawls the web directly using GPTBot. It's the most widely used AI assistant. If Bing can find your site and GPTBot isn't blocked, you're in the game.
 
 **Claude** — Uses a crawler called ClaudeBot, plus real-time web search powered by multiple sources including Brave Search. Claude pulls from well-structured, credible websites, third-party mentions, and authoritative content.
 
@@ -147,7 +163,7 @@ Not all AI search engines are created equal. Each one pulls from different sourc
 
 ## The 6-Step GEO Checklist
 
-Here's what actually moves the needle for AI visibility:
+Here's what actually helps you show up in AI answers:
 
 **1. Claim Your Brand Across AI Platforms**
 Ensure your business name, description, and website are consistent everywhere AI engines might look — Google Business Profile, Bing Places, Yelp, industry directories, and social profiles.
@@ -165,7 +181,7 @@ Name, Address, Phone. Inconsistent NAP data across directories confuses AI engin
 Use Article and FAQ schema markup. Make sure your robots.txt allows GPTBot, ClaudeBot, PerplexityBot, and BingBot. Don't accidentally block the bots that could make you visible.
 
 **6. Monitor Your Presence Across All Engines**
-Search for your business in ChatGPT, Claude, Gemini, and Perplexity. Track where you appear, where you don't, and what competitors are showing up instead.
+Spot-check your business in ChatGPT, Claude, Gemini, and Perplexity yourself. Note where you appear, where you don't, and which competitors show up instead.
 
 ## Why Most Agencies Aren't Talking About GEO Yet
 
@@ -175,21 +191,24 @@ That's exactly why it's an opportunity. While everyone else is fighting over pag
 
 ## How Rank Labs Approaches GEO
 
+<figure class="blog-image"><img src="${blogAsset492ae7d274f4712b67f0cfa86fc3911e796c4260ac3976d1238152a1f06d30fb}" srcset="${blogAsset53e4825d4a50979461fea09fec2f0c5530f56c8021a8da3018a3b606997717df} 800w, ${blogAsset492ae7d274f4712b67f0cfa86fc3911e796c4260ac3976d1238152a1f06d30fb} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character smiling confidently and giving a thumbs-up" width="1536" height="1024" loading="lazy" style="max-width:100%;height:auto"></figure>
+
 We treat GEO as a core pillar — not a bolt-on. Every site we manage gets:
 
 - **AI bot access:** We verify GPTBot, ClaudeBot, PerplexityBot, and BingBot can crawl your site cleanly
 - **Structured data:** Article, FAQ, LocalBusiness, and Organization schema out of the box
 - **Direct-answer content:** Every blog post and service page is written with AI extractability in mind
-- **Third-party authority:** We build and monitor the off-site signals AI engines trust
-- **Multi-engine visibility reports:** Monthly reports showing where you're showing up across all major AI platforms
+- **Third-party authority:** We keep your listings consistent and build mentions on relevant sites
+- **AI Optimization reporting:** a weekly AI Optimization on-page score with the fixes that raise it
 
 SEO got you to page 1 of Google. GEO keeps you visible everywhere search is going next.
 
-[Get your free AI visibility audit →](/contact)
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'ai-invisible-crisis': {
     title: 'Your Business Is Invisible to AI Right Now — Here\'s Why That\'s a Crisis',
+    metaTitle: 'Is Your Business Invisible to AI? — Rank Labs',
     date: 'June 12, 2026',
     tag: 'AI Search',
     body: `Quick exercise: open ChatGPT or Perplexity right now and ask it to recommend a company in your industry. Go ahead, we'll wait.
@@ -202,11 +221,11 @@ If you're like the vast majority of business owners reading this, the answer is 
 
 For the last two decades, "getting found online" meant one thing: ranking on Google. But the way people search for information, products, and services has fundamentally shifted, and most businesses haven't caught up.
 
-ChatGPT alone now has more than 800 million weekly active users. Add in Claude, Gemini, and Perplexity, and you're looking at an enormous and rapidly growing population of people who are skipping the search engine results page entirely and just *asking* for an answer.
+ChatGPT, Claude, Gemini, and Perplexity are now used by a large and growing number of people who skip the search results page entirely and just *ask* for an answer.
 
-This isn't a fringe behavior anymore — it's becoming the default, especially in B2B. Recent research shows that 51% of B2B buyers now start their research process inside an AI tool rather than a search engine. They're not typing in keywords and clicking through ten blue links. They're asking, "What's the best company for my need?" — and getting a direct, confident answer back.
+This isn't a fringe behavior anymore — it's becoming the default, especially in B2B. Many buyers now start inside an AI tool. They're not typing in keywords and clicking through ten blue links. They're asking, "What's the best company for my need?" — and getting a direct, confident answer back.
 
-Here's the part that should really get your attention: 69% of buyers say they've changed their vendor consideration based on what an AI tool recommended to them. Not "considered it as one option among many" — *changed their decision* based on it.
+Here's the part that should get your attention: an AI recommendation can change which businesses a buyer even considers. Not as "one option among many", but as the shortlist.
 
 If AI doesn't know your business exists, or doesn't trust it enough to recommend it, you're not just missing out on a little traffic. You're being silently removed from consideration before a human ever picks up the phone or fills out your contact form. And because there's no dashboard showing you these "lost" conversations, most businesses don't even realize it's happening.
 
@@ -220,16 +239,17 @@ That means the game has shifted from "rank #1 for a keyword" to "be the source t
 
 **Find Out Exactly How Invisible You Are**
 
-Here's the good news — you don't have to guess where you stand. Rank Labs offers a free AI visibility audit that shows you exactly how ChatGPT, Claude, Gemini, and Perplexity currently see (or don't see) your business. The businesses that show up in AI search today are going to have a massive head start. Let's find out where you stand.
+Here's the good news — you don't have to guess where you stand. Rank Labs offers a free AI Optimization audit that shows where your site, maps and listings disagree in ways that keep assistants from naming you. We check your pages; we don't query the assistants. The businesses that show up in AI search today are going to have a massive head start. Let's find out where you stand.
 
-[Get your free AI visibility audit →](/contact)
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'get-recommended-by-ai': {
     title: 'How to Get Your Business Recommended by ChatGPT, Claude, Gemini & Perplexity',
+    metaTitle: 'Get Recommended by ChatGPT, Claude & Gemini — Rank Labs',
     date: 'June 12, 2026',
     tag: 'AI Search',
-    body: `So you know AI search matters now — over 800 million people use ChatGPT every week, and 51% of B2B buyers say they start their research in an AI tool rather than Google. The question is: what do you actually *do* about it?
+    body: `So you know AI search matters now: more of your customers ask an AI assistant before they ever open Google. The question is: what do you actually *do* about it?
 
 The good news is that getting recommended by AI engines isn't some mysterious black box. There's a clear, repeatable set of things these models look for when deciding whether to mention — or recommend — a business.
 
@@ -251,9 +271,9 @@ Schema markup essentially pre-digests your content for machines. Instead of an A
 
 **Why Citations Beat Backlinks for AI**
 
-In traditional SEO, backlinks are the primary ranking currency. AI search cares about something related but distinct: citations and mentions, whether or not they include a clickable link. If your business is described consistently across your website, Google Business Profile, industry directories, review sites, and news coverage, that consistency itself becomes a trust signal — even without a single backlink. For AI visibility, *being talked about accurately in many places* often beats *being linked to from a few high-authority places*.
+In traditional SEO, backlinks are the primary ranking currency. AI search cares about something related but distinct: citations and mentions, whether or not they include a clickable link. If your business is described consistently across your website, Google Business Profile, industry directories, review sites, and news coverage, that consistency itself becomes a trust signal — even without a single backlink. For your AI presence, *being talked about accurately in many places* often beats *being linked to from a few high-authority places*.
 
-**Your AI Visibility Checklist**
+**Your AI Search Checklist**
 
 - Robots.txt allows GPTBot, ClaudeBot, Google-Extended, and PerplexityBot
 - Organization/LocalBusiness schema markup is implemented
@@ -267,11 +287,12 @@ If you checked fewer than half of these boxes, you're likely missing out on a gr
 
 Ready to be the business AI recommends? Rank Labs builds full AI search optimization programs that get your business structured, cited, and recommended across ChatGPT, Claude, Gemini, and Perplexity.
 
-[Get your full AI optimization plan →](/contact)
+[Get your full AI optimization plan →](/contact/)
     `.trim(),
   },
   'optimization-what-every-business-owner-should-know': {
     title: 'Optimization: What Every Business Owner Should Know',
+    metaTitle: 'Optimization: What Business Owners Should Know — Rank Labs',
     date: 'July 6, 2026',
     tag: 'Strategy Insights',
     body: `
@@ -294,9 +315,9 @@ GEO is the practice of making your business visible, credible, and citable acros
 
 This is the arena Rank Labs plays in, and it's where every business owner needs to be paying attention.
 
-## Why AI Visibility Matters Right Now
+## Why Showing Up in AI Answers Matters Right Now
 
-Here's a number that should make you sit up: AI-powered search is growing faster than any search channel in history. ChatGPT alone passed 200 million weekly active users. Claude, Gemini, and Perplexity are carving out their own massive audiences. And unlike traditional search, where users might scroll past your listing, AI search delivers a *single answer* — often with just one or two recommended businesses.
+Here's what should make you sit up: AI-powered search is growing fast. ChatGPT is now an everyday tool for a huge number of people. Claude, Gemini, and Perplexity are carving out their own massive audiences. And unlike traditional search, where users might scroll past your listing, AI search delivers a *single answer* — often with just one or two recommended businesses.
 
 If you're not in that answer, you don't exist to that user.
 
@@ -306,37 +327,37 @@ The businesses moving fastest on this are the ones that will own their categorie
 
 At Rank Labs, we break AI optimization — the combination of GEO and SEO — into four pillars that make your business the answer when AI gets asked:
 
-### 1. AI Visibility Audit
+### 1. AI Optimization Audit
 
-Before you can fix anything, you need to know where you stand. An AI visibility audit asks ChatGPT, Claude, Gemini, and Perplexity about your industry — and shows you exactly where your business is missing, misrepresented, or invisible. One report, four engines, zero guesswork.
+Before you can fix anything, you need to know where you stand. An AI Optimization audit checks the parts of your site AI assistants rely on: structured data, direct answers, crawler access and freshness. You get one plain-English list of what to fix first.
 
 ### 2. AI Content Optimization
 
-This is where the real work happens. AI engines read your website differently than Google does. They look for structured data, clear authority signals, and content that answers specific questions directly. We rebuild your content so AI models can parse it, trust it, and quote it — turning your website into a source AI actively recommends.
+This is where the real work happens. AI engines read your website differently than Google does. They look for structured data, clear authority signals, and content that answers specific questions directly. We rebuild your content so AI assistants can parse it, trust it, and quote it.
 
 ### 3. Citation and Mention Building
 
-AI models pull information from across the web — not just from your site. Getting your business referenced on the platforms, directories, and publications that AI trusts is critical. Every mention is a signal. Every citation builds authority. Over time, this network of references makes your brand the default answer in your space.
+AI models pull information from across the web — not just from your site. Getting your business referenced on the platforms, directories, and publications that AI trusts is critical. Every mention is a signal. Every citation builds authority. Over time, these references make your business easier for AI assistants to recognize and recommend.
 
-### 4. AI Rank Tracking and Reporting
+### 4. Reporting You Can Read
 
-You can't manage what you don't measure. Ongoing monitoring of how your brand appears across every major AI assistant — with clear monthly reports on your position, your competitors, and what's changing — keeps you informed and ahead of the curve.
+You can't manage what you don't measure. A weekly AI Optimization on-page score and a monthly report on your search, Business Profile, traffic and the leads we can track show where you stand and what changed.
 
 ## Common Questions About Optimization
 
 **"Isn't this just SEO with a new name?"** Not quite. Traditional SEO optimizes for ranking algorithms that return lists of links. GEO optimizes for AI models that return *conversations and recommendations*. The signals are different, the tactics are different, and the outcome — being the single recommended answer — is far more powerful.
 
-**"How long does it take to see results?"** AI visibility builds over time, but the initial audit delivers immediate clarity. Most businesses see their first AI citations within weeks of implementing the foundational optimizations. The compounding effect accelerates from there.
+**"How long does it take to see results?"** Results in search and AI answers build over time, but the initial audit shows you right away what to fix first. The compounding effect accelerates from there.
 
 **"Do I still need traditional SEO?"** Yes. The two work together. Strong technical SEO creates the foundation AI engines need to read and trust your site. GEO builds on that foundation to make you visible in the AI-powered conversations where decisions are actually being made.
 
 ## Getting Started with Optimization
 
-The first step is the simplest: find out where you stand. A free AI visibility report from Rank Labs shows you exactly how your business appears across ChatGPT, Claude, Gemini, and Perplexity — in a single, plain-English report with no jargon and no obligation.
+The first step is the simplest: find out where you stand. A free AI Optimization audit from Rank Labs shows what your site tells Google and AI assistants today, in a single plain-English report with no jargon and no obligation.
 
 Optimization isn't a one-time project. It's an ongoing strategy that gets stronger the longer you commit to it. But the businesses that start now — while the AI search landscape is still being defined — are the ones that will own their categories tomorrow.
 
-[Get your free AI visibility report today →](https://getranklabs.com)
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'optimization': {
@@ -356,7 +377,7 @@ At its core, optimization means making something work better. In the digital wor
 
 Think of it this way: a non-optimized website is like a storefront with the lights off and the door locked. People might walk past, but nobody comes in. Optimization flips the lights on, unlocks the door, and puts up a sign that actually tells people what's inside.
 
-The key difference in 2026 is that optimization isn't just about Google anymore. AI-powered search engines now handle over 18% of all queries, and 69% of buyers have switched vendors based on an AI recommendation. If your business isn't visible to those AI engines, you're invisible to a massive and growing segment of potential customers.
+The key difference in 2026 is that optimization isn't just about Google anymore. More people now ask AI assistants for recommendations, and those assistants rely on clear, structured facts. If your site doesn't give them those facts, you're easy to skip.
 
 ## Is SEO Still Relevant Now That AI Search Exists?
 
@@ -380,13 +401,13 @@ The smart move is to start with the technical foundation (load speed, mobile fri
 
 You can handle parts of it. Writing good content, keeping your business information consistent across the web, and making sure your site structure makes sense — those are all within reach for most business owners.
 
-What's harder to DIY is the ongoing monitoring, the technical fixes, the AI-specific optimization, and the competitive analysis. Traditional agencies charge thousands per month for this. Platforms like Rank Labs automate the heavy lifting, giving you the expertise of a full agency without the agency overhead.
+What's harder to DIY is the weekly checking, the technical fixes, the AI-specific optimization, and the competitive analysis. Traditional agencies charge thousands per month for this. Platforms like Rank Labs automate the heavy lifting, giving you the expertise of a full agency without the agency overhead.
 
 ## What's the First Step?
 
 Find out where you stand right now. Most business owners are surprised by what they find — pages that Google can't read, AI assistants that recommend competitors instead of them, technical issues they didn't know existed.
 
-A free AI visibility report from Rank Labs asks the four major AI engines about your industry and shows you exactly where your business appears, where it's missing, and what to do about it. No jargon, no sales pitch, just a clear picture of your current visibility.
+A free AI Optimization audit from Rank Labs checks your site for the signals AI assistants rely on and shows you what's missing and what to fix first. No jargon, no sales pitch, just a clear picture of your current visibility.
 
 ## The Bottom Line
 
@@ -396,17 +417,18 @@ And the businesses that optimize now are the ones that will own their market tom
 
 ---
 
-**Ready to see where your business stands?** [Get your free AI visibility report →](https://getranklabs.com) and see exactly how ChatGPT, Claude, Gemini, and Perplexity see your business — in one report, with zero obligation.
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'ai-search-strategy-playbook': {
     title: 'The AI Search Strategy Playbook: How to Get Your Business Found on ChatGPT, Claude, Gemini & Perplexity',
+    metaTitle: 'The AI Search Strategy Playbook — Rank Labs',
     date: 'July 20, 2026',
     tag: 'GEO Strategy',
     body: `
 # The AI Search Strategy Playbook: How to Get Your Business Found on ChatGPT, Claude, Gemini & Perplexity
 
-**The way people search is changing — fast.** In 2025, more than 40% of online searches started somewhere other than Google. Millions of people now ask ChatGPT, Claude, Gemini, and Perplexity for recommendations, comparisons, and answers. If your business isn't showing up when AI gets asked about your industry, you're invisible to an audience that's growing by the day.
+**The way people search is changing — fast.** Millions of people now ask ChatGPT, Claude, Gemini, and Perplexity for recommendations, comparisons, and answers. If your business isn't showing up when AI gets asked about your industry, you're invisible to an audience that's growing by the day.
 
 This is Generative Engine Optimization — GEO — and it's a fundamentally different game than traditional SEO. Here's what you need to know to build a strategy that actually works.
 
@@ -442,11 +464,11 @@ The best AI-optimized content doesn't just target a keyword. It anticipates the 
 
 Different AI models pull from different sources and weigh signals differently. ChatGPT may cite your blog post while Claude references your LinkedIn presence and Gemini pulls from your Google Business Profile. You can't optimize for one engine and call it done.
 
-A real AI search strategy requires monitoring your visibility across ChatGPT, Claude, Gemini, and Perplexity — tracking where you appear, what's being said about you, and how it changes week to week. Without this data, you're flying blind.
+A real AI search strategy starts with knowing what your pages tell AI assistants, then spot-checking how ChatGPT, Claude, Gemini, and Perplexity describe you over time.
 
 ## Getting Started: Your First 30 Days
 
-**Week 1 — Audit your AI visibility.** Query each major AI engine about your industry, your business, and your top competitors. Document where you show up and where you don't. This alone will surface obvious gaps.
+**Week 1 — See where you stand.** Ask each major AI assistant about your industry, your business, and your top competitors. Note where you show up and where you don't. This alone will surface obvious gaps.
 
 **Week 2 — Fix your technical foundation.** Add schema markup to your homepage, service pages, and FAQ. Ensure your meta descriptions are AI-friendly (clear, descriptive, 150-160 characters). Verify your Google Business Profile and other directory listings are complete and consistent.
 
@@ -462,12 +484,13 @@ Traditional SEO isn't going away — but it's no longer enough. The businesses t
 
 ---
 
-*Want to know where your business stands right now? Get a free AI Visibility Report and see exactly how you appear across all four major AI engines.*
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
 
   'how-geo-optimization-works': {
     title: 'How GEO Optimization Works: A Practical Guide for Business Owners',
+    metaTitle: 'How GEO Optimization Works: A Practical Guide — Rank Labs',
     date: 'July 28, 2026',
     tag: 'Strategy Insights',
     body: `
@@ -487,7 +510,7 @@ GEO requires different signals than traditional SEO. AI models care about struct
 
 ## Why GEO Matters Now
 
-The shift is already happening. According to Gartner, traditional search volume is projected to drop 25% by 2026 as more users turn to AI assistants for their queries. And this isn't just a consumer trend — business decision-makers are using AI tools at work, asking things like "find me an enterprise SEO platform" or "compare cloud hosting providers."
+The shift is already happening. Analysts expect traditional search volume to keep shrinking as more people turn to AI assistants. And this isn't just a consumer trend — business decision-makers are using AI tools at work, asking things like "find me an enterprise SEO platform" or "compare cloud hosting providers."
 
 Three factors make this urgent for business owners:
 
@@ -495,7 +518,7 @@ Three factors make this urgent for business owners:
 
 **AI assistants cite specific sources.** When ChatGPT or Perplexity recommends a business, they often name the company directly — not just link to it. That's an endorsement that carries more weight than a search result. But you have to be one of the sources they pull from.
 
-**Early movers are capturing territory.** The businesses actively optimizing for AI visibility today are building citation depth that compounds over time. Every mention, every structured data point, every verified listing makes it more likely an AI model will reference you tomorrow, next week, and next month.
+**Early movers are capturing territory.** The businesses making their sites and listings AI-ready today are building mentions and structured facts that add up over time. Every mention, every structured data point, every verified listing makes it more likely an AI model will reference you tomorrow, next week, and next month.
 
 ## Key Insights and Practical Advice
 
@@ -521,13 +544,13 @@ Like SEO, GEO is cumulative. Some businesses see AI mentions within weeks of imp
 
 **"Do I need different content for each AI engine?"**
 
-No — good GEO content works across all major AI assistants. The fundamentals (schema, citation consistency, clear Q&A structure) are universal. What varies is how each engine surfaces information, which is why monitoring your visibility across ChatGPT, Claude, Gemini, and Perplexity is important.
+No — good GEO content works across all major AI assistants. The fundamentals (schema, citation consistency, clear Q&A structure) are universal. What varies is how each engine surfaces information, so it's worth spot-checking how each one describes you.
 
 ## Getting Started with GEO Optimization
 
 You don't need to overhaul your entire digital presence overnight. Start with these four steps:
 
-1. **Run an AI visibility audit.** Ask each major AI assistant about your industry and see if your business comes up. This baseline tells you where you stand today.
+1. **Do a quick AI search check.** Ask each major AI assistant about your industry and see if your business comes up. This baseline tells you where you stand today.
 
 2. **Fix your structured data.** Add or fix schema markup on your website — LocalBusiness, Organization, Service, and FAQ are the minimum.
 
@@ -539,13 +562,14 @@ You don't need to overhaul your entire digital presence overnight. Start with th
 
 GEO isn't a one-time project — it's an ongoing discipline, just like SEO. But the businesses that invest in it now are building an advantage that compounds as AI search continues to grow.
 
-If you're ready to see where your business stands, Rank Labs offers a free AI Visibility Report that checks your presence across ChatGPT, Claude, Gemini, and Perplexity. You'll see exactly where you're showing up, where you're missing, and what to fix.
+If you're ready to see where your business stands, Rank Labs offers a free AI Optimization audit of your site. You'll see what's missing and what to fix first.
 
-**[Get Your Free AI Visibility Report →](https://getranklabs.com/)**
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'conversion-optimization-ai-search': {
     title: 'Conversion Optimization in the Age of AI Search: What Every Business Owner Should Know',
+    metaTitle: 'Conversion Optimization for AI Search — Rank Labs',
     date: 'August 15, 2026',
     tag: 'AI Search Strategy',
     body: `
@@ -555,9 +579,9 @@ AI-powered search engines like ChatGPT, Claude, Gemini, and Perplexity are chang
 
 ## Why AI Traffic Converts Differently
 
-When a potential customer asks ChatGPT "who's the best SEO agency for AI visibility" and gets your business recommended, they arrive at your site with a fundamentally different mindset than someone who clicked a Google search result. They're already pre-vetted — an AI model just vouched for you. These visitors have higher trust, clearer intent, and shorter decision windows. But they also have higher expectations. If your site doesn't immediately confirm what the AI told them, they bounce faster than traditional organic traffic.
+When a potential customer asks ChatGPT "who's the best SEO agency near me" and gets your business recommended, they arrive at your site with a fundamentally different mindset than someone who clicked a Google search result. They're already pre-vetted — an AI model just vouched for you. These visitors have higher trust, clearer intent, and shorter decision windows. But they also have higher expectations. If your site doesn't immediately confirm what the AI told them, they bounce faster than traditional organic traffic.
 
-The data backs this up: businesses optimized for AI-driven traffic see 27% higher conversion rates on average compared to traditional search traffic. The visitors who come through AI recommendations are closer to a buying decision — they just need the right nudge.
+These visitors are often closer to a buying decision. They just need the right nudge.
 
 ## Three Conversion Levers AI-Visited Sites Need
 
@@ -571,7 +595,7 @@ AI search queries are conversational and specific. Someone asks "how do I get my
 
 ### 3. Speed and Simplicity
 
-AI-referred visitors expect the same instant gratification they get from AI chat interfaces. Your pages need to load fast, load clean, and present a single clear next step. Every extra second of load time drops conversion rates by 7%. Every extra click between "yes, this is the right company" and "I want to talk to someone" loses 15% of your visitors. Strip the friction.
+AI-referred visitors expect the same instant gratification they get from AI chat interfaces. Your pages need to load fast, load clean, and present a single clear next step. Every extra second of load time and every extra click between "yes, this is the right company" and "I want to talk to someone" costs you visitors. Strip the friction.
 
 ## Common Questions About AI-Driven Conversion
 
@@ -579,20 +603,21 @@ AI-referred visitors expect the same instant gratification they get from AI chat
 Not necessarily different pages, but your existing pages should be optimized to match the conversational intent of AI queries. Review what questions your customers ask AI models, then make sure those answers live on your site in scannable, structured formats — because AI models extract content structure, not just keywords.
 
 **"How do I track AI-origin conversions?"**
-This is still evolving. UTM parameters work for some AI platforms, but not all. The best approach today is attribution modeling that segments "direct" traffic spikes alongside your AI visibility reports — when your AI rankings go up and direct traffic follows, you're seeing the conversion path at work.
+This is still evolving. UTM parameters work for some AI platforms, but not all. The best approach today is to segment AI-assistant referral visits in analytics and watch for traffic and enquiries that follow.
 
 **"Can AI really send that much traffic?"**
-Yes — and it's growing faster than any other channel. ChatGPT alone has over 300 million weekly active users as of mid-2026. Claude, Gemini, and Perplexity add hundreds of millions more. AI is not the future of search — it's the present.
+Yes — and it's growing faster than any other channel. AI is not the future of search — it's the present.
 
 ## Getting Started with AI Conversion Optimization
 
-Start with an AI visibility audit — find out exactly where your business shows up (or doesn't) across all four major AI engines. Then align your on-site messaging with what AI models say about your industry. Close the gap between the AI recommendation and the on-site experience, and you'll convert AI-adjacent visitors at rates traditional SEO can't touch.
+Start with an AI Optimization audit to see whether your pages give AI assistants clear answers. Then align your on-site messaging with what AI models say about your industry. Close the gap between the AI recommendation and the on-site experience, and you'll convert AI-adjacent visitors at rates traditional SEO can't touch.
 
-**Ready to see where your business stands?** Get your free AI visibility report and discover exactly how ChatGPT, Claude, Gemini, and Perplexity talk about your industry — and how to turn those AI mentions into real customers.
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'ai-search-conversion-metrics': {
     title: 'How AI Search Is Reshaping Conversion Metrics (And What SEO Agencies Need to Know)',
+    metaTitle: 'How AI Search Is Reshaping Conversion Metrics — Rank Labs',
     date: 'August 16, 2026',
     tag: 'GEO Optimization',
     body: `
@@ -624,7 +649,7 @@ Traditional conversion tracking assumes a linear path: search → click → land
 
 You can't optimize what you can't see. Here's how to start tracking the invisible pipeline:
 
-**1. Monitor your brand in AI search.** Run weekly queries across ChatGPT, Claude, Gemini, and Perplexity asking about your service area. Record whether your business appears, how it's described, and whether it's recommended. This is your AI SERP — and it matters more every month.
+**1. Spot-check your brand in AI search.** Every so often, ask ChatGPT, Claude, Gemini, and Perplexity about your service area. Record whether your business appears, how it's described, and whether it's recommended. This is your AI SERP — and it matters more every month.
 
 **2. Add a "How did you hear about us?" field.** Simple, old-school, and surprisingly effective. Add a dropdown to your contact form that includes "AI assistant (ChatGPT, Claude, etc.)" as an option. Over time, you'll see the trend.
 
@@ -640,199 +665,20 @@ This means:
 - Content structured for AI extraction (clear headings, factual claims, authoritative sourcing)
 - Schema markup that helps AI understand your business entity
 - Citations and mentions across the sources AI models pull from
-- Ongoing monitoring of how brands appear in AI-generated answers
+- Regular checks of how the business is described in AI-generated answers
 
-When you can tell a client "your business was recommended by ChatGPT 47 times this month, and that drove a 22% increase in qualified leads," you're not selling SEO anymore. You're selling visibility where it actually matters.
-
-## The Bottom Line
-
-Conversion tracking is broken if it only counts clicks. AI-assisted discovery is growing faster than any traditional channel. The businesses that adapt their measurement — and their optimization strategy — are the ones that will convert the invisible traffic everyone else is losing.
-
-Ready to see where your business shows up in AI search? [Get your free AI Visibility Report](https://getranklabs.com/signup?plan=seo_management) and we'll show you exactly how ChatGPT, Claude, Gemini, and Perplexity see your brand.
-    `.trim(),
-  },
-  'ai-search-conversion-metrics': {
-    title: 'How AI Search Is Reshaping Conversion Metrics (And What SEO Agencies Need to Know)',
-    date: 'August 16, 2026',
-    tag: 'GEO Optimization',
-    body: `
-# How AI Search Is Reshaping Conversion Metrics (And What SEO Agencies Need to Know)
-
-The conversion playbook that worked three years ago is quietly breaking. Not because your funnel is wrong — but because the top of the funnel has moved. Your prospects aren't always starting on Google anymore. They're asking ChatGPT, Claude, Gemini, or Perplexity a question — and the answer they get determines whether they ever visit your site at all.
-
-This shift rewrites what "conversion" even means for SEO agencies and the businesses they serve.
-
-## The Silent Traffic Shift You're Already Seeing
-
-If you've noticed your organic traffic charts looking different lately — flat or slightly down despite ranking improvements — you're not alone. AI search engines now field billions of queries monthly, and none of those interactions show up in your GA4 traffic reports.
-
-When a prospect asks Claude "who's the best SEO agency for AI optimization" and gets a recommendation, they might go straight to that agency's site. No search click. No impression data. Just a direct visit you can't attribute.
-
-This is the hidden conversion pipeline. It's real, it's growing, and most agencies haven't built measurement around it yet.
-
-## What "Conversion" Means in the AI Era
-
-Traditional conversion tracking assumes a linear path: search → click → landing page → conversion. AI-assisted discovery breaks this into multiple paths:
-
-**The invisible recommendation.** A prospect asks an AI assistant about your service category. Your business is mentioned in the response — either by name, as a source, or through structured citations. The prospect navigates directly to your site. Your analytics show a "direct" channel visit. You have no idea the AI sent them.
-
-**The pre-qualified visitor.** By the time someone arrives from an AI recommendation, they've already read a summary of what you do, how you compare, and why you're relevant. They're further down the funnel than a cold Google click. Your conversion rate on these visitors should be higher — but only if you're tracking them differently.
-
-**The research loop.** A decision-maker uses Perplexity to research three agencies. They don't visit any site during the research phase. They form a shortlist purely from AI-generated summaries. Only then do they reach out. The entire evaluation happened outside your analytics.
-
-## Practical Steps to Measure AI-Driven Conversions
-
-You can't optimize what you can't see. Here's how to start tracking the invisible pipeline:
-
-**1. Monitor your brand in AI search.** Run weekly queries across ChatGPT, Claude, Gemini, and Perplexity asking about your service area. Record whether your business appears, how it's described, and whether it's recommended. This is your AI SERP — and it matters more every month.
-
-**2. Add a "How did you hear about us?" field.** Simple, old-school, and surprisingly effective. Add a dropdown to your contact form that includes "AI assistant (ChatGPT, Claude, etc.)" as an option. Over time, you'll see the trend.
-
-**3. Track branded direct traffic trends.** If your branded direct traffic is rising while organic search is flat, AI recommendations are likely driving it. Segment "direct" traffic from returning visitors and look for unexplained growth.
-
-**4. Ask your last five clients.** Call them. Ask how they found you. You might be surprised how many say "I asked ChatGPT."
-
-## Why This Matters for Your Agency's Service Offering
-
-The agencies winning right now aren't waiting for a standardized AI conversion metric. They're building GEO (Generative Engine Optimization) into their core offering — optimizing client sites to be the answer AI models cite.
-
-This means:
-- Content structured for AI extraction (clear headings, factual claims, authoritative sourcing)
-- Schema markup that helps AI understand your business entity
-- Citations and mentions across the sources AI models pull from
-- Ongoing monitoring of how brands appear in AI-generated answers
-
-When you can tell a client "your business was recommended by ChatGPT 47 times this month, and that drove a 22% increase in qualified leads," you're not selling SEO anymore. You're selling visibility where it actually matters.
+When you can show a client the calls and leads that followed the work, you're not selling SEO anymore. You're selling customers.
 
 ## The Bottom Line
 
 Conversion tracking is broken if it only counts clicks. AI-assisted discovery is growing faster than any traditional channel. The businesses that adapt their measurement — and their optimization strategy — are the ones that will convert the invisible traffic everyone else is losing.
 
-Ready to see where your business shows up in AI search? [Get your free AI Visibility Report](https://getranklabs.com/signup?plan=seo_management) and we'll show you exactly how ChatGPT, Claude, Gemini, and Perplexity see your brand.
-    `.trim(),
-  },
-  'ai-search-conversion-metrics': {
-    title: 'How AI Search Is Reshaping Conversion Metrics (And What SEO Agencies Need to Know)',
-    date: 'August 16, 2026',
-    tag: 'GEO Optimization',
-    body: `
-# How AI Search Is Reshaping Conversion Metrics (And What SEO Agencies Need to Know)
-
-The conversion playbook that worked three years ago is quietly breaking. Not because your funnel is wrong — but because the top of the funnel has moved. Your prospects aren't always starting on Google anymore. They're asking ChatGPT, Claude, Gemini, or Perplexity a question — and the answer they get determines whether they ever visit your site at all.
-
-This shift rewrites what "conversion" even means for SEO agencies and the businesses they serve.
-
-## The Silent Traffic Shift You're Already Seeing
-
-If you've noticed your organic traffic charts looking different lately — flat or slightly down despite ranking improvements — you're not alone. AI search engines now field billions of queries monthly, and none of those interactions show up in your GA4 traffic reports.
-
-When a prospect asks Claude "who's the best SEO agency for AI optimization" and gets a recommendation, they might go straight to that agency's site. No search click. No impression data. Just a direct visit you can't attribute.
-
-This is the hidden conversion pipeline. It's real, it's growing, and most agencies haven't built measurement around it yet.
-
-## What "Conversion" Means in the AI Era
-
-Traditional conversion tracking assumes a linear path: search → click → landing page → conversion. AI-assisted discovery breaks this into multiple paths:
-
-**The invisible recommendation.** A prospect asks an AI assistant about your service category. Your business is mentioned in the response — either by name, as a source, or through structured citations. The prospect navigates directly to your site. Your analytics show a "direct" channel visit. You have no idea the AI sent them.
-
-**The pre-qualified visitor.** By the time someone arrives from an AI recommendation, they've already read a summary of what you do, how you compare, and why you're relevant. They're further down the funnel than a cold Google click. Your conversion rate on these visitors should be higher — but only if you're tracking them differently.
-
-**The research loop.** A decision-maker uses Perplexity to research three agencies. They don't visit any site during the research phase. They form a shortlist purely from AI-generated summaries. Only then do they reach out. The entire evaluation happened outside your analytics.
-
-## Practical Steps to Measure AI-Driven Conversions
-
-You can't optimize what you can't see. Here's how to start tracking the invisible pipeline:
-
-**1. Monitor your brand in AI search.** Run weekly queries across ChatGPT, Claude, Gemini, and Perplexity asking about your service area. Record whether your business appears, how it's described, and whether it's recommended. This is your AI SERP — and it matters more every month.
-
-**2. Add a "How did you hear about us?" field.** Simple, old-school, and surprisingly effective. Add a dropdown to your contact form that includes "AI assistant (ChatGPT, Claude, etc.)" as an option. Over time, you'll see the trend.
-
-**3. Track branded direct traffic trends.** If your branded direct traffic is rising while organic search is flat, AI recommendations are likely driving it. Segment "direct" traffic from returning visitors and look for unexplained growth.
-
-**4. Ask your last five clients.** Call them. Ask how they found you. You might be surprised how many say "I asked ChatGPT."
-
-## Why This Matters for Your Agency's Service Offering
-
-The agencies winning right now aren't waiting for a standardized AI conversion metric. They're building GEO (Generative Engine Optimization) into their core offering — optimizing client sites to be the answer AI models cite.
-
-This means:
-- Content structured for AI extraction (clear headings, factual claims, authoritative sourcing)
-- Schema markup that helps AI understand your business entity
-- Citations and mentions across the sources AI models pull from
-- Ongoing monitoring of how brands appear in AI-generated answers
-
-When you can tell a client "your business was recommended by ChatGPT 47 times this month, and that drove a 22% increase in qualified leads," you're not selling SEO anymore. You're selling visibility where it actually matters.
-
-## The Bottom Line
-
-Conversion tracking is broken if it only counts clicks. AI-assisted discovery is growing faster than any traditional channel. The businesses that adapt their measurement — and their optimization strategy — are the ones that will convert the invisible traffic everyone else is losing.
-
-Ready to see where your business shows up in AI search? [Get your free AI Visibility Report](https://getranklabs.com/signup?plan=seo_management) and we'll show you exactly how ChatGPT, Claude, Gemini, and Perplexity see your brand.
-    `.trim(),
-  },
-  'ai-search-conversion-metrics': {
-    title: 'How AI Search Is Reshaping Conversion Metrics (And What SEO Agencies Need to Know)',
-    date: 'August 16, 2026',
-    tag: 'GEO Optimization',
-    body: `
-# How AI Search Is Reshaping Conversion Metrics (And What SEO Agencies Need to Know)
-
-The conversion playbook that worked three years ago is quietly breaking. Not because your funnel is wrong — but because the top of the funnel has moved. Your prospects aren't always starting on Google anymore. They're asking ChatGPT, Claude, Gemini, or Perplexity a question — and the answer they get determines whether they ever visit your site at all.
-
-This shift rewrites what "conversion" even means for SEO agencies and the businesses they serve.
-
-## The Silent Traffic Shift You're Already Seeing
-
-If you've noticed your organic traffic charts looking different lately — flat or slightly down despite ranking improvements — you're not alone. AI search engines now field billions of queries monthly, and none of those interactions show up in your GA4 traffic reports.
-
-When a prospect asks Claude "who's the best SEO agency for AI optimization" and gets a recommendation, they might go straight to that agency's site. No search click. No impression data. Just a direct visit you can't attribute.
-
-This is the hidden conversion pipeline. It's real, it's growing, and most agencies haven't built measurement around it yet.
-
-## What "Conversion" Means in the AI Era
-
-Traditional conversion tracking assumes a linear path: search → click → landing page → conversion. AI-assisted discovery breaks this into multiple paths:
-
-**The invisible recommendation.** A prospect asks an AI assistant about your service category. Your business is mentioned in the response — either by name, as a source, or through structured citations. The prospect navigates directly to your site. Your analytics show a "direct" channel visit. You have no idea the AI sent them.
-
-**The pre-qualified visitor.** By the time someone arrives from an AI recommendation, they've already read a summary of what you do, how you compare, and why you're relevant. They're further down the funnel than a cold Google click. Your conversion rate on these visitors should be higher — but only if you're tracking them differently.
-
-**The research loop.** A decision-maker uses Perplexity to research three agencies. They don't visit any site during the research phase. They form a shortlist purely from AI-generated summaries. Only then do they reach out. The entire evaluation happened outside your analytics.
-
-## Practical Steps to Measure AI-Driven Conversions
-
-You can't optimize what you can't see. Here's how to start tracking the invisible pipeline:
-
-**1. Monitor your brand in AI search.** Run weekly queries across ChatGPT, Claude, Gemini, and Perplexity asking about your service area. Record whether your business appears, how it's described, and whether it's recommended. This is your AI SERP — and it matters more every month.
-
-**2. Add a "How did you hear about us?" field.** Simple, old-school, and surprisingly effective. Add a dropdown to your contact form that includes "AI assistant (ChatGPT, Claude, etc.)" as an option. Over time, you'll see the trend.
-
-**3. Track branded direct traffic trends.** If your branded direct traffic is rising while organic search is flat, AI recommendations are likely driving it. Segment "direct" traffic from returning visitors and look for unexplained growth.
-
-**4. Ask your last five clients.** Call them. Ask how they found you. You might be surprised how many say "I asked ChatGPT."
-
-## Why This Matters for Your Agency's Service Offering
-
-The agencies winning right now aren't waiting for a standardized AI conversion metric. They're building GEO (Generative Engine Optimization) into their core offering — optimizing client sites to be the answer AI models cite.
-
-This means:
-- Content structured for AI extraction (clear headings, factual claims, authoritative sourcing)
-- Schema markup that helps AI understand your business entity
-- Citations and mentions across the sources AI models pull from
-- Ongoing monitoring of how brands appear in AI-generated answers
-
-When you can tell a client "your business was recommended by ChatGPT 47 times this month, and that drove a 22% increase in qualified leads," you're not selling SEO anymore. You're selling visibility where it actually matters.
-
-## The Bottom Line
-
-Conversion tracking is broken if it only counts clicks. AI-assisted discovery is growing faster than any traditional channel. The businesses that adapt their measurement — and their optimization strategy — are the ones that will convert the invisible traffic everyone else is losing.
-
-Ready to see where your business shows up in AI search? [Get your free AI Visibility Report](https://getranklabs.com/signup?plan=seo_management) and we'll show you exactly how ChatGPT, Claude, Gemini, and Perplexity see your brand.
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'schema-markup-ai-citations': {
     title: 'The Schema Markup Playbook: How Structured Data Gets You Cited by AI',
+    metaTitle: 'The Schema Markup Playbook for AI Citations — Rank Labs',
     date: 'August 16, 2026',
     tag: 'GEO',
     body: `
@@ -848,7 +694,7 @@ If your site doesn't have schema markup, you're invisible to the algorithms that
 
 Schema markup is code you add to your website that tells search engines exactly what your content means — not just what it says. It's the difference between an AI seeing "we help businesses grow" and an AI seeing "this is a LocalBusiness named Rank Labs, located in Florida, offering SEO and GEO services, rated 4.9 stars."
 
-Schema.org defines over 800 types. The ones that matter for AI visibility are:
+Schema.org defines hundreds of types. The ones that matter most for AI search are:
 
 - **LocalBusiness** — name, address, phone, hours, services, geo-coordinates
 - **Organization** — brand name, logo, social profiles, founding date
@@ -863,7 +709,7 @@ Without these, AI engines have to guess what your business is. With them, there'
 
 AI engines don't "browse" your site like a human. They parse it. They extract. They need signals they can trust.
 
-**51% of B2B buyers now start research in an AI chatbot.** When someone asks ChatGPT "best SEO agency for small business," the engine isn't running a keyword match — it's cross-referencing structured data signals across multiple sources. Businesses with complete LocalBusiness schema get cited. Businesses without it don't.
+When someone asks ChatGPT "best SEO agency for small business," the engine isn't running a keyword match — it's cross-referencing structured data signals across multiple sources. Businesses with complete LocalBusiness schema get cited. Businesses without it don't.
 
 Three reasons schema is the highest-ROI GEO move:
 
@@ -923,11 +769,12 @@ Schema markup isn't glamorous. It's lines of JSON-LD buried in your page source.
 
 At Rank Labs, schema markup is standard on every site we manage. LocalBusiness, FAQ, Article, and Organization schema go live on day one. AI bot access is verified. Structured data is monitored weekly.
 
-**Ready to get cited by AI?** See how Rank Labs builds GEO visibility with structured data at every layer. [Get started here](/contact).
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'how-to-know-if-ai-search-engines-recommend-your-business': {
     title: 'How to Know If AI Search Engines Are Recommending Your Business',
+    metaTitle: 'Is AI Recommending Your Business? How to Check — Rank Labs',
     date: 'August 17, 2026',
     tag: 'GEO Optimization',
     body: `
@@ -966,19 +813,22 @@ Measuring is only half the job. Once you know where you stand, the fixes are con
 - **Get cited, not just ranked.** Add schema markup so engines can parse who you are, what you do, and where you serve.
 - **Answer the question directly.** Pages with clear, direct answers to real questions get pulled into AI responses far more often than fluffy marketing copy.
 - **Build topical authority.** Publish consistently on the problems your customers actually ask about. AI engines reward depth over breadth.
-- **Keep a baseline.** Track your AI visibility the same way you track rankings — check it weekly, log it, and watch the trend.
+- **Keep a simple log.** Write down what each assistant says about you when you check, so you can see the trend.
+
+Tools like [LLMrefs](https://llmrefs.com/) can also help you track brand mentions and citations in AI answers over time, so you aren't relying only on one-off checks.
 
 ## The Bottom Line
 
 AI search isn't coming. It's here, and it's already deciding which businesses get recommended. The companies that win will be the ones that stop guessing and start measuring — checking whether they're cited, whether they show up in category conversations, and whether their content is the source.
 
-You can't optimize what you can't see. Start asking the AI engines about your business this week. What you find will tell you exactly where to focus next.
+You can't optimize what you can't see. Start asking AI assistants about your business this week. What you find will tell you exactly where to focus next.
 
-**Want to know exactly how you show up on ChatGPT, Claude, Gemini, and Perplexity?** Run a free AI search audit at Rank Labs and see where the AI engines place your business — then let us help you get cited more often.
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'local-seo-in-the-ai-era': {
     title: 'Local SEO in the AI Era: How to Get Your Business Found on Gemini, ChatGPT & Google Maps',
+    metaTitle: 'Local SEO in the AI Era: A Practical Guide — Rank Labs',
     date: 'August 24, 2026',
     tag: 'Local SEO',
     body: `
@@ -998,7 +848,7 @@ Here's the part most business owners miss: Gemini is built on Google's own data.
 
 That means your Google Business Profile isn't just a directory listing anymore. It's the single most important data source an AI has about your business. If your profile is incomplete, inconsistent, or thin on reviews, the AI has less reason to recommend you. If it's complete — accurate name, address, phone, hours, categories, services, photos, and a steady stream of fresh reviews — you're giving the engine exactly what it needs to choose you.
 
-The businesses winning local AI visibility treat their Google Business Profile the way they used to treat their homepage: as the primary thing a customer — or an AI — sees first.
+The businesses winning local AI search treat their Google Business Profile the way they used to treat their homepage: as the primary thing a customer — or an AI — sees first.
 
 ## Citation Consistency: The Trust Signal AI Actually Checks
 
@@ -1016,7 +866,7 @@ The play here is active, not passive: ask happy customers for reviews, respond t
 
 ## How to Get Started This Week
 
-You don't need to understand the underlying technology to start winning local AI visibility. The foundation is refreshingly simple:
+You don't need to understand the underlying technology to start showing up in local AI answers. The foundation is refreshingly simple:
 
 - **Claim and complete your Google Business Profile.** Every field — categories, services, hours, photos, service area.
 - **Audit your citations.** Find every place your business is listed and make the name, address, and phone identical everywhere.
@@ -1026,13 +876,14 @@ You don't need to understand the underlying technology to start winning local AI
 
 ## The Local Businesses That Move First Will Win the Category
 
-Local search has always rewarded early movers. The businesses that claimed their Google Business Profile first in 2015 captured a decade of Maps traffic. The businesses that optimize for AI visibility now are doing the same thing for the next decade.
+Local search has always rewarded early movers. The businesses that claimed their Google Business Profile first in 2015 captured a decade of Maps traffic. The businesses that get AI-ready now are doing the same thing for the next decade.
 
 The good news is the playbook is still young, and it's built on fundamentals you may already have in place. If your business information is consistent, your reviews are strong, and your site is structured for AI to read, you're already ahead of most of your competition. The question is whether you'll close the remaining gaps before they do.
     `.trim(),
   },
   'how-online-reviews-shape-ai-recommendations': {
     title: 'How Online Reviews Shape What AI Recommends (And What to Do About It)',
+    metaTitle: 'How Online Reviews Shape What AI Recommends — Rank Labs',
     date: 'August 31, 2026',
     tag: 'Reputation Management',
     body: `
@@ -1080,11 +931,12 @@ The takeaway is simple: if you're investing in AI search visibility but ignoring
 
 Rank Labs handles review monitoring and response as part of Full Management: we track your reviews across platforms, flag patterns before they become problems, and help you respond in a way that keeps both your customers and the AI engines happy. But reviews are only one signal — getting recommended by AI also takes structured data, consistent listings, and content the engines can cite.
 
-Not sure where your review footprint stands — or whether AI is recommending you at all? Get a free audit from Rank Labs and find out.
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'backlinks-authority-ai-search': {
     title: 'How AI Engines Decide Who to Trust: Backlinks, Authority & E-E-A-T',
+    metaTitle: 'Backlinks, Authority & E-E-A-T in AI Search — Rank Labs',
     date: 'September 8, 2026',
     tag: 'Backlinks & Authority',
     body: `
@@ -1137,11 +989,12 @@ You don't need to reverse-engineer an AI algorithm to make progress. Start with 
 
 AI search didn't remove the need for backlinks and authority — it raised the bar. The businesses that win are the ones an AI engine can confidently verify, not the ones with the biggest link count.
 
-That's exactly the kind of work Rank Labs does. Our GEO + SEO plans include backlink profile monitoring, competitor gap analysis, and the ongoing consistency work that turns your business into an answer AI engines are willing to give. If you'd like to know where your authority stands today, reach out — we'll show you exactly what an AI sees when it looks for you.
+That's exactly the kind of work Rank Labs does. With [Full Management](/pricing/), we do the ongoing consistency work that turns your business into an answer AI engines are willing to give — or start with the [Rank Labs Visibility Report ($399/mo)](/pricing/), a report covering SEO + AI Optimization (on-page) that shows where you stand while you make the fixes yourself. If you'd like to know where your authority stands today, reach out and we'll show you what your site tells AI assistants today.
     `.trim(),
   },
   'technical-seo-ai-search': {
     title: 'Technical SEO in the AI Era: Why Page Speed, Crawlability & Core Web Vitals Decide What AI Recommends',
+    metaTitle: 'Technical SEO in the AI Era — Rank Labs',
     date: 'September 14, 2026',
     tag: 'Technical SEO',
     body: `
@@ -1204,7 +1057,7 @@ That's also why the fix isn't a one-time project. Sites drift. New plugins slow 
 Every site Rank Labs manages gets the same technical baseline, checked weekly rather than once a quarter:
 
 - **Weekly technical audits** run 100+ automated checks against your site — broken links, missing meta tags, crawl errors, and structure issues surfaced within days, not months.
-- **Page speed and Core Web Vitals monitoring** catch performance regressions before they cost you AI visibility.
+- **Page speed and Core Web Vitals monitoring** catch performance regressions before they cost you rankings or AI search traffic.
 - **Sitemap and canonical strategy** ensure every page you want discovered is discoverable, and no duplicate content confuses the crawlers.
 - **Crawler access verification** confirms GPTBot, ClaudeBot, PerplexityBot, and BingBot can all read your site cleanly.
 
@@ -1212,17 +1065,18 @@ The goal is simple: make your site as easy for an AI engine to read as it is for
 
 ---
 
-**Want to know if your technical foundation is holding you back?** [Get a free AI visibility report →](https://getranklabs.com) and see exactly how ChatGPT, Claude, Gemini, and Perplexity experience your site.
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
     `.trim(),
   },
   'website-migration-without-losing-rankings': {
-    title: 'How to Migrate Your Website Without Losing Rankings (or AI Visibility)',
+    title: 'How to Migrate Your Website Without Losing Rankings (or AI Search Traffic)',
+    metaTitle: 'Migrate Your Site Without Losing Rankings — Rank Labs',
     date: 'September 21, 2026',
     tag: 'Site Migration',
     body: `
-# How to Migrate Your Website Without Losing Rankings (or AI Visibility)
+# How to Migrate Your Website Without Losing Rankings (or AI Search Traffic)
 
-A website migration should feel like a fresh start. You've got a new design, faster pages, and a cleaner structure. But for too many businesses, it becomes the opposite: a sudden, silent drop in traffic that takes months to undo. If you're planning a redesign or moving platforms, here's how to do it without losing the rankings — or the AI visibility — you've already earned.
+A website migration should feel like a fresh start. You've got a new design, faster pages, and a cleaner structure. But for too many businesses, it becomes the opposite: a sudden, silent drop in traffic that takes months to undo. If you're planning a redesign or moving platforms, here's how to do it without losing the rankings — or the AI Optimization signals — you've already earned.
 
 ## Why Website Migrations Go Wrong
 
@@ -1246,7 +1100,7 @@ Google is only half the picture now. When someone asks ChatGPT or Gemini for a r
 
 Protect these signals specifically during your migration:
 
-- **Re-verify your schema markup.** Structured data is how AI engines know you're a LocalBusiness, what services you offer, and how to reach you. If the rebuild strips it, the AI has to guess — and guessing usually means you don't get cited.
+- **Re-verify your schema markup.** Structured data is how AI engines know you're a LocalBusiness, what services you offer, and how to reach you. If the rebuild strips it, AI assistants have to guess what your business is, and a competitor with clear data becomes the easier answer.
 - **Keep your NAP consistent.** Name, address, and phone need to match across your site, your Google Business Profile, and everywhere else you appear. One wrong digit after a migration is enough to make an AI question whether it's recommending the right business.
 - **Leave the door open for AI crawlers.** Don't block GPTBot, ClaudeBot, or Google-Extended in your new \`robots.txt\`. A common migration mistake is copying over old bot-block rules that cut AI engines off from your content.
 - **Preserve your reviews and ratings markup.** If your testimonials and star ratings survive the move, the social proof that AI engines lean on survives with them.
@@ -1271,6 +1125,7 @@ Because "later" is when the traffic is already gone.
   },
   'topical-authority-topic-clusters-ai-search': {
     title: 'Topical Authority in the AI Era: How Topic Clusters Make AI Engines Recommend You',
+    metaTitle: 'Topic Clusters & Topical Authority for AI — Rank Labs',
     date: 'September 28, 2026',
     tag: 'Content Strategy',
     body: `
@@ -1324,13 +1179,14 @@ The flip side: topical authority is yours to lose. If a competitor builds a deep
 
 Most businesses are still writing blog posts the old way: one topic, one page, no plan. That's the gap. The businesses that build topic clusters — a pillar page, linked cluster pages, and deliberate internal linking — are the ones AI engines keep naming.
 
-At Rank Labs, topic cluster planning is built into everything we do. We research the questions your customers are actually asking AI engines, map the cluster, write the pillar and supporting pages, and wire the internal links — so you become the obvious source on the topics that matter to your business.
+At Rank Labs, topic cluster planning is built into everything we do. We research the questions your customers actually ask, map the cluster, write the pillar and supporting pages, and wire the internal links — so you become the obvious source on the topics that matter to your business.
 
-Want to see where your site stands? Call **(407) 743-8964** or visit **[getranklabs.com/signup](https://getranklabs.com/signup)** to get started.
+Want to see where your site stands? Call **(407) 743-8964** or visit **[getranklabs.com/signup](https://getranklabs.com/signup/)** to get started.
     `.trim(),
   },
   'agentic-search-optimization-agent-ready': {
     title: 'From Cited to Chosen: How Agentic Search Optimization (ASO) Makes AI Agents Pick Your Business',
+    metaTitle: 'Agentic Search Optimization (ASO) Explained — Rank Labs',
     date: 'October 18, 2026',
     tag: 'Agentic Search Optimization',
     body: `
@@ -1393,6 +1249,7 @@ Getting cited was step one. Getting chosen is the whole point. And the ladder be
   },
   'competitor-gap-analysis-ai-search': {
     title: 'Competitor Gap Analysis in the AI Era: How to Find What Your Competitors Are Missing',
+    metaTitle: 'Competitor Gap Analysis for AI Search — Rank Labs',
     date: 'October 19, 2026',
     tag: 'Competitive Analysis',
     body: `
@@ -1420,7 +1277,7 @@ Most of the gaps are boring. That's exactly why they get missed.
 
 ## How to Run the Analysis
 
-You don't need expensive tools to start. You need the same four AI engines your customers use.
+You don't need expensive tools to start. You can spot-check the same AI assistants your customers use.
 
 **1. Ask the engines about your category.** Open ChatGPT, Claude, Gemini, and Perplexity and ask the questions your customers would ask: "who's the best [your service] near me?" "who should I hire for [your service]?" Write down who comes up, and in what order. That's your actual competitor set in AI search — which is often different from your Google competitor set.
 
@@ -1442,9 +1299,428 @@ This is the same work that makes you rank better on Google — because Google's 
 
 The uncomfortable truth about competitor gap analysis is that most businesses can't see their own gaps from the inside. You're too close to your own site, and you don't spend your day asking AI engines who they'd recommend in your market.
 
-That's what we do at Rank Labs. Every week, we ask ChatGPT, Claude, Gemini, and Perplexity about your industry, map exactly where your business is missing or misrepresented, and show you the gaps your competitors left open — plus how agent-ready you are to be the one the AI picks. It's one report, four engines, and it's free.
+That's where Rank Labs helps. Our free AI Optimization audit checks your site for the signals AI assistants rely on, and the paid report adds a 3-competitor comparison so you can see where rivals are ahead on your pages and listings.
 
-[Get your free AI visibility report](https://getranklabs.com/contact) and see where your competitors are already being recommended — and where you can still beat them to it.
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.*
+    `.trim(),
+  },
+  'citation-mention-building-ai-search': {
+    title: 'Citation & Mention Building: How to Get Your Brand Named on the Sources AI Engines Actually Quote',
+    metaTitle: 'Citation & Mention Building for AI Search — Rank Labs',
+    date: 'October 22, 2026',
+    tag: 'GEO Strategy',
+    body: `
+Ask ChatGPT or Perplexity to recommend a business in your field and you'll notice something: the answer rarely comes from the businesses' own websites. It comes from roundup articles, Reddit threads, directories and trade publications, which are the places where *other people* talk about who's good. That's why **brand mentions for AI search** have become one of the most important parts of getting recommended. If the sources AI engines trust don't mention you, you're much less likely to show up in the answer.
+
+Here's how to change that.
+
+## Why AI Engines Trust What Others Say About You More Than What You Say
+
+Your website is where you make your case. You'd expect it to say you're great. AI engines know that too, so they look for independent confirmation: are other people naming you, recommending you, and describing you the same way you describe yourself?
+
+When several unrelated sources say your business is a strong choice for a particular need, AI engines become more confident recommending you. Your own site still matters (we cover that in [How AI Engines Decide Who to Trust](https://getranklabs.com/blog/backlinks-authority-ai-search/)), but third-party mentions are the outside proof that backs it up.
+
+## Mentions vs. Backlinks: Why an Unlinked Brand Name Still Counts in AI Search
+
+Traditional SEO is built around backlinks, so a mention without a link used to feel like a missed opportunity. AI search works differently. Language models read text, so a sentence like "we switched to [Your Brand] and our bookings went up" builds an association between your name and that outcome whether or not there's a link.
+
+Links are still valuable for Google rankings. But for AI answers, **being named in the right context** is often what counts most.
+
+## Where ChatGPT, Claude, Gemini & Perplexity Pull Their Answers From
+
+Each engine works a little differently, but they lean on similar kinds of sources when they search the web:
+
+- **"Best of" listicles and comparison articles** that rank options in a category
+- **Community discussions** on Reddit, Quora and niche forums
+- **Directories and review platforms** that list businesses by category
+- **Industry publications and association sites** that carry editorial weight
+
+Perplexity shows its citations right in the answer, and ChatGPT and Claude often link their sources when they search. Run a few of your customers' typical questions through these tools and look at what gets cited. That's your target list.
+
+## Getting Into the "Best [Service] in [City]" Listicles and Comparison Pages
+
+These pages get cited constantly because they answer the exact question users ask. To get included:
+
+- **Find the articles that already rank** for your category and location
+- **Reach out to the author or publisher** with a short, specific note about what makes you different. Facts are more useful to them than adjectives.
+- **Make it easy for them.** Offer a one-line description, a clear service summary, and a point of contact.
+- **Check back on older lists.** Many get refreshed every year, and a polite update request can land you in the next version.
+
+## Reddit, Quora & Forums: Showing Up in Community Answers Without Spamming
+
+Communities can spot self-promotion right away, and moderators remove it. The approach that works is slower but lasts longer:
+
+- **Answer questions honestly**, even when your business isn't the answer
+- **Disclose who you are** whenever you mention your own business
+- **Encourage happy customers** to share their experiences wherever they already hang out
+
+One real recommendation from a customer is worth more than ten posts you write yourself.
+
+## Industry Directories, Associations & Trade Publications
+
+These sources are easy to overlook, and they carry a lot of authority. Make sure you're listed in the main directories for your industry, join relevant associations that publish member listings, and pitch helpful, non-promotional articles or expert quotes to trade publications. Reviews matter here too. See [How Online Reviews Shape What AI Recommends](https://getranklabs.com/blog/how-online-reviews-shape-ai-recommendations/).
+
+## Keeping Your Brand Description Consistent So AI Doesn't Misrepresent You
+
+If one directory calls you a "marketing agency," another calls you a "web design studio," and your site says something else, AI engines have to guess. Sometimes they guess wrong.
+
+Write one clear, short description of what you do and who you serve, and use it everywhere: directory profiles, social bios, author bylines, and the blurbs you send to listicle writers. Keep your name, phone number, and core services identical across every listing. Consistency is how you control the story AI tells about you.
+
+## How to Find the Citation Sources Your Competitors Already Own
+
+Ask a few AI assistants to recommend businesses like yours, then note which competitors they name and which sources they point to. Look up those competitors by name to see where they're mentioned. Patterns show up quickly: the same three listicles, the same subreddit, the same industry directory. Every place that names them but not you is an opportunity.
+
+## Checking Which Mentions Show Up in AI Answers
+
+Building mentions without measuring the results is guesswork. Keep a simple log of new mentions as you earn them, then re-check your core prompts on a regular schedule to see whether your brand starts appearing, and on which engines. Our guide on [how to know if AI search engines are recommending your business](https://getranklabs.com/blog/how-to-know-if-ai-search-engines-recommend-your-business/) walks through how to do this.
+
+Over time you'll learn which kinds of sources actually move the needle for your industry, so you can spend more effort there.
+
+## How Rank Labs Handles Citation & Mention Building Every Week
+
+At Rank Labs, more calls and bookings are the point. Our **Rank Labs Visibility Report** ($399/month, month-to-month) covers SEO and AI Optimization (on-page) — including an AI Optimization on-page score with sub-scores for ChatGPT, Claude, Gemini and Perplexity, and a 3-competitor comparison — so you know where to focus next. It's report-only: we make no changes to your site, and you implement the fixes. Our **Full Management** plan ($1,249/month) does the work for you, and we also build, host, and maintain your site, so your own content stays as strong as the mentions pointing to it. [Compare plans →](/pricing/)
+
+It works best alongside a solid content foundation. If you haven't yet, read about [topical authority and topic clusters](https://getranklabs.com/blog/topical-authority-topic-clusters-ai-search/) and the broader [AI Search Strategy Playbook](https://getranklabs.com/blog/ai-search-strategy-playbook/).
+
+## Start Getting Named Where It Counts
+
+Brand mentions for AI search come down to one idea: be talked about, accurately and consistently, in the places AI engines already trust. Start with the sources your competitors own, keep your description consistent, and measure what changes.
+
+Want to see where you stand today? **See If You’re Getting Found on AI** at Rank Labs, or call us at **(407) 743-8964** and we'll show you where your listings and mentions are missing or inconsistent.
+    `.trim(),
+  },
+  'content-freshness-ai-search': {
+    title: 'Content Freshness in the AI Era: Why Stale Pages Stop Getting Cited (and How to Refresh Them)',
+    metaTitle: 'Content Freshness in AI Search — Rank Labs',
+    date: 'October 23, 2026',
+    tag: 'AI Search Strategy',
+    body: `
+Think about the time you asked your favorite AI platform for a recommendation. You probably didn't want an answer built on information from three years ago. AI engines don't want that either. That's why **content freshness in AI search** matters more than most business owners realize. A page that was great in 2023 can quietly stop showing up in AI answers, and nobody tells you when it happens. The good news is that you can fix it, and you usually don't have to start over.
+
+## Why AI Engines Care How Recent Your Content Is
+
+AI assistants try to give answers people can act on today. When ChatGPT, Gemini, Claude, or Perplexity pulls from the web, it has to decide which sources to trust. Recency is one of the ways it judges whether a source is still reliable, especially for topics where prices, rules, tools, or best practices change.
+
+That doesn't mean every page needs to be brand new. A clear explanation of a timeless idea can keep earning citations for years. But if your page mentions old pricing, discontinued services, or "the latest trends" from several years back, AI engines have good reason to pick a competitor's page instead. If you've already read our [AI Search Strategy Playbook](https://getranklabs.com/blog/ai-search-strategy-playbook/), freshness is one of the quieter factors behind everything in it.
+
+## The Signals That Tell AI a Page Is Current: Dates, Facts, Prices, and Sitemaps
+
+Search and AI systems look at several clues together:
+
+- **Visible dates.** A clear "last updated" date tells readers and crawlers the page has been maintained.
+- **Structured data.** \`datePublished\` and \`dateModified\` in your schema make those dates machine-readable. Our [Schema Markup Playbook](https://getranklabs.com/blog/schema-markup-ai-citations/) covers how to set this up.
+- **Current facts and prices.** Out-of-date numbers are among the strongest staleness signals, because they directly contradict newer sources.
+- **Sitemap \`lastmod\` values.** An accurate sitemap helps crawlers see which pages changed and come back sooner.
+- **Fresh internal links.** Linking from new posts to older pages tells crawlers those pages still matter.
+
+One warning: changing a date without changing the content doesn't count as a refresh. Engines compare what's actually on the page, and fake updates can hurt your credibility.
+
+## How Stale Content Quietly Costs You Citations (and Trust)
+
+Stale content almost never fails all at once. It slips. Rankings drop a few spots, AI answers start citing someone else, and traffic slowly fades. Because nothing breaks, it's easy to miss.
+
+There's a trust cost too. When a prospect lands on your page and sees an old price or a service you no longer offer, they start wondering what else is out of date. AI engines weigh trust signals in a similar way, which we cover in [How AI Engines Decide Who to Trust](https://getranklabs.com/blog/backlinks-authority-ai-search/).
+
+## Refresh vs. Rewrite vs. Retire: Deciding What to Do With Old Pages
+
+Not every old page needs the same fix:
+
+- **Refresh** when the page still targets the right topic and performs reasonably well, but has outdated details. Update the facts, add a new section, and tighten the intro.
+- **Rewrite** when the topic still matters but the page no longer answers the question well. Keep the URL and rebuild the content.
+- **Retire** when the topic no longer fits your business. Redirect it to the closest relevant page, or merge it into a stronger one.
+
+Looking at your content as a group helps here. Our guide to [topical authority and topic clusters](https://getranklabs.com/blog/topical-authority-topic-clusters-ai-search/) shows how pages support each other.
+
+## How to Update a Page Without Losing Its Rankings or URL Equity
+
+The most important rule is simple: **keep the URL.** Links and authority built up over time are tied to that address. A few other habits keep a refresh safe:
+
+- Keep the main topic and target keyword the same unless you have a strong reason to change them.
+- Keep the sections that already perform well and improve the ones around them.
+- Update \`dateModified\` and your sitemap only after you've made real changes.
+- If you do have to change a URL, use a 301 redirect. Our post on [migrating without losing rankings](https://getranklabs.com/blog/website-migration-without-losing-rankings/) explains how.
+
+## Building a Maintenance Cadence: What to Review Weekly, Monthly, and Quarterly
+
+Freshness works best as a habit, not a one-time cleanup:
+
+- **Weekly:** Check for ranking drops, crawl errors, and pages that have lost visibility. Small problems are much easier to fix when you catch them early, which is the idea behind [the weekly audit advantage](https://getranklabs.com/blog/weekly-audit-advantage/).
+- **Monthly:** Review prices, service details, and contact information across key pages. Refresh one or two posts that are slipping.
+- **Quarterly:** Audit your full content library. Decide what to refresh, rewrite, or retire, and look for gaps competitors are filling.
+
+## How to Tell If a Refresh Worked in Google and AI Answers
+
+Give a refreshed page a few weeks, then check:
+
+- **Google Search Console:** Look for higher impressions, clicks, and average position on the updated page.
+- **AI answers:** Ask ChatGPT, Gemini, Claude, and Perplexity the questions your page answers, and see whether you're mentioned. Our guide on [how to know if AI search engines are recommending your business](https://getranklabs.com/blog/how-to-know-if-ai-search-engines-recommend-your-business/) walks through it.
+- **Engagement:** Watch time on page and conversions. A good refresh should help visitors, not just crawlers.
+
+## Let Rank Labs Keep Your Site Current
+
+Content freshness in AI search isn't a one-time project. Your content needs regular care, and most business owners don't have time to watch every page. That's where we come in.
+
+With our **Rank Labs Visibility Report** ($399/month), you get a report covering SEO + AI Optimization (on-page) — including a full technical crawl and an AI Optimization on-page score with sub-scores for ChatGPT, Gemini, Claude and Perplexity — so you know what needs attention before you start losing citations. It's report-only — you make the fixes. If you'd like us to handle the work too, **Full Management** ($1,249/month) does it for you, and we also build, host, and maintain your site. [Compare plans →](/pricing/)
+
+**Want more calls from people already searching?** [See If You’re Getting Found on AI →](/contact/?intent=free-audit). We'll show where Google, Maps and AI assistants are getting conflicting or missing signals about your business, and what to fix first. *AI Optimization (on-page) scores how well your pages are structured for AI assistants to read.* Or call us at **(407) 743-8964**.
+    `.trim(),
+  },
+  'answer-first-content-ai-assistants': {
+    title: 'Answer-First Content: How to Write Service Pages AI Assistants Can Actually Quote',
+    date: 'November 2, 2026',
+    tag: 'GEO',
+    body: `
+When someone asks ChatGPT, Gemini or Google "who does same-day water heater repair near me, and what does it cost?", the assistant reads a lot of web pages quickly and quotes the ones that answer the question plainly. That is the idea behind **answer-first content for AI search**: put the answer your customer wants at the top of the page, then explain. If your service pages open with a paragraph about your passion and your values, AI assistants often move on to a competitor whose page says what it does, where, and for how much.
+
+The good news is that you don't need a new website to fix this. You need clearer pages. Here's how.
+
+## Why AI Assistants Skip Pages That Bury the Answer
+
+
+<figure class="blog-image"><img src="${blogAsset2e28e36da4482b92ea8cf8081c4c393d7aea26ae9e27107a8aa32c55ce18b671}" srcset="../../assets/blog/answer-first-content-ai-assistants/c738e58566f91aaff21057449b6a6606356fccd30a915b459a79063fe826ac19.webp 800w, ${blogAsset2e28e36da4482b92ea8cf8081c4c393d7aea26ae9e27107a8aa32c55ce18b671} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character looking confused while scanning a long sheet of paper for the answer" loading="lazy" style="max-width:100%;height:auto"></figure>
+
+
+AI assistants are built to give people a direct, confident answer. To do that, they pull short passages from pages that state facts clearly. A page that takes four paragraphs to say what service you offer gives them nothing quotable.
+
+Picture a customer who skims your homepage for ten seconds and leaves. AI tools behave in a similar way. If the answer isn't near the top and in plain language, they tend to cite someone else. That's also why [stale, vague pages stop getting cited](https://getranklabs.com/blog/content-freshness-ai-search/) over time.
+
+## What "Answer-First" Means: Lead With the Answer, Then Explain
+
+Answer-first writing follows one rule: **the first sentence under any heading should answer the question that heading asks.** Supporting details, stories and trust signals come after.
+
+Journalists call this the inverted pyramid. For a service business, it looks like this:
+
+- **Heading:** Do you offer emergency drain cleaning?
+- **First sentence:** Yes. We offer 24/7 emergency drain cleaning, and most calls get a technician the same day.
+- **Then:** what the visit includes, what affects the cost, and how to book.
+
+A reader who stops after one sentence still has their answer. So does an AI assistant.
+
+## Finding the Real Questions Your Customers Ask (Calls, Forms, Reviews, Search Console)
+
+
+<figure class="blog-image"><img src="${blogAssetd37de68f0c1fe36340926bc0f392e0ae44eb5d7b99aace411de2af3dc1b76389}" srcset="../../assets/blog/answer-first-content-ai-assistants/1b3fd5a25a5044800671c873f826ca1e37fb3d901d3e0ad711f065aadfcdeb9c.webp 800w, ${blogAssetd37de68f0c1fe36340926bc0f392e0ae44eb5d7b99aace411de2af3dc1b76389} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character peering curiously through a magnifying glass, searching for customer questions" loading="lazy" style="max-width:100%;height:auto"></figure>
+
+
+The best questions to answer are the ones customers already ask you. You have more of this information than you might think:
+
+- **Phone calls:** Ask whoever answers the phone to write down the five questions they hear most.
+- **Contact forms:** Look through recent submissions for repeated wording, such as "Do you service…" or "How much is…"
+- **Reviews:** Customers often mention what they were worried about before hiring you, like price, timing or cleanup. Those worries are questions. Our post on [how reviews shape AI recommendations](https://getranklabs.com/blog/how-online-reviews-shape-ai-recommendations/) goes deeper on this.
+- **Google Search Console:** The Queries report shows the exact phrases people searched before landing on your site. Question-style queries are a goldmine.
+
+## The Anatomy of a Quotable Service Page: Who, What, Where, Price Range, How to Book
+
+Every service page should answer five things clearly, ideally near the top:
+
+- **Who** you are and who the service is for
+- **What** the service includes, and what it doesn't
+- **Where** you work: the specific areas you serve
+- **Price range**, or at least what affects the price
+- **How to book**: phone, form or online scheduling, with one clear next step
+
+Adding [schema markup](https://getranklabs.com/blog/schema-markup-ai-citations/) to the page makes these facts even easier for machines to read.
+
+## Before and After: Rewriting a Typical Local Service Page
+
+Here's an illustrative example from a fictional HVAC company.
+
+**Before:**
+"At Comfort Pros, we believe every family deserves comfort. With years of dedication to excellence, our team is passionate about delivering quality solutions tailored to your unique needs."
+
+**After:**
+"Comfort Pros repairs and replaces central air systems for homeowners on the north side of town and three nearby suburbs. Most repairs are finished in a single visit. We give an upfront quote before any work starts. Call or book online for a same-week appointment."
+
+The second version is shorter, and an AI assistant could quote any sentence from it. It says who, what, where, what to expect on price, and how to book.
+
+## Question-Style Headings, Short Answer Blocks and When to Add an FAQ Section
+
+Three formatting habits make a big difference:
+
+- **Question-style headings.** Write "How long does a roof inspection take?" rather than "Our Process." This matches how people phrase questions to AI assistants.
+- **Short answer blocks.** Keep the direct answer to one to three sentences, then expand below it.
+- **FAQ sections.** Add one when a service gets lots of small, specific questions, such as warranties, parking or what to prepare. Don't use an FAQ to hold your main answers. Those belong in the body of the page.
+
+## Common Mistakes: Vague Marketing Copy, Hidden Pricing, Missing Service Areas
+
+These are the issues we see most often:
+
+- **Vague marketing copy.** "Quality," "excellence" and "solutions" tell neither people nor AI what you actually do.
+- **Hidden pricing.** You don't have to publish exact prices, but saying nothing makes AI assistants recommend businesses that do. A range, a starting point or a list of cost factors helps a lot.
+- **Missing service areas.** If your page never names the areas you serve, AI tools can't confidently recommend you for "near me" searches. See [local SEO in the AI era](https://getranklabs.com/blog/local-seo-in-the-ai-era/) for more.
+
+## How We Check Direct Answers in a Free AI Optimization Audit
+
+In a free AI Optimization audit, Rank Labs reviews your key service pages the way an AI assistant would. We check whether each page answers who, what, where, price and how to book. We also look for question-style headings and flag the vague copy that's getting skipped. You get a plain-English list of what to fix first, with no jargon. If you want to see how assistants currently describe you, start with [how to know if AI search engines are recommending your business](https://getranklabs.com/blog/how-to-know-if-ai-search-engines-recommend-your-business/).
+
+## Next Steps: Turn Your Top Five Customer Questions Into Answer-First Pages
+
+
+<figure class="blog-image"><img src="${blogAsset9330b8cb90cc1a7e3b6dce50a806b72ab4f10454ecade0f33494c7a51d8c22ff}" srcset="../../assets/blog/answer-first-content-ai-assistants/a8691f8e3e0a69c1af540eecda620a867e5c3e80d0a6038139d102eea5a68324.webp 800w, ${blogAsset9330b8cb90cc1a7e3b6dce50a806b72ab4f10454ecade0f33494c7a51d8c22ff} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character smiling and giving a thumbs-up while holding a laptop, ready to take the next step" loading="lazy" style="max-width:100%;height:auto"></figure>
+
+
+You can start this week:
+
+1. List the five questions customers ask most.
+2. Find the page that should answer each one, or create it.
+3. Put a one-to-three sentence answer at the top.
+4. Add a question-style heading, a price range or cost factors, your service areas and a booking link.
+
+Answer-first content for AI search isn't a trick. It's simply clearer writing, and it helps customers as much as it helps AI assistants. If you'd rather have it done for you, our **GEO + SEO** plan delivers weekly audits, rankings and strategy to your inbox. **Full Management** adds building, hosting and maintaining your site.
+
+**Ready to find out if AI assistants can quote your pages?** Call Rank Labs at **(407) 743-8964** or click **Get Started** to request your free AI Optimization audit.
+    `.trim(),
+  },
+  'fix-ai-wrong-information-about-your-business': {
+    title: 'When AI Gets Your Business Wrong: How to Fix Inaccurate Answers on ChatGPT, Claude, Gemini & Perplexity',
+    date: 'November 2, 2026',
+    tag: 'GEO',
+    body: `
+You ask ChatGPT about your own company and it lists hours you changed last spring. Perplexity quotes a price from two years ago. Gemini confuses you with a competitor across town. If you've ever searched for a fix to **AI wrong information about my business**, you're not alone, and the problem can be fixed. AI engines don't invent facts at random. They repeat what they find, so correcting the record starts with correcting the sources they read.
+
+## The Hidden Cost of Being Misrepresented by AI
+
+When a customer asks an AI assistant about you, they usually trust the answer and act on it. They don't click through to check. A wrong closing time means a customer shows up to a locked door. An outdated price can make you look too expensive, or set up an awkward conversation when the real quote arrives. You never see these lost customers. They don't complain. They choose someone else.
+
+## The Most Common AI Errors: Hours, Prices, Services, Locations, and Mix-Ups With Competitors
+
+The same mistakes show up again and again:
+
+- **Hours** that are outdated or copied from a holiday schedule
+- **Prices** pulled from an old page, a cached PDF, or a third-party review
+- **Services** you've dropped, or new ones the AI doesn't know about
+- **Locations**, including old addresses or service areas you no longer cover
+- **Competitor mix-ups**, where your reviews, phone number, or description get merged with a similarly named business
+
+## Why AI Engines Get It Wrong: Stale Sources, Conflicting Listings, and Training Lag
+
+Three causes account for most errors. **Stale sources:** an old directory listing or blog post still ranks well, so the AI keeps citing it. (See our guide to [content freshness in the AI era](https://getranklabs.com/blog/content-freshness-ai-search/).) **Conflicting listings:** if your website says one thing and three directories say another, the AI may side with the majority. **Training lag:** some answers come from a model's training data, which was frozen months ago. Other answers come from live web search, which updates faster but only reflects what's currently online.
+
+## How to Audit What ChatGPT, Claude, Gemini & Perplexity Say About You
+
+
+<figure class="blog-image"><img src="${blogAsset9f0d777f2618a57ffe6e66c2a25392773066c946a61692c520f7797078c67eb7}" srcset="../../assets/blog/fix-ai-wrong-information-about-your-business/e4e27afea1f51d7e44ffb2723e4b4e90efd22b312314485b482bf11ae7ff25ef.webp 800w, ${blogAsset9f0d777f2618a57ffe6e66c2a25392773066c946a61692c520f7797078c67eb7} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character inspecting closely through a magnifying glass, representing an audit of AI answers" loading="lazy" style="max-width:100%;height:auto"></figure>
+
+
+Ask each engine the questions your customers would ask: "What are [business]'s hours?", "How much does [business] charge?", "Who's the best [service] near me?" Record the answers, and note which sources are cited where the engine shows them. Those citations tell you which pages to fix first. For a deeper walkthrough, read [how to know if AI search engines are recommending your business](https://getranklabs.com/blog/how-to-know-if-ai-search-engines-recommend-your-business/).
+
+## Fixing the Source of Truth: Your Website, Schema, and Business Listings
+
+Your website should be the clearest, most current statement of who you are. Put your hours, services, pricing approach, and contact details on crawlable pages, not just in images or PDFs. Then add structured data so machines can read those facts directly. Our [schema markup playbook](https://getranklabs.com/blog/schema-markup-ai-citations/) covers this step by step. Next, update your core listings, including Google Business Profile, Bing Places, and Apple Business Connect, so that each one matches your site exactly. Consistency is the signal AI engines reward.
+
+## Correcting the Third-Party Pages AI Actually Quotes
+
+AI engines often quote directories, review sites, local news, and industry roundups more than your own site. Go back to the citations from your audit and request corrections on each one. Claim profiles you haven't claimed yet, and ask editors to update outdated articles. Where you can, earn fresh, accurate mentions that crowd out the old ones. Our post on [citation and mention building](https://getranklabs.com/blog/citation-mention-building-ai-search/) explains how.
+
+## Using Built-In Feedback Tools (and Their Limits)
+
+ChatGPT, Claude, Gemini, and Perplexity all let you rate a response or flag it as inaccurate. Use these tools, because they cost nothing. Just be realistic about what they do. Feedback rarely changes an answer right away, and it doesn't fix the underlying source. If a directory still lists your old hours, the error will keep coming back. Treat feedback as a supplement to fixing the sources, never a replacement.
+
+## How Long Corrections Take to Show Up in Each Engine
+
+Timing varies, and anyone who promises an exact date is guessing. Engines that search the live web, like Perplexity, and ChatGPT or Gemini when browsing, tend to pick up corrected pages sooner because they re-read sources when answering. Answers drawn from training data change only when the model is retrained or updated. Google's AI features generally follow Google's own crawling and Business Profile data. The practical takeaway is to fix every source you can, then keep checking.
+
+## Monitoring Weekly So Errors Don't Come Back
+
+Errors come back. A partner republishes an old description. A directory scrapes outdated data. A new competitor with a similar name opens nearby. A one-time cleanup won't hold, but a regular check catches problems before customers do. That's why we believe in [the weekly audit advantage](https://getranklabs.com/blog/weekly-audit-advantage/): a short, consistent review beats an occasional deep dive.
+
+## Next Steps: Get Your Free AI Visibility Audit
+
+Finding **AI wrong information about my business** is frustrating, but it's fixable. Audit what each engine says. Correct your website, schema, and listings. Clean up the third-party pages AI quotes. Then monitor so the fixes stick.
+
+If you'd rather not do it alone, Rank Labs can help. Our **GEO + SEO** plan delivers weekly audits, rankings, and strategy to your inbox. **Full Management** adds building, hosting, and maintaining your site. Start with a **free AI Visibility Audit** to see exactly what ChatGPT, Claude, Gemini, and Perplexity are saying about you, or call us at **(407) 743-8964**.
+    `.trim(),
+  },
+  'google-ai-overviews-local-business': {
+    title: 'Google AI Overviews and Local Businesses: How to Show Up in the Summary Instead of Below It',
+    date: 'November 11, 2026',
+    tag: 'AI Search',
+    body: `
+You searched for something on Google recently, and before any website appeared, you got a neat paragraph that answered the question for you. That's an AI Overview, and it's changing how customers find local businesses. Knowing **how to appear in Google AI Overviews** now matters as much as ranking on page one, because more and more searchers read the summary and never scroll down to the links. Here's what's going on and what you can do about it.
+
+## What Google AI Overviews Are (and Why They Change the First Page)
+
+AI Overviews are summaries that Google's AI writes and places at the top of some search results. They pull information from several web pages and show a handful of source links next to the answer.
+
+For years, the goal of SEO was simple: rank in the top few blue links. Now there's a new layer above those links. If the summary already answers the searcher's question, the businesses named inside it get the attention. Everyone below it is competing for whatever attention is left.
+
+## The 8% Problem: What Happens to Clicks When an AI Overview Appears
+
+
+<figure class="blog-image"><img src="${blogAssetb6f3926b6a1a7aeb29965d2538a4e750b6c248e4aedfb3e97ebc8b1c1a3f4dfb}" srcset="../../assets/blog/google-ai-overviews-local-business/68ded47097dfc685e8929e844b24e5d676e535041c1e5ae772fb996dea7e908b.webp 800w, ${blogAssetb6f3926b6a1a7aeb29965d2538a4e750b6c248e4aedfb3e97ebc8b1c1a3f4dfb} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character looking concerned and shrugging about fewer clicks on search results" loading="lazy" style="max-width:100%;height:auto"></figure>
+
+
+Pew Research Center studied how people use Google. When an AI summary appeared, users clicked a traditional search result on about **8% of visits**. When no summary appeared, the rate was about 15%. Clicks on the links inside the summary itself were even rarer.
+
+So ranking well no longer guarantees the traffic it once did. If your business is mentioned in the summary, you're part of the answer a customer reads. If it isn't, you may be invisible to many searchers even with a strong organic ranking.
+
+## Which Local Queries Trigger AI Overviews, and Which Don't
+
+AI Overviews don't appear on every search. They usually show up for **informational and comparison questions**, such as:
+
+- "How often should I get my HVAC system serviced?"
+- "What's the difference between a dental crown and a veneer?"
+- "Is a tankless water heater worth it in Florida?"
+
+Searches with obvious local buying intent, like "plumber near me" or "dentist open Saturday," usually show the Map Pack first. Results change often, though, and the line between these two kinds of searches keeps blurring. Your customers are probably running both kinds, often in the same week.
+
+## How Google Picks the Businesses and Sources It Names
+
+
+<figure class="blog-image"><img src="${blogAssetd3a0d16ef8d41c91ff4de6fd2a6a36128480a2f4a507ec47bd06b75c22859ddb}" srcset="../../assets/blog/google-ai-overviews-local-business/6ed90c3485e32aa4304da4ad2999bb4761220cf6ffe2af58e1409a42a096b2e3.webp 800w, ${blogAssetd3a0d16ef8d41c91ff4de6fd2a6a36128480a2f4a507ec47bd06b75c22859ddb} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character peering through a magnifying glass to see how Google picks sources" loading="lazy" style="max-width:100%;height:auto"></figure>
+
+
+Google doesn't publish an exact formula. What we see consistently is that AI Overviews favor sources that are:
+
+- **Clear and direct.** Pages that answer the question in the first sentence or two are easier to quote. Our guide to [answer-first content](https://getranklabs.com/blog/answer-first-content-ai-assistants/) shows how to write them.
+- **Trustworthy.** Authority signals, real expertise, and links from reputable sites all count. See [how AI engines decide who to trust](https://getranklabs.com/blog/backlinks-authority-ai-search/).
+- **Consistent across the web.** When your business name, services, and details match everywhere, AI systems are more confident naming you. [Citation and mention building](https://getranklabs.com/blog/citation-mention-building-ai-search/) helps with this.
+- **Current.** Outdated pages get skipped. Here's [why freshness matters](https://getranklabs.com/blog/content-freshness-ai-search/).
+
+## AI Overviews vs. the Map Pack: Where Your Business Can Appear
+
+Think of these as two separate doors into the same building:
+
+- **AI Overviews** reward helpful, well-structured website content and a strong reputation across the web.
+- **The Map Pack** relies heavily on your Google Business Profile, reviews, proximity, and relevance.
+
+The strongest local businesses show up in both. Reviews connect the two, since they influence Maps rankings and what AI systems say about you. Learn more in [how online reviews shape AI recommendations](https://getranklabs.com/blog/how-online-reviews-shape-ai-recommendations/) and our broader guide to [local SEO in the AI era](https://getranklabs.com/blog/local-seo-in-the-ai-era/).
+
+## A Practical Checklist to Get Included in AI Overviews
+
+If you're wondering where to start, work through this list:
+
+- **Answer real customer questions** on your service pages, in plain language, near the top of the page.
+- **Use descriptive headings** that match how people actually phrase their searches.
+- **Add structured data** so Google understands your business and services. Our [schema markup playbook](https://getranklabs.com/blog/schema-markup-ai-citations/) walks through it.
+- **Keep your Google Business Profile complete** and consistent with your website.
+- **Earn mentions** on local directories, industry sites, and community publications.
+- **Refresh key pages** regularly with current information.
+- **Fix technical problems** like slow pages or blocked crawling. See [technical SEO in the AI era](https://getranklabs.com/blog/technical-seo-ai-search/).
+- **Build topic depth** by covering related questions thoroughly with [topic clusters](https://getranklabs.com/blog/topical-authority-topic-clusters-ai-search/).
+
+## How to Track Whether You're Showing Up
+
+
+<figure class="blog-image"><img src="${blogAsset305aa2689df9fb4f91b702ab2bfa6f23c882c297cfd79191f26b7798bca07046}" srcset="../../assets/blog/google-ai-overviews-local-business/c7589d1a1a5513555a8781a37b7f210cf44e0a49c5ebdc1763670727059d0aa8.webp 800w, ${blogAsset305aa2689df9fb4f91b702ab2bfa6f23c882c297cfd79191f26b7798bca07046} 1536w" sizes="(max-width: 800px) 100vw, 800px" alt="Rank Labs character typing on a laptop while tracking AI Overview visibility" loading="lazy" style="max-width:100%;height:auto"></figure>
+
+
+This is where most businesses get stuck. AI Overviews vary by query, location, and day, and standard rank trackers often miss them. A practical approach:
+
+- Make a list of 10–20 questions your customers actually ask.
+- Search them regularly and note whether an AI Overview appears and whether your business is named or linked.
+- Watch for competitors who show up repeatedly, and study what their pages do differently. Our post on [competitor gap analysis](https://getranklabs.com/blog/competitor-gap-analysis-ai-search/) can help.
+- If AI describes your business incorrectly, here's [how to fix inaccurate AI answers](https://getranklabs.com/blog/fix-ai-wrong-information-about-your-business/).
+
+For a broader view across ChatGPT, Gemini, and others, read [how to know if AI search engines are recommending your business](https://getranklabs.com/blog/how-to-know-if-ai-search-engines-recommend-your-business/).
+
+## How Rank Labs Monitors AI Overview Visibility Every Week
+
+Checking all of this by hand takes time most business owners don't have. That's why we built the **Rank Labs Visibility Report**: weekly audits, rankings, and strategy delivered to your inbox. You'll see where you appear, where competitors are showing up instead, and what to fix next. We cover [why a weekly cadence matters](https://getranklabs.com/blog/weekly-audit-advantage/) in a separate post.
+
+If you'd rather have it all handled, **Full Management** includes everything in the Visibility Report, and we also build, host, and maintain your site.
+
+Learning how to appear in Google AI Overviews doesn't take tricks. It takes clear answers, a trustworthy reputation, and steady attention. **Want to know if Google is naming your business, or a competitor?** Call Rank Labs at **(407) 743-8964** or get started at [getranklabs.com](https://getranklabs.com), and we'll show you where you stand.
     `.trim(),
   },
 };
@@ -1606,14 +1882,14 @@ const blogPostingSchema = {
 };
 ---
 
-<Layout title={`${post.title} — Rank Labs`} description={metaDesc}>
+<Layout title={post.metaTitle ?? `${post.title} — Rank Labs`} description={metaDesc}>
 
 <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)}></script>
 {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>}
 
 <article class="pt-32 pb-20 px-6">
   <div class="max-w-2xl mx-auto">
-    <a href="/blog" class="text-sm text-cyan-400 hover:text-cyan-300 transition-colors mb-8 inline-block">← Back to Lab Notes</a>
+    <a href="/blog/" class="text-sm text-cyan-400 hover:text-cyan-300 transition-colors mb-8 inline-block">← Back to Lab Notes</a>
 
     <div class="flex items-center gap-3 mb-6">
       <span class="text-xs text-cyan-400 font-medium">{post.tag}</span>

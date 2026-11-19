@@ -14,6 +14,41 @@ import Layout from '../layouts/Layout.astro';
       {[
 
         {
+          slug: 'google-ai-overviews-local-business',
+          date: 'November 11, 2026',
+          title: 'Google AI Overviews and Local Businesses: How to Show Up in the Summary Instead of Below It',
+          excerpt: 'You searched for something on Google recently, and before any website appeared, you got a neat paragraph that answered the question for you. That\'s an AI Overview, and it\'s…',
+          tag: 'AI Search',
+        },
+        {
+          slug: 'fix-ai-wrong-information-about-your-business',
+          date: 'November 2, 2026',
+          title: 'When AI Gets Your Business Wrong: How to Fix Inaccurate Answers on ChatGPT, Claude, Gemini & Perplexity',
+          excerpt: 'You ask ChatGPT about your own company and it lists hours you changed last spring. Perplexity quotes a price from two years ago. Gemini confuses you with a competitor across town…',
+          tag: 'GEO',
+        },
+        {
+          slug: 'answer-first-content-ai-assistants',
+          date: 'November 2, 2026',
+          title: 'Answer-First Content: How to Write Service Pages AI Assistants Can Actually Quote',
+          excerpt: 'When someone asks ChatGPT, Gemini or Google "who does same-day water heater repair near me, and what does it cost?", the assistant reads a lot of web pages quickly and quotes the…',
+          tag: 'GEO',
+        },
+        {
+          slug: 'content-freshness-ai-search',
+          date: 'October 23, 2026',
+          title: 'Content Freshness in the AI Era: Why Stale Pages Stop Getting Cited (and How to Refresh Them)',
+          excerpt: 'Think about the time you asked your favorite AI platform for a recommendation. You probably didn\'t want an answer built on information from three years ago. AI engines don\'t want…',
+          tag: 'AI Search Strategy',
+        },
+        {
+          slug: 'citation-mention-building-ai-search',
+          date: 'October 22, 2026',
+          title: 'Citation & Mention Building: How to Get Your Brand Named on the Sources AI Engines Actually Quote',
+          excerpt: 'Ask ChatGPT or Perplexity to recommend a business in your field and you\'ll notice something: the answer rarely comes from the businesses\' own websites. It comes from roundup…',
+          tag: 'GEO Strategy',
+        },
+        {
           slug: 'competitor-gap-analysis-ai-search',
           date: 'October 19, 2026',
           title: 'Competitor Gap Analysis in the AI Era: How to Find What Your Competitors Are Missing',
@@ -37,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
         {
           slug: 'website-migration-without-losing-rankings',
           date: 'September 21, 2026',
-          title: 'How to Migrate Your Website Without Losing Rankings (or AI Visibility)',
+          title: 'How to Migrate Your Website Without Losing Rankings (or AI Search Traffic)',
           excerpt: 'A website migration should feel like a fresh start. You\'ve got a new design, faster pages, and a cleaner structure. But for too many businesses, it becomes the opposite: a sudden…',
           tag: 'Site Migration',
         },
@@ -129,7 +164,7 @@ import Layout from '../layouts/Layout.astro';
           slug: 'geo-the-new-frontier',
           date: 'June 10, 2026',
           title: 'GEO: The New Frontier of Search — and Why It Matters More Than SEO',
-          excerpt: 'AI search engines now handle 18% of all queries. 69% of buyers switch vendors based on AI recommendations. Here is what GEO is, how each AI engine works, and the 6-step checklist to get visible.',
+          excerpt: 'More people now ask AI assistants before they search. Here is what GEO is, how each AI engine works, and the 6-step checklist to get visible.',
           tag: 'GEO',
         },
         {
@@ -160,8 +195,8 @@ import Layout from '../layouts/Layout.astro';
             <span class="text-xs text-cyan-400 font-medium">{post.tag}</span>
             <span class="text-xs text-muted">{post.date}</span>
           </div>
-          <a href={`/blog/${post.slug}`} class="block group">
-            <h2 class="text-xl font-bold mb-3 group-hover:gradient-text transition-all duration-200">{post.title}</h2>
+          <a href={`/blog/${post.slug}/`} class="block group">
+            <h2 class="text-xl font-bold mb-3 underline decoration-white/20 underline-offset-4 group-hover:decoration-purple-400 transition-all duration-200">{post.title}</h2>
           </a>
           <p class="text-muted text-sm leading-relaxed">{post.excerpt}</p>
         </article>
@@ -170,7 +205,7 @@ import Layout from '../layouts/Layout.astro';
   </div>
 
   <div class="text-center mt-12">
-    <a href="/services" class="btn-primary text-lg">View Plans & Pricing →</a>
+    <a href="/services/" class="btn-primary text-lg">View Plans & Pricing →</a>
   </div>
 </section>
 
