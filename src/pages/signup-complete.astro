@@ -6,10 +6,10 @@ const plans = {
   full_management: { 
     label: 'Full Management', 
     price: '$1,249/mo', 
-    firstAudit: 'within 24 hours', 
+    firstAudit: 'after we review your site', 
     features: [
       'Weekly AI Optimization on-page scoring',
-      'Weekly SEO audit reports (100+ checks)',
+      'Weekly SEO audit reports from a technical site crawl',
       'Keyword & competitor tracking',
       'Monthly email report (first week of each month): your Google search, Business Profile, traffic, leads & AI Optimization score vs. last month, plus the work we delivered',
       'Weekly blog content (researched & written)',
@@ -45,7 +45,7 @@ const info = plans[plan] || plans.full_management;
         </li>
         <li class="flex items-start gap-3 text-sm text-muted">
           <span class="text-green-400 mt-0.5 shrink-0">✓</span>
-          <span><strong class="text-white">First audit delivers {info.firstAudit} of setup.</strong> We review your site and send the first findings.</span>
+          <span><strong class="text-white">First audit arrives {info.firstAudit}.</strong> We review your site and send the first findings.</span>
         </li>
         <li class="flex items-start gap-3 text-sm text-muted">
           <span class="text-green-400 mt-0.5 shrink-0">✓</span>
