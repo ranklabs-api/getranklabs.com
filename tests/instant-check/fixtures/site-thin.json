@@ -1,0 +1,44 @@
+[
+  {
+    "url": "https://maplelawncare.example/",
+    "status_code": 200,
+    "title": "Maple Lawn Care",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Maple Lawn Care"
+    ],
+    "schema_types": [],
+    "schema_nodes": [],
+    "metrics": {
+      "title": "Maple Lawn Care",
+      "meta_description": "",
+      "h1_count": 1,
+      "h1_texts": [
+        "Maple Lawn Care"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Maple Lawn Care"
+        }
+      ],
+      "img_count": 2,
+      "img_no_alt": 1,
+      "has_canonical": false,
+      "canonical": "",
+      "has_og": false,
+      "has_viewport": false,
+      "word_count": 120,
+      "visible_text": "Maple Lawn Care mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow mow mow mow. mow mow mow mow",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": false,
+      "schema_types": [],
+      "schema_nodes": [],
+      "robots_txt": ""
+    }
+  }
+]

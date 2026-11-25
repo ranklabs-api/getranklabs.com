@@ -1,0 +1,429 @@
+[
+  {
+    "url": "https://northlandplumbing.example/",
+    "status_code": 200,
+    "title": "Northland Plumbing Co | Kansas City Plumbers",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Northland Plumbing Co | Kansas City Plumbers",
+      "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland."
+    ],
+    "schema_types": [
+      "Plumber"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Plumber",
+        "name": "Northland Plumbing Co",
+        "url": "https://northlandplumbing.example",
+        "telephone": "+18165550142",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1200 NE Vivion Rd",
+          "addressLocality": "Kansas City",
+          "addressRegion": "MO",
+          "postalCode": "64118"
+        }
+      }
+    ],
+    "metrics": {
+      "title": "Northland Plumbing Co | Kansas City Plumbers",
+      "meta_description": "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland.",
+      "h1_count": 1,
+      "h1_texts": [
+        "Kansas City Plumbers"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Kansas City Plumbers"
+        },
+        {
+          "level": 2,
+          "text": "Our services"
+        }
+      ],
+      "img_count": 4,
+      "img_no_alt": 0,
+      "has_canonical": true,
+      "canonical": "",
+      "has_og": true,
+      "has_viewport": true,
+      "word_count": 1040,
+      "visible_text": "Kansas City Plumbers service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. Our services service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Plumber"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Plumber",
+          "name": "Northland Plumbing Co",
+          "url": "https://northlandplumbing.example",
+          "telephone": "+18165550142",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1200 NE Vivion Rd",
+            "addressLocality": "Kansas City",
+            "addressRegion": "MO",
+            "postalCode": "64118"
+          }
+        }
+      ],
+      "robots_txt": "User-agent: *\nAllow: /\n\nSitemap: https://northlandplumbing.example/sitemap.xml\n"
+    }
+  },
+  {
+    "url": "https://northlandplumbing.example/about",
+    "status_code": 200,
+    "title": "About Northland Plumbing Co",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "About Northland Plumbing Co",
+      "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland."
+    ],
+    "schema_types": [
+      "Plumber"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Plumber",
+        "name": "Northland Plumbing Co",
+        "url": "https://northlandplumbing.example",
+        "telephone": "+18165550142",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1200 NE Vivion Rd",
+          "addressLocality": "Kansas City",
+          "addressRegion": "MO",
+          "postalCode": "64118"
+        }
+      }
+    ],
+    "metrics": {
+      "title": "About Northland Plumbing Co",
+      "meta_description": "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland.",
+      "h1_count": 1,
+      "h1_texts": [
+        "About us"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "About us"
+        }
+      ],
+      "img_count": 4,
+      "img_no_alt": 0,
+      "has_canonical": true,
+      "canonical": "",
+      "has_og": true,
+      "has_viewport": true,
+      "word_count": 880,
+      "visible_text": "About us history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history history. history history history history history history h",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Plumber"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Plumber",
+          "name": "Northland Plumbing Co",
+          "url": "https://northlandplumbing.example",
+          "telephone": "+18165550142",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1200 NE Vivion Rd",
+            "addressLocality": "Kansas City",
+            "addressRegion": "MO",
+            "postalCode": "64118"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://northlandplumbing.example/services",
+    "status_code": 200,
+    "title": "Plumbing Services | Northland Plumbing Co",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Plumbing Services | Northland Plumbing Co",
+      "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland."
+    ],
+    "schema_types": [
+      "Plumber"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Plumber",
+        "name": "Northland Plumbing Co",
+        "url": "https://northlandplumbing.example",
+        "telephone": "+18165550142",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1200 NE Vivion Rd",
+          "addressLocality": "Kansas City",
+          "addressRegion": "MO",
+          "postalCode": "64118"
+        }
+      }
+    ],
+    "metrics": {
+      "title": "Plumbing Services | Northland Plumbing Co",
+      "meta_description": "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland.",
+      "h1_count": 1,
+      "h1_texts": [
+        "Plumbing services"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Plumbing services"
+        },
+        {
+          "level": 2,
+          "text": "Drain cleaning"
+        }
+      ],
+      "img_count": 4,
+      "img_no_alt": 0,
+      "has_canonical": true,
+      "canonical": "",
+      "has_og": true,
+      "has_viewport": true,
+      "word_count": 1210,
+      "visible_text": "Plumbing services service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service Drain cleaning service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service service service service. service service service service s",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Plumber"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Plumber",
+          "name": "Northland Plumbing Co",
+          "url": "https://northlandplumbing.example",
+          "telephone": "+18165550142",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1200 NE Vivion Rd",
+            "addressLocality": "Kansas City",
+            "addressRegion": "MO",
+            "postalCode": "64118"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://northlandplumbing.example/faq",
+    "status_code": 200,
+    "title": "Plumbing FAQ | Northland Plumbing Co",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Plumbing FAQ | Northland Plumbing Co",
+      "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland."
+    ],
+    "schema_types": [
+      "Plumber",
+      "FAQPage"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Plumber",
+        "name": "Northland Plumbing Co",
+        "url": "https://northlandplumbing.example",
+        "telephone": "+18165550142",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1200 NE Vivion Rd",
+          "addressLocality": "Kansas City",
+          "addressRegion": "MO",
+          "postalCode": "64118"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you offer emergency plumbing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes."
+            }
+          }
+        ]
+      }
+    ],
+    "metrics": {
+      "title": "Plumbing FAQ | Northland Plumbing Co",
+      "meta_description": "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland.",
+      "h1_count": 1,
+      "h1_texts": [
+        "Frequently asked questions"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Frequently asked questions"
+        },
+        {
+          "level": 2,
+          "text": "Do you offer emergency plumbing?"
+        },
+        {
+          "level": 2,
+          "text": "How much does a water heater replacement cost?"
+        }
+      ],
+      "img_count": 4,
+      "img_no_alt": 0,
+      "has_canonical": true,
+      "canonical": "",
+      "has_og": true,
+      "has_viewport": true,
+      "word_count": 930,
+      "visible_text": "Frequently asked questions Do you offer emergency plumbing? answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer How much does a water heater replacement cost? answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer answer answer answer. answer answer answer answer more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more more more more more more. more more",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Plumber",
+        "FAQPage"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Plumber",
+          "name": "Northland Plumbing Co",
+          "url": "https://northlandplumbing.example",
+          "telephone": "+18165550142",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1200 NE Vivion Rd",
+            "addressLocality": "Kansas City",
+            "addressRegion": "MO",
+            "postalCode": "64118"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do you offer emergency plumbing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://northlandplumbing.example/contact",
+    "status_code": 200,
+    "title": "Contact Northland Plumbing Co",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Contact Northland Plumbing Co",
+      "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland."
+    ],
+    "schema_types": [
+      "Plumber"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Plumber",
+        "name": "Northland Plumbing Co",
+        "url": "https://northlandplumbing.example",
+        "telephone": "+18165550142",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1200 NE Vivion Rd",
+          "addressLocality": "Kansas City",
+          "addressRegion": "MO",
+          "postalCode": "64118"
+        }
+      }
+    ],
+    "metrics": {
+      "title": "Contact Northland Plumbing Co",
+      "meta_description": "Licensed Kansas City plumbers for repairs, water heaters and drain cleaning. Same-day service across the Northland.",
+      "h1_count": 1,
+      "h1_texts": [
+        "Contact us"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Contact us"
+        }
+      ],
+      "img_count": 4,
+      "img_no_alt": 0,
+      "has_canonical": true,
+      "canonical": "",
+      "has_og": true,
+      "has_viewport": true,
+      "word_count": 310,
+      "visible_text": "Contact us call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call call call. call call call call call",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Plumber"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Plumber",
+          "name": "Northland Plumbing Co",
+          "url": "https://northlandplumbing.example",
+          "telephone": "+18165550142",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1200 NE Vivion Rd",
+            "addressLocality": "Kansas City",
+            "addressRegion": "MO",
+            "postalCode": "64118"
+          }
+        }
+      ]
+    }
+  }
+]

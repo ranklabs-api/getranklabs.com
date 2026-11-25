@@ -1,0 +1,291 @@
+{
+  "source": "ranklabs-app@6ea7afb",
+  "fixture": "site-strong.json",
+  "geo": {
+    "chatgpt": {
+      "score": 100,
+      "grade": "A",
+      "earned": 100,
+      "max": 100,
+      "items": [
+        {
+          "id": "chatgpt_faq_direct_answer",
+          "label": "Direct-Answer Content",
+          "weight": 35,
+          "status": "pass",
+          "evidence": "FAQPage markup on 1/5 indexable pages; visible Q&A structure on 1/5"
+        },
+        {
+          "id": "chatgpt_entity_identity",
+          "label": "Business Entity Identity",
+          "weight": 25,
+          "status": "pass",
+          "evidence": "Plumber \"Northland Plumbing Co\" with an address in structured data on 5/5 indexable pages"
+        },
+        {
+          "id": "chatgpt_content_depth",
+          "label": "Substantial Content Depth",
+          "weight": 15,
+          "status": "pass",
+          "evidence": "At least 800 words on 4/5 indexable pages"
+        },
+        {
+          "id": "chatgpt_gptbot_access",
+          "label": "GPTBot Crawl Access",
+          "weight": 10,
+          "status": "pass",
+          "evidence": "robots.txt allows GPTBot"
+        },
+        {
+          "id": "chatgpt_schema_markup",
+          "label": "Structured Data / Schema Markup",
+          "weight": 8,
+          "status": "pass",
+          "evidence": "Schema detected on 5/5 indexable pages"
+        },
+        {
+          "id": "chatgpt_og_social",
+          "label": "Open Graph & Social Signals",
+          "weight": 4,
+          "status": "pass",
+          "evidence": "Open Graph detected on 5/5 indexable pages"
+        },
+        {
+          "id": "chatgpt_meta_description",
+          "label": "Meta Description Optimization",
+          "weight": 3,
+          "status": "pass",
+          "evidence": "Valid meta descriptions on 5/5 indexable pages"
+        }
+      ],
+      "engine": "ChatGPT",
+      "name": "ChatGPT",
+      "icon": "🤖",
+      "tagline": "Bing + GPTBot",
+      "source": "Bing + GPTBot"
+    },
+    "gemini": {
+      "score": 66,
+      "grade": "C",
+      "earned": 66,
+      "max": 100,
+      "items": [
+        {
+          "id": "gemini_faq_direct_answer",
+          "label": "FAQ & Direct-Answer Content",
+          "weight": 25,
+          "status": "pass",
+          "evidence": "FAQPage markup on 1/5 indexable pages; visible Q&A structure on 1/5"
+        },
+        {
+          "id": "gemini_entity_identity",
+          "label": "Business Entity Identity",
+          "weight": 20,
+          "status": "pass",
+          "evidence": "Plumber \"Northland Plumbing Co\" with an address in structured data on 5/5 indexable pages"
+        },
+        {
+          "id": "gemini_gbp",
+          "label": "Google Business Profile Optimization",
+          "weight": 18,
+          "status": "needs_verification",
+          "evidence": "no GBP data available — needs verification"
+        },
+        {
+          "id": "gemini_reviews",
+          "label": "Review & Reputation Monitoring",
+          "weight": 12,
+          "status": "needs_verification",
+          "evidence": "review count and rating require manual verification (no API data available)"
+        },
+        {
+          "id": "gemini_content_depth",
+          "label": "Substantial Content Depth",
+          "weight": 10,
+          "status": "pass",
+          "evidence": "At least 800 words on 4/5 indexable pages"
+        },
+        {
+          "id": "gemini_schema_markup",
+          "label": "Structured Data / Schema Markup",
+          "weight": 5,
+          "status": "pass",
+          "evidence": "Schema detected on 5/5 indexable pages"
+        },
+        {
+          "id": "gemini_page_speed",
+          "label": "Page Speed Optimization (<3s)",
+          "weight": 4,
+          "status": "needs_work",
+          "evidence": "load time not measured"
+        },
+        {
+          "id": "gemini_mobile",
+          "label": "Mobile-Friendly Verified",
+          "weight": 3,
+          "status": "pass",
+          "evidence": "Viewport metadata on 5/5 indexable pages"
+        },
+        {
+          "id": "gemini_title_tags",
+          "label": "Title Tags & Meta Strategy",
+          "weight": 3,
+          "status": "pass",
+          "evidence": "Title tags present on 5/5 indexable pages"
+        }
+      ],
+      "engine": "Gemini",
+      "name": "Gemini",
+      "icon": "🔍",
+      "tagline": "Google + Knowledge Graph",
+      "source": "Google + Knowledge Graph"
+    },
+    "claude": {
+      "score": 80,
+      "grade": "B",
+      "earned": 80,
+      "max": 100,
+      "items": [
+        {
+          "id": "claude_faq_direct_answer",
+          "label": "FAQ & Direct-Answer Content",
+          "weight": 30,
+          "status": "pass",
+          "evidence": "FAQPage markup on 1/5 indexable pages; visible Q&A structure on 1/5"
+        },
+        {
+          "id": "claude_entity_identity",
+          "label": "Business Entity Identity",
+          "weight": 20,
+          "status": "pass",
+          "evidence": "Plumber \"Northland Plumbing Co\" with an address in structured data on 5/5 indexable pages"
+        },
+        {
+          "id": "claude_content_depth",
+          "label": "Substantial Content Depth",
+          "weight": 20,
+          "status": "pass",
+          "evidence": "At least 800 words on 4/5 indexable pages"
+        },
+        {
+          "id": "claude_citation_consistency",
+          "label": "Citation Consistency (NAP)",
+          "weight": 12,
+          "status": "needs_verification",
+          "evidence": "NAP consistency across GBP, Facebook, Foursquare requires manual verification"
+        },
+        {
+          "id": "claude_backlinks",
+          "label": "Authoritative Backlink Building",
+          "weight": 8,
+          "status": "needs_verification",
+          "evidence": "backlink data not available — needs verification"
+        },
+        {
+          "id": "claude_claudebot_access",
+          "label": "ClaudeBot Crawl Access",
+          "weight": 6,
+          "status": "pass",
+          "evidence": "robots.txt allows ClaudeBot"
+        },
+        {
+          "id": "claude_og_tags",
+          "label": "Open Graph Tags",
+          "weight": 4,
+          "status": "pass",
+          "evidence": "Open Graph detected on 5/5 indexable pages"
+        }
+      ],
+      "engine": "Claude",
+      "name": "Claude",
+      "icon": "🧠",
+      "tagline": "Brave + ClaudeBot",
+      "source": "Brave + ClaudeBot"
+    },
+    "perplexity": {
+      "score": 90,
+      "grade": "A",
+      "earned": 90,
+      "max": 100,
+      "items": [
+        {
+          "id": "perplexity_faq_content",
+          "label": "FAQ & Direct-Answer Content",
+          "weight": 35,
+          "status": "pass",
+          "evidence": "FAQPage markup on 1/5 indexable pages; visible Q&A structure on 1/5"
+        },
+        {
+          "id": "perplexity_entity_identity",
+          "label": "Business Entity Identity",
+          "weight": 20,
+          "status": "pass",
+          "evidence": "Plumber \"Northland Plumbing Co\" with an address in structured data on 5/5 indexable pages"
+        },
+        {
+          "id": "perplexity_content_depth",
+          "label": "Substantial Content Depth",
+          "weight": 15,
+          "status": "pass",
+          "evidence": "At least 800 words on 4/5 indexable pages"
+        },
+        {
+          "id": "perplexity_fresh_content",
+          "label": "Fresh Content Signals",
+          "weight": 10,
+          "status": "needs_verification",
+          "evidence": "blog freshness check did not run this week (scan skipped or failed) — unmeasured, not counted against you"
+        },
+        {
+          "id": "perplexity_bot_access",
+          "label": "PerplexityBot Crawl Access",
+          "weight": 8,
+          "status": "pass",
+          "evidence": "robots.txt allows PerplexityBot"
+        },
+        {
+          "id": "perplexity_crawlable_structure",
+          "label": "Clean, Crawlable Page Structure",
+          "weight": 7,
+          "status": "pass",
+          "evidence": "Exactly one H1 on 5/5 indexable pages"
+        },
+        {
+          "id": "perplexity_schema_markup",
+          "label": "Structured Data for Source Citation",
+          "weight": 5,
+          "status": "pass",
+          "evidence": "Schema detected on 5/5 indexable pages"
+        }
+      ],
+      "engine": "Perplexity",
+      "name": "Perplexity",
+      "icon": "⚡",
+      "tagline": "Proprietary + Google",
+      "source": "Proprietary + Google"
+    },
+    "overall_score": 84,
+    "coverage": {
+      "pages_evaluated": 5,
+      "schema": 5,
+      "open_graph": 5,
+      "viewport": 5,
+      "valid_meta_description": 5,
+      "single_h1": 5,
+      "substantial_content": 4,
+      "faq_markup": 1,
+      "qa_structure": 1
+    },
+    "summary": "",
+    "methodology": {
+      "content_depth": "share_v1"
+    },
+    "content_depth_scoring_change": {
+      "previous_method": "all_pages",
+      "new_method": "share_v1",
+      "before": 69,
+      "after": 84,
+      "landing": null
+    }
+  }
+}

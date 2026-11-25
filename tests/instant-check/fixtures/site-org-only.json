@@ -1,0 +1,193 @@
+[
+  {
+    "url": "https://brightlinebooks.example/",
+    "status_code": 200,
+    "title": "Brightline Bookkeeping",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Brightline Bookkeeping",
+      "Monthly bookkeeping and payroll for small businesses in Overland Park and Johnson County."
+    ],
+    "schema_types": [
+      "Organization"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Brightline Bookkeeping",
+        "url": "https://brightlinebooks.example",
+        "logo": "https://brightlinebooks.example/logo.png"
+      }
+    ],
+    "metrics": {
+      "title": "Brightline Bookkeeping",
+      "meta_description": "Monthly bookkeeping and payroll for small businesses in Overland Park and Johnson County.",
+      "h1_count": 1,
+      "h1_texts": [
+        "Bookkeeping for small businesses"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Bookkeeping for small businesses"
+        },
+        {
+          "level": 2,
+          "text": "Why us?"
+        }
+      ],
+      "img_count": 3,
+      "img_no_alt": 2,
+      "has_canonical": false,
+      "canonical": "",
+      "has_og": true,
+      "has_viewport": true,
+      "word_count": 640,
+      "visible_text": "Bookkeeping for small businesses books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books books books. books books books books books Why us? trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust trust trust. trust trust trust trust trust",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Organization"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Brightline Bookkeeping",
+          "url": "https://brightlinebooks.example",
+          "logo": "https://brightlinebooks.example/logo.png"
+        }
+      ],
+      "robots_txt": "User-agent: *\nDisallow: /wp-admin/\n"
+    }
+  },
+  {
+    "url": "https://brightlinebooks.example/services/",
+    "status_code": 200,
+    "title": "Services",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Services",
+      "Our services."
+    ],
+    "schema_types": [
+      "Organization"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Brightline Bookkeeping",
+        "url": "https://brightlinebooks.example",
+        "logo": "https://brightlinebooks.example/logo.png"
+      }
+    ],
+    "metrics": {
+      "title": "Services",
+      "meta_description": "Our services.",
+      "h1_count": 1,
+      "h1_texts": [
+        "Services"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Services"
+        }
+      ],
+      "img_count": 0,
+      "img_no_alt": 0,
+      "has_canonical": false,
+      "canonical": "",
+      "has_og": false,
+      "has_viewport": true,
+      "word_count": 420,
+      "visible_text": "Services payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll payroll payroll payroll payroll. payroll payroll payroll",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Organization"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Brightline Bookkeeping",
+          "url": "https://brightlinebooks.example",
+          "logo": "https://brightlinebooks.example/logo.png"
+        }
+      ]
+    }
+  },
+  {
+    "url": "https://brightlinebooks.example/contact/",
+    "status_code": 200,
+    "title": "Contact Brightline",
+    "content_type": "text/html; charset=utf-8",
+    "noindex": false,
+    "content_snippets": [
+      "Contact Brightline",
+      "Call or email Brightline Bookkeeping to set up a free 20-minute consultation this week."
+    ],
+    "schema_types": [
+      "Organization"
+    ],
+    "schema_nodes": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Brightline Bookkeeping",
+        "url": "https://brightlinebooks.example",
+        "logo": "https://brightlinebooks.example/logo.png"
+      }
+    ],
+    "metrics": {
+      "title": "Contact Brightline",
+      "meta_description": "Call or email Brightline Bookkeeping to set up a free 20-minute consultation this week.",
+      "h1_count": 1,
+      "h1_texts": [
+        "Contact"
+      ],
+      "heading_outline": [
+        {
+          "level": 1,
+          "text": "Contact"
+        }
+      ],
+      "img_count": 0,
+      "img_no_alt": 0,
+      "has_canonical": false,
+      "canonical": "",
+      "has_og": true,
+      "has_viewport": true,
+      "word_count": 150,
+      "visible_text": "Contact email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email email. email email email email email email",
+      "content_snippets": [],
+      "meta_robots": "",
+      "x_robots_tag": "",
+      "noindex": false,
+      "has_schema": true,
+      "schema_types": [
+        "Organization"
+      ],
+      "schema_nodes": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Brightline Bookkeeping",
+          "url": "https://brightlinebooks.example",
+          "logo": "https://brightlinebooks.example/logo.png"
+        }
+      ]
+    }
+  }
+]
