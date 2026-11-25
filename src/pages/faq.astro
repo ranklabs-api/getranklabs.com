@@ -106,10 +106,18 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
         },
         {
           "@type": "Question",
+          "name": "What does the free AI check include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You get an AI Optimization on-page score, plus live checks in Perplexity and Claude. ${aiReadinessHonestyLine} The live checks are a snapshot of one buyer query, clearly labeled and kept separate from that score. They are not a ranking. The check does not change your site. A fuller audit, when you ask for one, is still reviewed by a person. We have not published a response time for that follow-up, so we will not promise one."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you check what ChatGPT or other AI assistants say about my business?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "${aiReadinessHonestyLine} Live AI-answer checks, when included in a report, are clearly labeled and kept separate from the AI Optimization on-page score."
+            "text": "${aiReadinessHonestyLine} The free AI check also runs live checks in Perplexity and Claude. Those live checks are a snapshot of one buyer query, clearly labeled and kept separate from the on-page score. The free check does not run live checks in ChatGPT or Gemini. In a paid report, live AI-answer checks, when included, are clearly labeled and kept separate from the on-page score."
           }
         },
         {
@@ -226,9 +234,16 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
       </details>
 
       <details class="group bg-white/5 border border-white/10 rounded-lg">
+        <summary class="p-6 cursor-pointer text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">What does the free AI check include?</summary>
+        <p class="px-6 pb-6 -mt-2 text-gray-400 leading-relaxed">
+          You get an AI Optimization on-page score, plus live checks in Perplexity and Claude. {aiReadinessHonestyLine} The live checks are a snapshot of one buyer query, clearly labeled and kept separate from that score. They are not a ranking. The check does not change your site. A fuller audit, when you ask for one, is still reviewed by a person. We have not published a response time for that follow-up, so we will not promise one.
+        </p>
+      </details>
+
+      <details class="group bg-white/5 border border-white/10 rounded-lg">
         <summary class="p-6 cursor-pointer text-lg font-semibold text-white group-open:text-cyan-400 transition-colors">Do you check what ChatGPT or other AI assistants say about my business?</summary>
         <p class="px-6 pb-6 -mt-2 text-gray-400 leading-relaxed">
-          {aiReadinessHonestyLine} Live AI-answer checks, when included in a report, are clearly labeled and kept separate from the AI Optimization on-page score.
+          {aiReadinessHonestyLine} The free AI check also runs live checks in Perplexity and Claude. Those live checks are a snapshot of one buyer query, clearly labeled and kept separate from the on-page score. The free check does not run live checks in ChatGPT or Gemini. In a paid report, live AI-answer checks, when included, are clearly labeled and kept separate from the on-page score.
         </p>
       </details>
 
