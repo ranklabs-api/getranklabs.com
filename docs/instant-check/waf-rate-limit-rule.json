@@ -1,0 +1,11 @@
+{
+  "description": "Instant check burst limit (documented only; not applied)",
+  "expression": "(http.request.uri.path eq \"/api/instant-check\" and http.request.method eq \"POST\")",
+  "action": "block",
+  "ratelimit": {
+    "characteristics": ["ip.src", "cf.colo.id"],
+    "period": 10,
+    "requests_per_period": 10,
+    "mitigation_timeout": 60
+  }
+}

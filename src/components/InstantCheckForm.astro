@@ -1,0 +1,26 @@
+---
+const siteKey = import.meta.env.PUBLIC_INSTANT_CHECK_TURNSTILE_SITE_KEY;
+const enabled = import.meta.env.PUBLIC_INSTANT_CHECK_FORM === 'true' && siteKey;
+---
+<!-- Placeholder copy; subject to editorial review. -->
+{enabled && <form id="instant-check-form">
+  <label>Website <input name="website" required /></label>
+  <label>Business name <input name="business_name" required maxlength="100" /></label>
+  <label>Service <input name="service" required maxlength="60" /></label>
+  <label>City <input name="city" required maxlength="60" /></label>
+  <label>Email <input name="email" type="email" required /></label>
+  <div class="cf-turnstile" data-sitekey={siteKey} data-action="instant_check"></div>
+  <button type="submit">Check</button><output aria-live="polite"></output>
+</form>}
+{enabled && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+{enabled && <script is:inline>
+  document.getElementById('instant-check-form')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const output = form.querySelector('output');
+    try {
+      const response = await fetch('/api/instant-check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) });
+      output.textContent = JSON.stringify(await response.json());
+    } catch { output.textContent = 'Unable to complete the check.'; }
+  });
+</script>}
