@@ -15,7 +15,7 @@ If your site doesn't have schema markup, you're invisible to the algorithms that
 
 ## What Is Schema Markup?
 
-Schema markup is code you add to your website that tells search engines exactly what your content means — not just what it says. It's the difference between an AI seeing "we help businesses grow" and an AI seeing "this is a LocalBusiness named Rank Labs, located in Florida, offering SEO and GEO services, rated 4.9 stars."
+Schema markup is code you add to your website that tells search engines exactly what your content means — not just what it says. It's the difference between an AI seeing "we help businesses grow" and an AI seeing "this is a LocalBusiness named Rank Labs, located in Florida, that provides SEO and GEO services, rated 4.9 stars."
 
 Schema.org defines hundreds of types. The ones that matter most for AI search are:
 
