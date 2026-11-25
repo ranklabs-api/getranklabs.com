@@ -13,9 +13,9 @@ export const REPORT_SLUG = 'rank-labs-visibility-report';
 export const reportCardBullets = [
   'Weekly SEO audit report email (100+ checks), with a prioritized fix list',
   'Monthly email report (first week of each month): your Google search, Business Profile, traffic, leads & AI Optimization score vs. last month',
-  'Google organic + Maps (local pack) rankings for 25 keywords',
+  'Google organic + Maps (local pack) rankings for the keywords we track for you',
   'Ranking keywords & backlink summary',
-  'Full technical crawl + Core Web Vitals, schema, sitemap/robots, SSL & email-domain (DNS) checks',
+  'Full technical crawl + Core Web Vitals, schema, sitemap/robots, and SSL checks',
   'AI Optimization on-page score, with sub-scores for ChatGPT, Gemini, Claude & Perplexity (schema, direct-answer structure, AI-crawler access & freshness).',
   'Business-detail conflict checks across 10 listing sites (name, address, phone) + reviews on Google and one other site',
   '3-competitor comparison',
@@ -34,7 +34,7 @@ export const reportFeatureGroups = [
   {
     title: 'SEO',
     items: [
-      'Google organic and Maps (local pack) rankings for 25 keywords',
+      'Google organic and Maps (local pack) rankings for the keywords we track for you',
       'Ranking keywords (keywords you rank for)',
       'Backlink summary',
     ],
@@ -54,7 +54,7 @@ export const reportFeatureGroups = [
       'Core Web Vitals',
       'Schema checks',
       'Sitemap / robots checks',
-      'SSL and email-domain (DNS) setup checks',
+      'SSL checks',
     ],
   },
   {
@@ -81,4 +81,4 @@ export const aiReadinessHonestyLine =
 
 // Plain-text summary for meta / JSON-LD / FAQ.
 export const reportSummaryText =
-  'Report-only, month-to-month report covering SEO + AI Optimization (on-page): Google organic and Maps (local pack) rankings for 25 keywords, ranking keywords, backlink summary, full technical crawl, Core Web Vitals, schema, sitemap/robots, SSL and email-domain (DNS) setup checks, an AI Optimization on-page score with sub-scores for ChatGPT, Gemini, Claude and Perplexity covering schema, direct-answer structure and AI-crawler access (on-page signals), business-detail conflict checks on Google, Bing, Apple Maps, Facebook, Yelp, BBB, Yellow Pages, Foursquare, MapQuest, and Angi or one industry directory, reviews on Google plus one other site, and a 3-competitor comparison. Optional with client access: GA4, Google Search Console, and Google Business Profile stats. Delivered as a weekly SEO audit report email plus a separate monthly email report (first week of each month).';
+  'Report-only, month-to-month report covering SEO + AI Optimization (on-page): Google organic and Maps (local pack) rankings for the keywords we track for you, ranking keywords, backlink summary, full technical crawl, Core Web Vitals, schema, sitemap/robots, SSL checks, an AI Optimization on-page score with sub-scores for ChatGPT, Gemini, Claude and Perplexity covering schema, direct-answer structure and AI-crawler access (on-page signals), business-detail conflict checks on Google, Bing, Apple Maps, Facebook, Yelp, BBB, Yellow Pages, Foursquare, MapQuest, and Angi or one industry directory, reviews on Google plus one other site, and a 3-competitor comparison. Optional with client access: GA4, Google Search Console, and Google Business Profile stats. Delivered as a weekly SEO audit report email plus a separate monthly email report (first week of each month).';
