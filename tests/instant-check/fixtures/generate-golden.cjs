@@ -23,7 +23,7 @@ const os = require('node:os');
 const path = require('node:path');
 
 const APP = process.env.RANKLABS_APP_DIR || '/home/box/ranklabs/runtime/ranklabs-app';
-const PIN = '195f6e9';
+const PIN = '6ea7afb';
 
 const pinned = fs.mkdtempSync(path.join(os.tmpdir(), `ranklabs-app-${PIN}-`));
 process.on('exit', () => fs.rmSync(pinned, { recursive: true, force: true }));

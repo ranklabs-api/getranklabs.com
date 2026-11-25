@@ -1,9 +1,11 @@
 // Instant check — probe engine registry.
 //
-// Two engines per check: Perplexity Sonar always, plus one second engine
-// chosen by INSTANT_CHECK_SECOND_ENGINE ('claude-haiku', the default, or
-// 'gpt-5-mini'). Each engine has its own isolated key env var; the generic
-// provider key names used elsewhere are never read.
+// Lean v1 always runs two engines: Perplexity Sonar plus Claude Haiku.
+// INSTANT_CHECK_SECOND_ENGINE cannot select another engine in this build —
+// gpt-5-mini stays in the tree (openai.js + ENGINES registry) but unkeyed
+// and unselectable until an explicit future change adds it to SECOND_ENGINES.
+// Isolated key env names only; the generic provider key names used elsewhere
+// are never read.
 
 import * as anthropic from "./anthropic.js";
 import * as openai from "./openai.js";
@@ -15,7 +17,8 @@ export const ENGINES = Object.freeze({
   "gpt-5-mini": { ...openai, keyEnv: "INSTANT_CHECK_OPENAI_API_KEY" },
 });
 
-export const SECOND_ENGINES = ["claude-haiku", "gpt-5-mini"];
+// Lean v1 selectable second engines. gpt-5-mini is intentionally absent.
+export const SECOND_ENGINES = ["claude-haiku"];
 export const DEFAULT_SECOND_ENGINE = "claude-haiku";
 
 export function selectEngines(env = {}) {

@@ -153,6 +153,8 @@ function toPage(fetched) {
     content_snippets: [metrics.title, metrics.meta_description, ...metrics.content_snippets].filter(Boolean),
     schema_types: metrics.schema_types,
     schema_nodes: metrics.schema_nodes,
+    has_faq_schema: !!metrics.has_faq_schema,
+    faq_pairs: metrics.faq_pairs || [],
     headers: fetched.headers,
     truncated: fetched.truncated,
     metrics,

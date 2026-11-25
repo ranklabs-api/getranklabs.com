@@ -39,3 +39,52 @@ for (const [name,url,cost] of [['perplexity','https://api.perplexity.ai/v1/agent
  assert.equal((await mod.run({prompt:'question',fetchImpl})).status,'unavailable'); assert.equal(calls,0);
  const result=await mod.run({prompt:'question',apiKey:'test-secret',fetchImpl}); assert.equal(result.status,'succeeded'); assert.equal(result.actualMicros,cost); const body=JSON.parse(opts.body); assert.equal(body.model,mod.MODEL); assert.equal(body.tools[0].type,name==='anthropic'?'web_search_20250305':'web_search'); if(name==='anthropic') {assert.equal(body.tools[0].max_uses,1);assert.equal(opts.headers['x-api-key'],'test-secret')} else {assert.equal(body.max_tool_calls,1);assert.equal(opts.headers.authorization,'Bearer test-secret')}
 });
+test('extract captures #228 FAQ signals and a 20k visible_text cap', async () => {
+  const {extractMetrics} = await load('extract.js');
+  const answer = 'This is a long enough answer that easily clears the twenty word bar for a real FAQ pair and should count.';
+  const html = `<html><body>
+    <dl><dt>How does billing work?</dt><dd>${answer}</dd></dl>
+    <details><summary>What is included?</summary><p>${answer}</p></details>
+    <script type="application/ld+json">${JSON.stringify({ "@graph": [
+      ...Array.from({length: 40}, (_, i) => ({ "@type": "Organization", name: `Org ${i}` })),
+      { "@type": "FAQPage", mainEntity: [] }
+    ] })}</script>
+  </body></html>`;
+  const m = extractMetrics(html);
+  assert.equal(m.has_faq_schema, true);
+  assert.equal(m.schema_nodes.some((n) => n['@type'] === 'FAQPage'), false, 'FAQPage past the 40-node cap must still set has_faq_schema');
+  assert.equal(m.faq_pairs.length, 2);
+  assert.equal(m.faq_pairs[0].source, 'dt');
+  assert.equal(m.faq_pairs[1].source, 'summary');
+  assert.match(m.faq_pairs[0].question, /billing/i);
+  const long = extractMetrics(`<html><body><p>${'word '.repeat(5000)}</p></body></html>`);
+  assert.equal(long.visible_text.length, 20000);
+  assert.ok(long.word_count > 4000);
+});
+test('AutoDealer with an address is a specific entity, and faq_pairs score as Q&A', async () => {
+  const {extractEntity, pageHasQaStructure, scoreContentDepthSignal, CONTENT_DEPTH_SHARE_V1} = await load('score.js');
+  const entity = extractEntity([{ "@type": "AutoDealer", name: "Northside Autos", address: { "@type": "PostalAddress", streetAddress: "1 Main", addressLocality: "Austin", addressRegion: "TX" } }]);
+  assert.equal(entity.found, true);
+  assert.equal(entity.specificType, 'AutoDealer');
+  const answer = 'This is a long enough answer that easily clears the twenty word bar for a real FAQ pair and should count.';
+  assert.equal(pageHasQaStructure({ metrics: { faq_pairs: [
+    { question: 'How does billing work?', answer, source: 'dt' },
+    { question: 'What is included?', answer, source: 'summary' },
+  ] } }), true);
+  const depth = scoreContentDepthSignal([
+    { metrics: { word_count: 1000 } },
+    { metrics: { word_count: 900 } },
+    { metrics: { word_count: 200 } },
+  ]);
+  assert.equal(depth.status, 'partial');
+  assert.equal(depth.share, 2/3);
+  assert.ok(CONTENT_DEPTH_SHARE_V1 === 'share_v1');
+});
+test('INSTANT_CHECK_SECOND_ENGINE cannot select gpt-5-mini in Lean v1', async () => {
+  const {selectEngines, SECOND_ENGINES, DEFAULT_SECOND_ENGINE} = await load('probes/index.js');
+  assert.deepEqual(SECOND_ENGINES, ['claude-haiku']);
+  assert.equal(DEFAULT_SECOND_ENGINE, 'claude-haiku');
+  assert.deepEqual(selectEngines({}), ['perplexity-sonar', 'claude-haiku']);
+  assert.deepEqual(selectEngines({ INSTANT_CHECK_SECOND_ENGINE: 'gpt-5-mini' }), ['perplexity-sonar', 'claude-haiku']);
+  assert.deepEqual(selectEngines({ INSTANT_CHECK_SECOND_ENGINE: 'claude-haiku' }), ['perplexity-sonar', 'claude-haiku']);
+});

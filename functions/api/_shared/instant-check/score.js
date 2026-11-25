@@ -1,7 +1,10 @@
-// Vendored from ranklabs-app@195f6e9 (agents/report/index.js scoreEngines,
-// robotsAllowsBot, scoreFaqSignal, scoreEntitySignal, pageHasQaStructure,
-// buildGEOScores site-wide projection; agents/lib/agent-readiness.js
-// extractEntity and its helpers; agents/lib/schema-business-types.js).
+// Vendored from ranklabs-app@6ea7afb (agents/report/index.js scoreEngines,
+// robotsAllowsBot, scoreFaqSignal, scoreEntitySignal, scoreContentDepthSignal
+// (share_v1), pageHasQaStructure / pageHasFaqMarkup (#228 faq_pairs and
+// has_faq_schema), buildGEOScores site-wide projection and
+// methodology.content_depth stamp; agents/lib/agent-readiness.js extractEntity
+// and its helpers including AutoDealer and sibling automotive subtypes
+// (#227); agents/lib/schema-business-types.js).
 // Do not edit logic here; re-vendor from a pinned SHA and regenerate the
 // golden fixtures (tests/instant-check/fixtures/generate-golden.cjs).
 //
@@ -13,7 +16,11 @@
 // it when that context is absent (needs_verification). freshContent is null,
 // as buildGEOScores passes when the blog step did not run, so the fresh
 // content item is needs_verification too. Golden parity with the source is
-// asserted by tests/instant-check/score-golden.test.mjs.
+// asserted by tests/instant-check/pr2.test.mjs ("score matches pinned golden
+// fixtures"). The weekly-report note completion path (filesystem lookup,
+// customer-facing explanation) is not vendored; scoreSite returns the same
+// draft content_depth_scoring_change object buildGEOScores emits before
+// generateReport() completes it.
 //
 // onPageFindings() at the bottom is NOT vendored: it is the instant check's
 // own short, plain-English list built from the same signals.
@@ -101,6 +108,8 @@ const SPECIFIC_BUSINESS_TYPES = new Set([
   'LegalService', 'Attorney', 'Notary', 'AccountingService', 'FinancialService', 'InsuranceAgency',
   'RealEstateAgent', 'HomeAndConstructionBusiness', 'Plumber', 'Electrician', 'HVACBusiness',
   'RoofingContractor', 'GeneralContractor', 'MovingCompany', 'AutomotiveBusiness', 'AutoRepair',
+  'AutoDealer', 'AutoBodyShop', 'AutoPartsStore', 'AutoRental', 'AutoWash', 'MotorcycleDealer',
+  'MotorcycleRepair', 'TireShop',
   'Store', 'ClothingStore', 'GroceryStore', 'HardwareStore', 'JewelryStore', 'FurnitureStore', 'PetStore',
   'Restaurant', 'CafeOrCoffeeShop', 'Bakery', 'BarOrPub', 'FoodEstablishment',
   'HealthAndBeautyBusiness', 'DaySpa', 'HairSalon', 'BeautySalon', 'NailSalon', 'TattooParlor',
@@ -439,13 +448,28 @@ function scoreEngines(crawlMetrics, context) {
     };
   }
 
+  // Multi-page crawls score by the share of indexable pages passing the
+  // 800-word bar; a single-page competitor crawl keeps the homepage check.
+  const depthSignal = context?.pages?.length
+    ? scoreContentDepthSignal(context.pages, { method: context.contentDepthMethod || CONTENT_DEPTH_SHARE_V1 })
+    : null;
+
   function contentDepthItem(id, weight) {
+    const label = 'Substantial Content Depth';
+    if (!depthSignal) {
+      return {
+        id, label, weight,
+        status: wordCount >= 800 ? 'pass' : 'needs_work',
+        evidence: `homepage word count: ${wordCount} (${wordCount >= 800 ? 'meets' : 'below'} 800-word threshold)`,
+      };
+    }
     return {
-      id,
-      label: 'Substantial Content Depth',
-      weight,
-      status: wordCount >= 800 ? 'pass' : 'needs_work',
-      evidence: `homepage word count: ${wordCount} (${wordCount >= 800 ? 'meets' : 'below'} 800-word threshold)`,
+      id, label, weight,
+      status: depthSignal.status,
+      ...(depthSignal.status === 'partial'
+        ? { earned_weight: Math.min(weight - 1, Math.round(weight * depthSignal.share)) }
+        : {}),
+      evidence: depthSignal.evidence,
     };
   }
 
@@ -665,7 +689,9 @@ function buildGEOScores(crawlData) {
   // Feed the existing engine scorer a conservative site-wide projection: an
   // on-page signal passes only when every indexable crawled page passes. The
   // homepage value remains only for fields that are truly site-level
-  // (robots.txt) or for evidence text after coverage has passed.
+  // (robots.txt) or for evidence text after coverage has passed. Content depth
+  // is the exception: scoreEngines() scores it by share of passing pages via
+  // context.pages, so the min word_count below only feeds the H1/structure check.
   const m = pageMetrics.length ? {
     ...homepageMetrics,
     has_schema: all(metrics => metrics.has_schema),
@@ -732,7 +758,8 @@ function buildGEOScores(crawlData) {
     for (const item of result[engine].items) if (coverageEvidence[item.id]) item.evidence = coverageEvidence[item.id];
   }
 
-  return {
+  const method = context.contentDepthMethod || CONTENT_DEPTH_SHARE_V1;
+  const payload = {
     chatgpt:       result.chatgpt,
     gemini:        result.gemini,
     claude:        result.claude,
@@ -741,6 +768,20 @@ function buildGEOScores(crawlData) {
     coverage: siteCoverage,
     summary:       '',
   };
+  if (method === CONTENT_DEPTH_SHARE_V1) {
+    payload.methodology = { content_depth: CONTENT_DEPTH_SHARE_V1 };
+    if (indexablePages.length) {
+      const before = scoreEngines(m, { ...context, contentDepthMethod: CONTENT_DEPTH_ALL_PAGES });
+      payload.content_depth_scoring_change = {
+        previous_method: CONTENT_DEPTH_ALL_PAGES,
+        new_method: CONTENT_DEPTH_SHARE_V1,
+        before: before.overall_score,
+        after: result.overall_score,
+        landing: null,
+      };
+    }
+  }
+  return payload;
 }
 
 // The crawler already flattens @graph wrappers into metrics.schema_nodes
@@ -752,6 +793,7 @@ function pageSchemaNodes(page) {
 }
 
 function pageHasFaqMarkup(page) {
+  if (page?.has_faq_schema || citationPageMetrics(page).has_faq_schema) return true;
   return pageSchemaNodes(page).some(node => {
     const types = node && node['@type'];
     return Array.isArray(types) ? types.includes('FAQPage') : types === 'FAQPage';
@@ -774,9 +816,15 @@ const FAQ_SECTION_RE = /\b(faqs?|frequently asked|common questions|q\s*&\s*a)\b/
 // followed by QA_MIN_ANSWER_WORDS of visible text before the next heading. That
 // answer check is what keeps marketing headings like "Ready to get started?"
 // out. The crawler stores the heading outline but not sibling content, so
-// answers are measured by locating headings inside metrics.visible_text, which
-// is capped at 4000 chars. A heading past that cap cannot be confirmed and does
-// not count, and neither do dt/summary pairs, which the crawler doesn't collect.
+// heading answers are measured by locating headings inside
+// metrics.visible_text, which is capped at 20000 chars; a heading past that cap
+// cannot be confirmed and does not count. The crawler also collects
+// <dl><dt>/<dd> and <details><summary> pairs as faq_pairs, held to the same
+// question-like + QA_MIN_ANSWER_WORDS bar so nav <details> menus and key-value
+// <dl> spec tables don't count. Questions from both sources are deduplicated.
+const countWords = text => text.split(/\s+/).filter(Boolean).length;
+const isQuestionLike = text => text.endsWith('?') || FAQ_SECTION_RE.test(text);
+
 function pageHasQaStructure(page) {
   const metrics = citationPageMetrics(page);
   const text = (metrics.visible_text || '').toLowerCase();
@@ -789,12 +837,18 @@ function pageHasQaStructure(page) {
     cursor = at + heading.length;
     located.push({ heading, at, end: cursor });
   }
-  const answered = located.filter((item, index) => {
-    if (!item.heading.endsWith('?') && !FAQ_SECTION_RE.test(item.heading)) return false;
+  const answered = new Set(located.filter((item, index) => {
+    if (!isQuestionLike(item.heading)) return false;
     const answer = text.slice(item.end, located[index + 1]?.at);
-    return answer.split(/\s+/).filter(Boolean).length >= QA_MIN_ANSWER_WORDS;
-  });
-  return new Set(answered.map(item => item.heading)).size >= 2;
+    return countWords(answer) >= QA_MIN_ANSWER_WORDS;
+  }).map(item => item.heading));
+  const pairs = metrics.faq_pairs || page?.faq_pairs || [];
+  for (const pair of Array.isArray(pairs) ? pairs : []) {
+    const question = String(pair?.question || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    if (!question || !isQuestionLike(question)) continue;
+    if (countWords(String(pair?.answer || '')) >= QA_MIN_ANSWER_WORDS) answered.add(question);
+  }
+  return answered.size >= 2;
 }
 
 // pass: FAQPage markup or visible Q&A structure on any page. partial: valid
@@ -820,6 +874,32 @@ function scoreFaqSignal(pages) {
     };
   }
   return { status: 'needs_work', evidence: coverage, faq_markup, qa_structure };
+}
+
+// pass: at least 800 words on >= 75% of indexable pages, which leaves room for
+// short utility pages (Contact, Privacy) without failing the whole site.
+// partial: some pages pass — scoreEngines() turns `share` into proportional
+// credit. needs_work: no page reaches 800 words.
+const CONTENT_DEPTH_SHARE_V1 = 'share_v1';
+const CONTENT_DEPTH_ALL_PAGES = 'all_pages';
+
+function scoreContentDepthSignal(pages, options = {}) {
+  if (!pages || !pages.length) {
+    return { status: 'needs_work', evidence: 'At least 800 words on 0/0 indexable pages', passing: 0, total: 0, share: 0 };
+  }
+  const total = pages.length;
+  const passing = pages.filter(page => (citationPageMetrics(page).word_count || 0) >= 800).length;
+  const share = passing / total;
+  const evidence = `At least 800 words on ${passing}/${total} indexable pages`;
+  if ((options.method || CONTENT_DEPTH_SHARE_V1) === CONTENT_DEPTH_ALL_PAGES) {
+    return { status: passing === total ? 'pass' : 'needs_work', evidence, passing, total, share };
+  }
+  const status = share >= 0.75 ? 'pass' : passing > 0 ? 'partial' : 'needs_work';
+  return { status, evidence, passing, total, share };
+}
+
+function scoreContentDepthSignalAllOrNothing(pages) {
+  return scoreContentDepthSignal(pages, { method: CONTENT_DEPTH_ALL_PAGES });
 }
 
 function entityHasAddress(entity) {
@@ -948,6 +1028,7 @@ export function onPageFindings(pages, robotsTxt) {
 }
 
 export {
-  scoreEngines, robotsAllowsBot, scoreFaqSignal, scoreEntitySignal, pageHasQaStructure, extractEntity,
-  classifyPages, isIndexableHtmlPage,
+  scoreEngines, robotsAllowsBot, scoreFaqSignal, scoreEntitySignal, scoreContentDepthSignal,
+  scoreContentDepthSignalAllOrNothing, pageHasQaStructure, extractEntity,
+  classifyPages, isIndexableHtmlPage, CONTENT_DEPTH_SHARE_V1, CONTENT_DEPTH_ALL_PAGES,
 };
