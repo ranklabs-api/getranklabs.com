@@ -16,7 +16,12 @@ const TURNSTILE_TIMEOUT_MS = 5000;
 // Same-origin only: a browser POST from our own pages carries Origin
 // https://getranklabs.com (or www). Anything else, including no Origin, is refused.
 function sameOrigin(request) {
-  try { return ALLOWED_HOSTS.includes(new URL(request.headers.get('Origin') || '').host); } catch { return false; }
+  try {
+    const origin = new URL(request.headers.get('Origin') || '');
+    return origin.protocol === 'https:' && ALLOWED_HOSTS.includes(origin.host);
+  } catch {
+    return false;
+  }
 }
 
 const reply = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
