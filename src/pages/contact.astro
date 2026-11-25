@@ -5,16 +5,16 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
 // Every question below is also rendered visibly in the Q&A section of this page.
 const faqs = [
   {
-    q: 'What does the free AI Optimization audit cover?',
-    a: "It's a plain-English review of how well your website gives search engines and AI assistants what they need to understand and recommend you. It's the same AI Optimization on-page score used in our reports, built from schema markup, direct-answer structure, AI-crawler access, and freshness.",
+    q: 'What does the free AI check cover?',
+    a: "You get the same AI Optimization on-page score used in our reports, built from schema markup, direct-answer structure, AI-crawler access, and freshness. You also get live checks in Perplexity and Claude. Those live checks are a snapshot of one buyer query, clearly labeled and kept separate from the on-page score. They are not a ranking. The check does not change your site.",
   },
   {
-    q: 'Does the free audit run live searches in ChatGPT, Gemini, Claude or Perplexity?',
-    a: `No. ${aiReadinessHonestyLine} Every report shows the date your site was scanned.`,
+    q: 'Does the free check run live searches in ChatGPT, Gemini, Claude or Perplexity?',
+    a: `The free check runs live checks in Perplexity and Claude only. It does not run live checks in ChatGPT or Gemini. ${aiReadinessHonestyLine} The live checks are a snapshot of one buyer query, clearly labeled and kept separate from that on-page score. Every result shows the date your site was checked.`,
   },
   {
     q: 'Will Rank Labs change my website after I submit the form?',
-    a: 'No. A form submission, and the free audit itself, make no changes to your site. Fixes are part of Full Management, which is a separate plan.',
+    a: 'No. A form submission, and the free check itself, make no changes to your site. Fixes are part of Full Management, which is a separate plan.',
   },
   {
     q: 'Is there a long-term contract?',
@@ -41,7 +41,7 @@ const faqSchema = {
     <div class="text-sm text-cyan-300 font-mono mb-4">GET IN TOUCH</div>
     <h1 class="text-4xl md:text-5xl font-bold mb-4">Let's <span class="gradient-text">Talk</span></h1>
     <p class="text-lg text-muted mb-12">
-      Want more calls and bookings? Ask for a free AI Optimization audit, or just ask us a question. Drop us a message.
+      Want more calls and bookings? Run a free AI check for an on-page score plus live checks in Perplexity and Claude, or just ask us a question.
     </p>
     <p class="text-sm text-muted mb-8">
       Rank Labs is based in Orlando, Florida and works with businesses across the United States. You can also email
@@ -95,41 +95,52 @@ const faqSchema = {
     <div>
       <h2 class="text-2xl font-bold mb-4">What happens after you submit</h2>
       <p class="text-muted mb-4">
-        Your message goes to the Rank Labs team by email, and a person reads it. We reply to the email address you
-        gave us. We have not published a response time, so we will not promise one. If it is urgent, calling
-        <a href="tel:+14077438964" class="text-cyan-400 hover:underline">(407) 743-8964</a> is more direct.
+        If you run the free AI check, you will see your on-page score and the Perplexity and Claude results on this
+        page when the check finishes. If a live check cannot be completed, we still show the on-page score when we
+        have it, and a person reviews the rest. We have not published a response time for that follow-up, so we will
+        not promise one.
+      </p>
+      <p class="text-muted mb-4">
+        A fuller audit, when you ask for one, is still reviewed by a person. We then reply with those results to the
+        email address you gave us. We have not published a response time, so we will not promise one.
       </p>
       <p class="text-muted">
-        If you asked for the free audit, the request is reviewed first and the audit is run manually, not by an
-        automated form. We then reply with the results.
+        If you sent a question in the message form, your note goes to the Rank Labs team by email, and a person reads
+        it. We reply to the email address you gave us. If it is urgent, calling
+        <a href="tel:+14077438964" class="text-cyan-400 hover:underline">(407) 743-8964</a> is more direct.
       </p>
     </div>
 
     <div>
-      <h2 class="text-2xl font-bold mb-4">What the free AI Optimization audit covers</h2>
+      <h2 class="text-2xl font-bold mb-4">What the free AI check covers</h2>
       <p class="text-muted mb-4">
-        The audit uses the same AI Optimization on-page score that appears in our paid reports, with a sub-score for
-        each of four assistants (ChatGPT, Gemini, Claude, Perplexity) built from the same on-page checks. It looks at four things:
+        The free check uses the same AI Optimization on-page score that appears in our paid reports, with a sub-score
+        for each of four assistants (ChatGPT, Gemini, Claude, Perplexity) built from the same on-page signals. Those
+        sub-scores are on-page only; they are not live searches. The on-page score looks at four things:
       </p>
       <ul class="list-disc pl-6 space-y-2 text-muted mb-4">
-        <li><strong class="text-white">Schema:</strong> whether your site tells machines clearly who you are and what you offer.</li>
+        <li><strong class="text-white">Schema:</strong> whether your site tells machines clearly who you are and what you do.</li>
         <li><strong class="text-white">Direct-answer structure:</strong> whether your pages answer real customer questions in a way an AI can quote.</li>
         <li><strong class="text-white">AI-crawler access:</strong> whether crawlers such as GPTBot, ClaudeBot, PerplexityBot and Google-Extended are allowed to read your site.</li>
         <li><strong class="text-white">Freshness:</strong> whether your content looks current and carries clear dates.</li>
       </ul>
+      <p class="text-muted mb-4">
+        It also runs live checks in Perplexity and Claude. Those are a snapshot of one buyer query, clearly labeled
+        and kept separate from the on-page score. They are not a ranking, and they are not live checks in ChatGPT or Gemini.
+      </p>
       <h3 class="text-lg font-semibold mb-2 mt-6">What it does not cover</h3>
       <p class="text-muted">
-        It is not the full report: the paid
-        <a href="/pricing/" class="text-cyan-400 hover:underline">Rank Labs Visibility Report</a> adds a weekly 100+ check SEO audit,
-        rankings for 25 keywords and a 3-competitor comparison. The audit makes no changes to your website.
+        It is not the full report. The paid
+        <a href="/pricing/" class="text-cyan-400 hover:underline">Rank Labs Visibility Report</a> adds a weekly technical SEO audit,
+        keyword rankings, and a 3-competitor comparison. The free check makes no changes to your website.
       </p>
     </div>
 
     <div>
       <h2 class="text-2xl font-bold mb-4">What to have ready</h2>
       <ul class="list-disc pl-6 space-y-2 text-muted">
-        <li>Your name and a working email address. Both are required.</li>
-        <li>Your website address, if you have one. It is optional, but the audit is about your actual site.</li>
+        <li>For the free AI check: your website, business name, the service you want checked, your city, and a working email address. All of those are required.</li>
+        <li>For a question in the message form: your name and a working email address. Both are required. A website address helps if you have one.</li>
         <li>A sentence or two about your business and what you want more of: calls, bookings, or leads. The message box is the place for it.</li>
       </ul>
     </div>
