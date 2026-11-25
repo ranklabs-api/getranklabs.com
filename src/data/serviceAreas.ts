@@ -62,7 +62,7 @@ export const serviceAreas = [
   {
     slug: 'winter-garden', name: 'Winter Garden', focus: 'Explain project fit before a homeowner asks for an estimate.',
     context: 'The West Orange Trail traverses Winter Garden\'s Plant Street downtown, connecting a business visit with the downtown and trail setting. For an improvement business, distinguish a showroom or consultation customers can visit from repair or renovation work assessed at their property, rather than using downtown as a stand-in for citywide coverage.',
-    need: 'Help customers distinguish repair, replacement and installation services. If you have a downtown showroom visit, explain what can be discussed there and what still requires a property assessment; for an initial project enquiry, identify which photos or measurements are useful.',
+    need: 'Help customers distinguish repair, replacement and installation services. If customers can visit a downtown showroom, explain what can be discussed there and what still requires a property assessment; for an initial project enquiry, identify which photos or measurements are useful.',
     seo: 'Give materially different project types their own service descriptions and link them from the Winter Garden coverage page. Use real project evidence only when available and authorized; local relevance does not require invented case studies.',
     question: 'What should I prepare before requesting a project estimate?',
     answer: 'Ask for the project goal, service needed and any information the business actually uses to assess scope. Explain whether the first response is a discussion, an assessment booking or an estimate.',
