@@ -46,7 +46,7 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
             {[
               { label: 'Structured data / schema markup — checked on every page', shared: true },
               { label: 'Accurate name, address, phone everywhere — checked across 10 listing sites', shared: true },
-              { label: 'A full technical crawl of your site, with 100+ checks run every week', shared: false },
+              { label: 'A full technical crawl of your site, with 60+ checks run every week', shared: false },
               { label: 'Title tags, meta descriptions, H1 structure and canonical URLs', shared: false },
               { label: 'Open Graph tags, image alt text and broken-link checks', shared: false },
               { label: 'Page speed, mobile friendliness and Core Web Vitals', shared: false },
@@ -109,12 +109,11 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
               { label: 'Machine-readable service menu — every service its own item', shared: false },
               { label: 'Hours of operation in a format machines read', shared: false },
               { label: 'Exact prices, not ranges — "$1,275" beats "affordable"', shared: false },
-              { label: 'Appointment availability — can a machine tell you have openings?', shared: false },
+              { label: 'We score whether hours or lead times are published as data. We do not track live openings.', shared: false },
               { label: 'A bookable link a machine can open — deep-linkable, works without JavaScript', shared: false },
               { label: 'One unambiguous service location', shared: false },
               { label: 'Verified profiles connected to your site', shared: false },
               { label: 'Booking or enquiry endpoint', shared: false },
-              { label: 'Wait time / next-available signal', shared: false },
               { label: 'Confirmation and cancellation terms stated up front', shared: false },
               { label: 'Full transaction capability (advanced — only where a real scheduling system exists)', shared: false },
             ].map(b => (
@@ -151,7 +150,7 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
           </li>
         ))}
       </ul>
-      <p class="text-sm text-muted max-w-xl">For almost every business we work with, the highest-return work sits at Levels 3 and 4. We won't sell you Level 5 before you've cleared Level 2.</p>
+      <p class="text-sm text-muted max-w-xl">For almost every business we work with, the highest-return work we do sits at Level 3: a machine-usable booking or enquiry path. We do not track live openings (Level 4). We will not sell you Level 5 before you have cleared Level 2.</p>
     </div>
 
     <!-- Rank Labs Visibility Report -->
@@ -222,7 +221,7 @@ import { aiReadinessHonestyLine } from '../data/visibilityReport';
         <div>
           <h3 class="font-semibold text-sm text-cyan-300 mb-3">Agent-Ready (ASO) — we implement it</h3>
           <ul class="space-y-2">
-            {['Machine-readable hours, geo coordinates and service menu deployed', 'Exact-price Offer markup deployed', 'Booking entry point published for agents (deep-linkable, pre-fillable)', 'Availability / next-available signal published and maintained', 'Verified profiles connected to your data', 'Reviews and ratings marked up'].map(b => (
+            {['Machine-readable hours, geo coordinates and service menu deployed', 'Exact prices published as structured data', 'Booking entry point published for agents (deep-linkable, pre-fillable)', 'Verified profiles connected to your data', 'Reviews and ratings marked up'].map(b => (
               <li class="flex items-center gap-3 text-sm text-muted"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full shrink-0"></span>{b}</li>
             ))}
           </ul>

@@ -11,7 +11,7 @@ export const REPORT_SLUG = 'rank-labs-visibility-report';
 
 // Concise card bullets (summary of the full scope below).
 export const reportCardBullets = [
-  'Weekly SEO audit report email (100+ checks), with a prioritized fix list',
+  'Weekly SEO audit report email (60+ checks every week), with a prioritized fix list',
   'Monthly email report (first week of each month): your Google search, Business Profile, traffic, leads & AI Optimization score vs. last month',
   'Google organic + Maps (local pack) rankings for 25 keywords',
   'Ranking keywords & backlink summary',
@@ -27,7 +27,7 @@ export const reportFeatureGroups = [
   {
     title: 'Reports',
     items: [
-      'Weekly SEO audit report email (100+ checks) with a prioritized fix list',
+      'Weekly SEO audit report email (60+ checks every week) with a prioritized fix list',
       'Monthly email report (first week of each month) comparing your results vs. last month',
     ],
   },
