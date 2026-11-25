@@ -2,15 +2,19 @@
 //
 // Produces the subset of ranklabs-app's crawler metrics (agents/crawler/index.js
 // page.evaluate block + collectAgentReadinessSignals) that score.js reads, with
-// the same field names and the same caps (visible_text 4000 chars, heading
-// text 200 chars, schema_nodes 40 nodes / 64 KB). It works on the served HTML,
-// not a rendered DOM, so client-rendered content is invisible here — that
-// errs toward a lower score, never a higher one.
+// the same field names and the same caps (visible_text 20000 chars per
+// ranklabs-app@6ea7afb / #228, heading text 200 chars, schema_nodes 40 nodes /
+// 64 KB, faq_pairs 50). It works on the served HTML, not a rendered DOM, so
+// client-rendered content is invisible here — that errs toward a lower score,
+// never a higher one.
 
 const MAX_SCHEMA_NODES = 40;
 const MAX_SCHEMA_BYTES = 64 * 1024;
-const VISIBLE_TEXT_MAX = 4000;
+const VISIBLE_TEXT_MAX = 20000;
 const HEADING_TEXT_MAX = 200;
+const MAX_FAQ_PAIRS = 50;
+const FAQ_QUESTION_MAX = 300;
+const FAQ_ANSWER_MAX = 1000;
 
 const NAMED_ENTITIES = {
   amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", ndash: "–", mdash: "—",
@@ -84,6 +88,11 @@ function bodyOf(html) {
   return body;
 }
 
+function isFaqPage(node) {
+  const types = node && node["@type"];
+  return Array.isArray(types) ? types.includes("FAQPage") : types === "FAQPage";
+}
+
 function jsonLd(html) {
   const blocks = [];
   for (const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)) {
@@ -93,7 +102,10 @@ function jsonLd(html) {
   const schemaTypes = [];
   const schemaNodes = [];
   let bytes = 0;
+  let hasFaqSchema = false;
   const pushNode = (node) => {
+    // Checked before the node/byte caps so a large FAQPage still registers.
+    if (isFaqPage(node)) hasFaqSchema = true;
     if (!node || typeof node !== "object" || schemaNodes.length >= MAX_SCHEMA_NODES) return;
     let size = 0;
     try {
@@ -120,7 +132,64 @@ function jsonLd(html) {
       else pushNode(item);
     }
   }
-  return { has_schema: blocks.length > 0, schema_types: schemaTypes, schema_nodes: schemaNodes };
+  return {
+    has_schema: blocks.length > 0,
+    schema_types: schemaTypes,
+    schema_nodes: schemaNodes,
+    has_faq_schema: hasFaqSchema || schemaTypes.includes("FAQPage"),
+  };
+}
+
+// Candidate Q&A pairs from <dl><dt>/<dd> and <details><summary>, unfiltered.
+// score.js decides which look like real questions and answers. Caps and field
+// lengths match collectAgentReadinessSignals in ranklabs-app@6ea7afb.
+export function extractFaqPairs(html) {
+  const faqPairs = [];
+  const pushPair = (question, answer, source) => {
+    if (faqPairs.length >= MAX_FAQ_PAIRS) return;
+    question = collapse(question).substring(0, FAQ_QUESTION_MAX);
+    answer = collapse(answer).substring(0, FAQ_ANSWER_MAX);
+    if (question && answer) faqPairs.push({ question, answer, source });
+  };
+
+  for (const dl of String(html || "").matchAll(/<dl\b[^>]*>([\s\S]*?)<\/dl\s*>/gi)) {
+    for (const part of dl[1].split(/<dt\b[^>]*>/i).slice(1)) {
+      const close = part.match(/<\/dt\s*>/i);
+      if (!close) continue;
+      const question = htmlToText(part.slice(0, close.index));
+      const rest = part.slice(close.index + close[0].length);
+      const answers = [...rest.matchAll(/<dd\b[^>]*>([\s\S]*?)<\/dd\s*>/gi)].map((m) => htmlToText(m[1]));
+      pushPair(question, answers.filter(Boolean).join(" "), "dt");
+    }
+  }
+
+  const source = String(html || "");
+  const openRe = /<details\b[^>]*>/gi;
+  let open;
+  while ((open = openRe.exec(source))) {
+    const start = open.index + open[0].length;
+    let depth = 1;
+    const hop = /<details\b[^>]*>|<\/details\s*>/gi;
+    hop.lastIndex = start;
+    let end = -1;
+    let token;
+    while ((token = hop.exec(source))) {
+      depth += token[0].startsWith("</") ? -1 : 1;
+      if (depth === 0) {
+        end = token.index;
+        break;
+      }
+    }
+    if (end < 0) break;
+    const inner = source.slice(start, end);
+    const summary = inner.match(/<summary\b[^>]*>([\s\S]*?)<\/summary\s*>/i);
+    if (summary) {
+      const body = inner.slice(0, summary.index) + inner.slice(summary.index + summary[0].length);
+      pushPair(htmlToText(summary[1]), htmlToText(body), "summary");
+    }
+    openRe.lastIndex = end + 1;
+  }
+  return faqPairs;
 }
 
 // html → metrics. `headers` (lowercase names) adds x_robots_tag handling.
@@ -176,6 +245,7 @@ export function extractMetrics(rawHtml, { headers = {} } = {}) {
     meta_robots,
     x_robots_tag,
     noindex,
+    faq_pairs: extractFaqPairs(scrubbed),
     ...jsonLd(html),
   };
 }

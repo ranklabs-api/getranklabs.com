@@ -1,11 +1,11 @@
 {
-  "source": "ranklabs-app@195f6e9",
+  "source": "ranklabs-app@6ea7afb",
   "fixture": "site-no-schema-blocked.json",
   "geo": {
     "chatgpt": {
-      "score": 17,
+      "score": 27,
       "grade": "F",
-      "earned": 17,
+      "earned": 27,
       "max": 100,
       "items": [
         {
@@ -27,7 +27,8 @@
           "id": "chatgpt_content_depth",
           "label": "Substantial Content Depth",
           "weight": 15,
-          "status": "needs_work",
+          "status": "partial",
+          "earned_weight": 10,
           "evidence": "At least 800 words on 2/3 indexable pages"
         },
         {
@@ -66,9 +67,9 @@
       "source": "Bing + GPTBot"
     },
     "gemini": {
-      "score": 18,
+      "score": 25,
       "grade": "F",
-      "earned": 18,
+      "earned": 25,
       "max": 100,
       "items": [
         {
@@ -104,7 +105,8 @@
           "id": "gemini_content_depth",
           "label": "Substantial Content Depth",
           "weight": 10,
-          "status": "needs_work",
+          "status": "partial",
+          "earned_weight": 7,
           "evidence": "At least 800 words on 2/3 indexable pages"
         },
         {
@@ -143,9 +145,9 @@
       "source": "Google + Knowledge Graph"
     },
     "claude": {
-      "score": 15,
+      "score": 28,
       "grade": "F",
-      "earned": 15,
+      "earned": 28,
       "max": 100,
       "items": [
         {
@@ -167,7 +169,8 @@
           "id": "claude_content_depth",
           "label": "Substantial Content Depth",
           "weight": 20,
-          "status": "needs_work",
+          "status": "partial",
+          "earned_weight": 13,
           "evidence": "At least 800 words on 2/3 indexable pages"
         },
         {
@@ -206,9 +209,9 @@
       "source": "Brave + ClaudeBot"
     },
     "perplexity": {
-      "score": 25,
+      "score": 35,
       "grade": "F",
-      "earned": 25,
+      "earned": 35,
       "max": 100,
       "items": [
         {
@@ -230,7 +233,8 @@
           "id": "perplexity_content_depth",
           "label": "Substantial Content Depth",
           "weight": 15,
-          "status": "needs_work",
+          "status": "partial",
+          "earned_weight": 10,
           "evidence": "At least 800 words on 2/3 indexable pages"
         },
         {
@@ -268,7 +272,7 @@
       "tagline": "Proprietary + Google",
       "source": "Proprietary + Google"
     },
-    "overall_score": 19,
+    "overall_score": 29,
     "coverage": {
       "pages_evaluated": 3,
       "schema": 0,
@@ -280,6 +284,16 @@
       "faq_markup": 0,
       "qa_structure": 0
     },
-    "summary": ""
+    "summary": "",
+    "methodology": {
+      "content_depth": "share_v1"
+    },
+    "content_depth_scoring_change": {
+      "previous_method": "all_pages",
+      "new_method": "share_v1",
+      "before": 19,
+      "after": 29,
+      "landing": null
+    }
   }
 }

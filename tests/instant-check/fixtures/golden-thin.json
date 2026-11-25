@@ -1,5 +1,5 @@
 {
-  "source": "ranklabs-app@195f6e9",
+  "source": "ranklabs-app@6ea7afb",
   "fixture": "site-thin.json",
   "geo": {
     "chatgpt": {
@@ -276,6 +276,16 @@
       "faq_markup": 0,
       "qa_structure": 0
     },
-    "summary": ""
+    "summary": "",
+    "methodology": {
+      "content_depth": "share_v1"
+    },
+    "content_depth_scoring_change": {
+      "previous_method": "all_pages",
+      "new_method": "share_v1",
+      "before": 9,
+      "after": 9,
+      "landing": null
+    }
   }
 }
