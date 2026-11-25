@@ -3,8 +3,11 @@
 // A hit is served for $0 and consumes no rate limit or budget. Any read error
 // is a miss: the caller then goes through the normal, fully gated path.
 
+import { PROMPT_VERSION } from "./probes/prompt.js";
+
+export { PROMPT_VERSION };
+
 export const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
-export const PROMPT_VERSION = 1;
 
 // → the cached result object, or null.
 export async function getCached(db, domain, now = Date.now()) {
